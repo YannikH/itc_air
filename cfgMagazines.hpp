@@ -31,7 +31,7 @@ class cfgMagazines {
 
     //DUAL HP DUMB
     #define hp_double(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,1x)
+        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,2x)
 
     //DUAL HP DUMB
     #define hp_double_smart(NAME,WEAP,AMMO) \
