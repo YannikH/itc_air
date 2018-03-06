@@ -1,0 +1,1 @@
+["All", "Fired", itc_fnc_fired] call CBA_fnc_addClassEventHandler;
