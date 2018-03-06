@@ -119,7 +119,7 @@ class cfgVehicles {
                     };
                     class pylon3 {
                         attachment = "PylonRack_Missile_AGM_02_x1";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","I_AGM65_RAIL","RHS_HP_LGB_500","RHS_HP_BOMB_500","RHS_HP_BOMB_500_3x", "RHS_HP_LGB_500", "ITC_HP_JDAM_500_x2", "ITC_HP_BOMB_500_x2","RHS_HP_FFAR_USAF","RHS_HP_AGM65"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 750;
                         priority = 4;
                         UIposition[] = {0.5,0.35};
@@ -130,7 +130,7 @@ class cfgVehicles {
                     };
                     class pylon5 {
                         attachment = "PylonRack_Missile_AMRAAM_C_x1";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","I_AGM65_RAIL","RHS_HP_LGB_500","RHS_HP_BOMB_500","RHS_HP_BOMB_500_3x", "RHS_HP_LGB_500", "ITC_HP_JDAM_500_x2", "ITC_HP_BOMB_500_x2","RHS_HP_FFAR_USAF","RHS_HP_AGM65", "RHS_HP_AGM65_3x"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","I_AGM65_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 1200;
                         priority = 3;
                         UIposition[] = {0.45,0.3};
@@ -257,7 +257,7 @@ class cfgVehicles {
                 {
                     class pylon1
                     {
-                        hardpoints[] = {"RHS_HP_FFAR_USAF","RHS_HP_FFAR_USMC","RHS_HP_LGB_500","RHS_HP_BOMB_500","RHS_HP_AIM9_2x", "RHS_HP_ECM"};
+                        hardpoints[] = {"itc_hp_dumb","RHS_HP_AIM9_2x", "RHS_HP_ECM"};
                         priority = 5;
                         maxweight = 1200;
                         UIposition[] = {0.35,0};
@@ -266,7 +266,7 @@ class cfgVehicles {
                     };
                     class pylon2
                     {
-                        hardpoints[] = {"RHS_HP_FFAR_USAF","RHS_HP_FFAR_USMC","RHS_HP_LGB_500","RHS_HP_BOMB_500"};
+                        hardpoints[] = {"itc_hp_dumb"};
                         priority = 4;
                         maxweight = 1200;
                         UIposition[] = {0.345,0.05};
@@ -275,7 +275,7 @@ class cfgVehicles {
                     };
                     class pylon3
                     {
-                        hardpoints[] = {"RHS_HP_FFAR_USAF","RHS_HP_FFAR_USMC","RHS_HP_LGB_500","RHS_HP_BOMB_500","RHS_HP_BOMB_500_3x", "RHS_HP_LGB_500", "ITC_HP_JDAM_500", "RHS_HP_AGM65", "RHS_HP_AGM65_3x"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru42"};
                         priority = 3;
                         maxweight = 1200;
                         UIposition[] = {0.34,0.1};
@@ -284,7 +284,7 @@ class cfgVehicles {
                     };
                     class pylon4
                     {
-                        hardpoints[] = {"RHS_HP_FFAR_USAF","RHS_HP_FFAR_USMC","RHS_HP_LGB_500","RHS_HP_BOMB_500","RHS_HP_BOMB_500_3x", "RHS_HP_LGB_500", "ITC_HP_JDAM_500"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart", "itc_hp_bru42"};
                         priority = 2;
                         maxweight = 1200;
                         UIposition[] = {0.33,0.2};
@@ -293,7 +293,7 @@ class cfgVehicles {
                     };
                     class pylon5
                     {
-                        hardpoints[] = {"RHS_HP_FFAR_USAF","RHS_HP_FFAR_USMC","RHS_HP_LGB_500","RHS_HP_BOMB_500", "ITC_HP_JDAM_500"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart", "itc_hp_bru42"};
                         priority = 1;
                         maxweight = 1200;
                         UIposition[] = {0.33,0.25};
