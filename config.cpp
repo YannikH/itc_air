@@ -8,6 +8,7 @@ class CfgPatches {
         picture = "\itc_air\data\UI\MDF.paa";
     };
 };
+#define STRINGIFY(s) #s
 
 #include "cfgAmmo.hpp"
 #include "cfgMagazines.hpp"
@@ -192,61 +193,5 @@ class CfgCloudlets {
         circleRadius = 2.9;
         interval = 0.8;
         positionVar[] = {4, 8, 4};
-    };
-    class TargetingLaser
-    {
-        interval = "0.5 * speedSize + 0.5";      //interval of particle's creation
-        circleRadius = 0;                //radius around emitter where particles are created
-        circleVelocity[] = {0, 0, 0};        //direction and speed of movement of particle's circle
-        particleShape = \A3\data_f\ParticleEffects\Universal\Universal;     //path and name of file
-        particleFSNtieth = 16;           //coef; size of one particle's texture in pixels = 2048/coef
-        particleFSIndex = 12;            //index of start line on texture
-        particleFSFrameCount = 8;            //count of pictures in animation (starts on first picture in defined line - particleFSIndex)
-        particleFSLoop = 1;                  //loop of animation (0 - false, 1 - true)
-        angle = 0;                   //angle of particle
-        angleVar = 0;                //variability in angle of particle
-
-        animationName = "";
-        particleType = "Spaceobject";              //type of animation (Billboard (2D), Spaceobject (3D))
-        timerPeriod = 1;                 //interval of timer (how often is called script defined in parameter onTimerScript)
-        lifeTime = 1;                //life time of particle in seconds
-        moveVelocity[] = {0, 0, 0};              //direction and speed of movement of particle [x,z,y]
-        rotationVelocity = 0;            //direction and speed of rotation of particle [x,z,y]
-        weight = 1;                      //weight of particle (kg)
-        volume = 1;                      //volume of particle (m3)
-        rubbing = 0;              //how much is particle affected by wind/air resistance
-        size[] = {1,1,10000};              //size of particle during the life
-        color[] = {{1,252,75,1},{1,252,75,1}};         //color of particle during the life (r,g,b,a)
-        animationSpeed[] = {1};          //speed of animation (number of animation cycles in 1s)
-        randomDirectionPeriod = 0;           //interval of random speed change
-        randomDirectionIntensity = 0;        //intensity of random speed change
-        onTimerScript = "";                  //script triggered by timer (in variable "this" is stored position of particle)
-        beforeDestroyScript = "";            //script triggered before destroying of particle (in variable "this" is stored position of particle)
-        lifeTimeVar = 0;                 //variability in lifetime of particle
-        position[] = {0, 0, 0};                  //defines position of effect
-        positionVar[] = {0, 0, 0};           //variability in position of particle (each part of vector has it's own variability)
-        positionVarConst[] = {0, 0, 0};      //variability in position of particle (variablity of all parts of vector is the same)
-        moveVelocityVar[] = {0, 0, 0};       //variability in direction and speed of particle (each part of vector has it's own variability)
-        moveVelocityVarConst[] = {0, 0, 0};      //variability in direction and speed of particle (variablity of all parts of vector is the same)
-        rotationVelocityVar = 0;             //variability in rotation of particle
-        sizeVar = 0;                 //variability in size of particle
-        colorVar[] = {0, 0, 0, 0};           //variability in color of particle
-        randomDirectionPeriodVar = 0;        //variability in interval of random speed change
-        randomDirectionIntensityVar = 0;         //variability in intensity of random speed change
-        sizeCoef = 1;                            //size of particle = size parameter value * this coef (works only in some effects)
-        colorCoef[]={1,1,1,1};                   //color of particle = color parameter value * this coef (works only in some effects)
-        animationSpeedCoef = 1;                  //animation speed of particle = animationSpeed parameter value * this coef (works only in some effects)
-
-        destroyOnWaterSurface = 0;               //particle can exist - only underwater (-1), only above the water (1), everywhere (0)
-        destroyOnWaterSurfaceOffset = 0;         //offset of water surface in destroyOnWaterSurface parameter
-        onSurface = false;                        //placing of particle on (water) surface on start of it's existence, default value is true, works only if circleRadius > 0
-        keepOnSurface = false;                   //true for particle is stay on water surface - see notes bellow
-        surfaceOffset = 0;                       //offset of water surface in keepOnSurface parameter
-        bounceOnSurface = 0.6;                   //coef of speed's loosing in collision with ground, 0-1 for collisions, -1 disable collision
-        bounceOnSurfaceVar = 0.0;                //variability in speed's loosing in collision with ground
-        postEffects = "IEDMineFlame";            //effect triggered before destroying of particle
-        particleEffects = "ExplosionShardsFire"; //emitter of effect defined in this parameter is attached to each particle
-        blockAIVisibility = true;                //sets if particles are in the AI visibility tests (default true) - false for better performance but AI is able to see through particles
-        emissiveColor[] = {{30,30,30,0},{0,0,0,0}};  //sets emissivity of particle, 4th number has no meaning for now
     };
 };

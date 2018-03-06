@@ -6,19 +6,6 @@ class CfgWeapons {
         picture = "\itc_air\data\UI\ROVER_icon_ca.paa";
     };
 
-    class rhs_weap_mk82;
-    class itc_weap_gbu38 : rhs_weap_mk82 {
-        displayName = "GBU-38";
-        magazines[] = {"ITC_1rnd_gbu38", "ITC_2rnd_gbu38", "ITC_1rnd_gbu38v3b", "ITC_2rnd_gbu38v3b"};
-        reloadTime = 0.0;
-        autoFire=false;
-    };
-
-    class itc_weap_mk82_airburst : rhs_weap_mk82 {
-        displayName = "Mk82 Airburst";
-        magazines[] = {"itc_mag_mk82_airburst", "itc_mag_mk82_airburst_3"};
-    };
-
     class Gatling_30mm_Plane_CAS_01_F;
     class RHS_weap_gau8 : Gatling_30mm_Plane_CAS_01_F {
         class LowROF;
@@ -57,16 +44,50 @@ class CfgWeapons {
         };
     };
 
+    class rhs_weap_agm65;
+    #define agmPylonMagazines(WEAP, AMMO) \
+        class WEAP : rhs_weap_agm65 { \
+            magazines[] += { \
+                itc_hp_lau117_##AMMO, \
+                itc_hp_bru55_lau117_##AMMO \
+            }; \
+        };
+
+    #define magazines_hp_ser_der_ter(WEAP, PARENT, AMMO) \
+        class WEAP : PARENT { \
+            magazines[] += { \
+                itc_hp_dumb_##AMMO, \
+                itc_hp_bru33_##AMMO, \
+                itc_hp_bru42_##AMMO \
+            }; \
+        };
+
     class RocketPods;
-    class Bomb_04_Plane_CAS_01_F: RocketPods
-    {
-        magazines[] += {"ITC_3rnd_gbu12", "itc_2rnd_gbu12"};
+    class rhs_weap_mk82;
+    class Rocket_04_HE_Plane_CAS_01_F : RocketPods{
+        magazines[] += {"itc_hp_dumb_rhs_ammo_Hydra_M151","itc_hp_dumb_itc_ammo_Hydra_M156"};
+    };
+    magazines_hp_ser_der_ter(Mk82BombLauncher,RocketPods,Bo_Mk82)
+    magazines_hp_ser_der_ter(Bomb_04_Plane_CAS_01_F,RocketPods,Bo_GBU12_LGB)
+    magazines_hp_ser_der_ter(rhs_weap_cbu87,rhs_weap_mk82,rhs_ammo_cbu87)
+    magazines_hp_ser_der_ter(rhs_weap_cbu100,rhs_weap_mk82,rhs_ammo_cbu100)
+
+    agmPylonMagazines(rhs_weap_agm65b,rhs_ammo_agm65b)
+    agmPylonMagazines(rhs_weap_agm65d,rhs_ammo_agm65d)
+    agmPylonMagazines(rhs_weap_agm65e,rhs_ammo_agm65e)
+    agmPylonMagazines(rhs_weap_agm65f,rhs_ammo_agm65f)
+    agmPylonMagazines(rhs_weap_agm65h,rhs_ammo_agm65h)
+
+    class itc_weap_gbu38 : rhs_weap_mk82 {
+        displayName = "GBU-38";
+        magazines[] = {"itc_hp_smart_ITC_ammo_gbu38","itc_hp_smart_ITC_ammo_gbu38v3b","itc_hp_bru55_ITC_ammo_gbu38","itc_hp_bru55_ITC_ammo_gbu38v3b"};
+        reloadTime = 0.0;
+        autoFire=false;
     };
 
-    class rhs_weap_agm65;
-    class rhs_weap_agm65h: rhs_weap_agm65
-    {
-        magazines[] += {"itc_2rnd_agm65h"};
+    class itc_weap_mk82_airburst : rhs_weap_mk82 {
+        displayName = "Mk82 Airburst";
+        magazines[] = {"itc_mag_mk82_airburst", "itc_mag_mk82_airburst_3"};
     };
 
     class CannonCore;

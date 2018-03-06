@@ -9,7 +9,7 @@ if (!local _gunner) exitWith {};
     };
     if (!alive _projectile) then {
         "rhs_ammo_3d17_shell" createVehicle _position;
-        "SmokeShellArty" createVehicle _position;
+        //"SmokeShellArty" createVehicle _position;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
 }, 0, [_gunner, _projectile, _distance, _ammo, getPosATL _projectile, _targetIndex]] call CBA_fnc_addPerFrameHandler;

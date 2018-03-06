@@ -1,46 +1,49 @@
 class cfgMagazines {
-    #define STRINGIFY(s) #s
     class PylonMissile_1Rnd_Mk82_F;
     class PylonRack_2Rnd_BombCluster_03_F;
     class PylonRack_Missile_AGM_02_x2;
     class PylonRack_1Rnd_Missile_AGM_02_F;
+    class PylonRack_7Rnd_Rocket_04_HE_F;
     class rhs_mag_mk82_3;
-    #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO) \
+    #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT) \
         class HP##_##AMMO : PARENT { \
             ammo = STRINGIFY(AMMO); \
-            displayName = NAME; \
+            displayName = COUNT NAME; \
+            displayNameShort = NAME; \
             pylonWeapon = WEAP; \
             hardpoints[] = {STRINGIFY(HP)}; \
-            weapon = CLASS; \
         };
 
     //SINGLE HP DUMB
     #define hp_single(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_dumb,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_dumb,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO,1x)
+
+    #define hp_rocket(NAME,WEAP,AMMO) \
+        hardPointMagazine(itc_hp_dumb,PylonRack_7Rnd_Rocket_04_HE_F,NAME,WEAP,AMMO,7x)
 
     //SINGLE HP SMART
     #define hp_single_smart(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_smart,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_smart,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO,1x)
 
     //SINGLE HP LAU117
     #define hp_single_lau117(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_lau117,PylonRack_1Rnd_Missile_AGM_02_F,NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_lau117,PylonRack_1Rnd_Missile_AGM_02_F,NAME,WEAP,AMMO,1x)
 
     //DUAL HP DUMB
     #define hp_double(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,2x NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,1x)
 
     //DUAL HP DUMB
     #define hp_double_smart(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru55,PylonRack_2Rnd_BombCluster_03_F,2x NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru55,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,2x)
 
     //DUAL HP LAU117
     #define hp_double_lau117(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru55_lau117,PylonRack_Missile_AGM_02_x2,2x NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru55_lau117,PylonRack_Missile_AGM_02_x2,NAME,WEAP,AMMO,3x)
 
     //TRIPLE HP DUMB
     #define hp_triple(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru42,rhs_mag_mk82_3,3x NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru42,rhs_mag_mk82_3,NAME,WEAP,AMMO,3x)
 
     #define hp_ser_der_ter(NAME,WEAP,AMMO) \
         hp_single(NAME,WEAP,AMMO) \
@@ -55,7 +58,8 @@ class cfgMagazines {
         hp_single_smart(NAME,WEAP,AMMO) \
         hp_double_smart(NAME,WEAP,AMMO)
 
-    hp_single("7x M151 Hydra HE","Rocket_04_HE_F",Rocket_04_HE_Plane_CAS_01_F)
+    hp_rocket("M151 Hydra HE","Rocket_04_HE_Plane_CAS_01_F",rhs_ammo_Hydra_M151)
+    hp_rocket("M156 Hydra WP","Rocket_04_HE_Plane_CAS_01_F",itc_ammo_Hydra_M156)
 
     hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82)
     hp_ser_der_ter("GBU-12","Bomb_04_Plane_CAS_01_F",Bo_GBU12_LGB)

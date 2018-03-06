@@ -271,7 +271,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.345,0.05};
                         bay = -1;
-                        attachment = "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F";
+                        attachment = "itc_hp_dumb_rhs_ammo_Hydra_M151";
                     };
                     class pylon3
                     {
@@ -337,14 +337,14 @@ class cfgVehicles {
                     {
                         attachment[] = {
                             "rhs_mag_ANALQ131",
-                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
+                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
                             "itc_hp_lau117_rhs_ammo_agm65d",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_lau117_rhs_ammo_agm65d",
-                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
+                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
                             "rhs_mag_Sidewinder_2"};
                         displayname = "Anti-Tank";
                     };
@@ -352,14 +352,14 @@ class cfgVehicles {
                     {
                         attachment[] = {
                             "rhs_mag_ANALQ131",
-                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
+                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
                             "itc_hp_lau117_rhs_ammo_agm65e",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_smart_ITC_ammo_gbu38",
                             "itc_hp_smart_ITC_ammo_gbu38",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_lau117_rhs_ammo_agm65e",
-                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
+                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
                             "rhs_mag_Sidewinder_2"};
                         displayname = "Close Air Support";
                     };

@@ -32,6 +32,7 @@ class cfgAmmo {
         indirectHit = 1;
         indirectHitRange = 1;
         explosive = 0.1;
-        effectsSmoke = "TB_MK13SmokeCloudBigLight";
+        ITC_firedEvent = "ITC_fnc_ammo_fired_wp";
+        explosionEffects = "TB_MK13SmokeEffects";
     };
 };
