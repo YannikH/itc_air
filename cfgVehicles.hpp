@@ -71,43 +71,43 @@ class cfgVehicles {
                     class AT
                     {
                         attachment[] = {
-                            "I_AMRAAM_C_RAIL",
-                            "I_AMRAAM_C_RAIL",
-                            "rhs_mag_gbu12",
-                            "rhs_mag_gbu12",
-                            "rhs_mag_agm65d_3",
-                            "rhs_mag_agm65d_3"
+                            "PylonRack_Missile_AMRAAM_C_x1",
+                            "PylonRack_Missile_AMRAAM_C_x1",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_bru55_lau117_rhs_ammo_agm65d",
+                            "itc_hp_bru55_lau117_rhs_ammo_agm65d"
                         };
                         displayname = "Anti-Tank";
                     };
                     class CAS
                     {
                         attachment[] = {
-                            "I_AMRAAM_C_RAIL",
-                            "I_AMRAAM_C_RAIL",
-                            "itc_2rnd_gbu38",
-                            "ITC_3rnd_gbu12",
-                            "ITC_3rnd_gbu12",
-                            "itc_2rnd_gbu38"
+                            "PylonRack_Missile_AMRAAM_C_x1",
+                            "PylonRack_Missile_AMRAAM_C_x1",
+                            "itc_hp_bru55_ITC_ammo_gbu38",
+                            "itc_hp_bru33_Bo_GBU12_LGB",
+                            "itc_hp_bru33_Bo_GBU12_LGB",
+                            "itc_hp_bru55_ITC_ammo_gbu38"
                         };
                         displayname = "Close Air Support";
                     };
                     class Strike
                     {
                         attachment[] = {
-                            "I_AMRAAM_C_RAIL",
-                            "I_AMRAAM_C_RAIL",
-                            "itc_2rnd_gbu38",
-                            "itc_2rnd_gbu38",
-                            "itc_2rnd_gbu38",
-                            "itc_2rnd_gbu38"
+                            "PylonRack_Missile_AMRAAM_C_x1",
+                            "PylonRack_Missile_AMRAAM_C_x1",
+                            "itc_hp_bru55_ITC_ammo_gbu38",
+                            "itc_hp_bru55_ITC_ammo_gbu38",
+                            "itc_hp_bru55_ITC_ammo_gbu38",
+                            "itc_hp_bru55_ITC_ammo_gbu38"
                         };
                         displayname = "Strike";
                     };
                 };
                 class pylons {
                     class pylon1 {
-                        attachment = "PylonMissile_Missile_BIM9X_x1";
+                        attachment = "PylonRack_Missile_AMRAAM_C_x1";
                         hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","RHS_HP_AIM9_int","RHS_HP_aim120_int"};
                         maxweight = 300;
                         priority = 5;
@@ -118,7 +118,7 @@ class cfgVehicles {
                         UIposition[] = {0.1,0.4};
                     };
                     class pylon3 {
-                        attachment = "PylonRack_Missile_AGM_02_x1";
+                        attachment = "itc_hp_bru55_ITC_ammo_gbu38";
                         hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 750;
                         priority = 4;
@@ -129,7 +129,7 @@ class cfgVehicles {
                         UIposition[] = {0.15,0.35};
                     };
                     class pylon5 {
-                        attachment = "PylonRack_Missile_AMRAAM_C_x1";
+                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
                         hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","I_AGM65_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 1200;
                         priority = 3;
@@ -271,7 +271,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.345,0.05};
                         bay = -1;
-                        attachment = "rhs_mag_FFAR_7_USAF";
+                        attachment = "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F";
                     };
                     class pylon3
                     {
@@ -280,7 +280,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.34,0.1};
                         bay = -1;
-                        attachment = "rhs_mag_agm65d";
+                        attachment = "itc_hp_lau117_rhs_ammo_agm65d";
                     };
                     class pylon4
                     {
@@ -289,7 +289,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.2};
                         bay = -1;
-                        attachment = "rhs_mag_gbu12";
+                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
                     };
                     class pylon5
                     {
@@ -298,7 +298,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.25};
                         bay = -1;
-                        attachment = "rhs_mag_gbu12";
+                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
                     };
                     class pylon6 : pylon5
                     {
@@ -306,7 +306,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.3};
                         bay = -1;
-                        attachment = "rhs_mag_gbu12";
+                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
                         mirroredMissilePos = 5;
                     };
                     class pylon7: pylon4
@@ -337,14 +337,14 @@ class cfgVehicles {
                     {
                         attachment[] = {
                             "rhs_mag_ANALQ131",
-                            "rhs_mag_FFAR_7_USAF",
-                            "rhs_mag_agm65d_3",
-                            "rhs_mag_gbu12",
-                            "rhs_mag_gbu12",
-                            "rhs_mag_gbu12",
-                            "rhs_mag_gbu12",
-                            "rhs_mag_agm65d_3",
-                            "itc_mag_M156_7",
+                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
+                            "itc_hp_lau117_rhs_ammo_agm65d",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_lau117_rhs_ammo_agm65d",
+                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
                             "rhs_mag_Sidewinder_2"};
                         displayname = "Anti-Tank";
                     };
@@ -352,14 +352,14 @@ class cfgVehicles {
                     {
                         attachment[] = {
                             "rhs_mag_ANALQ131",
-                            "rhs_mag_FFAR_7_USAF",
-                            "rhs_mag_agm65e",
-                            "rhs_mag_gbu12",
-                            "ITC_1rnd_gbu38",
-                            "ITC_1rnd_gbu38",
-                            "rhs_mag_gbu12",
-                            "rhs_mag_agm65e",
-                            "itc_mag_M156_7",
+                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
+                            "itc_hp_lau117_rhs_ammo_agm65e",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_smart_ITC_ammo_gbu38",
+                            "itc_hp_smart_ITC_ammo_gbu38",
+                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_lau117_rhs_ammo_agm65e",
+                            "itc_hp_dumb_Rocket_04_HE_Plane_CAS_01_F",
                             "rhs_mag_Sidewinder_2"};
                         displayname = "Close Air Support";
                     };
