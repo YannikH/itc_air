@@ -39,7 +39,7 @@ class cfgMagazines {
 
     //DUAL HP LAU117
     #define hp_double_lau117(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru55_lau117,PylonRack_Missile_AGM_02_x2,NAME,WEAP,AMMO,3x)
+        hardPointMagazine(itc_hp_bru55_lau117,PylonRack_Missile_AGM_02_x2,NAME,WEAP,AMMO,2x)
 
     //TRIPLE HP DUMB
     #define hp_triple(NAME,WEAP,AMMO) \
