@@ -2,7 +2,7 @@ class cfgMagazines {
     #define STRINGIFY(s) #s
     class PylonMissile_1Rnd_Mk82_F;
     class PylonRack_2Rnd_BombCluster_03_F;
-    class PylonMissile_Missile_AGM_02_x2;
+    class PylonRack_Missile_AGM_02_x2;
     class PylonRack_1Rnd_Missile_AGM_02_F;
     class rhs_mag_mk82_3;
     #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO) \
@@ -28,19 +28,19 @@ class cfgMagazines {
 
     //DUAL HP DUMB
     #define hp_double(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,"2x "##NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,2x NAME,WEAP,AMMO)
 
     //DUAL HP DUMB
     #define hp_double_smart(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru55,PylonRack_2Rnd_BombCluster_03_F,"2x "##NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru55,PylonRack_2Rnd_BombCluster_03_F,2x NAME,WEAP,AMMO)
 
     //DUAL HP LAU117
     #define hp_double_lau117(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru55_lau117,PylonMissile_Missile_AGM_02_x2,"2x "##NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru55_lau117,PylonRack_Missile_AGM_02_x2,2x NAME,WEAP,AMMO)
 
     //TRIPLE HP DUMB
     #define hp_triple(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru42,rhs_mag_mk82_3,"3x "##NAME,WEAP,AMMO)
+        hardPointMagazine(itc_hp_bru42,rhs_mag_mk82_3,3x NAME,WEAP,AMMO)
 
     #define hp_ser_der_ter(NAME,WEAP,AMMO) \
         hp_single(NAME,WEAP,AMMO) \
