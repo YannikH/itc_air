@@ -4,6 +4,7 @@ class cfgMagazines {
     class PylonRack_Missile_AGM_02_x2;
     class PylonRack_1Rnd_Missile_AGM_02_F;
     class PylonRack_7Rnd_Rocket_04_HE_F;
+    class rhs_mag_M151_7_green;
     class rhs_mag_mk82_3;
     #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT) \
         class HP##_##AMMO : PARENT { \
@@ -19,7 +20,7 @@ class cfgMagazines {
         hardPointMagazine(itc_hp_dumb,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO,1x)
 
     #define hp_rocket(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_dumb,PylonRack_7Rnd_Rocket_04_HE_F,NAME,WEAP,AMMO,7x)
+        hardPointMagazine(itc_hp_dumb_rocket,rhs_mag_M151_7_green,NAME,WEAP,AMMO,7x)
 
     //SINGLE HP SMART
     #define hp_single_smart(NAME,WEAP,AMMO) \

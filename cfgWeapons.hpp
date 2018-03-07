@@ -65,7 +65,7 @@ class CfgWeapons {
     class RocketPods;
     class rhs_weap_mk82;
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods{
-        magazines[] += {"itc_hp_dumb_rhs_ammo_Hydra_M151","itc_hp_dumb_itc_ammo_Hydra_M156"};
+        magazines[] += {"itc_hp_dumb_rocket_rhs_ammo_Hydra_M151","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
     };
     magazines_hp_ser_der_ter(Mk82BombLauncher,RocketPods,Bo_Mk82)
     magazines_hp_ser_der_ter(Bomb_04_Plane_CAS_01_F,RocketPods,Bo_GBU12_LGB)

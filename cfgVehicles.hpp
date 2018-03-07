@@ -61,6 +61,7 @@ class cfgVehicles {
         hiddenSelectionsTextures[] = {"a3\air_f_jets\plane_fighter_04\data\Fighter_04_fuselage_01_co.paa","a3\air_f_jets\plane_fighter_04\data\Fighter_04_fuselage_02_co.paa","a3\air_f_jets\plane_fighter_04\data\fighter_04_misc_01_co.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_04_ca.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_04_ca.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_08_ca.paa"};
         weapons[] = {"itc_weap_bk27","Laserdesignator_pilotCamera","CMFlareLauncher"};
         magazines[] = {"itc_120rnd_27mm_he","Laserbatteries","240Rnd_CMFlare_Chaff_Magazine"};
+        incomingMissileDetectionSystem = 8;
         class Components : Components {
             class SensorsManagerComponent;
             class TransportCountermeasuresComponent;
@@ -130,7 +131,7 @@ class cfgVehicles {
                     };
                     class pylon5 {
                         attachment = "itc_hp_dumb_Bo_GBU12_LGB";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","I_AGM65_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 1200;
                         priority = 3;
                         UIposition[] = {0.45,0.3};
@@ -212,6 +213,224 @@ class cfgVehicles {
             tgp = 1;
         };
     };
+    /*
+    class Plane_Fighter_03_dynamicLoadout_base_F : Plane_Base_F {
+        class Components : Components {
+            class SensorsManagerComponent;
+            class TransportCountermeasuresComponent;
+            class TransportPylonsComponent;
+            class VehicleSystemsDisplayManagerComponentLeft;
+            class VehicleSystemsDisplayManagerComponentRight;
+        };
+    };
+    class ITC_A159 : Plane_Fighter_03_dynamicLoadout_base_F {
+        side = 1;
+        scope = 2;
+        displayName= "A-159";
+        faction = "BLU_F";
+        vehicleClass = "Air";
+        editorSubcategory = "EdSubcat_Planes";
+        crew = "B_pilot_F";
+        incomingMissileDetectionSystem = 8;
+        class itc_air {
+            class rover {
+                capable = 1;
+                frequency_default = 1337;
+                ti_enabled = 1;
+                ti_modes[] = {1, 0};
+                nvg_enabled = 1;
+                fov[] = {0.625, 0.12, 0.04};
+            };
+            hmd = 1;
+            tgp = 1;
+        };
+        class Components : Components {
+            class SensorsManagerComponent;
+            class TransportCountermeasuresComponent;
+            class TransportPylonsComponent  : TransportPylonsComponent {
+                uiPicture = "\A3\Air_F_Gamma\Plane_Fighter_03\Data\UI\Plane_A143_3DEN_CA.paa";
+                class Presets {
+
+                };
+                class Pylons {
+                    class Pylons1 {
+                        attachment = "PylonMissile_Missile_BIM9X_x1";
+                        hardpoints[] = {"B_BIM9X_RAIL"};
+                        maxweight = 200;
+                        priority = 5;
+                        UIposition[] = {0.35,0.08};
+                    };
+                    class Pylons2 : Pylons1 {
+                        attachment = "itc_hp_lau117_rhs_ammo_agm65d";
+                        hardpoints[] = {"B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
+                        maxweight = 320;
+                        priority = 4;
+                        UIposition[] = {0.345,0.13};
+                    };
+                    class Pylons3 : Pylons1 {
+                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
+                        hardpoints[] = {"B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
+                        maxweight = 400;
+                        priority = 3;
+                        UIposition[] = {0.34,0.18};
+                    };
+                    class Pylons4 : Pylons1 {
+                        attachment = "PylonWeapon_300Rnd_20mm_shells";
+                        hardpoints[] = {"B_A143_BUZZARD_CENTER_PYLON"};
+                        maxweight = 500;
+                        priority = 2;
+                        UIposition[] = {0.27,0.28};
+                    };
+                    class Pylons5 : Pylons3 {
+                        mirroredMissilePos = 3;
+                        UIposition[] = {0.33,0.38};
+                    };
+                    class Pylons6 : Pylons2 {
+                        mirroredMissilePos = 2;
+                        UIposition[] = {0.33,0.43};
+                    };
+                    class Pylons7 : Pylons1 {
+                        mirroredMissilePos = 1;
+                        UIposition[] = {0.34,0.48};
+                    };
+                };
+            };
+        };
+    };
+    */
+    class Plane_Fighter_01_Base_F : Plane_Base_F {
+        class Components : Components {
+            class SensorsManagerComponent;
+            class TransportCountermeasuresComponent;
+            class TransportPylonsComponent;
+            class VehicleSystemsDisplayManagerComponentLeft;
+            class VehicleSystemsDisplayManagerComponentRight;
+        };
+    };
+    class ITC_F181E : Plane_Fighter_01_Base_F {
+        side = 1;
+        scope = 2;
+        displayName= "F-181E";
+        faction = "BLU_F";
+        vehicleClass = "Air";
+        editorSubcategory = "EdSubcat_Planes";
+        crew = "B_pilot_F";
+        incomingMissileDetectionSystem = 8;
+        class Components : Components {
+            class SensorsManagerComponent;
+            class TransportCountermeasuresComponent;
+            class TransportPylonsComponent  : TransportPylonsComponent {
+                UIPicture = "\A3\Air_F_Jets\Plane_Fighter_01\Data\UI\Fighter_01_3DEN_CA.paa";
+                class Bays {
+                    class BayCenter1 {
+                        autoCloseWhenEmptyDelay = 3;
+                        bayOpenTime = 0.5;
+                        openBayWhenWeaponSelected = 0;
+                    };
+                    class BayLeft1 {
+                        autoCloseWhenEmptyDelay = 2;
+                        bayOpenTime = 0.5;
+                        openBayWhenWeaponSelected = 0;
+                    };
+                    class BayRight1 {
+                        autoCloseWhenEmptyDelay = 2;
+                        bayOpenTime = 0.5;
+                        openBayWhenWeaponSelected = 0;
+                    };
+                };
+                class Presets
+                {
+                };
+                class pylons {
+                    class pylon1 {
+                        attachment = "PylonRack_Missile_AMRAAM_D_x1";
+                        hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        maxweight = 300;
+                        priority = 12;
+                        UIposition[] = {0.6,0.45};
+                    };
+                    class pylon2 : pylon1 {
+                        mirroredMissilePos = 1;
+                        UIposition[] = {0.05,0.45};
+                    };
+                    class pylon3 {
+                        attachment = "PylonRack_Missile_AGM_02_x2";
+                        hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        maxweight = 1050;
+                        priority = 11;
+                        UIposition[] = {0.55,0.35};
+                    };
+                    class pylon4 : pylon3 {
+                        mirroredMissilePos = 3;
+                        UIposition[] = {0.1,0.35};
+                    };
+                    class pylonBayRight1 {
+                        attachment = "PylonMissile_Missile_BIM9X_x1";
+                        bay = 2;
+                        hardpoints[] = {"B_BIM9X"};
+                        maxweight = 1200;
+                        priority = 10;
+                        UIposition[] = {0.5,0.25};
+                    };
+                    class pylonBayLeft1 : pylonBayRight1 {
+                        UIposition[] = {0.16,0.25};
+                        mirroredMissilePos = 5;
+                        bay = 1;
+                    };
+                    class pylonBayCenter1 {
+                        attachment = "PylonMissile_Missile_AMRAAM_D_INT_x1";
+                        bay = 3;
+                        hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart"};
+                        maxweight = 1200;
+                        priority = 9;
+                        UIposition[] = {0.33,0.3};
+                    };
+                    class pylonBayCenter2 : pylonBayCenter1 {
+                        mirroredMissilePos = 7;
+                        UIposition[] = {0.33,0.35};
+                    };
+                    class pylonBayCenter3 {
+                        attachment = "";
+                        bay = 3;
+                        hardpoints[] = {};
+                        maxweight = 1200;
+                        priority = 7;
+                        UIposition[] = {0.33,0.4};
+                    };
+                    class pylonBayCenter4 : pylonBayCenter3 {
+                        mirroredMissilePos = 9;
+                        UIposition[] = {0.33,0.45};
+                    };
+                    class pylonBayCenter5 {
+                        attachment = "PylonMissile_Bomb_GBU12_x1";
+                        bay = 3;
+                        hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart"};
+                        maxweight = 1200;
+                        priority = 5;
+                        UIposition[] = {0.33,0.5};
+                    };
+                    class pylonBayCenter6 : pylonBayCenter5 {
+                        mirroredMissilePos = 11;
+                        UIposition[] = {0.33,0.55};
+                    };
+                };
+            };
+            class VehicleSystemsDisplayManagerComponentLeft;
+            class VehicleSystemsDisplayManagerComponentRight;
+        };
+        class itc_air {
+            class rover {
+                capable = 1;
+                frequency_default = 1337;
+                ti_enabled = 1;
+                ti_modes[] = {1, 0};
+                nvg_enabled = 1;
+                fov[] = {0.625, 0.12, 0.04};
+            };
+            hmd = 1;
+            tgp = 1;
+        };
+    };
 
     class Plane_CAS_01_base_F : Plane_Base_F { };
     class Plane_CAS_01_dynamicLoadout_base_F : Plane_CAS_01_base_F {
@@ -245,6 +464,7 @@ class cfgVehicles {
             "240Rnd_CMFlare_Chaff_Magazine",
             "Laserbatteries"
         };
+        incomingMissileDetectionSystem = 8;
         class Components : Components 
         {
             class SensorsManagerComponent;
@@ -257,7 +477,7 @@ class cfgVehicles {
                 {
                     class pylon1
                     {
-                        hardpoints[] = {"itc_hp_dumb","RHS_HP_AIM9_2x", "RHS_HP_ECM"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket","RHS_HP_AIM9_2x", "RHS_HP_ECM"};
                         priority = 5;
                         maxweight = 1200;
                         UIposition[] = {0.35,0};
@@ -266,16 +486,16 @@ class cfgVehicles {
                     };
                     class pylon2
                     {
-                        hardpoints[] = {"itc_hp_dumb"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket"};
                         priority = 4;
                         maxweight = 1200;
                         UIposition[] = {0.345,0.05};
                         bay = -1;
-                        attachment = "itc_hp_dumb_rhs_ammo_Hydra_M151";
+                        attachment = "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151";
                     };
                     class pylon3
                     {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru42"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru42"};
                         priority = 3;
                         maxweight = 1200;
                         UIposition[] = {0.34,0.1};
@@ -337,14 +557,14 @@ class cfgVehicles {
                     {
                         attachment[] = {
                             "rhs_mag_ANALQ131",
-                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
+                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
                             "itc_hp_lau117_rhs_ammo_agm65d",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_lau117_rhs_ammo_agm65d",
-                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
+                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
                             "rhs_mag_Sidewinder_2"};
                         displayname = "Anti-Tank";
                     };
@@ -352,14 +572,14 @@ class cfgVehicles {
                     {
                         attachment[] = {
                             "rhs_mag_ANALQ131",
-                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
+                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
                             "itc_hp_lau117_rhs_ammo_agm65e",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_smart_ITC_ammo_gbu38",
                             "itc_hp_smart_ITC_ammo_gbu38",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_lau117_rhs_ammo_agm65e",
-                            "itc_hp_dumb_rhs_ammo_Hydra_M151",
+                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
                             "rhs_mag_Sidewinder_2"};
                         displayname = "Close Air Support";
                     };
