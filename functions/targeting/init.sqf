@@ -70,6 +70,15 @@ ITC_AIR_ICONS = [];
 
 [
     "ITC",
+    "gripen_fcr_slew_tgp", 
+    "FCR Slew TGP", 
+    {[0] call itc_fnc_targeting_fcr_tgp_slew}, 
+    "", 
+    [20, [true, false, false]]
+] call CBA_fnc_addKeybind;
+
+[
+    "ITC",
     "gripen_laser_ir", 
     "Toggle IR Laser", 
     {[0] call itc_fnc_targeting_laser_ir}, 

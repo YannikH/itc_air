@@ -80,6 +80,9 @@ class CfgFunctions
             class targeting_hmd_tgp_slew {
                 file = "itc_air\functions\targeting\hmdSlewTgp.sqf";
             };
+            class targeting_fcr_tgp_slew {
+                file = "itc_air\functions\targeting\fcrSlewTgp.sqf";
+            };
             class targeting_render_3d {
                 file = "itc_air\functions\targeting\render3dassets.sqf";
                 preInit = 1;
