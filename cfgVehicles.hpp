@@ -383,7 +383,54 @@ class cfgVehicles {
         crew = "B_pilot_F";
         incomingMissileDetectionSystem = 8;
         class Components : Components {
-            class SensorsManagerComponent;
+            class SensorsManagerComponent {
+                class Components {
+                    class ActiveRadarSensorComponent : SensorTemplateActiveRadar
+                    {
+                        targetLimit(AirTarget,30000,30000,-1,-1)
+                        targetLimit(GroundTarget,30000,30000,-1,-1)
+                        angleRangeHorizontal = 120;
+                        angleRangeVertical = 45;
+                        typeRecognitionDistance = 1000;
+                        maxGroundNoiseDistance = 0;
+                        groundNoiseDistanceCoef = -1;
+                    };
+                    class IRSensorComponent : SensorTemplateIR {
+                        targetLimit(AirTarget,5000,15000,-1,1)  
+                        targetLimit(GroundTarget,0,0,-1,-1)
+                        angleRangeHorizontal = 60;
+                        angleRangeVertical = 45;
+                    };
+                    class LaserSensorComponent : SensorTemplateLaser {
+                        targetLimit(AirTarget,20000,20000,-1,-1)
+                        targetLimit(GroundTarget,20000,20000,-1,-1)
+                        angleRangeHorizontal = 45;
+                        angleRangeVertical = 45;
+                        animDirection = "pilotCameraRotY";
+                    };
+                    class NVSensorComponent : SensorTemplateNV {
+                        targetLimit(AirTarget,20000,20000,-1,-1)
+                        targetLimit(GroundTarget,20000,20000,-1,-1)
+                        angleRangeHorizontal = 45;
+                        angleRangeVertical = 45;
+                        animDirection = "pilotCameraRotY";
+                    };
+                    class PassiveRadarSensorComponent : SensorTemplatePassiveRadar {
+                        targetLimit(AirTarget,30000,30000,-1,-1)
+                        targetLimit(GroundTarget,30000,30000,-1,-1)
+                        angleRangeHorizontal = 360;
+                        angleRangeVertical = 360;
+                        typeRecognitionDistance = 30000;
+                    };
+                    class VisualSensorComponent : SensorTemplateVisual {
+                        targetLimit(AirTarget,1000,1000,-1,-1)
+                        targetLimit(GroundTarget,1000,1000,-1,-1)
+                        angleRangeHorizontal = 45;
+                        angleRangeVertical = 45;
+                        animDirection = "pilotCameraRotY";
+                    };
+                };
+            };
             class TransportCountermeasuresComponent;
             class TransportPylonsComponent  : TransportPylonsComponent {
                 UIPicture = "\A3\Air_F_Jets\Plane_Fighter_01\Data\UI\Fighter_01_3DEN_CA.paa";
