@@ -13,6 +13,7 @@ class CfgPatches {
 #include "cfgMagazines.hpp"
 #include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"
+#include "cfgSounds.hpp"
 
 #include "Dialog.hpp"
 #include "Dialog_rover.hpp"
@@ -124,8 +125,21 @@ class CfgFunctions
                 file = "itc_air\functions\rover\roverBroadcast.sqf";
             };
         };
+
+        class autopilot {
+            class autopilotInit {
+                preInit = 1;
+                file = "itc_air\functions\autopilot\autopilot_init.sqf";
+            };
+            class autopilotToggleMode {
+                file = "itc_air\functions\autopilot\autopilot_toggle_mode.sqf";
+            };
+            class autopilot {
+                file = "itc_air\functions\autopilot\autopilot.sqf";
+            };
+        };
     };
-};  
+};
 
 
 class TB_MK13SmokeEffects {
