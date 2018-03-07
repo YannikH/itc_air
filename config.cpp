@@ -13,7 +13,6 @@ class CfgPatches {
 #include "cfgMagazines.hpp"
 #include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"
-#include "cfgSounds.hpp"
 
 #include "Dialog.hpp"
 #include "Dialog_rover.hpp"

@@ -57,9 +57,9 @@ if (_mode == 1 || _mode == 2) then {
 };
 
 //playing sound over itself should amplify it's volume
-playSound "ITC_AP_enabled";
-playSound "ITC_AP_enabled";
-playSound "ITC_AP_enabled";
+playSound "Click";
+playSound "Click";
+playSound "Click";
 
 hint "autopilot on";
 
@@ -103,8 +103,8 @@ pfhID = [{
 		};
 
 		//play the sound only if we didn't turn off manually
-		playSound "ITC_AP_warning";
-		playSound "ITC_AP_warning";
+		playSound "Click";
+		playSound "Click";
 		ITC_AP_isEnabled = false;
 
 		if ((_plane gethit "HitAvionics") > 0.5) exitWith {
