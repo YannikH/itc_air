@@ -103,6 +103,9 @@ class CfgFunctions
                 preInit = 1;
                 file = "itc_air\functions\rover\initROVER.sqf";
             };
+            class rover_cycle_code {
+                file = "itc_air\functions\rover\cycleCode.sqf";
+            };
             class openRover {
                 file = "itc_air\functions\rover\openROVER.sqf";
             };

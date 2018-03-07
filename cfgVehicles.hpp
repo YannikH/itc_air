@@ -269,7 +269,7 @@ class cfgVehicles {
         class itc_air {
             class rover {
                 capable = 1;
-                frequency_default = 1337;
+                frequency_default = 5784;
                 ti_enabled = 1;
                 ti_modes[] = {1, 0};
                 nvg_enabled = 1;
@@ -534,7 +534,7 @@ class cfgVehicles {
         class itc_air {
             class rover {
                 capable = 1;
-                frequency_default = 1337;
+                frequency_default = 5784;
                 ti_enabled = 1;
                 ti_modes[] = {1, 0};
                 nvg_enabled = 1;

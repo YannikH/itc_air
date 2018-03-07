@@ -30,16 +30,6 @@ ITC_AIR_ICONS = [];
 ["ITC","gripen_imp_next", "Impact Angle +10", {["imp",10] call itc_fnc_targeting_config_bomb;}, "", [201, [false, true, false]]] call CBA_fnc_addKeybind;
 ["ITC","gripen_imp_prev", "Impact Angle -10", {["imp",-10] call itc_fnc_targeting_config_bomb;}, "", [209, [false, true, false]]] call CBA_fnc_addKeybind;
 
-
-[
-    "ITC",
-    "gripen_broadcast_toggle", 
-    "Datalink broadcast toggle", 
-    {[0] call itc_fnc_targeting_broadcastToggle;}, 
-    "", 
-    [210, [false, false, false]]
-] call CBA_fnc_addKeybind;
-
 [
     "ITC",
     "gripen_store_POI", 
