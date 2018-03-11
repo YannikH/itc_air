@@ -17,19 +17,12 @@
  * Public: No
  */
 
-
-//TODO
-//* move these values config (?)
-//* calculate derivative of velocity (acceleration) to better predict where VV will go and make autopilot line up quicker
-//  right now if force is a little bit too big, the plane starts to wobble wildly - lots of force is applied
-//  when VV is far off, and it stops only when we reached target VV, but then it's too late, nose is still moving
-
 //after how much deviation AP will disengage, all values in degrees
 #define AP_DISENG_MAX_VELOCITY_ANGLE_DIFF 10
 #define AP_DISENG_MAX_BANK_DIFF 20
 #define AP_DISENG_MAX_HDG_DIFF 10
 
-//values used to finetune aggressiveness of autopilot. TODO: make them dependant on plane's mass
+//values used to finetune aggressiveness of autopilot.
 //light planes are yanked harder and big ones don't respond too quickly
 #define AP_PLANE_WEIGHT_MULT 0.0001
 #define AP_PITCH_FORCE_MULT 1
@@ -57,7 +50,6 @@ private _weightMult = getMass _plane * AP_PLANE_WEIGHT_MULT;
 //hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, _targetHdg];
 
 //these variables are global because we can't easily initialize local ones in pfh
-//TODO use macros for global variables
 ITC_AP_VaCalibrationCounter = 0;
 ITC_AP_VaCalibrationSum = 0;
 ITC_AP_VaCalibrationOffset = 0;
@@ -106,7 +98,7 @@ pfhID = [{
 	private _bankDiseng = abs (_bank - _targetBank) > AP_DISENG_MAX_BANK_DIFF;
 
 	private _avionicsDamaged = false;
-	if (!isNil {_plane getHitPointDamage "HitAvionics"}) then {
+	if (!isNil {_plane getHitPointDamage "HitAvionics"}) then { //some vehicles might not have this hitpoint name
 		_avionicsDamaged = (_plane getHitPointDamage "HitAvionics") > 0.5;
 	};
 
@@ -159,7 +151,6 @@ pfhID = [{
 	//VELOCITY ANGLE
 	//we use force applied far in front of the nose of the plane so we don't have to worry when
 	//about bank when we want to point nose vertically up
-	//TODO: look into doing it via pitch + roll torque - will require math
 	private _pitchForce = (_targetVelocityAngle - _velocityAngle) * AP_PITCH_FORCE_MULT * _weightMult;
 	
 	//we want only small samples to not account for large errors
