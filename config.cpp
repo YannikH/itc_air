@@ -128,10 +128,10 @@ class CfgFunctions
         class autopilot {
             class autopilotInit {
                 preInit = 1;
-                file = "itc_air\functions\autopilot\autopilot_init.sqf";
+                file = "itc_air\functions\autopilot\autopilotInit.sqf";
             };
             class autopilotToggleMode {
-                file = "itc_air\functions\autopilot\autopilot_toggle_mode.sqf";
+                file = "itc_air\functions\autopilot\autopilotToggleMode.sqf";
             };
             class autopilot {
                 file = "itc_air\functions\autopilot\autopilot.sqf";

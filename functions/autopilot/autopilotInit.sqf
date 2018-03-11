@@ -1,3 +1,20 @@
+/*
+ * Author: BlackHawk
+ *
+ * Initializes Autopilot (AP) component by adding CBA keybinds and initializing global variables.
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [] call itc_fnc_autpilotInit;
+ *
+ * Public: No
+ */
+
 ITC_AP_mode = 0;
 ITC_AP_isEnabled = false;
 

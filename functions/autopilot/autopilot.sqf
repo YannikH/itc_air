@@ -1,3 +1,23 @@
+/*
+ * Author: BlackHawk
+ *
+ * Main logic of autopilot component. Initializes target flight parameters
+ * and starts PFH monitoring and adjusting flight until turned off or canceled.
+ *
+ * Arguments:
+ * 0: vehicle that uses the autopilot <OBJECT>
+ * 1: autopilot mode 0 - 2 <NUMBER>
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [] call ITC_fnc_autpilot;
+ *
+ * Public: No
+ */
+
+
 //TODO
 //* move these values config (?)
 //* calculate derivative of velocity (acceleration) to better predict where VV will go and make autopilot line up quicker
