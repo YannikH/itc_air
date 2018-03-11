@@ -1,43 +1,59 @@
 [] spawn {
-    if(!((vehicle player) isKindOf "Air")) exitWith {ITC_AIR_BROADCASTING = false};
-    _capable = (configFile >> "CfgVehicles" >> (typeOf vehicle player) >> "itc_air" >> "rover" >> "capable")  call BIS_fnc_getCfgData;
-    if(isNil {_capable}) exitWith {ITC_AIR_BROADCASTING = false};
-    if(ITC_AIR_BROADCASTING) exitWith {
+_plane = vehicle player;
+
+//Check if the vehicle is an airplane
+if(!((_plane) isKindOf "Air")) exitWith {ITC_AIR_BROADCASTING = false};
+//Check if plane is already broadcasting, disable it if this is the case
+if(ITC_AIR_BROADCASTING) exitWith {
+    ITC_AIR_BROADCASTING = false;
+    player sideChat format["Datalink broadcasting: %1 on %2", ITC_AIR_BROADCASTING, _plane getVariable "ROVER_FREQ"];
+};
+
+//find out the plane is rover capable
+_capable = (configFile >> "CfgVehicles" >> (typeOf _plane) >> "itc_air" >> "rover" >> "capable")  call BIS_fnc_getCfgData;
+_operator = (configFile >> "CfgVehicles" >> (typeOf _plane) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
+if(isNil {_capable}) exitWith {ITC_AIR_BROADCASTING = false};
+//find out if the player is the rover operator
+if(_capable == 1) then {
+    if(
+    !(_operator == "pilot" && driver _plane == player) ||
+    !(_operator == "gunner" && gunner _plane == player)
+    ) exitWith {ITC_AIR_BROADCASTING = false;};
+};
+
+ITC_AIR_BROADCASTING = true;
+[0] call itc_fnc_rover_cycle_code; //Ensure the vehicle has a rover code - this command will initialise the code.
+
+player sideChat format["Datalink broadcasting: %1 on %2", ITC_AIR_BROADCASTING, _plane getVariable "ROVER_FREQ"];
+
+_handle = [{  
+    (_this select 0) params ["_operator"];
+    _plane = vehicle player;
+    if (
+        !alive player ||
+        !ITC_AIR_BROADCASTING ||
+        (!((vehicle player) isKindOf "Air"))
+    ) exitWith {
         ITC_AIR_BROADCASTING = false;
-        player sideChat format["Datalink broadcasting: %1 on %2", ITC_AIR_BROADCASTING, (vehicle player) getVariable "ROVER_FREQ"];
+        ITC_AIR_IRLAS = false;
+        [ITC_AIR_IRLAS, (vehicle player)] remoteExec ["itc_fnc_targeting_laser_ir_local", 0, false];
+        [false, _plane,[],[], _plane getVariable "ROVER_FREQ", 0, 0.5] remoteExec ["itc_fnc_broadCast", 0, false];
+        [_this select 1] call CBA_fnc_removePerFrameHandler;  
     };
-    ITC_AIR_BROADCASTING = true;
-    if (isNil{(vehicle player) getVariable "ROVER_FREQ"}) then {
-        _default_freq = format["%1", (configFile >> "CfgVehicles" >> (typeOf vehicle player) >> "itc_air" >> "rover" >> "frequency_default")  call BIS_fnc_getCfgData];
-        (vehicle player) setVariable ["ROVER_FREQ",_default_freq];
+
+    _curFov = call cba_fnc_getFov select 0;
+    if(cameraView == "GUNNER" && (_curFov != ITC_AIR_CURFOV)) then {
+        ITC_AIR_CURFOV = _curFov;
     };
-    player sideChat format["Datalink broadcasting: %1 on %2", ITC_AIR_BROADCASTING, (vehicle player) getVariable "ROVER_FREQ"];
 
-    _handle = [{  
-        _plane = vehicle player;
-        if (
-            !alive player ||
-            !ITC_AIR_BROADCASTING ||
-            (!((vehicle player) isKindOf "Air"))
-        ) exitWith {
-            ITC_AIR_BROADCASTING = false;
-            ITC_AIR_IRLAS = false;
-            [ITC_AIR_IRLAS, (vehicle player)] remoteExec ["itc_fnc_targeting_laser_ir_local", 0, false];
-            [false, _plane,[],[], _plane getVariable "ROVER_FREQ", 0, 0.5] remoteExec ["itc_fnc_broadCast", 0, false];
-            [_this select 1] call CBA_fnc_removePerFrameHandler;  
-        };
+    if(cameraView == "GUNNER" && currentVisionMode player != ITC_AIR_CURVIS) then {
+        ITC_AIR_CURVIS = currentVisionMode player;
+    };
+    _turret = -1;
+    if(_operator == "gunner") then {_turret = 0;};
+    _target = [_plane, _turret] call itc_air_common_fnc_get_turret_target;
+    _tgpdir = _plane vectorModelToWorld (getPilotCameraDirection _plane);
+    [true, _plane, _target, _tgpdir, _plane getVariable "ROVER_FREQ", ITC_AIR_CURVIS, ITC_AIR_CURFOV] remoteExec ["itc_fnc_broadCast", 0, false];
+}, 0, [_operator]] call CBA_fnc_addPerFrameHandler;
 
-        _curFov = call cba_fnc_getFov select 0;
-        if(cameraView == "GUNNER" && (_curFov != ITC_AIR_CURFOV)) then {
-            ITC_AIR_CURFOV = _curFov;
-        };
-
-        if(cameraView == "GUNNER" && currentVisionMode player != ITC_AIR_CURVIS) then {
-            ITC_AIR_CURVIS = currentVisionMode player;
-        };
-
-        _target = getPilotCameraTarget (_plane);
-        _tgpdir = _plane vectorModelToWorld (getPilotCameraDirection _plane);
-        [true, _plane, _target, _tgpdir, _plane getVariable "ROVER_FREQ", ITC_AIR_CURVIS, ITC_AIR_CURFOV] remoteExec ["itc_fnc_broadCast", 0, false];
-    }, 0, []] call CBA_fnc_addPerFrameHandler;
 };

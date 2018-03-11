@@ -8,7 +8,7 @@ if(_turnedOn && (_plane getVariable "itc_datalink") select 0) then {
             _plane = _this;
             _data = _plane getVariable "itc_datalink";
             _data params ["_broadcasting", "_target", "_direction", "_freq", "_cameraMode", "_fov"];
-            _origin = visiblePosition _plane vectorAdd [0,0,1];
+            _origin = _target select 2;
             _tgpPos = ASLtoAGL (_target select 1);
             [_origin, _tgpPos] call itc_fnc_draw_laser_bundle;
             [_origin, _tgpPos, [1,1,1,1]]

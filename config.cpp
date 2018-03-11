@@ -24,7 +24,7 @@ class CfgFunctions
     class itc_air_common {
         class functions {
             class get_turret_target {
-                file = "itc_air\functions\getTurretTargetPoint.sqf";
+                file = "itc_air\functions\common\getTurretTargetPoint.sqf";
             }
         };
     };

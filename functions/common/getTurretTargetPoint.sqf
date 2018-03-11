@@ -6,6 +6,12 @@
 
 params ["_vehicle","_turretIndex"];
 
+//handle pilotCameras
+if(_turretIndex == -1) exitWith {
+    getPilotCameraTarget (_plane) params ["_locked", "_target"];
+    [_locked, _target, (visiblePosition _vehicle) vectorAdd [0,0,-1]];
+};
+
 //get the turret direction from ACE and turn it in to _pos and _dir
 [_vehicle, [_turretIndex]] call ace_common_fnc_getTurretDirection params ["_pos", "_dir"];
 _dirNorm = vectorNormalized _dir;           //normalise the direction
@@ -18,4 +24,4 @@ if(isNil {_intersectPos}) then {
     _intersectPos = ASLtoATL _dirPoint;
 };
 
-_intersectPos
+[true, _intersectPos, ASLtoAGL _pos]
