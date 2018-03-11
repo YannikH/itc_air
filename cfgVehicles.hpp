@@ -80,7 +80,7 @@ class cfgVehicles {
         hiddenSelectionsTextures[] = {"a3\air_f_jets\plane_fighter_04\data\Fighter_04_fuselage_01_co.paa","a3\air_f_jets\plane_fighter_04\data\Fighter_04_fuselage_02_co.paa","a3\air_f_jets\plane_fighter_04\data\fighter_04_misc_01_co.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_04_ca.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_04_ca.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_08_ca.paa"};
         weapons[] = {"itc_weap_bk27","Laserdesignator_pilotCamera","CMFlareLauncher"};
         magazines[] = {"itc_120rnd_27mm_he","Laserbatteries","240Rnd_CMFlare_Chaff_Magazine"};
-        incomingMissileDetectionSystem = 8;
+        incomingMissileDetectionSystem = 16;
         class Components : Components {
             class SensorsManagerComponent {
                 class Components {
@@ -186,7 +186,7 @@ class cfgVehicles {
                     };
                     class pylon3 {
                         attachment = "itc_hp_bru55_ITC_ammo_gbu38";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 750;
                         priority = 4;
                         UIposition[] = {0.5,0.35};
@@ -197,7 +197,7 @@ class cfgVehicles {
                     };
                     class pylon5 {
                         attachment = "itc_hp_dumb_Bo_GBU12_LGB";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 1200;
                         priority = 3;
                         UIposition[] = {0.45,0.3};
@@ -270,17 +270,17 @@ class cfgVehicles {
             class rover {
                 capable = 1;
                 frequency_default = 5784;
-                ti_enabled = 1;
-                ti_modes[] = {1, 0};
-                nvg_enabled = 1;
-                fov[] = {0.625, 0.12, 0.04};
             };
             hmd = 1;
             tgp = 1;
         };
     };
-    /*
-    class Plane_Fighter_03_dynamicLoadout_base_F : Plane_Base_F {
+
+    class Plane_Fighter_03_base_F;
+    class Plane_Fighter_03_dynamicLoadout_base_F : Plane_Fighter_03_base_F {
+        class Components;
+    };
+    class I_Plane_Fighter_03_dynamicLoadout_F : Plane_Fighter_03_dynamicLoadout_base_F {
         class Components : Components {
             class SensorsManagerComponent;
             class TransportCountermeasuresComponent;
@@ -289,7 +289,7 @@ class cfgVehicles {
             class VehicleSystemsDisplayManagerComponentRight;
         };
     };
-    class ITC_A159 : Plane_Fighter_03_dynamicLoadout_base_F {
+    class ITC_A159 : I_Plane_Fighter_03_dynamicLoadout_F {
         side = 1;
         scope = 2;
         displayName= "A-159";
@@ -298,14 +298,12 @@ class cfgVehicles {
         editorSubcategory = "EdSubcat_Planes";
         crew = "B_pilot_F";
         incomingMissileDetectionSystem = 8;
+        weapons[] = {"CMFlareLauncher", "Laserdesignator_pilotCamera"};
+        magazines[] = {"120Rnd_CMFlare_Chaff_Magazine", "Laserbatteries"};
         class itc_air {
             class rover {
                 capable = 1;
-                frequency_default = 1337;
-                ti_enabled = 1;
-                ti_modes[] = {1, 0};
-                nvg_enabled = 1;
-                fov[] = {0.625, 0.12, 0.04};
+                frequency_default = 5784;
             };
             hmd = 1;
             tgp = 1;
@@ -328,15 +326,15 @@ class cfgVehicles {
                     };
                     class Pylons2 : Pylons1 {
                         attachment = "itc_hp_lau117_rhs_ammo_agm65d";
-                        hardpoints[] = {"B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
+                        hardpoints[] = {"B_A143_BUZZARD_CENTER_PYLON","B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
                         maxweight = 320;
                         priority = 4;
                         UIposition[] = {0.345,0.13};
                     };
                     class Pylons3 : Pylons1 {
                         attachment = "itc_hp_dumb_Bo_GBU12_LGB";
-                        hardpoints[] = {"B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
-                        maxweight = 400;
+                        hardpoints[] = {"itc_hp_lau88_hellfire","B_A143_BUZZARD_CENTER_PYLON","B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
+                        maxweight = 500;
                         priority = 3;
                         UIposition[] = {0.34,0.18};
                     };
@@ -363,7 +361,7 @@ class cfgVehicles {
             };
         };
     };
-    */
+
     class Plane_Fighter_01_Base_F : Plane_Base_F {
         class Components : Components {
             class SensorsManagerComponent;
@@ -381,7 +379,7 @@ class cfgVehicles {
         vehicleClass = "Air";
         editorSubcategory = "EdSubcat_Planes";
         crew = "B_pilot_F";
-        incomingMissileDetectionSystem = 8;
+        incomingMissileDetectionSystem = 16;
         class Components : Components {
             class SensorsManagerComponent {
                 class Components {
@@ -535,10 +533,6 @@ class cfgVehicles {
             class rover {
                 capable = 1;
                 frequency_default = 5784;
-                ti_enabled = 1;
-                ti_modes[] = {1, 0};
-                nvg_enabled = 1;
-                fov[] = {0.625, 0.12, 0.04};
             };
             hmd = 1;
             tgp = 1;
@@ -577,7 +571,7 @@ class cfgVehicles {
             "240Rnd_CMFlare_Chaff_Magazine",
             "Laserbatteries"
         };
-        incomingMissileDetectionSystem = 8;
+        incomingMissileDetectionSystem = 16;
         class Components : Components 
         {
             class SensorsManagerComponent;
@@ -703,10 +697,6 @@ class cfgVehicles {
             class rover {
                 capable = 1;
                 frequency_default = 5784;
-                ti_enabled = 1;
-                ti_modes[] = {1, 0};
-                nvg_enabled = 1;
-                fov[] = {0.25, 0.125, 0.03125};
             };
             hmd = 1;
             tgp = 1;

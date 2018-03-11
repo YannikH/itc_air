@@ -61,6 +61,13 @@ class CfgWeapons {
                 itc_hp_bru42_##AMMO \
             }; \
         };
+    class rhs_weap_HellfireLauncher;
+    #define magazines_hp_triple_hellfire(WEAP, PARENT, AMMO) \
+        class WEAP : PARENT { \
+            magazines[] += { \
+                itc_hp_lau88_hellfire_##AMMO, \
+            }; \
+        };
 
     class RocketPods;
     class rhs_weap_mk82;
@@ -76,7 +83,11 @@ class CfgWeapons {
     agmPylonMagazines(rhs_weap_agm65d,rhs_ammo_agm65d)
     agmPylonMagazines(rhs_weap_agm65e,rhs_ammo_agm65e)
     agmPylonMagazines(rhs_weap_agm65f,rhs_ammo_agm65f)
-    agmPylonMagazines(rhs_weap_agm65h,rhs_ammo_agm65h)
+    agmPylonMagazines(rhs_weap_agm65h,rhs_ammo_agm65h) 
+
+    magazines_hp_triple_hellfire(rhs_weap_AGM114K_Launcher,rhs_weap_HellfireLauncher,RHS_ammo_AGM_114K) 
+    magazines_hp_triple_hellfire(rhs_weap_AGM114M_Launcher,rhs_weap_HellfireLauncher,RHS_ammo_AGM_114M) 
+    magazines_hp_triple_hellfire(rhs_weap_AGM114N_Launcher,rhs_weap_HellfireLauncher,RHS_ammo_AGM_114N)  
 
     class itc_weap_gbu38 : rhs_weap_mk82 {
         displayName = "GBU-38";

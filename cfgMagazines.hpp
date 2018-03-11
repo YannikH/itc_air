@@ -6,6 +6,7 @@ class cfgMagazines {
     class PylonRack_7Rnd_Rocket_04_HE_F;
     class rhs_mag_M151_7_green;
     class rhs_mag_mk82_3;
+    class PylonRack_3Rnd_LG_scalpel;
     #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT) \
         class HP##_##AMMO : PARENT { \
             ammo = STRINGIFY(AMMO); \
@@ -46,6 +47,10 @@ class cfgMagazines {
     #define hp_triple(NAME,WEAP,AMMO) \
         hardPointMagazine(itc_hp_bru42,rhs_mag_mk82_3,NAME,WEAP,AMMO,3x)
 
+    //TRIPLE HP HELLFIRE
+    #define hp_triple_hellfire(NAME,WEAP,AMMO) \
+        hardPointMagazine(itc_hp_lau88_hellfire,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x)
+
     #define hp_ser_der_ter(NAME,WEAP,AMMO) \
         hp_single(NAME,WEAP,AMMO) \
         hp_double(NAME,WEAP,AMMO) \
@@ -75,6 +80,18 @@ class cfgMagazines {
     hp_ser_der_lau117("AGM-65E","rhs_weap_agm65e",rhs_ammo_agm65e)
     hp_ser_der_lau117("AGM-65F","rhs_weap_agm65f",rhs_ammo_agm65f)
     hp_ser_der_lau117("AGM-65H","rhs_weap_agm65h",rhs_ammo_agm65h)
+
+    hp_triple_hellfire("AGM-114K","rhs_weap_AGM114K_Launcher",RHS_ammo_AGM_114K)
+    hp_triple_hellfire("AGM-114M","rhs_weap_AGM114K_Launcher",RHS_ammo_AGM_114M)
+    hp_triple_hellfire("AGM-114N","rhs_weap_AGM114K_Launcher",RHS_ammo_AGM_114N)
+
+    class 6Rnd_ACE_Hellfire_AGM114K;
+    class PylonRack_3Rnd_ACE_Hellfire_AGM114K : 6Rnd_ACE_Hellfire_AGM114K {
+        hardpoints[] += {"itc_hp_lau88_hellfire"};
+    };
+    class PylonRack_3Rnd_ACE_Hellfire_AGM114N : PylonRack_3Rnd_ACE_Hellfire_AGM114K {
+        hardpoints[] += {"itc_hp_lau88_hellfire"};
+    };
 
     /*
     class rhs_mag_mk82;
