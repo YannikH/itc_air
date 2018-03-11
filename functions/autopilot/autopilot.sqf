@@ -29,8 +29,9 @@
 #define AP_DISENG_MAX_BANK_DIFF 20
 #define AP_DISENG_MAX_HDG_DIFF 10
 
-//values used to finetune aggressiveness of autopilot. TODO: make them dependent on plane's mass
+//values used to finetune aggressiveness of autopilot. TODO: make them dependant on plane's mass
 //light planes are yanked harder and big ones don't respond too quickly
+#define AP_PLANE_WEIGHT_MULT 0.0001
 #define AP_PITCH_FORCE_MULT 1
 #define AP_BANK_TORQUE_MULT 300
 #define AP_YAW_TORQUE_MULT 2000
@@ -51,6 +52,7 @@ private _vZ = velocity _plane select 2;
 private _targetVelocityAngle = _vZ atan2 _vXY; //note: it doesn't line up with in-game TVV (in-game TVV is shit - you fly level even if it's not on horizon)
 private _targetBank = (_plane call BIS_fnc_getPitchBank) select 1;
 private _targetHdg = getDir _plane;
+private _weightMult = getMass _plane * AP_PLANE_WEIGHT_MULT;
 
 //hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, _targetHdg];
 
@@ -84,7 +86,7 @@ playSound "Click";
 hint "autopilot on";
 
 pfhID = [{
-	_this select 0 params ["_plane", "_targetVelocityAngle", "_targetBank", "_targetHdg", "_mode"];
+	_this select 0 params ["_plane", "_targetVelocityAngle", "_targetBank", "_targetHdg", "_weightMult", "_mode"];
 
 	//calculate basic values
 	private _vX = velocity _plane select 0;
@@ -103,10 +105,15 @@ pfhID = [{
 	private _hdgDiseng = abs (_hdg - _targetHdg) > AP_DISENG_MAX_HDG_DIFF;
 	private _bankDiseng = abs (_bank - _targetBank) > AP_DISENG_MAX_BANK_DIFF;
 
+	private _avionicsDamaged = false;
+	if (!isNil {_plane getHitPointDamage "HitAvionics"}) then {
+		_avionicsDamaged = (_plane getHitPointDamage "HitAvionics") > 0.5;
+	};
+
 	if (
 		!alive player ||
 		!alive _plane ||
-		(_plane gethit "HitAvionics") > 0.5 ||
+		_avionicsDamaged ||
 		speed _plane < 200 ||
 		(getPos _plane select 2) < 10 ||
 		(_mode == 0 && (_velocityAngleDiseng || _bankDiseng)) ||
@@ -153,7 +160,7 @@ pfhID = [{
 	//we use force applied far in front of the nose of the plane so we don't have to worry when
 	//about bank when we want to point nose vertically up
 	//TODO: look into doing it via pitch + roll torque - will require math
-	private _pitchForce = (_targetVelocityAngle - _velocityAngle) * AP_PITCH_FORCE_MULT;
+	private _pitchForce = (_targetVelocityAngle - _velocityAngle) * AP_PITCH_FORCE_MULT * _weightMult;
 	
 	//we want only small samples to not account for large errors
 	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
@@ -177,7 +184,7 @@ pfhID = [{
 
 	//BANK
 	//linear relationship between offset and force proved to have most stable results
-	private _bankTorque = (_targetBank - _bank) * AP_BANK_TORQUE_MULT;
+	private _bankTorque = (_targetBank - _bank) * AP_BANK_TORQUE_MULT * _weightMult;
 	
 	//Calibration
 	if (abs _bankTorque < AP_BANK_CALIBRATION_TRESH) then {
@@ -199,7 +206,7 @@ pfhID = [{
 
 	//YAW
 	if (_mode == 1) then {
-		private _yawTorque = (_targetHdg - _hdg) * AP_YAW_TORQUE_MULT;
+		private _yawTorque = (_targetHdg - _hdg) * AP_YAW_TORQUE_MULT * _weightMult;
 
 		//Calibration
 		if (abs _yawTorque < AP_YAW_CALIBRATION_TRESH) then {
@@ -219,4 +226,4 @@ pfhID = [{
 		//systemChat format ["pf %1, yt %2", _pitchForce, _yawTorque];
 	};
 
-}, 0.1, [_plane, _targetVelocityAngle, _targetBank, _targetHdg, _mode]] call CBA_fnc_addPerFrameHandler;
+}, 0.1, [_plane, _targetVelocityAngle, _targetBank, _targetHdg, _weightMult, _mode]] call CBA_fnc_addPerFrameHandler;
