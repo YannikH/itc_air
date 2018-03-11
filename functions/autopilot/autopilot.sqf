@@ -62,6 +62,8 @@ ITC_AP_YawCalibrationCounter = 0;
 ITC_AP_YawCalibrationSum = 0;
 ITC_AP_YawCalibrationOffset = 0;
 
+ITC_AP_lastFrameTime = 0;
+
 //modes are ALT (velocity_angle=0 + bank) - 0, ALT/HDG (velocity_angle=0 + hdg + bank=0) - 1, PATH (velocity_angle + bank=0) - 2
 if (_mode == 0 || _mode == 1) then {
 	_targetVelocityAngle = 0;
@@ -79,6 +81,9 @@ hint "autopilot on";
 
 pfhID = [{
 	_this select 0 params ["_plane", "_targetVelocityAngle", "_targetBank", "_targetHdg", "_weightMult", "_mode"];
+
+	if (time == ITC_AP_lastFrameTime) exitWith {};
+	ITC_AP_lastFrameTime = time; //we do this to check if we are not in pause menu
 
 	//calculate basic values
 	private _vX = velocity _plane select 0;
