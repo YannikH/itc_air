@@ -20,6 +20,14 @@ class CfgPatches {
 
 class CfgFunctions
 {
+
+    class itc_air_common {
+        class functions {
+            class get_turret_target {
+                file = "itc_air\functions\getTurretTargetPoint.sqf";
+            }
+        };
+    };
     class ITC
     {
         class general
