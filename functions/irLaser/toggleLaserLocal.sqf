@@ -2,6 +2,8 @@ params ["_turnedOn", "_plane"];
 ITC_AIR_IRLAS_PLANE = _plane;
 
 if(_turnedOn && (_plane getVariable "itc_datalink") select 0) then {
+    _plane setVariable ["last_pulse_local", 0];
+    _plane setVariable ["pulse_on_local", true];
     ITC_AIR_LINES pushBack [ 
         _plane,
         {
@@ -14,11 +16,30 @@ if(_turnedOn && (_plane getVariable "itc_datalink") select 0) then {
             [[0,0,0], [0,0,1], [1,1,1,1]]
         }, 
         {
-            ((currentVisionMode player) == 1) && 
-            (_this getVariable "itc_datalink") select 0 && 
-            ((_this getVariable "itc_datalink") select 1) select 0 &&
-            ((_this getVariable "laser_pulse" && round time % 2 == 0) || !(_this getVariable "laser_pulse"))
-        } 
+            _plane = _this;
+            _freq = _plane getVariable "laser_pulse";
+            _last_pulse = _plane getVariable "last_pulse_local";
+            _pulse_on = _plane getVariable "pulse_on_local";
+            if(_freq > 0) then {
+                _ms = floor ((time - floor time) * 1000);
+                _pulse_time_between = (1000 / _freq);
+                if(
+                    (_last_pulse + _pulse_time_between < _ms) ||
+                    _ms < _last_pulse
+                ) then {
+                    _plane setVariable ["last_pulse_local", _ms];
+                    _pulse_on = !_pulse_on;
+                    _plane setVariable ["pulse_on_local", _pulse_on];
+                };
+            } else {
+                _pulse_on = true;
+            };
+            (((currentVisionMode player) == 1) && 
+            (_plane getVariable "itc_datalink") select 0 && 
+            ((_plane getVariable "itc_datalink") select 1) select 0 &&
+            _pulse_on)
+        },
+        true
     ];
 } else {
     _i = 0;

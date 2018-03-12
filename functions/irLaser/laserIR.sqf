@@ -5,7 +5,7 @@ if(isNil {_capable} || !ITC_AIR_BROADCASTING) exitWith {
     ITC_AIR_IRLAS = false;
     [ITC_AIR_IRLAS, (_plane)] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
 };
-if(isNil{_plane getVariable "laser_pulse"}) then {_plane setVariable ["laser_pulse", false, true];};
+if(isNil{_plane getVariable "laser_pulse"}) then {_plane setVariable ["laser_pulse", 0, true];};
 if(ITC_AIR_IRLAS) exitWith {
     ITC_AIR_IRLAS = false;
     [ITC_AIR_IRLAS, (_plane)] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
