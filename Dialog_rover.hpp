@@ -40,7 +40,7 @@ class RVR_DIALOG {
         y = 0.44;
         w = 0.0375001;
         h = 0.04;
-        action = "[""1"", ""number""] call itc_fnc_roverButton";
+        action = "[""1"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_2: RscButton
     {
@@ -50,7 +50,7 @@ class RVR_DIALOG {
         y = 0.44;
         w = 0.05;
         h = 0.04;
-        action = "[""2"", ""number""] call itc_fnc_roverButton";
+        action = "[""2"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_3: RscButton
     {
@@ -60,66 +60,66 @@ class RVR_DIALOG {
         y = 0.44;
         w = 0.0375001;
         h = 0.04;
-        action = "[""3"", ""number""] call itc_fnc_roverButton";
+        action = "[""3"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_4: RVR_1 {
         idc = 1603;
         text = "4"; //--- ToDo: Localize;
         y = 0.44 + 0.04;
-        action = "[""4"", ""number""] call itc_fnc_roverButton";
+        action = "[""4"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_5: RVR_2 {
         idc = 1604;
         text = "5"; //--- ToDo: Localize;
         y = 0.44 + 0.04;
-        action = "[""5"", ""number""] call itc_fnc_roverButton";
+        action = "[""5"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_6: RVR_3 {
         idc = 1605;
         text = "6"; //--- ToDo: Localize;
         y = 0.44 + 0.04;
-        action = "[""6"", ""number""] call itc_fnc_roverButton";
+        action = "[""6"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_7: RVR_1 {
         idc = 1606;
         text = "7"; //--- ToDo: Localize;
         y = 0.44 + 0.08;
-        action = "[""7"", ""number""] call itc_fnc_roverButton";
+        action = "[""7"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_8: RVR_2 {
         idc = 1607;
         text = "8"; //--- ToDo: Localize;
         y = 0.44 + 0.08;
-        action = "[""8"", ""number""] call itc_fnc_roverButton";
+        action = "[""8"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_9: RVR_3 {
         idc = 1608;
         text = "9"; //--- ToDo: Localize;
         y = 0.44 + 0.08;
-        action = "[""9"", ""number""] call itc_fnc_roverButton";
+        action = "[""9"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_Z1: RVR_1 {
         idc = 1609;
         text = "Z1"; //--- ToDo: Localize;
         y = 0.44 + 0.12;
-        action = "[""z1"", ""button""] call itc_fnc_roverButton";
+        action = "[""z1"", ""button""] call itc_air_rover_fnc_button";
     };
     class RVR_0: RVR_2 {
         idc = 1610;
         text = "0"; //--- ToDo: Localize;
         y = 0.44 + 0.12;
-        action = "[""0"", ""number""] call itc_fnc_roverButton";
+        action = "[""0"", ""number""] call itc_air_rover_fnc_button";
     };
     class RVR_Z2: RVR_3 {
         idc = 1611;
         text = "Z2"; //--- ToDo: Localize;
         y = 0.44 + 0.12;
-        action = "[""z2"", ""button""] call itc_fnc_roverButton";
+        action = "[""z2"", ""button""] call itc_air_rover_fnc_button";
     };
     class RVR_ENT: RVR_2 {
         idc = 1612;
         text = "ent"; //--- ToDo: Localize;
         y = 0.32;
-        action = "[""ent"", ""button""] call itc_fnc_roverButton";
+        action = "[""ent"", ""button""] call itc_air_rover_fnc_button";
     };
 };

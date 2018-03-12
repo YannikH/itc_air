@@ -39,7 +39,7 @@ class CfgWeapons {
         {
             class ITC_EventHandlers
             {
-                fired = "_this call itc_fnc_ammo_fired_wp;";
+                fired = "_this call itc_air_ammo_fnc_fired_wp;";
             };
         };
     };

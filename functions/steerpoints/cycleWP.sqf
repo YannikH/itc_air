@@ -19,7 +19,7 @@ if(ITC_AIR_CURRENTWP + _n > _wpCount) then {
 };
 if(ITC_AIR_CURRENTWP + _n < _wpCount && ITC_AIR_CURRENTWP + _n >= 0 && _wpCount > 0) then {
     ITC_AIR_CURRENTWP = ITC_AIR_CURRENTWP + _n;
-    call itc_fnc_targeting_targetWP;
+    call itc_air_steerpoints_fnc_target;
     hint format ["WP %1 - %2 SELECTED", 
         ITC_AIR_CURRENTWP + 1, 
         _waypoints select ITC_AIR_CURRENTWP select 0

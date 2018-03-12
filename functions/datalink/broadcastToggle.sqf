@@ -22,7 +22,7 @@ if(_capable == 1) then {
 };
 
 ITC_AIR_BROADCASTING = true;
-[0] call itc_fnc_rover_cycle_code; //Ensure the vehicle has a rover code - this command will initialise the code.
+[0] call itc_air_rover_fnc_cycle_code; //Ensure the vehicle has a rover code - this command will initialise the code.
 
 player sideChat format["Datalink broadcasting: %1 on %2", ITC_AIR_BROADCASTING, _plane getVariable "ROVER_FREQ"];
 
@@ -36,7 +36,7 @@ _handle = [{
     ) exitWith {
         ITC_AIR_BROADCASTING = false;
         ITC_AIR_IRLAS = false;
-        [ITC_AIR_IRLAS, (vehicle player)] remoteExec ["itc_fnc_targeting_laser_ir_local", 0, false];
+        [ITC_AIR_IRLAS, (vehicle player)] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
         _plane setVariable ["itc_datalink",[false, [], [], _plane getVariable "ROVER_FREQ", 0, 0.5],true];
         [_this select 1] call CBA_fnc_removePerFrameHandler;  
     };

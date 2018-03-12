@@ -40,7 +40,7 @@ _handle = [{
     ITC_ROVER_CAMERA camSetFov _fov;
     if(ITC_AIR_CURVIS != _cameraMode) then {
         ITC_AIR_CURVIS = _cameraMode;
-        [_cameraMode] call itc_fnc_changeCameraMode;
+        [_cameraMode] call itc_air_rover_fnc_change_camera_mode;
     };
 
     if(_target select 0) then {

@@ -192,66 +192,6 @@ class cam_dialog {
         w = 0.12;
         text = CSTRING(TIME);
     };
-    class WFOV_BUTTON : CAM_TIME {
-        idc = 1700;
-        y = __Y + __H - 0.61;
-        type = CT_BUTTON;
-        colorBackground[ ]={ 0.4,0.4,0.4,1 };
-        colorBackgroundDisabled[] = { 1, 1, 1, 0.5 };
-        colorBackgroundActive[] = { 0.5, 0.5, 0.5, 0.5 };
-        text = "WFOV";
-        sizeEx = 0.04;
-        soundEnter[] = { "", 0, 1 };
-        soundPush[] = { "buttonpushed.ogg", 0.1, 1 };
-        soundClick[] = { "", 0, 1 };
-        soundEscape[] = { "", 0, 1 };
-        colorFocused[] = { 0.31, 0.31, 0.31, 0.31 };
-        colorDisabled[] = { 0, 0, 1, 0.7 };
-        offsetX = 0.003;
-        offsetY = 0.003;
-        offsetPressedX = 0.002;
-        offsetPressedY = 0.002;
-        action = "[""FOV"", 0] call itc_fnc_changeCameraMode";
-        colorShadow[] = { 0, 0, 0, 0.5 };
-        colorBorder[] = { 0, 0, 0, 0 };
-        borderSize = 0;
-    };
-    class MFOV_BUTTON : WFOV_BUTTON {
-        idc = 1701;
-        x = __X + 0.47;
-        text = "MFOV";
-        action = "[""FOV"", 1] call itc_fnc_changeCameraMode";
-    };
-    class NFOV_BUTTON : WFOV_BUTTON {
-        idc = 1702;
-        x = __X + 0.59;
-        text = "NFOV";
-        action = "[""FOV"", 2] call itc_fnc_changeCameraMode";
-    };
-    class DTV : WFOV_BUTTON {
-        idc = 1703;
-        x = __X + 0.71;
-        text = "DTV";
-        action = "[""DTV"", 1] call itc_fnc_changeCameraMode";
-    };
-    class NVS : WFOV_BUTTON {
-        idc = 1704;
-        x = __X + 0.83;
-        text = "NVS";
-        action = "[""NVS"", 0] call itc_fnc_changeCameraMode";
-    };
-    class BHOT : WFOV_BUTTON {
-        idc = 1705;
-        x = __X + 0.95;
-        text = "BHOT";
-        action = "[""TI"", 0] call itc_fnc_changeCameraMode";
-    };
-    class WHOT : WFOV_BUTTON {
-        idc = 1706;
-        x = __X + 1.07;
-        text = "WHOT";
-        action = "[""TI"", 1] call itc_fnc_changeCameraMode";
-    };
     class CAM_TIME_REMAIN: CAM_TIME {
         idc = 3;
         x = __X + 0.46;

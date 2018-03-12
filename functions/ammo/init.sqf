@@ -1,1 +1,1 @@
-["All", "Fired", itc_fnc_fired] call CBA_fnc_addClassEventHandler;
+["All", "Fired", itc_air_ammo_fnc_fired] call CBA_fnc_addClassEventHandler;

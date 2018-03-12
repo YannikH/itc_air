@@ -26,103 +26,107 @@ class CfgFunctions
             class get_turret_target {
                 file = "itc_air\functions\common\getTurretTargetPoint.sqf";
             };
-            class targeting_vehicle_changed_handler {
-                file = "itc_air\functions\targeting\vehicleChangedHandler.sqf";
+        };
+    };
+    class itc_air_datalink {
+        class functions {
+            class broadcast_toggle {
+                file = "itc_air\functions\datalink\broadcastToggle.sqf";
+            };
+            class init {
+                preInit = 1;
+                file = "itc_air\functions\datalink\init.sqf";
             };
         };
     };
     class itc_air_rover {
         class functions {
-            class broadcast_toggle {
-                file = "itc_air\functions\rover\broadcastToggle.sqf";
-            };
-            class canOpenRover {
+            class can_open {
                 file = "itc_air\functions\rover\canRover.sqf";
             };
-            class rover_cycle_code {
+            class cycle_code {
                 file = "itc_air\functions\rover\cycleCode.sqf";
             };
-            class openRover {
+            class open {
                 file = "itc_air\functions\rover\openRover.sqf";
             };
-            class roverButton {
+            class button {
                 file = "itc_air\functions\rover\roverButton.sqf";
             };
-            class initRover {
-                preInit = 1;
-                file = "itc_air\functions\rover\initRover.sqf";
-            };
-            class openDuoTouch {
+            class view_duo_touch {
                 file = "itc_air\functions\rover\openDuoTouch.sqf";
+            };
+            class change_camera_mode {
+                file = "itc_air\functions\rover\cameraMode.sqf";
             };
         };
     };
     class itc_air_ir_laser {
         class functions {
-            class draw_laser_bundle {
-                file = "itc_air\functions\targeting\drawLaserBundle.sqf";
+            class toggle {
+                file = "itc_air\functions\irLaser\laserIR.sqf";
             };
-            class targeting_laser_ir {
-                file = "itc_air\functions\targeting\laserIR.sqf";
-            };
-            class targeting_laser_ir_local {
-                file = "itc_air\functions\targeting\toggleLaserLocal.sqf";
+            class toggle_drawing {
+                file = "itc_air\functions\irLaser\toggleLaserLocal.sqf";
             };
         };
     };
     class itc_air_ammo {
         class functions {
             class fired {
-                file = "itc_air\functions\fired.sqf";
+                file = "itc_air\functions\ammo\fired.sqf";
             };
-            class ammo_init {
+            class init {
                 preInit = 1;
                 file = "itc_air\functions\ammo\init.sqf";
             };
-            class ammo_fired_wp {
+            class fired_wp {
                 file = "itc_air\functions\ammo\firedWP.sqf";
             };
-            class ammo_prox_fuze {
+            class fired_prox_fuze {
                 file = "itc_air\functions\ammo\proxFuze.sqf";
             };
         };
     };
     class itc_air_jdam {
         class functions {
-            class targeting_fired {
-                file = "itc_air\functions\targeting\fired.sqf";
+            class fired {
+                file = "itc_air\functions\jdam\fired.sqf";
             };
-            class targeting_config_bomb {
-                file = "itc_air\functions\targeting\configBomb.sqf";
+            class config_bomb {
+                file = "itc_air\functions\jdam\configBomb.sqf";
             };
         };
     };
     class itc_air_steerpoints {
         class functions {
-            class targeting_cycleWP {
-                file = "itc_air\functions\targeting\cycleWP.sqf";
+            class cycle {
+                file = "itc_air\functions\steerpoints\cycleWP.sqf";
             };
-            class targeting_targetWP {
-                file = "itc_air\functions\targeting\targetWP.sqf";
+            class target {
+                file = "itc_air\functions\steerpoints\targetWP.sqf";
             };
-            class targeting_store_poi {
-                file = "itc_air\functions\targeting\storePOI.sqf";
+            class store {
+                file = "itc_air\functions\steerpoints\storePOI.sqf";
             };
         };
     };
     class itc_air_tgp {
         class functions {
-            class targeting_init {
+            class vehicle_changed_handler {
+                file = "itc_air\functions\targeting\vehicleChangedHandler.sqf";
+            };
+            class init {
                 preInit = 1;
                 file = "itc_air\functions\targeting\init.sqf";
             };
-            class targeting_laser_spot_search_track {
+            class laser_spot_search_track {
                 file = "itc_air\functions\targeting\laserSpotSearchTrack.sqf";
             };
-            class targeting_hmd_tgp_slew {
+            class hmd_slew {
                 file = "itc_air\functions\targeting\hmdSlewTgp.sqf";
             };
-            class targeting_fcr_tgp_slew {
+            class fcr_slew {
                 file = "itc_air\functions\targeting\fcrSlewTgp.sqf";
             };
         };
@@ -130,10 +134,10 @@ class CfgFunctions
     class itc_air_ui {
         class functions {
             class draw_laser_bundle {
-                file = "itc_air\functions\targeting\drawLaserBundle.sqf";
+                file = "itc_air\functions\UI\drawLaserBundle.sqf";
             };
-            class targeting_render_3d {
-                file = "itc_air\functions\targeting\render3dassets.sqf";
+            class render_3d {
+                file = "itc_air\functions\UI\render3dassets.sqf";
                 preInit = 1;
             };
         };

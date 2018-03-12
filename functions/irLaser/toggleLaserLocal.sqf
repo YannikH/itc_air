@@ -10,7 +10,7 @@ if(_turnedOn && (_plane getVariable "itc_datalink") select 0) then {
             _data params ["_broadcasting", "_target", "_direction", "_freq", "_cameraMode", "_fov"];
             _origin = _target select 2;
             _tgpPos = ASLtoAGL (_target select 1);
-            [_origin, _tgpPos] call itc_fnc_draw_laser_bundle;
+            [_origin, _tgpPos] call itc_air_UI_fnc_draw_laser_bundle;
             [_origin, _tgpPos, [1,1,1,1]]
         }, 
         {((currentVisionMode player) == 1) && (_this getVariable "itc_datalink") select 0 && ((_this getVariable "itc_datalink") select 1) select 0} 

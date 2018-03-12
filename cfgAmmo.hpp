@@ -1,7 +1,7 @@
 class cfgAmmo {
     class rhs_ammo_mk82;
     class ITC_ammo_gbu38 : rhs_ammo_mk82 {
-        ITC_firedEvent = "ITC_fnc_targeting_fired";
+        ITC_firedEvent = "itc_air_jdam_fnc_fired";
         //GBU ITSELF IS INERT
         indirectHitRange = 0.1;
         indirectHit = 0;
@@ -20,7 +20,7 @@ class cfgAmmo {
         ace_frag_charge = 15000;
     };
     class ITC_mk82_airBurst : rhs_ammo_mk82 {
-        ITC_firedEvent = "ITC_fnc_ammo_prox_fuze";
+        ITC_firedEvent = "itc_air_ammo_fnc_fired_prox_fuze";
         ITC_subMunition = "ITC_mk82_helper";
     };
     class ITC_mk82_helper : rhs_ammo_mk82 {
@@ -32,7 +32,7 @@ class cfgAmmo {
         indirectHit = 1;
         indirectHitRange = 1;
         explosive = 0.1;
-        ITC_firedEvent = "ITC_fnc_ammo_fired_wp";
+        ITC_firedEvent = "itc_air_ammo_fnc_fired_wp";
         explosionEffects = "TB_MK13SmokeEffects";
     };
 };

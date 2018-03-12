@@ -25,7 +25,7 @@ class cfgVehicles {
         class ACE_SelfActions {
             class ITC_ROVER {
                 displayName = "Datalink";
-                condition = "[_player] call ITC_fnc_canOpenRover";
+                condition = "[_player] call itc_air_rover_fnc_can_open";
                 statement = "";
                 priority = 2.6;
                 showDisabled = 1;
@@ -33,7 +33,7 @@ class cfgVehicles {
                 class ITC_ROVER_OPEN {
                     displayName = "Rover SIR V2.5";
                     condition = "'ITC_ROVER_SIR' in (items _player)";
-                    statement = "[] call ITC_fnc_openRover;";
+                    statement = "[] call itc_air_rover_fnc_open;";
                     priority = 2.6; 
                     showDisabled = 1;
                     icon = "itc_air\data\UI\ROVER_icon_ca.paa";
@@ -43,7 +43,7 @@ class cfgVehicles {
                 class ITC_TABLET_OPEN {
                     displayName = "Duo-Touch II";
                     condition = "'ACE_HuntIR_monitor' in (items _player)";
-                    statement = "[] call ITC_fnc_openDuoTouch;";
+                    statement = "[] call itc_air_rover_fnc_view_duo_touch;";
                     distance = 2;
                     priority = 2.6; 
                     showDisabled = 1;
