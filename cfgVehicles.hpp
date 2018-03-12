@@ -271,6 +271,7 @@ class cfgVehicles {
                 capable = 1;
                 frequency_default = 5784;
             };
+            targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
         };
@@ -305,6 +306,7 @@ class cfgVehicles {
                 capable = 1;
                 frequency_default = 5784;
             };
+            targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
         };
@@ -534,6 +536,7 @@ class cfgVehicles {
                 capable = 1;
                 frequency_default = 5784;
             };
+            targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
         };
@@ -698,6 +701,20 @@ class cfgVehicles {
                 capable = 1;
                 frequency_default = 5784;
             };
+            targeting_user = "pilot";
+            hmd = 1;
+            tgp = 1;
+        };
+    };
+
+    class Heli_Attack_01_base_F;
+    class Heli_Attack_01_dynamicLoadout_base_F : Heli_Attack_01_base_F {
+        class itc_air {
+            class rover {
+                capable = 1;
+                frequency_default = 5784;
+            };
+            targeting_user = "gunner";
             hmd = 1;
             tgp = 1;
         };

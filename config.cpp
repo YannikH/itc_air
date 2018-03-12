@@ -20,6 +20,21 @@ class CfgPatches {
 
 class CfgFunctions
 {
+
+    class itc_air_common {
+        class functions {
+            class get_turret_target {
+                file = "itc_air\functions\common\getTurretTargetPoint.sqf";
+            };
+        };
+    };
+    class itc_air_rover {
+        class functions {
+            class broadcast_toggle {
+                file = "itc_air\functions\rover\broadcastToggle.sqf";
+            };
+        };
+    };
     class ITC
     {
         class general
@@ -95,13 +110,13 @@ class CfgFunctions
         class rover {
             class initRover {
                 preInit = 1;
-                file = "itc_air\functions\rover\initROVER.sqf";
+                file = "itc_air\functions\rover\initRover.sqf";
             };
             class rover_cycle_code {
                 file = "itc_air\functions\rover\cycleCode.sqf";
             };
             class openRover {
-                file = "itc_air\functions\rover\openROVER.sqf";
+                file = "itc_air\functions\rover\openRover.sqf";
             };
             class roverButton {
                 file = "itc_air\functions\rover\roverButton.sqf";
@@ -111,13 +126,6 @@ class CfgFunctions
             };
             class canOpenRover {
                 file = "itc_air\functions\rover\canRover.sqf";
-            };
-        };
-    };
-    class itc_air_rover {
-        class rover {
-            class broadcast_toggle {
-                file = "itc_air\functions\rover\broadcastToggle.sqf";
             };
         };
     };
