@@ -118,18 +118,6 @@ class CfgFunctions
             class canOpenRover {
                 file = "itc_air\functions\rover\canRover.sqf";
             };
-            class getRemoteCamera {
-                file = "itc_air\functions\rover\triggerCameraDir.sqf";
-            };
-            class getCameraDir {
-                file = "itc_air\functions\rover\getCameraDir.sqf";
-            };
-            class changeCameraMode {
-                file = "itc_air\functions\rover\cameraMode.sqf";
-            };
-            class broadCast {
-                file = "itc_air\functions\rover\roverBroadcast.sqf";
-            };
         };
     };
 };  

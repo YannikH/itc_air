@@ -38,6 +38,6 @@
 
         _target = getPilotCameraTarget (_plane);
         _tgpdir = _plane vectorModelToWorld (getPilotCameraDirection _plane);
-        [true, _plane, _target, _tgpdir, _plane getVariable "ROVER_FREQ", ITC_AIR_CURVIS, ITC_AIR_CURFOV] remoteExec ["itc_fnc_broadCast", 0, false];
+        _plane setVariable ["itc_datalink",[true, _target, _tgpdir, _plane getVariable "ROVER_FREQ", ITC_AIR_CURVIS, ITC_AIR_CURFOV],true];
     }, 0, []] call CBA_fnc_addPerFrameHandler;
 };
