@@ -16,8 +16,6 @@ ITC_AIR_CURVIS = 0;
 ITC_AIR_LINES = [];
 ITC_AIR_ICONS = [];
 
-//(findDisplay 46) displayAddEventHandler ["KeyDown",{_this select 1 call itc_fnc_targeting_keydown}];
-
 ["vehicle", {_this call itc_fnc_targeting_vehicle_changed_handler}, true] call CBA_fnc_addPlayerEventHandler;
 
 ["ITC","gripen_waypoint_next", "Cycle WP next", {[1] call itc_fnc_targeting_cycleWp;}, "", [201, [false, false, false]]] call CBA_fnc_addKeybind;
