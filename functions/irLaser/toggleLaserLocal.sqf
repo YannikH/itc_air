@@ -11,9 +11,14 @@ if(_turnedOn && (_plane getVariable "itc_datalink") select 0) then {
             _origin = _target select 2;
             _tgpPos = ASLtoAGL (_target select 1);
             [_origin, _tgpPos] call itc_air_UI_fnc_draw_laser_bundle;
-            [_origin, _tgpPos, [1,1,1,1]]
+            [[0,0,0], [0,0,1], [1,1,1,1]]
         }, 
-        {((currentVisionMode player) == 1) && (_this getVariable "itc_datalink") select 0 && ((_this getVariable "itc_datalink") select 1) select 0} 
+        {
+            ((currentVisionMode player) == 1) && 
+            (_this getVariable "itc_datalink") select 0 && 
+            ((_this getVariable "itc_datalink") select 1) select 0 &&
+            ((_this getVariable "laser_pulse" && round time % 2 == 0) || !(_this getVariable "laser_pulse"))
+        } 
     ];
 } else {
     _i = 0;

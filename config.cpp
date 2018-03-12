@@ -63,6 +63,13 @@ class CfgFunctions
     };
     class itc_air_ir_laser {
         class functions {
+            class init {
+                preInit = 1;
+                file = "itc_air\functions\irLaser\init.sqf";
+            };
+            class toggle_pulse {
+                file = "itc_air\functions\irLaser\toggleLaserPulse.sqf";
+            };
             class toggle {
                 file = "itc_air\functions\irLaser\laserIR.sqf";
             };

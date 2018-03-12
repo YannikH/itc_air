@@ -64,12 +64,3 @@ ITC_AIR_ICONS = [];
     "", 
     [20, [true, false, false]]
 ] call CBA_fnc_addKeybind;
-
-[
-    "ITC",
-    "gripen_laser_ir", 
-    "Toggle IR Laser", 
-    {[0] call itc_air_ir_laser_fnc_toggle}, 
-    "", 
-    [38, [false, true, false]]
-] call CBA_fnc_addKeybind;
