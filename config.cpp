@@ -30,9 +30,6 @@ class CfgFunctions
             class draw_laser_bundle {
                 file = "itc_air\functions\targeting\drawLaserBundle.sqf";
             };
-            class set_global_variable {
-                file = "itc_air\functions\setGLobalVar.sqf";
-            };
         };
 
         class ammo
@@ -67,9 +64,6 @@ class CfgFunctions
             };
             class targeting_targetWP {
                 file = "itc_air\functions\targeting\targetWP.sqf";
-            };
-            class targeting_broadcastToggle {
-                file = "itc_air\functions\targeting\broadcastToggle.sqf";
             };
             class targeting_store_poi {
                 file = "itc_air\functions\targeting\storePOI.sqf";
@@ -117,6 +111,13 @@ class CfgFunctions
             };
             class canOpenRover {
                 file = "itc_air\functions\rover\canRover.sqf";
+            };
+        };
+    };
+    class itc_air_rover {
+        class rover {
+            class broadcast_toggle {
+                file = "itc_air\functions\rover\broadcastToggle.sqf";
             };
         };
     };

@@ -5,7 +5,7 @@ ITC_ROVER_FREQ_TEMP = "";
     "ITC",
     "gripen_broadcast_toggle", 
     "Datalink broadcast toggle", 
-    {[0] call itc_fnc_targeting_broadcastToggle;}, 
+    {[0] call itc_air_rover_fnc_broadcast_toggle;}, 
     "", 
     [210, [false, false, false]]
 ] call CBA_fnc_addKeybind;
