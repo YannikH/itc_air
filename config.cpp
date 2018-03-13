@@ -10,6 +10,8 @@ class CfgPatches {
 };
 #define STRINGIFY(s) #s
 
+#include "config\pods.hpp"
+
 #include "cfgAmmo.hpp"
 #include "cfgMagazines.hpp"
 #include "cfgWeapons.hpp"

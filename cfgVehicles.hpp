@@ -19,7 +19,6 @@ class SensorTemplateDataLink;
     };
 
 class cfgVehicles {
-
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
@@ -211,59 +210,7 @@ class cfgVehicles {
             class VehicleSystemsDisplayManagerComponentLeft;
             class VehicleSystemsDisplayManagerComponentRight;
         };
-        class pilotCamera {
-            class OpticsIn {
-                class Wide {
-                    opticsDisplayName = "WFOV";
-                    initAngleX = 0;
-                    minAngleX = 0;
-                    maxAngleX = 0;
-                    initAngleY = 0;
-                    minAngleY = 0;
-                    maxAngleY = 0;
-                    initFov = "(60 / 120)";
-                    minFov = "(60 / 120)";
-                    maxFov = "(60 / 120)";
-                    directionStabilized = 1;
-                    visionMode[] = {"Normal","NVG","Ti"};
-                    thermalMode[] = {0,1};
-                    gunnerOpticsModel = "\A3\Drones_F\Weapons_F_Gamma\Reticle\UAV_Optics_Gunner_wide_F.p3d";
-                    opticsPPEffects[] = {"OpticsCHAbera2","OpticsBlur2"};
-                };
-                class Medium : Wide {
-                    opticsDisplayName = "MFOV";
-                    initFov = "(12 / 120)";
-                    minFov = "(12 / 120)";
-                    maxFov = "(12 / 120)";
-                    gunnerOpticsModel = "\A3\Drones_F\Weapons_F_Gamma\Reticle\UAV_Optics_Gunner_medium_F.p3d";
-                };
-                class Narrow : Wide {
-                    opticsDisplayName = "NFOV";
-                    initFov = "(3.75 / 120)";
-                    minFov = "(3.75 / 120)";
-                    maxFov = "(3.75 / 120)";
-                    gunnerOpticsModel = "\A3\Drones_F\Weapons_F_Gamma\Reticle\UAV_Optics_Gunner_narrow_F.p3d";
-                };
-                class VeryNarrow : Wide {
-                    opticsDisplayName = "NFOV";
-                    initFov = "(2 / 120)";
-                    minFov = "(2 / 120)";
-                    maxFov = "(2 / 120)";
-                    gunnerOpticsModel = "\A3\Drones_F\Weapons_F_Gamma\Reticle\UAV_Optics_Gunner_narrow_F.p3d";
-                };
-            };
-            minTurn = -180;
-            maxTurn = 180;
-            initTurn = 0;
-            minElev = -10;
-            maxElev = 155;
-            initElev = 0;
-            maxXRotSpeed = 0.5;
-            maxYRotSpeed = 0.5;
-            pilotOpticsShowCursor = 0;
-            controllable = 1;
-            turretInfoType = "RscOptics_Heli_Attack_01_gunner";
-        };
+        class pilotCamera : litening{};
         class ACE_Actions {
         };
         class itc_air {
@@ -310,6 +257,7 @@ class cfgVehicles {
             hmd = 1;
             tgp = 1;
         };
+        class pilotCamera : litening{};
         class Components : Components {
             class SensorsManagerComponent;
             class TransportCountermeasuresComponent;
@@ -382,6 +330,7 @@ class cfgVehicles {
         editorSubcategory = "EdSubcat_Planes";
         crew = "B_pilot_F";
         incomingMissileDetectionSystem = 16;
+        class pilotCamera : litening{};
         class Components : Components {
             class SensorsManagerComponent {
                 class Components {
@@ -575,6 +524,7 @@ class cfgVehicles {
             "Laserbatteries"
         };
         incomingMissileDetectionSystem = 16;
+        class pilotCamera : litening{};
         class Components : Components 
         {
             class SensorsManagerComponent;
