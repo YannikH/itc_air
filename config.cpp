@@ -28,6 +28,9 @@ class CfgFunctions
             class get_turret_target {
                 file = "itc_air\functions\common\getTurretTargetPoint.sqf";
             };
+            class get_turret_rotation {
+                file = "itc_air\functions\common\getTurretRotation.sqf";
+            };
         };
     };
     class itc_air_datalink {
@@ -148,6 +151,36 @@ class CfgFunctions
             class render_3d {
                 file = "itc_air\functions\UI\render3dassets.sqf";
                 preInit = 1;
+            };
+            class tgp_symbology {
+                file = "itc_air\functions\UI\drawTGPSymbology.sqf";
+            };
+            class pitch_bank_indicators {
+                file = "itc_air\functions\UI\pitchBankIndicators.sqf";
+            };
+            class sa_cue {
+                file = "itc_air\functions\UI\SACue.sqf";
+            };
+            class laser_status {
+                file = "itc_air\functions\UI\laserStatus.sqf";
+            };
+            class yardstick {
+                file = "itc_air\functions\UI\yardstick.sqf";
+            };
+            class grid {
+                file = "itc_air\functions\UI\grid.sqf";
+            };
+            class hmd_symbology {
+                file = "itc_air\functions\UI\drawHMDSymbology.sqf";
+            };
+            class poi_markers {
+                file = "itc_air\functions\UI\POImarkers.sqf";
+            };
+            class tof {
+                file = "itc_air\functions\UI\tof.sqf";
+            };
+            class tof_bomb {
+                file = "itc_air\functions\UI\tofBomb.sqf";
             };
         };
     };

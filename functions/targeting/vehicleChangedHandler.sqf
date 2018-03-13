@@ -7,17 +7,32 @@ _newVehicle addEventHandler ["fired", {
     ITC_AIR_FLYING = _this select 6;
 }];
 
+_capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _newVehicle) >> "itc_air" >> "hmd");
+_capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _newVehicle) >> "itc_air" >> "tgp");
+_capabilities = [_capableHMD, _capableTGP];
+
 ITC_AIR_INPLANE = true;
 
-//continual refresh
 [{
     if(!ITC_AIR_INPLANE || !((vehicle player) isKindOf "Air")) exitWith {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
-
     //get basic info used for the HMD/TGP
     _plane = _this select 0 select 0;
+    _this select 0 params ["_plane", "_options"];
+    _options params ["_tgp", "_hmd"];
     _inTGP = (cameraView == "GUNNER");
+    if(_inTGP && _tgp == 1) then {
+        [_plane] call itc_air_ui_fnc_tgp_symbology;
+    };
+    if(!_inTGP && _hmd == 1) then {
+        [_plane] call itc_air_ui_fnc_hmd_symbology;
+    };
+}, 0, [_newVehicle, _capabilities]] call CBA_fnc_addPerFrameHandler;
+
+
+
+    /*
     _tgpInfo = getPilotCameraTarget (vehicle player);
     _tgpInfo params ["_tracking", "_trackPoint", "_trackObject"];
     _waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
@@ -85,7 +100,6 @@ ITC_AIR_INPLANE = true;
         };
     };
 }, 0, [_newVehicle]] call CBA_fnc_addPerFrameHandler;
-
 //occasional refresh
 [{
     if(!ITC_AIR_INPLANE || !((vehicle player) isKindOf "Air")) exitWith {
@@ -160,3 +174,4 @@ ITC_AIR_INPLANE = true;
     };
 
 }, 1, [_newVehicle]] call CBA_fnc_addPerFrameHandler;
+*/
