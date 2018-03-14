@@ -45,7 +45,7 @@ _handle = [{
     };
     if(!dialog) then {
         _cam cameraEffect ["internal", "BACK", _texture];
-        };
+    };
 
     if(_target select 0) then {
         _cam camSetTarget ASLtoATL (_target select 1);

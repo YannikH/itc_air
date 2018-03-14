@@ -1,7 +1,7 @@
 class CfgPatches {
     class itc_air {
         name = "";
-        units[] = {"ITC_A10E", "itc_Gripen","ITC_ROVER_SIR"};
+        units[] = {"ITC_A10E", "itc_Gripen","ITC_ROVER_SIR", "ITC_A159", "ITC_F181E"};
         requiredVersion = 1.0;
         requiredAddons[] = {"CBA_Extended_EventHandlers", "A3_Air_F","A3_Air_F_Beta","A3_Air_F_EPC_Plane_CAS_01","A3_Air_F_EPB_Heli_Light_03","A3_CargoPoses_F","rhsusf_c_troops","rhsusf_c_heavyweapons","rhsusf_sounds","rhsusf_c_airweapons"};
         icon = "\itc_air\data\UI\MDF.paa";

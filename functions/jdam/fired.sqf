@@ -45,9 +45,6 @@ if (!local _gunner) exitWith {};
             //drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_position,[0,0,0],1,1.275,1.0,0.0,[1],[[1,0,0,1]],[0],0.0,2.0,"","",""];
             //drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_newPos,[0,0,0],1,1.275,1.0,0.0,[1],[[0,1,0,1]],[0],0.0,2.0,"","",""];
         };
-        if(_fuze == "pd") then {
-            createVehicle [_type, _position, [], 0, "FLY"];
-        };
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
 }, 0, [_gunner, _projectile, _distance, _ammo, getPosATL _projectile, _targetIndex, _fuze, [0,0,0], 0, getPosATL _projectile]] call CBA_fnc_addPerFrameHandler;
