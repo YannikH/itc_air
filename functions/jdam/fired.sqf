@@ -1,3 +1,7 @@
+_this call itc_air_jdam_fnc_guidance;
+_this call itc_air_jdam_fnc_fuzing;
+
+/*
 params ["", "", "", "", "_ammo", "", "_projectile", "_gunner"];
 
 _targetIndex = ITC_AIR_CURRENTWP;
@@ -62,17 +66,27 @@ _dropTime = time;
     _position = getPosASL _projectile;
     (_this select 0) set [2, _position];
     (_projectile call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];
+    _speed = vectorMagnitude (velocity _projectile);
 
     _dElev = (_position select 2) - (_targetCoordinates select 2);
     _distHorizontal = [_position select 0, _position select 1, 0] distance [_targetCoordinates select 0, _targetCoordinates select 1, 0];
     _angleTo = atan(_dElev / _distHorizontal);
+    _angleToHoriz = _projectile getRelDir _targetCoordinates;
+    _angleToHoriz = if(_angleToHoriz > 180) then [{_angleToHoriz - 360},{_angleToHoriz}];
+
+    //KILL THE GUIDANCE IF TARGET IS BEHIND PROJECTILE
+    if(abs _angleToHoriz > 90) exitWith{[_this select 1] call CBA_fnc_removePerFrameHandler;};
+
     //player sideChat format ["HeightDiff %1 Dist %2 Pitch %3",round  _dElev, round _distHorizontal, round _angleTo];
 
+    _dist = _position distance _targetCoordinates;
+    _tof = _dist / _speed;
     //SEPARATION STAGE
     if(_stage == "SEP") then {
         //player sideChat "SEPARATION";
         if(time > _time + 1) then {
             (_this select 0) set [4, "GLIDE"];
+            //player sideChat "GLIDING";
         };
     };
 
@@ -83,29 +97,29 @@ _dropTime = time;
         _projectile setDir (getDir _projectile - 0.5);
     };
 
+    _angleDiff = abs(_pitch - _angle);
+    _turnRate = 5;
+    _turnDistRequired = (0.7 * (_angleDiff / _turnRate)) * (_speed / 10);
+
     if(_stage == "GLIDE") then {
-        //player sideChat format ["GLIDE %1 %2", _pitch, 0.1];
+        //player sideChat format ["%1 %2", _angleDiff, _turnDistRequired];
         if(_pitch < 0) then {
             [_projectile, _pitch + 0.1, 0] call BIS_fnc_setPitchBank;
         };
-        if(_angleTo > _angle) then {
+        if(_angleTo > _angle || _distHorizontal < _turnDistRequired) then {
             (_this select 0) set [4, "DIVE"];
         };
     };
 
+
+
     if(_stage == "DIVE") then {
         _diff = abs(_pitch - (_angleTo * -1));
-        //player sideChat format ["DIVE %1 %2 %3", _pitch, (_angleTo * -1), _diff];
         if(_pitch > (_angleTo * -1)) then {
-            [_projectile, _pitch - (_diff / 10), 0] call BIS_fnc_setPitchBank;
+            [_projectile, _pitch - (_diff / _turnRate), 0] call BIS_fnc_setPitchBank;
         } else {
-            [_projectile, _pitch + (_diff / 10), 0] call BIS_fnc_setPitchBank;
+            [_projectile, _pitch + (_diff / _turnRate), 0] call BIS_fnc_setPitchBank;
         };
     };
-
-    if(false) then {
-        _vectorProjTarg = (getPosASL _projectile) vectorFromTo _targetCoordinates;
-        _speed = vectorMagnitude velocity _projectile;
-        _projectile setVelocity (_vectorProjTarg vectorMultiply _speed);
-    };
 }, 0.1, [_projectile, _ammo, getPosATL _projectile, _targetCoordinates, "SEP", _dropTime, _angle]] call CBA_fnc_addPerFrameHandler;
+*/

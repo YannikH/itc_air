@@ -1,13 +1,27 @@
 class cfgAmmo {
     class rhs_ammo_mk82;
     class ITC_ammo_gbu38 : rhs_ammo_mk82 {
+        displayName = "GBU-38";
         ITC_firedEvent = "itc_air_jdam_fnc_fired";
         ITC_subMunition = "ITC_mk82_helper";
         ace_frag_force = 1;
         indirectHitRange = 10;
         indirectHit = 800;
         ace_frag_metal = 140000;
+        seekers[] = {"gps"};
     };
+    class ITC_ammo_gbu54 : ITC_ammo_gbu38 {
+        displayName = "GBU-54";
+        seekers[] = {"gps","laser"};
+    };
+    class ITC_ammo_gbu54_lcdb : ITC_ammo_gbu54 {
+        displayName = "GBU-54 LCDB";
+        seekers[] = {"gps","laser"};
+        indirectHitRange = 4;
+        indirectHit = 600;
+        ace_frag_charge = 15000;
+        ITC_subMunition = "ITC_blu126_helper";
+    }
     class ITC_ammo_gbu38v3b : ITC_ammo_gbu38 {
         ITC_subMunition = "ITC_blu126_helper";
     };

@@ -3,7 +3,7 @@ params["_isDialog", "_freq","_texture"];
 _plane = nil;
 {
     if(
-        (((_x getVariable "itc_datalink") select 3) == ITC_ROVER_FREQ) && 
+        (((_x getVariable "itc_datalink") select 3) == _freq) && 
         ((_x getVariable "itc_datalink") select 0)
     ) exitWith {
         _plane = _x;

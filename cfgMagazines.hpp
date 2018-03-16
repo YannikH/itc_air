@@ -74,6 +74,8 @@ class cfgMagazines {
 
     hp_ser_der_smart("GBU-38(v)1/B","itc_weap_gbu38",ITC_ammo_gbu38)
     hp_ser_der_smart("GBU-38(v)4/B","itc_weap_gbu38",ITC_ammo_gbu38v3b)
+    hp_ser_der_smart("GBU-54","itc_weap_gbu54",ITC_ammo_gbu54)
+    hp_ser_der_smart("GBU-54 LDCB","itc_weap_gbu54",ITC_ammo_gbu54_lcdb)
 
     hp_ser_der_lau117("AGM-65B","rhs_weap_agm65b",rhs_ammo_agm65b)
     hp_ser_der_lau117("AGM-65D","rhs_weap_agm65d",rhs_ammo_agm65d)

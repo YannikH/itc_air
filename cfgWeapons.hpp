@@ -95,6 +95,17 @@ class CfgWeapons {
         reloadTime = 0.0;
         autoFire=false;
     };
+    class itc_weap_gbu54 : itc_weap_gbu38 {
+        displayName = "GBU-54";
+        magazines[] = {
+            "itc_hp_smart_ITC_ammo_gbu54",
+            "itc_hp_bru55_ITC_ammo_gbu54",
+            "itc_hp_smart_ITC_ammo_gbu54_lcdb",
+            "itc_hp_bru55_ITC_ammo_gbu54_lcdb"
+        };
+        reloadTime = 0.0;
+        autoFire=false;
+    };
 
     class itc_weap_mk82_airburst : rhs_weap_mk82 {
         displayName = "Mk82 Airburst";

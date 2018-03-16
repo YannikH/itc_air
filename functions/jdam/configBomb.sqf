@@ -1,5 +1,5 @@
 params ["_key", "_value"];
-if(currentWeapon (vehicle player) != "itc_weap_gbu38") exitWith {};
+if(!(currentWeapon (vehicle player) isKindOf ["itc_weap_gbu38", configFile >> "CfgWeapons"])) exitWith {};
 _fuzeTypes = ["pd", "prox", "dly"];
 
 switch(_key) do {
