@@ -544,6 +544,12 @@ class cfgVehicles {
                         bay = -1;
                         attachment = "rhs_mag_ANALQ131";
                     };
+                    class pylon10: pylon1
+                    {
+                        UIposition[] = {0.345,0.55};
+                        mirroredMissilePos = 1;
+                        attachment = "rhs_mag_Sidewinder_2";
+                    };
                     class pylon2
                     {
                         hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket"};
@@ -552,6 +558,11 @@ class cfgVehicles {
                         UIposition[] = {0.345,0.05};
                         bay = -1;
                         attachment = "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151";
+                    };
+                    class pylon9: pylon2
+                    {
+                        UIposition[] = {0.345,0.5};
+                        mirroredMissilePos = 2;
                     };
                     class pylon3
                     {
@@ -562,6 +573,11 @@ class cfgVehicles {
                         bay = -1;
                         attachment = "itc_hp_lau117_rhs_ammo_agm65d";
                     };
+                    class pylon8: pylon3
+                    {
+                        UIposition[] = {0.34,0.45};
+                        mirroredMissilePos = 3;
+                    };
                     class pylon4
                     {
                         hardpoints[] = {"itc_hp_dumb", "itc_hp_smart", "itc_hp_bru42"};
@@ -570,6 +586,11 @@ class cfgVehicles {
                         UIposition[] = {0.33,0.2};
                         bay = -1;
                         attachment = "itc_hp_dumb_Bo_GBU12_LGB";
+                    };
+                    class pylon7: pylon4
+                    {
+                        UIposition[] = {0.33,0.35};
+                        mirroredMissilePos = 4;
                     };
                     class pylon5
                     {
@@ -588,27 +609,6 @@ class cfgVehicles {
                         bay = -1;
                         attachment = "itc_hp_dumb_Bo_GBU12_LGB";
                         mirroredMissilePos = 5;
-                    };
-                    class pylon7: pylon4
-                    {
-                        UIposition[] = {0.33,0.35};
-                        mirroredMissilePos = 4;
-                    };
-                    class pylon8: pylon3
-                    {
-                        UIposition[] = {0.34,0.45};
-                        mirroredMissilePos = 3;
-                    };
-                    class pylon9: pylon2
-                    {
-                        UIposition[] = {0.345,0.5};
-                        mirroredMissilePos = 2;
-                    };
-                    class pylon10: pylon1
-                    {
-                        UIposition[] = {0.345,0.55};
-                        mirroredMissilePos = 1;
-                        attachment = "rhs_mag_Sidewinder_2";
                     };
                 };
                 class Presets

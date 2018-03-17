@@ -19,10 +19,12 @@ class CfgPatches {
 
 #include "Dialog.hpp"
 #include "Dialog_rover.hpp"
+#include "config\mfd.hpp"
 
 class CfgFunctions
 {
 
+    #include "config\mfd_functions.cpp"
     class itc_air_common {
         class functions {
             class get_turret_target {
