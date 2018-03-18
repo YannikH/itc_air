@@ -17,7 +17,7 @@ class RscTitles {
             MFD_PIC_L_N_ON
         };
         objects[] = { };
-        onLoad = "[(_this select 0), ""ITC_AIR_MFD_L""] call test_fnc_drawMFD";
+        onLoad = "[(_this select 0), ""ITC_AIR_MFD_L"",""MFD_L_INPUT"",19993] call itc_air_mfd_fnc_open";
         controls[]=
         {
             L1,L2,L3,L4,L5,
@@ -51,7 +51,7 @@ class RscTitles {
         class MFD_PIC_L: RscPicture
         {
             idc = 1202;
-            text = "MFD512M1.paa";
+            text = "itc_air\data\UI\MFD512M1.paa";
             x = safeZoneX; 
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
@@ -62,7 +62,7 @@ class RscTitles {
         class MFD_PIC_L_N: RscPicture
         {
             idc = 1203;
-            text = "MFD2NOFF.paa";
+            text = "itc_air\data\UI\MFD2NOFF.paa";
             x = safeZoneX; 
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
@@ -73,7 +73,7 @@ class RscTitles {
         class MFD_PIC_L_N_L: RscPicture
         {
             idc = 1204;
-            text = "MFD2NON.paa";
+            text = "itc_air\data\UI\MFD2NON.paa";
             fade = 1;
             x = safeZoneX; 
             y = safeZoneY + safeZoneH - 0.8;
@@ -85,7 +85,7 @@ class RscTitles {
         class MFD_PIC_L_N_ON: RscPicture
         {
             idc = 1205;
-            text = "MFD2NON.paa";
+            text = "itc_air\data\UI\MFD2NON.paa";
             x = safeZoneX; 
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
@@ -265,7 +265,7 @@ class RscTitles {
             MFD_PIC_R_N_ON
         };
         objects[] = { };
-        onLoad = "[(_this select 0), ""ITC_AIR_MFD_R""] call test_fnc_drawMFD";
+        onLoad = "[(_this select 0), ""ITC_AIR_MFD_R"",""MFD_R_INPUT"",19994] call itc_air_mfd_fnc_open";
         controls[]=
         {
             L1,L2,L3,L4,L5,
@@ -299,7 +299,7 @@ class RscTitles {
         {
             idc = 1202;
 
-            text = "MFD512M1.paa";
+            text = "itc_air\data\UI\MFD512M1.paa";
             x = 0.752656 * safezoneW + safezoneX;
             y = 0.566 * safezoneH + safezoneY;
             w = 0.2475 * safezoneW;
@@ -309,7 +309,7 @@ class RscTitles {
         {
             idc = 1203;
 
-            text = "MFD2NOFF.paa";
+            text = "itc_air\data\UI\MFD2NOFF.paa";
             x = 0.752656 * safezoneW + safezoneX;
             y = 0.566 * safezoneH + safezoneY;
             w = 0.2475 * safezoneW;
@@ -320,7 +320,7 @@ class RscTitles {
         {
             idc = 1205;
 
-            text = "MFD2NON.paa";
+            text = "itc_air\data\UI\MFD2NON.paa";
             x = 0.752656 * safezoneW + safezoneX;
             y = 0.566 * safezoneH + safezoneY;
             w = 0.2475 * safezoneW;
@@ -539,7 +539,7 @@ class MFD_BTN {
     class L1B: RscButton
     {
         idc = 1600;
-        action = "[""ITC_AIR_MFD_L"",""L1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""L1""] call itc_air_mfd_fnc_button";
 
         x = 0.005 * safezoneW + safezoneX;
         y = 0.665 * safezoneH + safezoneY;
@@ -551,7 +551,7 @@ class MFD_BTN {
     class L2B: L1B
     {
         idc = 1601;
-        action = "[""ITC_AIR_MFD_L"",""L2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""L2""] call itc_air_mfd_fnc_button";
 
         x = 0.005 * safezoneW + safezoneX;
         y = 0.709 * safezoneH + safezoneY;
@@ -562,7 +562,7 @@ class MFD_BTN {
     class L3B: L1B
     {
         idc = 1602;
-        action = "[""ITC_AIR_MFD_L"",""L3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""L3""] call itc_air_mfd_fnc_button";
 
         x = 0.005 * safezoneW + safezoneX;
         y = 0.750 * safezoneH + safezoneY;
@@ -573,7 +573,7 @@ class MFD_BTN {
     class L4B: L1B
     {
         idc = 1603;
-        action = "[""ITC_AIR_MFD_L"",""L4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""L4""] call itc_air_mfd_fnc_button";
 
         x = 0.005 * safezoneW + safezoneX;
         y = 0.797 * safezoneH + safezoneY;
@@ -584,7 +584,7 @@ class MFD_BTN {
     class L5B: L1B
     {
         idc = 1604;
-        action = "[""ITC_AIR_MFD_L"",""L5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""L5""] call itc_air_mfd_fnc_button";
 
         x = 0.005 * safezoneW + safezoneX;
         y = 0.841 * safezoneH + safezoneY;
@@ -604,7 +604,7 @@ class MFD_BTN {
     class R1B: L1B
     {
         idc = 1605;
-        action = "[""ITC_AIR_MFD_L"",""R1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""R1""] call itc_air_mfd_fnc_button";
 
         x = 0.216406 * safezoneW + safezoneX;
         y = 0.665 * safezoneH + safezoneY;
@@ -615,7 +615,7 @@ class MFD_BTN {
     class R2B: L1B
     {
         idc = 1606;
-        action = "[""ITC_AIR_MFD_L"",""R2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""R2""] call itc_air_mfd_fnc_button";
 
         x = 0.216406 * safezoneW + safezoneX;
         y = 0.709 * safezoneH + safezoneY;
@@ -626,7 +626,7 @@ class MFD_BTN {
     class R3B: L1B
     {
         idc = 1607;
-        action = "[""ITC_AIR_MFD_L"",""R3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""R3""] call itc_air_mfd_fnc_button";
 
         x = 0.216406 * safezoneW + safezoneX;
         y = 0.750 * safezoneH + safezoneY;
@@ -637,7 +637,7 @@ class MFD_BTN {
     class R4B: L1B
     {
         idc = 1608;
-        action = "[""ITC_AIR_MFD_L"",""R4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""R4""] call itc_air_mfd_fnc_button";
 
         x = 0.216406 * safezoneW + safezoneX;
         y = 0.797 * safezoneH + safezoneY;
@@ -648,7 +648,7 @@ class MFD_BTN {
     class R5B: L1B
     {
         idc = 1609;
-        action = "[""ITC_AIR_MFD_L"",""R5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""R5""] call itc_air_mfd_fnc_button";
 
         x = 0.216406 * safezoneW + safezoneX;
         y = 0.841 * safezoneH + safezoneY;
@@ -659,7 +659,7 @@ class MFD_BTN {
     class B1B: L1B
     {
         idc = 1610;
-        action = "[""ITC_AIR_MFD_L"",""B1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""B1""] call itc_air_mfd_fnc_button";
         x = 0.0617187 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
         w = 0.020625 * safezoneW;
@@ -668,7 +668,7 @@ class MFD_BTN {
     class B2B: L1B
     {
         idc = 1611;
-        action = "[""ITC_AIR_MFD_L"",""B2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""B2""] call itc_air_mfd_fnc_button";
         x = 0.0875 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
         w = 0.0257812 * safezoneW;
@@ -677,7 +677,7 @@ class MFD_BTN {
     class B3B: L1B
     {
         idc = 1612;
-        action = "[""ITC_AIR_MFD_L"",""B3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""B3""] call itc_air_mfd_fnc_button";
         x = 0.113281 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
         w = 0.0257812 * safezoneW;
@@ -686,7 +686,7 @@ class MFD_BTN {
     class B4B: L1B
     {
         idc = 1613;
-        action = "[""ITC_AIR_MFD_L"",""B4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""B4""] call itc_air_mfd_fnc_button";
         x = 0.139062 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
         w = 0.0257812 * safezoneW;
@@ -695,7 +695,7 @@ class MFD_BTN {
     class B5B: L1B
     {
         idc = 1614;
-        action = "[""ITC_AIR_MFD_L"",""B5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_L"",""B5""] call itc_air_mfd_fnc_button";
         x = 0.164844 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
         w = 0.0257812 * safezoneW;
@@ -704,7 +704,7 @@ class MFD_BTN {
     class R_L1B: RscButton
     {
         idc = 1700;
-        action = "[""ITC_AIR_MFD_R"",""L1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L1""] call itc_air_mfd_fnc_button";
         fade = 1;
 
         x = 0.757813 * safezoneW + safezoneX;
@@ -716,7 +716,7 @@ class MFD_BTN {
     class R_L2B: L1B
     {
         idc = 1701;
-        action = "[""ITC_AIR_MFD_R"",""L2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L2""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.709 * safezoneH + safezoneY;
@@ -727,7 +727,7 @@ class MFD_BTN {
     class R_L3B: L1B
     {
         idc = 1702;
-        action = "[""ITC_AIR_MFD_R"",""L3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L3""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.764 * safezoneH + safezoneY;
@@ -738,7 +738,7 @@ class MFD_BTN {
     class R_L4B: L1B
     {
         idc = 1703;
-        action = "[""ITC_AIR_MFD_R"",""L4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L4""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.797 * safezoneH + safezoneY;
@@ -749,7 +749,7 @@ class MFD_BTN {
     class R_L5B: L1B
     {
         idc = 1704;
-        action = "[""ITC_AIR_MFD_R"",""L5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L5""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.852 * safezoneH + safezoneY;
@@ -771,7 +771,7 @@ class MFD_BTN {
     class R_R1B: L1B
     {
         idc = 1705;
-        action = "[""ITC_AIR_MFD_R"",""R1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R1""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.665 * safezoneH + safezoneY;
@@ -782,7 +782,7 @@ class MFD_BTN {
     class R_R2B: L1B
     {
         idc = 1706;
-        action = "[""ITC_AIR_MFD_R"",""R2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R2""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.709 * safezoneH + safezoneY;
@@ -793,7 +793,7 @@ class MFD_BTN {
     class R_R3B: L1B
     {
         idc = 1707;
-        action = "[""ITC_AIR_MFD_R"",""R3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R3""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.753 * safezoneH + safezoneY;
@@ -804,7 +804,7 @@ class MFD_BTN {
     class R_R4B: L1B
     {
         idc = 1708;
-        action = "[""ITC_AIR_MFD_R"",""R4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R4""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.797 * safezoneH + safezoneY;
@@ -815,7 +815,7 @@ class MFD_BTN {
     class R_R5B: L1B
     {
         idc = 1709;
-        action = "[""ITC_AIR_MFD_R"",""R5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R5""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.852 * safezoneH + safezoneY;
@@ -826,7 +826,7 @@ class MFD_BTN {
     class R_B1B: L1B
     {
         idc = 1710;
-        action = "[""ITC_AIR_MFD_R"",""B1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B1""] call itc_air_mfd_fnc_button";
 
         x = 0.814531 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -837,7 +837,7 @@ class MFD_BTN {
     class R_B2B: L1B
     {
         idc = 1711;
-        action = "[""ITC_AIR_MFD_R"",""B2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B2""] call itc_air_mfd_fnc_button";
 
         x = 0.840312 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -848,7 +848,7 @@ class MFD_BTN {
     class R_B3B: L1B
     {
         idc = 1712;
-        action = "[""ITC_AIR_MFD_R"",""B3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B3""] call itc_air_mfd_fnc_button";
 
         x = 0.866094 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -859,7 +859,7 @@ class MFD_BTN {
     class R_B4B: L1B
     {
         idc = 1713;
-        action = "[""ITC_AIR_MFD_R"",""B4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B4""] call itc_air_mfd_fnc_button";
 
         x = 0.891875 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -870,7 +870,7 @@ class MFD_BTN {
     class R_B5B: L1B
     {
         idc = 1714;
-        action = "[""ITC_AIR_MFD_R"",""B5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B5""] call itc_air_mfd_fnc_button";
 
         x = 0.917656 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -963,6 +963,179 @@ class MFD_L_INPUT {
         style = 2;
     };
 };
+/*
+class MFD_L_INPUT {
+    idd = 19993;
+    movingEnable = 0;
+    fadein = 0;
+    fadeout = 0;
+    controlsBackground[] = { };
+    objects[] = { };
+    controls[]=
+    {
+        MFD_L_BG,R4B,R5B,R4,R5,C_INPUT,C_LABEL
+    };
+    class MFD_L_BG : IGUIBack
+    {
+        idc = 1706;
+        x = 0.0410937 * safezoneW + safezoneX;
+        y = 0.643 * safezoneH + safezoneY;
+        w = 0.165 * safezoneW;
+        h = 0.286 * safezoneH;
+        colorBackground[] = {0,0,0,1};
+    };
+    class C_INPUT: RscEdit
+    {
+        idc = 1707;
+        text = ""; //--- ToDo: Localize;
+        x = 0.0875 * safezoneW + safezoneX;
+        y = 0.731 * safezoneH + safezoneY;
+        w = 0.0773437 * safezoneW;
+        h = 0.033 * safezoneH;
+        style = 2;
+    };
+    class R4B: RscButton
+    {
+        idc = 1708;
+        action = "_this call itc_air_mfd_fnc_input_cancel";
+
+        x = 0.216406 * safezoneW + safezoneX;
+        y = 0.797 * safezoneH + safezoneY;
+        w = 0.0257812 * safezoneW;
+        h = 0.044 * safezoneH;
+        colorBackground[] = {-1,-1,-1,0};
+    };
+    class R5B: RscButton
+    {
+        idc = 1709;
+        action = "[""ITC_AIR_MFD_L"",_this] call itc_air_mfd_fnc_input_save";
+
+        x = 0.216406 * safezoneW + safezoneX;
+        y = 0.841 * safezoneH + safezoneY;
+        w = 0.0257812 * safezoneW;
+        h = 0.044 * safezoneH;
+        colorBackground[] = {-1,-1,-1,0};
+    };
+    class R4: RscText
+    {
+        idc = 1710;
+        text = "Cancel"; //--- ToDo: Localize;
+        x = 0.154531 * safezoneW + safezoneX;
+        y = 0.808 * safezoneH + safezoneY;
+        w = 0.0515625 * safezoneW;
+        h = 0.022 * safezoneH;
+        style = 1;
+    };
+    class R5: RscText
+    {
+        idc = 1711;
+        text = "Accept"; //--- ToDo: Localize;
+        x = 0.154531 * safezoneW + safezoneX;
+        y = 0.852 * safezoneH + safezoneY;
+        w = 0.0515625 * safezoneW;
+        h = 0.022 * safezoneH;
+        style = 1;
+    };
+    class C_LABEL: RscText
+    {
+        idc = 1712;
+        text = "TITLE"; //--- ToDo: Localize;
+        x = 0.0823437 * safezoneW + safezoneX;
+        y = 0.698 * safezoneH + safezoneY;
+        w = 0.0825 * safezoneW;
+        h = 0.022 * safezoneH;
+        style = 2;
+    };
+};
+*/
+class MFD_R_INPUT {
+    idd = 19994;
+    movingEnable = 0;
+    fadein = 0;
+    fadeout = 0;
+    controlsBackground[] = { };
+    objects[] = { };
+    controls[]=
+    {
+        MFD_L_BG,R4B,R5B,R4,R5,C_INPUT,C_LABEL
+    };
+    class MFD_L_BG: IGUIBack
+    {
+        idc = 1706;
+
+        x = 0.793906 * safezoneW + safezoneX;
+        y = 0.654 * safezoneH + safezoneY;
+        w = 0.165 * safezoneW;
+        h = 0.275 * safezoneH;
+        colorBackground[] = {0,0,0,1};
+    };
+    class C_INPUT: RscEdit
+    {
+        idc = 1707;
+        style = 2;
+
+        x = 0.840312 * safezoneW + safezoneX;
+        y = 0.775 * safezoneH + safezoneY;
+        w = 0.0773437 * safezoneW;
+        h = 0.033 * safezoneH;
+    };
+    class R4B: RscButton
+    {
+        idc = 1708;
+        action = "_this call itc_air_mfd_fnc_input_cancel";
+
+        x = 0.969219 * safezoneW + safezoneX;
+        y = 0.808 * safezoneH + safezoneY;
+        w = 0.0257812 * safezoneW;
+        h = 0.044 * safezoneH;
+        colorBackground[] = {-1,-1,-1,0};
+    };
+    class R5B: RscButton
+    {
+        idc = 1709;
+        action = "[""ITC_AIR_MFD_R"",_this] call itc_air_mfd_fnc_input_save";
+
+        x = 0.969219 * safezoneW + safezoneX;
+        y = 0.852 * safezoneH + safezoneY;
+        w = 0.0257812 * safezoneW;
+        h = 0.044 * safezoneH;
+        colorBackground[] = {-1,-1,-1,0};
+    };
+    class R4: RscText
+    {
+        idc = 1710;
+        style = 1;
+
+        text = "Cancel"; //--- ToDo: Localize;
+        x = 0.907344 * safezoneW + safezoneX;
+        y = 0.819 * safezoneH + safezoneY;
+        w = 0.0515625 * safezoneW;
+        h = 0.022 * safezoneH;
+    };
+    class R5: RscText
+    {
+        idc = 1711;
+        style = 1;
+
+        text = "Accept"; //--- ToDo: Localize;
+        x = 0.907344 * safezoneW + safezoneX;
+        y = 0.863 * safezoneH + safezoneY;
+        w = 0.0515625 * safezoneW;
+        h = 0.022 * safezoneH;
+    };
+    class C_LABEL: RscText
+    {
+        idc = 1712;
+        style = 2;
+
+        text = "TITLE"; //--- ToDo: Localize;
+        x = 0.835156 * safezoneW + safezoneX;
+        y = 0.742 * safezoneH + safezoneY;
+        w = 0.0825 * safezoneW;
+        h = 0.022 * safezoneH;
+    };
+};
+
 class MFD_R_BTN {
     idd = 19994;
     movingEnable = 0;
@@ -980,7 +1153,7 @@ class MFD_R_BTN {
     class L1B: RscButton
     {
         idc = 1600;
-        action = "[""ITC_AIR_MFD_R"",""L1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L1""] call itc_air_mfd_fnc_button";
         fade = 1;
 
         x = 0.757813 * safezoneW + safezoneX;
@@ -992,7 +1165,7 @@ class MFD_R_BTN {
     class L2B: L1B
     {
         idc = 1601;
-        action = "[""ITC_AIR_MFD_R"",""L2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L2""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.709 * safezoneH + safezoneY;
@@ -1003,7 +1176,7 @@ class MFD_R_BTN {
     class L3B: L1B
     {
         idc = 1602;
-        action = "[""ITC_AIR_MFD_R"",""L3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L3""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.764 * safezoneH + safezoneY;
@@ -1014,7 +1187,7 @@ class MFD_R_BTN {
     class L4B: L1B
     {
         idc = 1603;
-        action = "[""ITC_AIR_MFD_R"",""L4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L4""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.797 * safezoneH + safezoneY;
@@ -1025,7 +1198,7 @@ class MFD_R_BTN {
     class L5B: L1B
     {
         idc = 1604;
-        action = "[""ITC_AIR_MFD_R"",""L5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""L5""] call itc_air_mfd_fnc_button";
 
         x = 0.757813 * safezoneW + safezoneX;
         y = 0.852 * safezoneH + safezoneY;
@@ -1047,7 +1220,7 @@ class MFD_R_BTN {
     class R1B: L1B
     {
         idc = 1605;
-        action = "[""ITC_AIR_MFD_R"",""R1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R1""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.665 * safezoneH + safezoneY;
@@ -1058,7 +1231,7 @@ class MFD_R_BTN {
     class R2B: L1B
     {
         idc = 1606;
-        action = "[""ITC_AIR_MFD_R"",""R2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R2""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.709 * safezoneH + safezoneY;
@@ -1069,7 +1242,7 @@ class MFD_R_BTN {
     class R3B: L1B
     {
         idc = 1607;
-        action = "[""ITC_AIR_MFD_R"",""R3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R3""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.753 * safezoneH + safezoneY;
@@ -1080,7 +1253,7 @@ class MFD_R_BTN {
     class R4B: L1B
     {
         idc = 1608;
-        action = "[""ITC_AIR_MFD_R"",""R4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R4""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.797 * safezoneH + safezoneY;
@@ -1091,7 +1264,7 @@ class MFD_R_BTN {
     class R5B: L1B
     {
         idc = 1609;
-        action = "[""ITC_AIR_MFD_R"",""R5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""R5""] call itc_air_mfd_fnc_button";
 
         x = 0.969219 * safezoneW + safezoneX;
         y = 0.852 * safezoneH + safezoneY;
@@ -1102,7 +1275,7 @@ class MFD_R_BTN {
     class B1B: L1B
     {
         idc = 1610;
-        action = "[""ITC_AIR_MFD_R"",""B1""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B1""] call itc_air_mfd_fnc_button";
 
         x = 0.814531 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -1113,7 +1286,7 @@ class MFD_R_BTN {
     class B2B: L1B
     {
         idc = 1611;
-        action = "[""ITC_AIR_MFD_R"",""B2""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B2""] call itc_air_mfd_fnc_button";
 
         x = 0.840312 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -1124,7 +1297,7 @@ class MFD_R_BTN {
     class B3B: L1B
     {
         idc = 1612;
-        action = "[""ITC_AIR_MFD_R"",""B3""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B3""] call itc_air_mfd_fnc_button";
 
         x = 0.866094 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -1135,7 +1308,7 @@ class MFD_R_BTN {
     class B4B: L1B
     {
         idc = 1613;
-        action = "[""ITC_AIR_MFD_R"",""B4""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B4""] call itc_air_mfd_fnc_button";
 
         x = 0.891875 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;
@@ -1146,7 +1319,7 @@ class MFD_R_BTN {
     class B5B: L1B
     {
         idc = 1614;
-        action = "[""ITC_AIR_MFD_R"",""B5""] call test_fnc_MFDButton";
+        action = "[""ITC_AIR_MFD_R"",""B5""] call itc_air_mfd_fnc_button";
 
         x = 0.917656 * safezoneW + safezoneX;
         y = 0.951 * safezoneH + safezoneY;

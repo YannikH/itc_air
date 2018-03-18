@@ -8,7 +8,7 @@ switch (_btn) do {
         [0] call itc_air_datalink_fnc_broadcast_toggle;
     };
     case "L2": {
-        [(vehicle player), "ROVER_FREQ", "ROVER FREQ", [false]] call itc_air_mfd_fnc_input;
+        [(vehicle player), "ROVER_FREQ", "ROVER FREQ", [false]] call itc_air_mfd_fnc_input_start;
     };
     case "L3": {
         _radios = [] call acre_api_fnc_getCurrentRadioList;

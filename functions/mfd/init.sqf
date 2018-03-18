@@ -1,6 +1,8 @@
 ["ITC","mfd_cursor_toggle", "Toggle MFD cursor",{createDialog "MFD_BTN";}, "", [200, [false, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC","mfd_open_L", "Open MFD L", {
+    _canMFD = getNumber (configFile >> "CfgVehicles" >> (typeOf (vehicle player)) >> "itc_air" >> "mfd_right");
+    if(_canMFD != 1) exitWith {};
     if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"}) then {
         2 cutRsc ["MFD_DIALOG_L", "PLAIN", -1, true];
     } else {
@@ -10,6 +12,8 @@
 }, "", [203, [true, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC","mfd_open_R", "Open MFD R", {
+    _canMFD = getNumber (configFile >> "CfgVehicles" >> (typeOf (vehicle player)) >> "itc_air" >> "mfd_right");
+    if(_canMFD != 1) exitWith {};
     if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"}) then {
         3 cutRsc ["MFD_DIALOG_R", "PLAIN", -1, true];
     } else {

@@ -221,6 +221,8 @@ class cfgVehicles {
             targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
+            mfd_left = 1;
+            mfd_right = 1;
         };
     };
 
@@ -256,6 +258,8 @@ class cfgVehicles {
             targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
+            mfd_left = 1;
+            mfd_right = 1;
         };
         class pilotCamera : litening{};
         class Components : Components {
@@ -488,6 +492,8 @@ class cfgVehicles {
             targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
+            mfd_left = 1;
+            mfd_right = 1;
         };
     };
 
@@ -654,6 +660,8 @@ class cfgVehicles {
             targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
+            mfd_left = 1;
+            mfd_right = 1;
         };
     };
 
@@ -667,6 +675,8 @@ class cfgVehicles {
             targeting_user = "gunner";
             hmd = 1;
             tgp = 1;
+            mfd_left = 1;
+            mfd_right = 1;
         };
     };
 };

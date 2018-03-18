@@ -1,4 +1,4 @@
-params ["_display", "_variable"];
+params ["_display", "_variable", "_input","_input_idc"];
 uiNamespace setVariable [_variable, _display];
 _MFD_TEXT = [
     "DLY", "25ms", "60deg", "", "",
@@ -6,6 +6,8 @@ _MFD_TEXT = [
     "GBU-54", "GPS/INS LSR", "4x",
     "","","","",""];
 
+_display setVariable ["input", _input];
+_display setVariable ["input_idc", _input_idc];
 _display setVariable ["input_var", ""];
 _display setVariable ["input_limits", nil];
 _display setVariable ["input_namespace", nil];
