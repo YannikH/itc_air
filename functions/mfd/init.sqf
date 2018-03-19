@@ -5,7 +5,7 @@
 }, "", [200, [false, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC","mfd_open_L", "Open MFD L", {
-    if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} && (vehicle player) getVariable "mfd_r") then {
+    if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} && (vehicle player) getVariable "mfd_l") then {
         2 cutRsc ["MFD_DIALOG_L", "PLAIN", -1, true];
     } else {
         uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];
