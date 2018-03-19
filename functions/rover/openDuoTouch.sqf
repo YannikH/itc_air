@@ -1,14 +1,14 @@
 ITC_ROVER_PLANE = nil;
 {
     if(
-        (((_x getVariable "itc_datalink") select 3) == ITC_ROVER_FREQ) && 
+        (((_x getVariable "itc_datalink") select 3) == ITC_ROVER_FREQ) &&
         ((_x getVariable "itc_datalink") select 0)
     ) exitWith {
         ITC_ROVER_PLANE = _x;
     };
 } forEach nearestObjects [player, ["Air"], 10000];
 
-if((isNull ITC_ROVER_PLANE) || isNil{ITC_ROVER_PLANE getVariable "itc_datalink"}) exitWith {};  
+if((isNull ITC_ROVER_PLANE) || isNil{ITC_ROVER_PLANE getVariable "itc_datalink"}) exitWith {};
 
 ITC_ROVER_LOGIC = "Logic" createVehicleLocal [0, 0, 0];
 ITC_ROVER_LOGIC setPosASL (getPilotCameraTarget (ITC_ROVER_PLANE) select 1);
@@ -31,23 +31,14 @@ _handle = [{
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     _cam camSetPos (getPos _plane);
-   // player sideChat format ["%1 %2", (getPos _plane), time];
-   // player sideChat format["%1", getPilotCameraTarget (_plane) select 0];
-    if(isServer) then {
-        ROVER_TGP_DIR = [getPilotCameraTarget (_plane), _plane vectorModelToWorld (getPilotCameraDirection _plane)];
-    };
 
     ITC_ROVER_CAMERA camSetFov _fov;
     if(ITC_AIR_CURVIS != _cameraMode) then {
         ITC_AIR_CURVIS = _cameraMode;
         [_cameraMode] call itc_air_rover_fnc_change_camera_mode;
     };
-
-    if(_target select 0) then {
-        ITC_ROVER_LOGIC setPosASL (_target select 1);
-        _cam camSetTarget ITC_ROVER_LOGIC;
-    } else {
-        _cam camSetDir _direction;
-    };
+    _target = _plane getVariable "tgp_dir";
+    ITC_ROVER_LOGIC setPosASL (_target select 1);
+    _cam camSetTarget ITC_ROVER_LOGIC;
     _cam camCommit 1;
 }, 0, [ITC_ROVER_CAMERA, ITC_ROVER_LOGIC, ITC_ROVER_PLANE]] call CBA_fnc_addPerFrameHandler;

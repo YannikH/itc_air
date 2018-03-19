@@ -9,19 +9,23 @@ if(count ([] call ace_microdagr_fnc_deviceGetWaypoints) == 0) exitWith{};
 
 _angle = ITC_AIR_IMPANGLE;
 _targetCoordinates = objNull;
+_laserCode = 1111;
 if("gps" in _seekers) then {
     _targetCoordinates = ((([] call ace_microdagr_fnc_deviceGetWaypoints) select _targetIndex) select 1) vectorAdd [0,0,1];
+};
+if("laser" in _seekers) then {
+  _laserCode = (vehicle player) getVariable "laser_code_recv";
 };
 _dropTime = time;
 //GUIDANCE
 [{
-    (_this select 0) params ["_projectile", "_ammo", "_position", "_targetCoordinates", "_stage", "_time", "_angle", "_seekers"];
+    (_this select 0) params ["_projectile", "_ammo", "_position", "_targetCoordinates", "_stage", "_time", "_angle", "_seekers", "_laserCode"];
     if (!alive _projectile) exitWith {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
 
     if("laser" in _seekers) then {
-        _spot = [getPosASL _projectile, velocity _projectile, 45, 5000, [1500, 1550], 1111] call ace_laser_fnc_seekerFindLaserSpot;
+        _spot = [getPosASL _projectile, velocity _projectile, 45, 5000, [1500, 1550], _laserCode] call ace_laser_fnc_seekerFindLaserSpot;
         if(!isNil{_spot select 0}) then {
             _targetCoordinates = _spot select 0;
             (_this select 0) set [3, _targetCoordinates];
@@ -87,4 +91,4 @@ _dropTime = time;
             [_projectile, _pitch + (_diff / _turnRate), 0] call BIS_fnc_setPitchBank;
         };
     };
-}, 0.1, [_projectile, _ammo, getPosATL _projectile, _targetCoordinates, "SEP", _dropTime, _angle, _seekers]] call CBA_fnc_addPerFrameHandler;
+}, 0.1, [_projectile, _ammo, getPosATL _projectile, _targetCoordinates, "SEP", _dropTime, _angle, _seekers, _laserCode]] call CBA_fnc_addPerFrameHandler;

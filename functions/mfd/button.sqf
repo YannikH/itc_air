@@ -11,4 +11,5 @@ switch (_page) do {
     case "tad": {[_namespace,_btn] call itc_air_mfd_fnc_tad_btn;};
     case "lst": {[_namespace,_btn] call itc_air_mfd_fnc_lst_btn;};
     case "com": {[_namespace,_btn] call itc_air_mfd_fnc_com_btn;};
+    case "tgp": {[_namespace,_btn] call itc_air_mfd_fnc_tgp_btn;};
 };

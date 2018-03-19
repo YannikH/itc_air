@@ -1,12 +1,12 @@
 #include "vehDefines.hpp"
 
-class SensorTemplatePassiveRadar;  
+class SensorTemplatePassiveRadar;
 class SensorTemplateAntiRadiation;
-class SensorTemplateActiveRadar;   
-class SensorTemplateIR;            
-class SensorTemplateVisual;        
-class SensorTemplateMan;           
-class SensorTemplateLaser;         
+class SensorTemplateActiveRadar;
+class SensorTemplateIR;
+class SensorTemplateVisual;
+class SensorTemplateMan;
+class SensorTemplateLaser;
 class SensorTemplateNV;
 class SensorTemplateDataLink;
 
@@ -33,7 +33,7 @@ class cfgVehicles {
                     displayName = "Rover SIR V2.5";
                     condition = "'ITC_ROVER_SIR' in (items _player)";
                     statement = "[] call itc_air_rover_fnc_open;";
-                    priority = 2.6; 
+                    priority = 2.6;
                     showDisabled = 1;
                     icon = "itc_air\data\UI\ROVER_icon_ca.paa";
                 exceptions[] = {"isNotInside","isNotSitting"};
@@ -44,7 +44,7 @@ class cfgVehicles {
                     condition = "'ACE_HuntIR_monitor' in (items _player)";
                     statement = "[] call itc_air_rover_fnc_view_duo_touch;";
                     distance = 2;
-                    priority = 2.6; 
+                    priority = 2.6;
                     showDisabled = 1;
                     icon = "\z\ace\addons\huntir\UI\w_huntir_monitor_ca.paa";
                 exceptions[] = {"isNotInside","isNotSitting"};
@@ -94,7 +94,7 @@ class cfgVehicles {
                         groundNoiseDistanceCoef = -1;
                     };
                     class IRSensorComponent : SensorTemplateIR {
-                        targetLimit(AirTarget,5000,15000,-1,1)  
+                        targetLimit(AirTarget,5000,15000,-1,1)
                         targetLimit(GroundTarget,0,0,-1,-1)
                         angleRangeHorizontal = 60;
                         angleRangeVertical = 45;
@@ -141,8 +141,8 @@ class cfgVehicles {
                             "PylonRack_Missile_AMRAAM_C_x1",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
-                            "itc_hp_bru55_lau117_rhs_ammo_agm65d",
-                            "itc_hp_bru55_lau117_rhs_ammo_agm65d"
+                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
+                            "itc_hp_bru55_lau117_Missile_AGM_02_F"
                         };
                         displayname = "Anti-Tank";
                     };
@@ -174,7 +174,7 @@ class cfgVehicles {
                 class pylons {
                     class pylon1 {
                         attachment = "PylonRack_Missile_AMRAAM_C_x1";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","RHS_HP_AIM9_int","RHS_HP_aim120_int"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL"};
                         maxweight = 300;
                         priority = 5;
                         UIposition[] = {0.55,0.4};
@@ -250,6 +250,7 @@ class cfgVehicles {
         incomingMissileDetectionSystem = 8;
         weapons[] = {"CMFlareLauncher", "Laserdesignator_pilotCamera"};
         magazines[] = {"120Rnd_CMFlare_Chaff_Magazine", "Laserbatteries"};
+		    scopeCurator=2;
         class itc_air {
             class rover {
                 capable = 1;
@@ -279,7 +280,7 @@ class cfgVehicles {
                         UIposition[] = {0.35,0.08};
                     };
                     class Pylons2 : Pylons1 {
-                        attachment = "itc_hp_lau117_rhs_ammo_agm65d";
+                        attachment = "itc_hp_lau117_Missile_AGM_02_F";
                         hardpoints[] = {"B_A143_BUZZARD_CENTER_PYLON","B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
                         maxweight = 320;
                         priority = 4;
@@ -349,7 +350,7 @@ class cfgVehicles {
                         groundNoiseDistanceCoef = -1;
                     };
                     class IRSensorComponent : SensorTemplateIR {
-                        targetLimit(AirTarget,5000,15000,-1,1)  
+                        targetLimit(AirTarget,5000,15000,-1,1)
                         targetLimit(GroundTarget,0,0,-1,-1)
                         angleRangeHorizontal = 60;
                         angleRangeVertical = 45;
@@ -420,7 +421,7 @@ class cfgVehicles {
                         UIposition[] = {0.05,0.45};
                     };
                     class pylon3 {
-                        attachment = "PylonRack_Missile_AGM_02_x2";
+                        attachment = "itc_hp_lau117_Missile_AGM_02_F";
                         hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 1050;
                         priority = 11;
@@ -516,45 +517,26 @@ class cfgVehicles {
         editorSubcategory = "EdSubcat_Planes";
         crew = "B_pilot_F";
         displayName="A-10E";
-        weapons[]=
-        {
-            "rhs_weap_MASTERSAFE",
-            "Laserdesignator_pilotCamera",
-            "ITC_weap_gau8",
-            "rhsusf_weap_CMFlareLauncher"
-        };
-        magazines[]=
-        {
-            "rhs_mag_1000Rnd_30x173_mixed",
-            "240Rnd_CMFlare_Chaff_Magazine",
-            "Laserbatteries"
-        };
         incomingMissileDetectionSystem = 16;
         class pilotCamera : litening{};
-        class Components : Components 
+        class Components : Components
         {
             class SensorsManagerComponent;
             class TransportCountermeasuresComponent;
             class VehicleSystemsDisplayManagerComponentLeft;
             class VehicleSystemsDisplayManagerComponentRight;
-            class TransportPylonsComponent  : TransportPylonsComponent 
+            class TransportPylonsComponent  : TransportPylonsComponent
             {
                 class pylons
                 {
                     class pylon1
                     {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket","RHS_HP_AIM9_2x", "RHS_HP_ECM"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket", "B_BIM9X_DUAL_RAIL"};
                         priority = 5;
                         maxweight = 1200;
                         UIposition[] = {0.35,0};
                         bay = -1;
-                        attachment = "rhs_mag_ANALQ131";
-                    };
-                    class pylon10: pylon1
-                    {
-                        UIposition[] = {0.345,0.55};
-                        mirroredMissilePos = 1;
-                        attachment = "rhs_mag_Sidewinder_2";
+                        attachment = "PylonRack_Missile_AMRAAM_D_x1";
                     };
                     class pylon2
                     {
@@ -563,12 +545,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.345,0.05};
                         bay = -1;
-                        attachment = "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151";
-                    };
-                    class pylon9: pylon2
-                    {
-                        UIposition[] = {0.345,0.5};
-                        mirroredMissilePos = 2;
+                        attachment = "itc_hp_dumb_rocket_Rocket_04_HE_F";
                     };
                     class pylon3
                     {
@@ -577,12 +554,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.34,0.1};
                         bay = -1;
-                        attachment = "itc_hp_lau117_rhs_ammo_agm65d";
-                    };
-                    class pylon8: pylon3
-                    {
-                        UIposition[] = {0.34,0.45};
-                        mirroredMissilePos = 3;
+                        attachment = "itc_hp_lau117_Missile_AGM_02_F";
                     };
                     class pylon4
                     {
@@ -592,11 +564,6 @@ class cfgVehicles {
                         UIposition[] = {0.33,0.2};
                         bay = -1;
                         attachment = "itc_hp_dumb_Bo_GBU12_LGB";
-                    };
-                    class pylon7: pylon4
-                    {
-                        UIposition[] = {0.33,0.35};
-                        mirroredMissilePos = 4;
                     };
                     class pylon5
                     {
@@ -616,37 +583,58 @@ class cfgVehicles {
                         attachment = "itc_hp_dumb_Bo_GBU12_LGB";
                         mirroredMissilePos = 5;
                     };
+                    class pylon7: pylon4
+                    {
+                        UIposition[] = {0.33,0.35};
+                        mirroredMissilePos = 4;
+                    };
+                    class pylon8: pylon3
+                    {
+                        UIposition[] = {0.34,0.45};
+                        mirroredMissilePos = 3;
+                    };
+                    class pylon9: pylon2
+                    {
+                        UIposition[] = {0.345,0.5};
+                        mirroredMissilePos = 2;
+                    };
+                    class pylon10: pylon1
+                    {
+                        UIposition[] = {0.345,0.55};
+                        mirroredMissilePos = 1;
+                        attachment = "";
+                    };
                 };
                 class Presets
                 {
                     class AT
                     {
                         attachment[] = {
-                            "rhs_mag_ANALQ131",
-                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
-                            "itc_hp_lau117_rhs_ammo_agm65d",
+                            "",
+                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
+                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_dumb_Bo_GBU12_LGB",
-                            "itc_hp_lau117_rhs_ammo_agm65d",
-                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
-                            "rhs_mag_Sidewinder_2"};
+                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
+                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
+                            ""};
                         displayname = "Anti-Tank";
                     };
                     class CAS
                     {
                         attachment[] = {
-                            "rhs_mag_ANALQ131",
-                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
-                            "itc_hp_lau117_rhs_ammo_agm65e",
+                            "",
+                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
+                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
                             "itc_hp_dumb_Bo_GBU12_LGB",
                             "itc_hp_smart_ITC_ammo_gbu38",
                             "itc_hp_smart_ITC_ammo_gbu38",
                             "itc_hp_dumb_Bo_GBU12_LGB",
-                            "itc_hp_lau117_rhs_ammo_agm65e",
-                            "itc_hp_dumb_rocket_rhs_ammo_Hydra_M151",
-                            "rhs_mag_Sidewinder_2"};
+                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
+                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
+                            ""};
                         displayname = "Close Air Support";
                     };
                 };

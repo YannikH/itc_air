@@ -1,5 +1,5 @@
 
-_output = ["", "", "", "", "", "", "", "", "", "", "", "", "","SWAP","TAD","WPN","SMS",""];
+_output = ["", "", "", "", "", "", "", "", "", "", "", "", "","SWAP","TAD","WPN","SMS","LST"];
 _plane = vehicle player;
 _pylonMags = getPylonMagazines _plane;
 _leftIndex = -1;

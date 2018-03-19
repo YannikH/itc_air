@@ -13,6 +13,7 @@ class itc_air_mfd {
     page(tad)
     page(lst)
     page(com)
+    page(tgp)
     class input {
         class input_cancel {
             file = "itc_air\functions\mfd\input\cancel.sqf";

@@ -1,3 +1,3 @@
 
-_output = ["WPN", "SMS", "", "COM", "", "TAD", "FCR", "TGP", "", "", "", "", "","SWAP","","","",""];
+_output = ["", "", "", "", "COM", "", "", "", "", "TGP", "", "", "","SWAP","TAD","WPN","SMS","LST"];
 _output

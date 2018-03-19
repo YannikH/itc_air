@@ -13,4 +13,3 @@ if (isNil{_plane getVariable "ROVER_FREQ"}) then {
 _currentFreq = parseNumber (_plane getVariable "ROVER_FREQ");
 _currentFreq = _currentFreq + _shift;
 _plane setVariable ["ROVER_FREQ",str _currentFreq];
-player sideChat format["Rover broadcast frequency set to: %1", _plane getVariable "ROVER_FREQ"];

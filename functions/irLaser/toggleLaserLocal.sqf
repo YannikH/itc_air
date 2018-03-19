@@ -1,20 +1,17 @@
-params ["_turnedOn", "_plane"];
-ITC_AIR_IRLAS_PLANE = _plane;
-
-if(_turnedOn && (_plane getVariable "itc_datalink") select 0) then {
+params ["_plane"];
+if(_plane getVariable "laser_ir") then {
     _plane setVariable ["last_pulse_local", 0];
     _plane setVariable ["pulse_on_local", true];
-    ITC_AIR_LINES pushBack [ 
+    ITC_AIR_LINES pushBack [
         _plane,
         {
             _plane = _this;
-            _data = _plane getVariable "itc_datalink";
-            _data params ["_broadcasting", "_target", "_direction", "_freq", "_cameraMode", "_fov"];
-            _origin = _target select 2;
-            _tgpPos = ASLtoAGL (_target select 1);
+            _data = _plane getVariable "tgp_dir";
+            _data params ["_broadcasting", "_target", "_origin"];
+            _tgpPos = ASLtoAGL _target;
             [_origin, _tgpPos] call itc_air_UI_fnc_draw_laser_bundle;
             [[0,0,0], [0,0,1], [1,1,1,1]]
-        }, 
+        },
         {
             _plane = _this;
             _freq = _plane getVariable "laser_pulse";
@@ -34,10 +31,7 @@ if(_turnedOn && (_plane getVariable "itc_datalink") select 0) then {
             } else {
                 _pulse_on = true;
             };
-            (((currentVisionMode player) == 1) && 
-            (_plane getVariable "itc_datalink") select 0 && 
-            ((_plane getVariable "itc_datalink") select 1) select 0 &&
-            _pulse_on)
+            (((currentVisionMode player) == 1) && _pulse_on)
         },
         true
     ];

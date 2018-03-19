@@ -8,5 +8,13 @@ if(_parseInt) then {
 };
 _namespaceTarget = _namespace getVariable "input_namespace";
 _var = _namespace getVariable "input_var";
-_namespaceTarget setVariable [_var, _text];
-closeDialog (_namespace getVariable "input_idc");
+
+if(!isNil{_conditions}) then {
+  if(_text call _conditions) then {
+    _namespaceTarget setVariable [_var, _text];
+    closeDialog (_namespace getVariable "input_idc");
+  };
+} else {
+  _namespaceTarget setVariable [_var, _text];
+  closeDialog (_namespace getVariable "input_idc");
+};

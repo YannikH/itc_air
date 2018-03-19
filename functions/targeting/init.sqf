@@ -16,7 +16,8 @@ ITC_AIR_CURVIS = 0;
 ITC_AIR_LINES = [];
 ITC_AIR_ICONS = [];
 
-["vehicle", {_this call itc_air_tgp_fnc_vehicle_changed_handler}, true] call CBA_fnc_addPlayerEventHandler;
+["vehicle", {_this call itc_air_vehicle_fnc_changed}, true] call CBA_fnc_addPlayerEventHandler;
+//[player, vehicle player] call itc_air_vehicle_fnc_changed;
 
 ["ITC","gripen_waypoint_next", "Cycle WP next", {[1] call itc_air_steerpoints_fnc_cycle;}, "", [201, [false, false, false]]] call CBA_fnc_addKeybind;
 ["ITC","gripen_waypoint_prev", "Cycle WP previous", {[-1] call itc_air_steerpoints_fnc_cycle;}, "", [209, [false, false, false]]] call CBA_fnc_addKeybind;
@@ -30,37 +31,37 @@ ITC_AIR_ICONS = [];
 
 [
     "ITC",
-    "gripen_store_POI", 
-    "Store POI from TGP", 
-    {[0] call itc_air_steerpoints_fnc_store;}, 
-    "", 
+    "gripen_store_POI",
+    "Store POI from TGP",
+    {[0] call itc_air_steerpoints_fnc_store;},
+    "",
     [207, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
 
 [
     "ITC",
-    "gripen_laser_search", 
-    "Laser Spot Search/Track Enable", 
-    {[0] call itc_air_tgp_fnc_laser_spot_search_track}, 
-    "", 
+    "gripen_laser_search",
+    "Laser Spot Search/Track Enable",
+    {[0] call itc_air_tgp_fnc_laser_spot_search_track},
+    "",
     [211, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
 [
     "ITC",
-    "gripen_hmd_slew_tgp", 
-    "HMD Slew TGP", 
-    {[0] call itc_air_tgp_fnc_hmd_slew}, 
-    "", 
+    "gripen_hmd_slew_tgp",
+    "HMD Slew TGP",
+    {[0] call itc_air_tgp_fnc_hmd_slew},
+    "",
     [20, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
 [
     "ITC",
-    "gripen_fcr_slew_tgp", 
-    "FCR Slew TGP", 
-    {[0] call itc_air_tgp_fnc_fcr_slew}, 
-    "", 
+    "gripen_fcr_slew_tgp",
+    "FCR Slew TGP",
+    {[0] call itc_air_tgp_fnc_fcr_slew},
+    "",
     [20, [true, false, false]]
 ] call CBA_fnc_addKeybind;

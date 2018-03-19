@@ -17,7 +17,8 @@ if(isNil{_turretIndex}) then {
 //handle pilotCameras
 if(_turretIndex == -1) exitWith {
     getPilotCameraTarget (_vehicle) params ["_locked", "_target"];
-    [_locked, _target, (visiblePosition _vehicle) vectorAdd [0,0,-1]];
+    _target = if(_locked) then [{_target}, {[0,0,0]}];
+    [_locked, _target, (visiblePosition _vehicle) vectorAdd [1,2,-2]];
 };
 
 //get the turret direction from ACE and turn it in to _pos and _dir

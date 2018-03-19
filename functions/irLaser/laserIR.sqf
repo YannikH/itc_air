@@ -1,18 +1,15 @@
 _plane = vehicle player;
-if(!((_plane) isKindOf "Air")) exitWith {ITC_AIR_IRLAS = false};
-_capable = (configFile >> "CfgVehicles" >> (typeOf _plane) >> "itc_air" >> "tgp")  call BIS_fnc_getCfgData;
-if(isNil {_capable} || !ITC_AIR_BROADCASTING) exitWith {
-    ITC_AIR_IRLAS = false;
-    [ITC_AIR_IRLAS, (_plane)] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
-};
-if(isNil{_plane getVariable "laser_pulse"}) then {_plane setVariable ["laser_pulse", 0, true];};
-if(ITC_AIR_IRLAS) exitWith {
-    ITC_AIR_IRLAS = false;
-    [ITC_AIR_IRLAS, (_plane)] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
-    player sideChat "IR Laser off";
-};
-ITC_AIR_IRLAS = true;
+if(!((_plane) isKindOf "Air")) exitWith {};
 
-[ITC_AIR_IRLAS, (_plane)] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
+if(!(_plane getVariable "tgp")) exitWith {
+    _plane setVariable ["laser_ir", false, true];
+    [_plane] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
+};
 
-player sideChat "IR Laser on";
+if(_plane getVariable "laser_ir") exitWith {
+    _plane setVariable ["laser_ir", false, true];
+    [_plane] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];
+};
+
+_plane setVariable ["laser_ir", true, true];
+[_plane] remoteExec ["itc_air_ir_laser_fnc_toggle_drawing", 0, false];

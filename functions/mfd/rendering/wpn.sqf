@@ -13,7 +13,7 @@ if(_hasWP) then {
 };
 _curWP params ["_wpName", "_wpPos"];
 
-_output = ["", "", "", "", "", "1111", "", "", "", _wpName, _weapon, "", str _ammoCount,"SWAP","TAD","WPN","SMS",""];
+_output = ["", "", "", "", "", "", "", "", "", _wpName, _weapon, "", str _ammoCount,"SWAP","TAD","WPN","SMS","LST"];
 //if the weapon is a canon
 if((currentWeapon _plane) isKindOf ["CannonCore", configFile >> "CfgWeapons"]) then {
 };
@@ -22,7 +22,7 @@ if((currentWeapon _plane) isKindOf ["itc_weap_gbu38", configFile >> "CfgWeapons"
     _seekers = (configFile >> "CfgAmmo" >> _ammo >> "seekers") call BIS_fnc_getCfgData;
     _output set [0, format["FUZE %1", toUpper ITC_AIR_PROGFUZE]];
     _output set [1, format["IMP %1 deg", ITC_AIR_IMPANGLE]];
-    _output set [5, str ITC_AIR_LASERCODE];
+    _output set [5, str (_plane getVariable "laser_code_recv")];
     _output set [11, str _seekers];
 };
 _output

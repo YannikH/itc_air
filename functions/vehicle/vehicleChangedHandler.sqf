@@ -1,7 +1,10 @@
 params ["_player", "_newVehicle"];
 
 if (isNull _newVehicle) exitWith {ITC_AIR_INPLANE = false};
-if (!(_newVehicle isKindOf "Air")) exitWith {ITC_AIR_INPLANE = false};
+if(isClass (configFile >> "CfgVehicles" >> (typeOf _newVehicle) >> "itc_air")) exitWith {
+  [_newVehicle] call itc_air_vehicle_fnc_setup;
+};
+    /*
 
 _newVehicle addEventHandler ["fired", {
     ITC_AIR_FLYING = _this select 6;
@@ -32,7 +35,6 @@ ITC_AIR_INPLANE = true;
 
 
 
-    /*
     _tgpInfo = getPilotCameraTarget (vehicle player);
     _tgpInfo params ["_tracking", "_trackPoint", "_trackObject"];
     _waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
@@ -73,9 +75,9 @@ ITC_AIR_INPLANE = true;
             _x = 0 + (sin(_yawPod) * _range * -1);
             _y = 0.475 + (cos(_yawPod) * _range * -1);
             ["<img size='0.2' image='itc_air\data\UI\SAC.paa' />",_x,_y,0,0,0, 791] spawn BIS_fnc_dynamicText;
-    
+
             //NORTH INDICATOR
-    
+
             //LSR STATUS
             _str = "";
             _laserOn = (!isNull (laserTarget vehicle player));
@@ -90,7 +92,7 @@ ITC_AIR_INPLANE = true;
                 };
             };
             [format ["<t color='#ffffff' size = '1'>%1</t>",_str],0.15,0.757,1,0,0, 794] spawn BIS_fnc_dynamicText;
-    
+
             //IF TRACKING AN OBJECT/POINT
             if(!isNull _trackObject) then {
                 if(_trackObject isKindOf "laserTarget") then {
@@ -142,7 +144,7 @@ ITC_AIR_INPLANE = true;
                 _grid = [_trackPoint] call ace_common_fnc_getMapGridFromPos;
                 _str = format ["%1  %2  %3  %4", _gridArea select 0, _gridArea select 1, _grid select 0, _grid select 1];
                 [format["<t color='#ffffff' size = '1'>%1</t>",_str],-1,1.2,1,0,0, 793] spawn BIS_fnc_dynamicText;
-    
+
                 //DRAW YARDSTICK
                 _fovRad = call cba_fnc_getFov select 0;
                 _fovDeg = _fovRad * 180 / pi;
@@ -150,10 +152,10 @@ ITC_AIR_INPLANE = true;
                 if(_fovDeg > 10) then {
                     _ydStick = (tan(_fovDeg / 2) * _distToWP) / 16.2;
                 };
-    
+
                 [format["<t color='#ffffff' size = '1'>%1 M</t>",round _ydStick],0.6,0.485,1,0,0, 792] spawn BIS_fnc_dynamicText;
             };
-    
+
             if(_hasWP && (vectorMagnitude (velocity ITC_AIR_FLYING) != 0)) then { //IF THERE IS A STEERPOINT, AND PLANE IS MOVING
                 _bombInAir = false;
                 if(!isNil{ITC_AIR_FLYING}) then {_bombInAir = (alive ITC_AIR_FLYING)};

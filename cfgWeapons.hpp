@@ -6,6 +6,7 @@ class CfgWeapons {
         picture = "\itc_air\data\UI\ROVER_icon_ca.paa";
     };
 
+    /*
     class Gatling_30mm_Plane_CAS_01_F;
     class RHS_weap_gau8 : Gatling_30mm_Plane_CAS_01_F {
         class LowROF;
@@ -30,9 +31,13 @@ class CfgWeapons {
             burst = 1;
         };
     };
+    */
 
-    class rhs_weap_FFARLauncher;
-    class itc_weap_ffarlauncher_smoke : rhs_weap_FFARLauncher {
+    class RocketPods;
+    class Rocket_04_HE_Plane_CAS_01_F : RocketPods{
+        magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
+    };
+    class itc_weap_ffarlauncher_smoke : Rocket_04_HE_Plane_CAS_01_F {
         displayName = "Hydra (M156 WP)";
         magazines[] = {"itc_mag_M156_7", "itc_mag_M156_19"};
         class EventHandlers
@@ -44,9 +49,9 @@ class CfgWeapons {
         };
     };
 
-    class rhs_weap_agm65;
+    class MissileLauncher;
     #define agmPylonMagazines(WEAP, AMMO) \
-        class WEAP : rhs_weap_agm65 { \
+        class WEAP : MissileLauncher { \
             magazines[] += { \
                 itc_hp_lau117_##AMMO, \
                 itc_hp_bru55_lau117_##AMMO \
@@ -61,35 +66,14 @@ class CfgWeapons {
                 itc_hp_bru42_##AMMO \
             }; \
         };
-    class rhs_weap_HellfireLauncher;
-    #define magazines_hp_triple_hellfire(WEAP, PARENT, AMMO) \
-        class WEAP : PARENT { \
-            magazines[] += { \
-                itc_hp_lau88_hellfire_##AMMO, \
-            }; \
-        };
-
-    class RocketPods;
-    class rhs_weap_mk82;
-    class Rocket_04_HE_Plane_CAS_01_F : RocketPods{
-        magazines[] += {"itc_hp_dumb_rocket_rhs_ammo_Hydra_M151","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
-    };
     magazines_hp_ser_der_ter(Mk82BombLauncher,RocketPods,Bo_Mk82)
     magazines_hp_ser_der_ter(Bomb_04_Plane_CAS_01_F,RocketPods,Bo_GBU12_LGB)
-    magazines_hp_ser_der_ter(rhs_weap_cbu87,rhs_weap_mk82,rhs_ammo_cbu87)
-    magazines_hp_ser_der_ter(rhs_weap_cbu100,rhs_weap_mk82,rhs_ammo_cbu100)
+    magazines_hp_ser_der_ter(BombCluster_01_F,Bomb_04_Plane_CAS_01_F,BombCluster_01_Ammo_F)
+    magazines_hp_ser_der_ter(BombCluster_03_F,BombCluster_01_F,BombCluster_03_Ammo_F)
 
-    agmPylonMagazines(rhs_weap_agm65b,rhs_ammo_agm65b)
-    agmPylonMagazines(rhs_weap_agm65d,rhs_ammo_agm65d)
-    agmPylonMagazines(rhs_weap_agm65e,rhs_ammo_agm65e)
-    agmPylonMagazines(rhs_weap_agm65f,rhs_ammo_agm65f)
-    agmPylonMagazines(rhs_weap_agm65h,rhs_ammo_agm65h) 
+    agmPylonMagazines(Missile_AGM_02_Plane_CAS_01_F,Missile_AGM_02_F)
 
-    magazines_hp_triple_hellfire(rhs_weap_AGM114K_Launcher,rhs_weap_HellfireLauncher,RHS_ammo_AGM_114K) 
-    magazines_hp_triple_hellfire(rhs_weap_AGM114M_Launcher,rhs_weap_HellfireLauncher,RHS_ammo_AGM_114M) 
-    magazines_hp_triple_hellfire(rhs_weap_AGM114N_Launcher,rhs_weap_HellfireLauncher,RHS_ammo_AGM_114N)  
-
-    class itc_weap_gbu38 : rhs_weap_mk82 {
+    class itc_weap_gbu38 : Mk82BombLauncher {
         displayName = "GBU-38";
         magazines[] = {"itc_hp_smart_ITC_ammo_gbu38","itc_hp_smart_ITC_ammo_gbu38v3b","itc_hp_bru55_ITC_ammo_gbu38","itc_hp_bru55_ITC_ammo_gbu38v3b"};
         reloadTime = 0.0;
@@ -107,7 +91,7 @@ class CfgWeapons {
         autoFire=false;
     };
 
-    class itc_weap_mk82_airburst : rhs_weap_mk82 {
+    class itc_weap_mk82_airburst : Mk82BombLauncher {
         displayName = "Mk82 Airburst";
         magazines[] = {"itc_mag_mk82_airburst", "itc_mag_mk82_airburst_3"};
     };
