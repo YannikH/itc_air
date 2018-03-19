@@ -4,10 +4,8 @@ class cfgAmmo {
         displayName = "GBU-38";
         ITC_firedEvent = "itc_air_jdam_fnc_fired";
         ITC_subMunition = "ITC_mk82_helper";
-        ace_frag_force = 1;
-        indirectHitRange = 10;
-        indirectHit = 800;
-        ace_frag_metal = 140000;
+        indirectHitRange = 1;
+        indirectHit = 100;
         seekers[] = {"gps"};
     };
     class ITC_ammo_gbu54 : ITC_ammo_gbu38 {
@@ -39,6 +37,9 @@ class cfgAmmo {
     class ITC_mk82_helper : Bo_Mk82 {
         timeToLive = 0;
         ace_frag_force = 1;
+        indirectHitRange = 10;
+        indirectHit = 800;
+        ace_frag_metal = 140000;
     };
     class Rocket_04_HE_F;
     class itc_ammo_Hydra_M156 : Rocket_04_HE_F {
