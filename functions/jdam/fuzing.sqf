@@ -33,25 +33,25 @@ if (!local _gunner) exitWith {};
         _intersectPos = _intersects select 0 select 0;  //get the actual intersect position
         if(!isNil{_intersectPos}) then {
             (_this select 0) set [9, _intersectPos];
-            drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_forwardPos,[0,0,0],1,1.275,1.0,0.0,[1],[[1,0,0,1]],[0],0.0,2.0,"","",""];//red fwd
-            drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_intersectPos,[0,0,0],1,1.275,1.0,0.0,[1],[[238,255,0,1]],[0],0.0,2.0,"","",""];//yellow intrs
+            //drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_forwardPos,[0,0,0],1,1.275,1.0,0.0,[1],[[1,0,0,1]],[0],0.0,2.0,"","",""];//red fwd
+            //drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_intersectPos,[0,0,0],1,1.275,1.0,0.0,[1],[[238,255,0,1]],[0],0.0,2.0,"","",""];//yellow intrs
         };
     };
 
     if (!alive _projectile) then {
         if(_fuze == "dly") then {
-            player sideChat "dly1";
-            drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_position,[0,0,0],1,1.275,1.0,0.0,[1],[[0,0,1,1]],[0],0.0,2.0,"","",""];//blue end
+            //player sideChat "dly1";
+            //drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_position,[0,0,0],1,1.275,1.0,0.0,[1],[[0,0,1,1]],[0],0.0,2.0,"","",""];//blue end
             if(isNil{_hitPos}) then {_hitPos = _position};
             _movement = _velocity vectorMultiply ITC_AIR_DLY;
             _newPos = _hitPos vectorAdd _movement;
             if(_newPos select 2 < 0) then {
                 _newPos = [_newPos select 0, _newPos select 1, 0.1];
             };
-            player sideChat format ["VEL %1 DIST %2", vectorMagnitude _velocity, _position distance _newPos];
+            //player sideChat format ["VEL %1 DIST %2", vectorMagnitude _velocity, _position distance _newPos];
             _bomb = createVehicle [_type, _newPos, [], 0, "FLY"];
             [player, _type, _bomb] call ace_frag_fnc_addPfhRound;
-            drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_newPos,[0,0,0],1,1.275,1.0,0.0,[1],[[0,1,0,1]],[0],0.0,2.0,"","",""]; //green bomb
+            //drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_newPos,[0,0,0],1,1.275,1.0,0.0,[1],[[0,1,0,1]],[0],0.0,2.0,"","",""]; //green bomb
         };
         if(_fuze == "pd") then {
           _bomb = createVehicle [_type, _position, [], 0, "FLY"];
