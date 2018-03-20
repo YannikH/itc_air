@@ -20,3 +20,38 @@
         uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
         3 cutText ["", "PLAIN"];
 };}, "", [205, [true, false, false]]] call CBA_fnc_addKeybind;
+
+["ITC","mfd_soi_up", "SOI UP", {
+  if(!isNil{(vehicle player) getVariable "SOI"}) then {
+    [0,1,0] call itc_air_mfd_fnc_soi_input;
+  };
+  false
+}, "", [200, [false, false, false]],true] call CBA_fnc_addKeybind;
+
+["ITC","mfd_soi_dn", "SOI DOWN", {
+  if(!isNil{(vehicle player) getVariable "SOI"}) then {
+    [0,-1,0] call itc_air_mfd_fnc_soi_input;
+  };
+  false
+}, "", [208, [false, false, false]],true] call CBA_fnc_addKeybind;
+
+["ITC","mfd_soi_lf", "SOI LEFT", {
+  if(!isNil{(vehicle player) getVariable "SOI"}) then {
+    [-1,0,0] call itc_air_mfd_fnc_soi_input;
+  };
+  false
+}, "", [203, [false, false, false]],true] call CBA_fnc_addKeybind;
+
+["ITC","mfd_soi_rt", "SOI RIGHT", {
+  if(!isNil{(vehicle player) getVariable "SOI"}) then {
+    [1,0,0] call itc_air_mfd_fnc_soi_input;
+  };
+  false
+}, "", [205, [false, false, false]],true] call CBA_fnc_addKeybind;
+
+["ITC","mfd_soi_action", "SOI ACTION", {
+  if(!isNil{(vehicle player) getVariable "SOI"}) then {
+    call itc_air_mfd_fnc_soi_action;
+  };
+  false
+}, "", [208, [false, true, false]],true] call CBA_fnc_addKeybind;

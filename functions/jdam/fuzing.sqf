@@ -29,7 +29,7 @@ if (!local _gunner) exitWith {};
     if(_fuze == "dly" && _alt < 100) then {
         _forwardPos = _position vectorAdd ((vectorNormalized _velocity) vectorMultiply 25);
         _startPos = _position vectorAdd ((vectorNormalized _velocity) vectorMultiply 1);
-        _intersects = lineIntersectsSurfaces  [_startPos, _forwardPos, _projectile,_projectile, true,1,"VIEW","GEOM"];   
+        _intersects = lineIntersectsSurfaces  [_startPos, _forwardPos, _projectile,_projectile, true,1,"VIEW","GEOM"];
         _intersectPos = _intersects select 0 select 0;  //get the actual intersect position
         if(!isNil{_intersectPos}) then {
             (_this select 0) set [9, _intersectPos];
@@ -56,7 +56,7 @@ if (!local _gunner) exitWith {};
         if(_fuze == "pd") then {
           _bomb = createVehicle [_type, _position, [], 0, "FLY"];
           [player, _type, _bomb] call ace_frag_fnc_addPfhRound;
-            drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_position,[0,0,0],1,1.275,1.0,0.0,[1],[[1,0,0,1]],[0],0.0,2.0,"","",""];
+            //drop ["\a3\data_f\Cl_basic","","Billboard",1,20,_position,[0,0,0],1,1.275,1.0,0.0,[1],[[1,0,0,1]],[0],0.0,2.0,"","",""];
         };
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };

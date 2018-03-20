@@ -3,7 +3,7 @@ params["_display","_texture"];
 _plane = vehicle player;
 
 _cam = "camera" camCreate (getPos _plane);
-_cam camSetFov (24 / 120);
+_cam camSetFov (_plane getVariable "tgp_fov");
 _cam cameraEffect ["internal", "BACK", _texture];
 _cam camCommit 0;
 

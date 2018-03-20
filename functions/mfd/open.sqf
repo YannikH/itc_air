@@ -19,6 +19,9 @@ _display setVariable ["illum", false];
 
 _display setVariable ["tad_map", (_display displayCtrl (1200))];
 _display setVariable ["tad_fov", 1];
+_display setVariable ["tad_cursor", [0,1000,0]];
+_display setVariable ["tad_expand", 0];
+_display setVariable ["tad_pos", [0,0,0]];
 
 _display setVariable ["feed_view", (_display displayCtrl (1206))];
 _display setVariable ["feed_texture", _feed];
@@ -26,6 +29,7 @@ _display setVariable ["feed_camera", nil];
 _display setVariable ["feed_cross", (_display displayCtrl (1207))];
 
 _display setVariable ["background", (_display displayCtrl (1201))];
+_display setVariable ["soi_square", (_display displayCtrl (1208))];
 
 [{
     _MFD_TEXT = ["", "", "", "", "","", "", "", "", "","", "", "","","","","",""];
@@ -36,6 +40,8 @@ _display setVariable ["background", (_display displayCtrl (1201))];
         uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
     };
 
+    (_display getVariable "soi_square") ctrlSetFade 1;
+    (_display getVariable "soi_square") ctrlCommit 0;
     (_display getVariable "feed_cross") ctrlSetFade 1;
     (_display getVariable "feed_cross") ctrlCommit 0;
     (_display getVariable "tad_map") ctrlSetFade 1;

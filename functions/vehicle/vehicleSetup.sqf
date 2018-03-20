@@ -29,6 +29,11 @@ _vehicle setVariable ["laser_pulse", 0, true];
 _vehicle setVariable ["tgp_fov", (24 / 120)];
 _vehicle setVariable ["tgp_mode", 0];
 
+_vehicle setVariable ["stpt_name", "NO WP"];
+_vehicle setVariable ["stpt_pos", [0,0,0]];
+
+_vehicle setVariable ["SOI", "ITC_AIR_MFD_L"];
+
 [{
     if(!((vehicle player) isKindOf "Air")) exitWith {
         [_this select 1] call CBA_fnc_removePerFrameHandler;

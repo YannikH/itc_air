@@ -14,6 +14,7 @@ class RscTitles {
             MFD_L_BG,
             MFD_L_FEED,
             MFD_L_CROSS,
+            MFD_L_SOI,
             MFD_PIC_L,
             MFD_PIC_L_N,
             MFD_PIC_L_N_ON
@@ -76,6 +77,17 @@ class RscTitles {
         {
             idc = 1202;
             text = "itc_air\data\UI\MFD512M1.paa";
+            x = safeZoneX;
+            y = safeZoneY + safeZoneH - 0.8;
+            h = 0.8;
+            w = 0.8 * 3 / 4;
+            colorBackground[] = {0, 0, 0, 0};
+            colorText[] = {1, 1, 1, 1};
+        };
+        class MFD_L_SOI: RscPicture
+        {
+            idc = 1208;
+            text = "itc_air\data\UI\SOI.paa";
             x = safeZoneX;
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
@@ -286,6 +298,7 @@ class RscTitles {
             MFD_R_BG,
             MFD_R_FEED,
             MFD_R_CROSS,
+            MFD_R_SOI,
             MFD_PIC_R,
             MFD_PIC_R_N,
             MFD_PIC_R_N_ON
@@ -375,6 +388,17 @@ class RscTitles {
             w = 0.2475 * safezoneW;
             h = 0.44 * safezoneH;
             colorBackground[] = {0,0,0,1};
+        };
+        class MFD_R_SOI: RscPicture
+        {
+            idc = 1208;
+            text = "itc_air\data\UI\SOI.paa";
+            x = 0.752656 * safezoneW + safezoneX;
+            y = 0.566 * safezoneH + safezoneY;
+            w = 0.2475 * safezoneW;
+            h = 0.44 * safezoneH;
+            colorBackground[] = {0, 0, 0, 0};
+            colorText[] = {1, 1, 1, 1};
         };
         class L1: RscText
         {
