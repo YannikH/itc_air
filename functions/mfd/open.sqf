@@ -1,4 +1,4 @@
-params ["_display", "_variable", "_input","_input_idc"];
+params ["_display", "_variable", "_input","_input_idc","_feed"];
 uiNamespace setVariable [_variable, _display];
 _MFD_TEXT = [
     "DLY", "25ms", "60deg", "", "",
@@ -20,6 +20,11 @@ _display setVariable ["illum", false];
 _display setVariable ["tad_map", (_display displayCtrl (1200))];
 _display setVariable ["tad_fov", 1];
 
+_display setVariable ["feed_view", (_display displayCtrl (1206))];
+_display setVariable ["feed_texture", _feed];
+_display setVariable ["feed_camera", nil];
+_display setVariable ["feed_cross", (_display displayCtrl (1207))];
+
 _display setVariable ["background", (_display displayCtrl (1201))];
 
 [{
@@ -31,6 +36,8 @@ _display setVariable ["background", (_display displayCtrl (1201))];
         uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
     };
 
+    (_display getVariable "feed_cross") ctrlSetFade 1;
+    (_display getVariable "feed_cross") ctrlCommit 0;
     (_display getVariable "tad_map") ctrlSetFade 1;
     (_display getVariable "tad_map") ctrlCommit 0;
     (_display getVariable "background") ctrlSetFade 0;

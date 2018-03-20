@@ -12,12 +12,14 @@ class RscTitles {
         controlsBackground[] = {
             MFD_MAP_L,
             MFD_L_BG,
+            MFD_L_FEED,
+            MFD_L_CROSS,
             MFD_PIC_L,
             MFD_PIC_L_N,
             MFD_PIC_L_N_ON
         };
         objects[] = { };
-        onLoad = "[(_this select 0), ""ITC_AIR_MFD_L"",""MFD_L_INPUT"",19993] call itc_air_mfd_fnc_open";
+        onLoad = "[(_this select 0), ""ITC_AIR_MFD_L"",""MFD_L_INPUT"",19993,""MFD_L_FEED""] call itc_air_mfd_fnc_open";
         controls[]=
         {
             L1,L2,L3,L4,L5,
@@ -26,7 +28,7 @@ class RscTitles {
             B1,B2,B3,B4,B5
         };
 
-        class MFD_MAP_L : RscMapControl 
+        class MFD_MAP_L : RscMapControl
         {
             idc = 1200;
             x = 0.0359375 * safezoneW + safezoneX;
@@ -47,12 +49,34 @@ class RscTitles {
             h = 0.33 * safezoneH;
             colorBackground[] = {0,0,0,1};
         };
-
+        class MFD_L_FEED: RscPicture
+        {
+            idc = 1206;
+            text = "#(argb,512,512,1)r2t(MFD_L_FEED,1)";
+            x = 0.0307812 * safezoneW + safezoneX;
+            y = 0.621 * safezoneH + safezoneY;
+            w = 0.185625 * safezoneW;
+            h = 0.33 * safezoneH;
+            colorBackground[] = {0, 0, 0, 0};
+            fade = 1;
+            colorText[] = {1, 1, 1, 1};
+        };
+        class MFD_L_CROSS: RscPicture
+        {
+            idc = 1207;
+            text = "itc_air\data\UI\crs.paa";
+            x = safeZoneX;
+            y = safeZoneY + safeZoneH - 0.8;
+            h = 0.8;
+            w = 0.8 * 3 / 4;
+            colorBackground[] = {0, 0, 0, 0};
+            colorText[] = {1, 1, 1, 1};
+        };
         class MFD_PIC_L: RscPicture
         {
             idc = 1202;
             text = "itc_air\data\UI\MFD512M1.paa";
-            x = safeZoneX; 
+            x = safeZoneX;
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
             w = 0.8 * 3 / 4;
@@ -63,7 +87,7 @@ class RscTitles {
         {
             idc = 1203;
             text = "itc_air\data\UI\MFD2NOFF.paa";
-            x = safeZoneX; 
+            x = safeZoneX;
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
             w = 0.8 * 3 / 4;
@@ -75,7 +99,7 @@ class RscTitles {
             idc = 1204;
             text = "itc_air\data\UI\MFD2NON.paa";
             fade = 1;
-            x = safeZoneX; 
+            x = safeZoneX;
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
             w = 0.8 * 3 / 4;
@@ -86,7 +110,7 @@ class RscTitles {
         {
             idc = 1205;
             text = "itc_air\data\UI\MFD2NON.paa";
-            x = safeZoneX; 
+            x = safeZoneX;
             y = safeZoneY + safeZoneH - 0.8;
             h = 0.8;
             w = 0.8 * 3 / 4;
@@ -260,12 +284,14 @@ class RscTitles {
         controlsBackground[] = {
             MFD_MAP_R,
             MFD_R_BG,
+            MFD_R_FEED,
+            MFD_R_CROSS,
             MFD_PIC_R,
             MFD_PIC_R_N,
             MFD_PIC_R_N_ON
         };
         objects[] = { };
-        onLoad = "[(_this select 0), ""ITC_AIR_MFD_R"",""MFD_R_INPUT"",19994] call itc_air_mfd_fnc_open";
+        onLoad = "[(_this select 0), ""ITC_AIR_MFD_R"",""MFD_R_INPUT"",19994,""MFD_R_FEED""] call itc_air_mfd_fnc_open";
         controls[]=
         {
             L1,L2,L3,L4,L5,
@@ -294,6 +320,29 @@ class RscTitles {
             w = 0.185625 * safezoneW;
             h = 0.33 * safezoneH;
             colorBackground[] = {0,0,0,1};
+        };
+        class MFD_R_FEED: RscPicture
+        {
+            idc = 1206;
+            text = "#(argb,512,512,1)r2t(MFD_R_FEED,1)";
+            x = 0.78875 * safezoneW + safezoneX;
+            y = 0.621 * safezoneH + safezoneY;
+            w = 0.185625 * safezoneW;
+            h = 0.33 * safezoneH;
+            colorBackground[] = {0, 0, 0, 0};
+            fade = 1;
+            colorText[] = {1, 1, 1, 1};
+        };
+        class MFD_R_CROSS: RscPicture
+        {
+            idc = 1207;
+            text = "itc_air\data\UI\crs.paa";
+            x = 0.752656 * safezoneW + safezoneX;
+            y = 0.566 * safezoneH + safezoneY;
+            w = 0.2475 * safezoneW;
+            h = 0.44 * safezoneH;
+            colorBackground[] = {0, 0, 0, 0};
+            colorText[] = {1, 1, 1, 1};
         };
         class MFD_PIC_R: RscPicture
         {

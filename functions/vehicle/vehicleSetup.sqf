@@ -26,6 +26,9 @@ _vehicle setVariable ["laser_code_recv", 1111];
 _vehicle setVariable ["laser_ir", false, true];
 _vehicle setVariable ["laser_pulse", 0, true];
 
+_vehicle setVariable ["tgp_fov", (24 / 120)];
+_vehicle setVariable ["tgp_mode", 0];
+
 [{
     if(!((vehicle player) isKindOf "Air")) exitWith {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
@@ -33,8 +36,18 @@ _vehicle setVariable ["laser_pulse", 0, true];
     //get basic info used for the HMD/TGP
     _this select 0 params ["_plane"];
 
+    //config plane data
     _plane setVariable ["tgp_dir", [_plane] call itc_air_common_fnc_get_turret_target, true];
+    _curFov = call cba_fnc_getFov select 0;
+    if(cameraView == "GUNNER" && (_curFov != _plane getVariable "tgp_fov")) then {
+        _plane setVariable ["tgp_fov",_curFov];
+    };
 
+    if(cameraView == "GUNNER" && currentVisionMode player != _plane getVariable "tgp_mode") then {
+        _plane setVariable ["tgp_mode",currentVisionMode player];
+    };
+
+    //draw UI
     _inTGP = (cameraView == "GUNNER");
     if(_inTGP && _plane getVariable "tgp") then {
         [_plane] call itc_air_ui_fnc_tgp_symbology;

@@ -148,6 +148,9 @@ class CfgFunctions
             class fcr_slew {
                 file = "itc_air\functions\targeting\fcrSlewTgp.sqf";
             };
+            class create_camera {
+                file = "itc_air\functions\targeting\createCamera.sqf";
+            };
         };
     };
     class itc_air_ui {
