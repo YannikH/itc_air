@@ -56,7 +56,48 @@ class cfgVehicles {
 
     class Plane;
     class Plane_Base_F: Plane {
-        class Components;
+      class Components;
+      class ACE_SelfActions {
+        class ITC_SOI {
+          displayName = "Set SOI";
+          condition = "[""any""] call itc_air_mfd_fnc_soi_capable";
+          distance = 2;
+          priority = 2.6;
+          class SOI_L {
+            displayName = "SOI MFD Left";
+            condition = "[""left""] call itc_air_mfd_fnc_soi_capable";
+            statement = "[""ITC_AIR_MFD_L""] call itc_air_mfd_fnc_soi_set";
+            distance = 2;
+            priority = 2.6;
+          };
+          class SOI_R : SOI_L {
+            displayName = "SOI MFD Right";
+            condition = "[""right""] call itc_air_mfd_fnc_soi_capable";
+            statement = "[""ITC_AIR_MFD_R""] call itc_air_mfd_fnc_soi_set";
+          };
+          class SOI_HMCS : SOI_L {
+            displayName = "SOI HMCS";
+            condition = "[""hmd""] call itc_air_mfd_fnc_soi_capable";
+            statement = "[""HMCS""] call itc_air_mfd_fnc_soi_set";
+          };
+        };
+        /*
+        class ITC_FUEL_LOCK_ON {
+          displayName = "Disable fuel";
+          condition = "!isNil{(vehicle player) getVariable ""fuel_lock""} && !((vehicle player) getVariable ""fuel_locked"") && speed (vehicle player) == 0";
+          statement = "(vehicle player) setVariable [""fuel_lock"", true, true];(vehicle player) setVariable [""fuel_count"", fuel (vehicle player), true];(vehicle player) setFuel 0;";
+          distance = 2;
+          priority = 2.6;
+        };
+        class ITC_FUEL_LOCK_OFF {
+          displayName = "Enable fuel";
+          condition = "!isNil{(vehicle player) getVariable ""fuel_lock""} && ((vehicle player) getVariable ""fuel_locked"") && speed (vehicle player) == 0";
+          statement = "(vehicle player) setVariable [""fuel_lock"", false, true];(vehicle player) setFuel ((vehicle player) getVariable ""fuel_count"");(vehicle player) setVariable [""fuel_count"", 0, true];";
+          distance = 2;
+          priority = 2.6;
+        };
+        */
+      };
     };
     class Plane_Fighter_04_Base_F : Plane_Base_F {
         class Components : Components {
@@ -211,8 +252,6 @@ class cfgVehicles {
             class VehicleSystemsDisplayManagerComponentRight;
         };
         class pilotCamera : litening{};
-        class ACE_Actions {
-        };
         class itc_air {
             class rover {
                 capable = 1;

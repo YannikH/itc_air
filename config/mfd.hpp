@@ -13,16 +13,16 @@ class RscTitles {
             MFD_MAP_L,
             MFD_L_BG,
             MFD_L_FEED,
-            MFD_L_CROSS,
-            MFD_L_SOI,
-            MFD_PIC_L,
-            MFD_PIC_L_N,
-            MFD_PIC_L_N_ON
+            MFD_L_CROSS
         };
         objects[] = { };
         onLoad = "[(_this select 0), ""ITC_AIR_MFD_L"",""MFD_L_INPUT"",19993,""MFD_L_FEED""] call itc_air_mfd_fnc_open";
         controls[]=
         {
+            MFD_PIC_L,
+            MFD_PIC_L_N,
+            MFD_PIC_L_N_ON,
+            MFD_L_SOI,
             L1,L2,L3,L4,L5,
             R1,R2,R3,R4,R5,
             C1,C2,C3,

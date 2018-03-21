@@ -50,9 +50,9 @@ ITC_AIR_ICONS = [];
 
 [
     "ITC",
-    "gripen_hmd_slew_tgp",
-    "HMD Slew TGP",
-    {[0] call itc_air_tgp_fnc_hmd_slew},
+    "gripen_soi_slew_tgp",
+    "SOI Slew TGP",
+    {[0] call itc_air_mfd_fnc_soi_slew},
     "",
     [20, [false, false, false]]
 ] call CBA_fnc_addKeybind;

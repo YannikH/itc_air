@@ -15,6 +15,10 @@
   class NAME##_soi_action { \
     file = itc_air\functions\mfd\soi_action\NAME.sqf; \
   };
+#define defsoi_slew(NAME) \
+  class NAME##_soi_slew { \
+    file = itc_air\functions\mfd\soi_slew\NAME.sqf; \
+  };
 
 class itc_air_mfd {
   page(wpn)};
@@ -22,11 +26,17 @@ class itc_air_mfd {
   page(tad)
     defsoi(tad)
     defsoi_action(tad)
+    defsoi_slew(tad)
   };
   page(lst)};
   page(com)};
   page(tgp)
     defsoi(tgp)
+  };
+  class hmcs {
+    class hmcs_slew {
+      file = itc_air\functions\mfd\soi_slew\hmcs.sqf;
+    };
   };
   class input {
     class input_cancel {
@@ -60,6 +70,12 @@ class itc_air_mfd {
     };
   };
   class soi {
+    class soi_capable {
+      file = "itc_air\functions\mfd\soi\capable.sqf";
+    };
+    class soi_set {
+      file = "itc_air\functions\mfd\soi\set.sqf";
+    };
     class soi_input {
       file = "itc_air\functions\mfd\soi\input.sqf";
     };
@@ -67,7 +83,7 @@ class itc_air_mfd {
       file = "itc_air\functions\mfd\soi_action\action.sqf";
     };
     class soi_slew {
-      file = "itc_air\functions\mfd\soi_action\slew.sqf";
+      file = "itc_air\functions\mfd\soi_slew\slew.sqf";
     };
     class soi_stpt {
       file = "itc_air\functions\mfd\soi_action\stpt.sqf";

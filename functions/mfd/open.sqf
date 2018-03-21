@@ -7,6 +7,7 @@ _MFD_TEXT = [
     "","","","",""];
 
 //input field
+_display setVariable ["variable", _variable];
 _display setVariable ["input", _input];
 _display setVariable ["input_idc", _input_idc];
 _display setVariable ["input_var", ""];
@@ -40,7 +41,8 @@ _display setVariable ["soi_square", (_display displayCtrl (1208))];
         uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
     };
 
-    (_display getVariable "soi_square") ctrlSetFade 1;
+    _soi_square = if(_display getVariable "variable" == (vehicle player) getVariable "SOI") then [{0}, {1}];
+    (_display getVariable "soi_square") ctrlSetFade _soi_square;
     (_display getVariable "soi_square") ctrlCommit 0;
     (_display getVariable "feed_cross") ctrlSetFade 1;
     (_display getVariable "feed_cross") ctrlCommit 0;

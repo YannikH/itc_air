@@ -12,6 +12,7 @@ _capableRover = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "
 _roverFreq = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "rover" >> "frequency_default");
 _seat = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
 
+_vehicle setVariable ["fuel_lock", false];
 _vehicle setVariable ["hmd", (_capableHMD == 1)];
 _vehicle setVariable ["tgp", (_capableTGP == 1)];
 _vehicle setVariable ["rover", (_capableRover == 1)];
