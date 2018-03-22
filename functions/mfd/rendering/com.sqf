@@ -1,5 +1,5 @@
 
-_output = ["", "", "", "", "", "", "CH UP", "CH DN", "VOL UP", "VOL DN", "", "", "","SWAP","TAD","WPN","SMS","LST"];
+_output = ["", "", "", "", "", "", "CH UP", "CH DN", "VOL UP", "VOL DN", "", "", ""];
 _rvrStatus = if(ITC_AIR_BROADCASTING) then [{"ON"},{"OFF"}];
 _output set [0, format["RVR %1", _rvrStatus]];
 _output set [1, format["RVR %1", (vehicle player) getVariable "ROVER_FREQ"]];

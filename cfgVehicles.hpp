@@ -260,8 +260,16 @@ class cfgVehicles {
             targeting_user = "pilot";
             hmd = 1;
             tgp = 1;
-            mfd_left = 1;
-            mfd_right = 1;
+            class mfd_left {
+              pages[] = {"", "", "", "", "COM", "", "", "", "", "TGP", "", "", ""};
+              shortcuts[] = {"TAD","WPN","SMS"};
+              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
+            };
+            class mfd_right {
+              pages[] = {"", "", "", "", "COM", "", "", "", "", "TGP", "", "", ""};
+              shortcuts[] = {"TAD","WPN","SMS"};
+              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
+            };
         };
     };
 
@@ -704,6 +712,27 @@ class cfgVehicles {
             tgp = 1;
             mfd_left = 1;
             mfd_right = 1;
+        };
+    };
+
+    class Heli_Transport_01_base_F;
+    class B_Heli_Transport_01_F: Heli_Transport_01_base_F {
+        class itc_air {
+            class rover {
+                capable = 0;
+            };
+            hmd = 0;
+            tgp = 0;
+            class mfd_left {
+              pages[] = {"", "", "", "", "", "SWAP", "COM", "TAD", "", "", "", "", ""};
+              shortcuts[] = {"COM","TAD",""};
+              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
+            };
+            class mfd_right {
+              pages[] = {"", "", "", "", "", "SWAP", "COM", "TAD", "", "", "", "", ""};
+              shortcuts[] = {"COM","TAD",""};
+              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
+            };
         };
     };
 };

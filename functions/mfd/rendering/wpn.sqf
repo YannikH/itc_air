@@ -13,7 +13,7 @@ if(_hasWP) then {
 };
 _curWP params ["_wpName", "_wpPos"];
 
-_output = ["", "", "", "", "", "", "", "", "", _wpName, _weapon, "", str _ammoCount,"SWAP","TAD","WPN","SMS","LST"];
+_output = ["", "", "", "", "", "", "", "", "", _wpName, _weapon, "", str _ammoCount];
 //if the weapon is a canon
 if((currentWeapon _plane) isKindOf ["CannonCore", configFile >> "CfgWeapons"]) then {
 };

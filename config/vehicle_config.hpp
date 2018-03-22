@@ -14,11 +14,13 @@ class itc_air {
       hmcs = 1;
     };
     class mfd_left {
-      pages[] = {"com","sms","wpn","tad","tgp"};
-      users = 1; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
+      pages[] = {"", "", "", "", "COM", "", "", "", "", "TGP", "", "", "","SWAP","TAD","WPN","SMS","LST"};
+      shortcuts = {"TAD","WPN","SMS"};
+      users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
     };
     class mfd_right {
-      pages[] = {"com","sms","wpn","tad","tgp"};
-      users = 1; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
+      pages[] = {"", "", "", "", "COM", "", "", "", "", "TGP", "", "", "","SWAP","TAD","WPN","SMS","LST"};
+      shortcuts = {"TAD","WPN","SMS"};
+      users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
     };
 };

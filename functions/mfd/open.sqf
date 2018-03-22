@@ -14,10 +14,15 @@ _display setVariable ["input_var", ""];
 _display setVariable ["input_limits", nil];
 _display setVariable ["input_namespace", nil];
 //cur page
-_display setVariable ["page", "wpn"];
+_display setVariable ["page", "lst"];
 //settings
 _display setVariable ["illum", false];
 
+//mfd setup
+_pages = if(_variable == "ITC_AIR_MFD_L") then [{(vehicle player) getVariable "mfd_l_pages"},{(vehicle player) getVariable "mfd_r_pages"}];
+_quick = if(_variable == "ITC_AIR_MFD_L") then [{(vehicle player) getVariable "mfd_l_quick"},{(vehicle player) getVariable "mfd_r_quick"}];
+_display setVariable ["pages", _pages];
+_display setVariable ["quick", _quick];
 _display setVariable ["tad_map", (_display displayCtrl (1200))];
 _display setVariable ["tad_fov", 1];
 _display setVariable ["tad_cursor", [0,1000,0]];
@@ -33,7 +38,7 @@ _display setVariable ["background", (_display displayCtrl (1201))];
 _display setVariable ["soi_square", (_display displayCtrl (1208))];
 
 [{
-    _MFD_TEXT = ["", "", "", "", "","", "", "", "", "","", "", "","","","","",""];
+    _MFD_TEXT = ["", "", "", "", "","", "", "", "", "","", "", ""];
     (_this select 0) params ["_display", "_light"];
     if (!alive player || isNil {_display} || isNil{(vehicle player) getVariable "mfd_l"}) then {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
@@ -58,7 +63,7 @@ _display setVariable ["soi_square", (_display displayCtrl (1208))];
     (_display displayCtrl (1205)) ctrlSetFade _lightIllumination;
     (_display displayCtrl (1205)) ctrlCommit 0;
     _page = _display getVariable "page";
-    switch(_page) do {
+    switch(toLower _page) do {
         case "wpn": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_wpn};
         case "sms": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_sms};
         case "tad": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_tad};
@@ -66,6 +71,7 @@ _display setVariable ["soi_square", (_display displayCtrl (1208))];
         case "com": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_com};
         case "tgp": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_tgp};
     };
+    _MFD_TEXT = _MFD_TEXT +( _display getVariable "quick");
     for "_i" from 0 to 17 step 1 do {
         _display displayCtrl (1400 + _i) ctrlSetText (_MFD_TEXT select _i);
     };

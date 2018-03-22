@@ -1,6 +1,6 @@
 params ["_display"];
 _plane = (vehicle player);
-_output = ["", "", "", "", "", "", "", "", "", "", "", "", "","SWAP","TAD","WPN","SMS","LST"];
+_output = ["", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 if(isNil{_display getVariable "feed_camera"}) then {
   _cam = [_display, _display getVariable "feed_texture"] call itc_air_tgp_fnc_create_camera;

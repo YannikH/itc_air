@@ -1,6 +1,6 @@
 params ["_display"];
 
-_output = ["FOV", "", "", "", "","", "", "", "", "","", "", "","SWAP","TAD","WPN","SMS","LST"];
+_output = ["FOV", "", "", "", "","", "", "", "", "","", "", ""];
 
 _map = _display getVariable "tad_map";
 _map ctrlSetFade 0;
