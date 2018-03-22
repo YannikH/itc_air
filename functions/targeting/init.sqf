@@ -32,8 +32,8 @@ ITC_AIR_ICONS = [];
 [
     "ITC",
     "gripen_store_POI",
-    "Store POI from TGP",
-    {[0] call itc_air_steerpoints_fnc_store;},
+    "Store POI from SOI",
+    {[true] call itc_air_mfd_fnc_soi_slew},
     "",
     [207, [false, false, false]]
 ] call CBA_fnc_addKeybind;
@@ -52,7 +52,7 @@ ITC_AIR_ICONS = [];
     "ITC",
     "gripen_soi_slew_tgp",
     "SOI Slew TGP",
-    {[0] call itc_air_mfd_fnc_soi_slew},
+    {[false] call itc_air_mfd_fnc_soi_slew},
     "",
     [20, [false, false, false]]
 ] call CBA_fnc_addKeybind;
