@@ -10,11 +10,11 @@ if(_side =="B") exitWith {
     [] call itc_air_mfd_fnc_swap;
   };
   _i = (parseNumber _num) - 1;
-  _namespace setVariable["page",((_namespace getVariable "quick") select _i)];
+  _namespace setVariable["page",toLower ((_namespace getVariable "quick") select _i)];
 };
 
 _page = _namespace getVariable "page";
-switch (_page) do {
+switch (toLower _page) do {
     case "wpn": {[_namespace,_btn] call itc_air_mfd_fnc_wpn_btn;};
     case "sms": {[_namespace,_btn] call itc_air_mfd_fnc_sms_btn;};
     case "tad": {[_namespace,_btn] call itc_air_mfd_fnc_tad_btn;};

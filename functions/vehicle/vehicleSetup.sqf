@@ -1,5 +1,11 @@
 params ["_vehicle"];
-
+if(player != driver _vehicle && player != gunner _vehicle) exitWith {
+  _vehicle setVariable ["mfd_l", false];
+  _vehicle setVariable ["mfd_r", false];
+  _vehicle setVariable ["hmd", false];
+  _vehicle setVariable ["tgp", false];
+  _vehicle setVariable ["rover", false];
+};
 _vehicle addEventHandler ["fired", {
     _vehicle setVariable ["bomb_flying", _this select 6];
 }];
