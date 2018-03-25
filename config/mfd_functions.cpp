@@ -32,6 +32,7 @@ class itc_air_mfd {
   page(com)};
   page(tgp)
     defsoi(tgp)
+    defsoi_slew(tgp)
   };
   class hmcs {
     class hmcs_slew {

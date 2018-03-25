@@ -1,6 +1,6 @@
 params ["_display"];
 _plane = (vehicle player);
-_output = ["", "", "", "", "", "", "", "", "", "", "", "", ""];
+_output = ["", "", "", "", "", "", "", "", "+", "-", "", "", ""];
 
 if(isNil{_display getVariable "feed_camera"}) then {
   _cam = [_display, _display getVariable "feed_texture"] call itc_air_tgp_fnc_create_camera;
@@ -14,8 +14,13 @@ if(isNil{_display getVariable "feed_camera"}) then {
 (_display getVariable "feed_cross") ctrlSetFade 0;
 (_display getVariable "feed_cross") ctrlCommit 0;
 
+_plane = (vehicle player);
+_index = _plane getVariable "tgp_mode";
+_visMode = ["DTV", "NTV", "FLIR"] select _index;
+
 _output set [0, if(_plane getVariable "laser_ir") then [{"MRK ON"},{"MRK OFF"}]];
 _output set [1, format["%1 Hz", (_plane getVariable "laser_pulse")]];
+_output set [2, _visMode];
 
 _output set [5, format["XMIT %1", (_plane getVariable "laser_code_xmit")]];
 _output set [6, format["RECV %1",( _plane getVariable "laser_code_recv")]];

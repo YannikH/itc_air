@@ -13,6 +13,7 @@ class CfgPatches {
 #define STRINGIFY(s) #s
 
 #include "config\pods.hpp"
+#include "config\presets.hpp"
 
 #include "cfgAmmo.hpp"
 #include "cfgMagazines.hpp"
@@ -34,6 +35,12 @@ class CfgFunctions
             };
             class get_turret_rotation {
                 file = "itc_air\functions\common\getTurretRotation.sqf";
+            };
+            class get_fov_steps {
+                file = "itc_air\functions\common\getFovSteps.sqf";
+            };
+            class set_var {
+                file = "itc_air\functions\common\setVarGlobal.sqf";
             };
         };
     };

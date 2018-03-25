@@ -13,6 +13,7 @@ _display setVariable ["input_idc", _input_idc];
 _display setVariable ["input_var", ""];
 _display setVariable ["input_limits", nil];
 _display setVariable ["input_namespace", nil];
+_display setVariable ["input_global", false];
 //cur page
 _display setVariable ["page", "lst"];
 //settings

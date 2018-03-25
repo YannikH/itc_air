@@ -1,8 +1,22 @@
+ITC_AIR_MFD_CAMS = [];
+
 ["ITC","mfd_cursor_toggle", "Toggle MFD cursor",{
   if(!isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} || !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} ) then {
+    setMousePosition [0.5, 0.5];
     createDialog "MFD_BTN";
   };
 }, "", [200, [false, false, false]]] call CBA_fnc_addKeybind;
+
+["ITC","mfd_cursor_hold", "Hold MFD cursor",{
+  if(!isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} || !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} ) then {
+    setMousePosition [0.5, 0.5];
+    createDialog "MFD_BTN";
+  };
+}, {
+  if(!isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} || !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} ) then {
+    closeDialog 2;
+  };
+}, [62, [false, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC","mfd_open_L", "Open MFD L", {
     if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} && (vehicle player) getVariable "mfd_l") then {

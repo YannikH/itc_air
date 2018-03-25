@@ -8,13 +8,22 @@ if(_parseInt) then {
 };
 _namespaceTarget = _namespace getVariable "input_namespace";
 _var = _namespace getVariable "input_var";
+_global = _namespace getVariable "input_global";
 
 if(!isNil{_conditions}) then {
   if(_text call _conditions) then {
-    _namespaceTarget setVariable [_var, _text];
+    if(_global) then {
+      [_namespaceTarget, _var, _text] call itc_air_common_fnc_set_var;
+    } else {
+      _namespaceTarget setVariable [_var, _text];
+    };
     closeDialog (_namespace getVariable "input_idc");
   };
 } else {
-  _namespaceTarget setVariable [_var, _text];
+  if(_global) then {
+    [_namespaceTarget, _var, _text] call itc_air_common_fnc_set_var;
+  } else {
+    _namespaceTarget setVariable [_var, _text];
+  };
   closeDialog (_namespace getVariable "input_idc");
 };

@@ -282,25 +282,7 @@ class cfgVehicles {
             class VehicleSystemsDisplayManagerComponentRight;
         };
         class pilotCamera : litening{};
-        class itc_air {
-            class rover {
-                capable = 1;
-                frequency_default = 5784;
-            };
-            targeting_user = "pilot";
-            hmd = 1;
-            tgp = 1;
-            class mfd_left {
-              pages[] = {"", "", "", "", "COM", "", "", "", "", "TGP", "", "", ""};
-              shortcuts[] = {"TAD","WPN","SMS"};
-              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
-            };
-            class mfd_right {
-              pages[] = {"", "", "", "", "COM", "", "", "", "", "TGP", "", "", ""};
-              shortcuts[] = {"TAD","WPN","SMS"};
-              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
-            };
-        };
+        class itc_air : itc_air_default_jet {};
     };
 
     class Plane_Fighter_03_base_F;
@@ -328,17 +310,7 @@ class cfgVehicles {
         weapons[] = {"CMFlareLauncher", "Laserdesignator_pilotCamera"};
         magazines[] = {"120Rnd_CMFlare_Chaff_Magazine", "Laserbatteries"};
 		    scopeCurator=2;
-        class itc_air {
-            class rover {
-                capable = 1;
-                frequency_default = 5784;
-            };
-            targeting_user = "pilot";
-            hmd = 1;
-            tgp = 1;
-            mfd_left = 1;
-            mfd_right = 1;
-        };
+        class itc_air : itc_air_default_jet {};
         class pilotCamera : litening{};
         class Components : Components {
             class SensorsManagerComponent;
@@ -562,17 +534,7 @@ class cfgVehicles {
             class VehicleSystemsDisplayManagerComponentLeft;
             class VehicleSystemsDisplayManagerComponentRight;
         };
-        class itc_air {
-            class rover {
-                capable = 1;
-                frequency_default = 5784;
-            };
-            targeting_user = "pilot";
-            hmd = 1;
-            tgp = 1;
-            mfd_left = 1;
-            mfd_right = 1;
-        };
+        class itc_air : itc_air_default_jet {};
     };
 
     class Plane_CAS_01_base_F : Plane_Base_F { };
@@ -717,52 +679,16 @@ class cfgVehicles {
                 };
             };
         };
-        class itc_air {
-            class rover {
-                capable = 1;
-                frequency_default = 5784;
-            };
-            targeting_user = "pilot";
-            hmd = 1;
-            tgp = 1;
-            mfd_left = 1;
-            mfd_right = 1;
-        };
+        class itc_air : itc_air_default_jet {};
     };
 
     class Heli_Attack_01_base_F;
     class Heli_Attack_01_dynamicLoadout_base_F : Heli_Attack_01_base_F {
-        class itc_air {
-            class rover {
-                capable = 1;
-                frequency_default = 5784;
-            };
-            targeting_user = "gunner";
-            hmd = 1;
-            tgp = 1;
-            mfd_left = 1;
-            mfd_right = 1;
-        };
+      class itc_air : itc_air_default_heli_ah {};
     };
 
     class Heli_Transport_01_base_F;
     class B_Heli_Transport_01_F: Heli_Transport_01_base_F {
-        class itc_air {
-            class rover {
-                capable = 0;
-            };
-            hmd = 0;
-            tgp = 0;
-            class mfd_left {
-              pages[] = {"", "", "", "", "", "", "", "", "", "", "", "", ""};
-              shortcuts[] = {"COM","TAD",""};
-              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
-            };
-            class mfd_right {
-              pages[] = {"", "", "", "", "", "", "", "", "", "", "", "", ""};
-              shortcuts[] = {"COM","TAD",""};
-              users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
-            };
-        };
+      class itc_air : itc_air_default_heli_uh {};
     };
 };
