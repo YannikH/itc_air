@@ -18,6 +18,7 @@ class CfgPatches {
 #include "cfgMagazines.hpp"
 #include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"
+#include "cfgXEH.hpp"
 
 #include "Dialog.hpp"
 #include "Dialog_rover.hpp"
@@ -102,6 +103,9 @@ class CfgFunctions
             class fired_prox_fuze {
                 file = "itc_air\functions\ammo\proxFuze.sqf";
             };
+            class fired_SAM_prox_fuze {
+                file = "itc_air\functions\ammo\proxFuzeSAM.sqf";
+            };			
         };
     };
     class itc_air_jdam {

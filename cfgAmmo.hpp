@@ -49,4 +49,70 @@ class cfgAmmo {
         ITC_firedEvent = "itc_air_ammo_fnc_fired_wp";
         explosionEffects = "TB_MK13SmokeEffects";
     };
+	class MissileBase;
+	class M_Titan_AA: MissileBase {
+		itc_air_hasProx = 1;
+		itc_air_proxHelper = "itc_air_default_helper";
+		itc_air_sensorFOV = 60;
+		itc_air_sensorRAN = 30;	
+	};
+	class Missile_AA_04_F: MissileBase {
+		itc_air_hasProx = 1;
+		itc_air_proxHelper = "itc_air_default_helper";
+		itc_air_sensorFOV = 60;
+		itc_air_sensorRAN = 30;	
+
+	};
+	class M_Air_AA: MissileBase {
+		itc_air_hasProx = 1;
+		itc_air_proxHelper = "itc_air_default_helper";
+		itc_air_sensorFOV = 60;
+		itc_air_sensorRAN = 30;	
+
+	};
+	class ITC_missile_BOLIDE: M_Titan_AA {
+		indirectHitRange = 30;
+		manualControl = 1;
+		maneuvrability = 10;
+		maxControlRange = 8000;
+		maxSpeed = 1500;
+		thrust = 700;
+		simulationStep = 0.01;
+        airFriction = 0.1;
+        sideAirFriction = 0.16;
+		cmImmunity = 1;
+		trackOversteer = 0.5;
+		trackLead = 0.75;
+		fuseDistance = 100;
+		itc_air_hasProx = 1;
+		itc_air_proxHelper = "itc_air_bolide_helper";		
+	};
+	//Default proximity fuzed detonation
+	class GrenadeBase;
+	class itc_air_default_helper: GrenadeBase {
+		indirectHitRange = 15;
+		hit = 80;
+		indirectHit = 60;		
+		explosionTime = 0.001;
+		CraterEffects = "AAMissileCrater";
+		explosionEffects = "AAMissileExplosion";
+		model = "\A3\Weapons_F_beta\Launchers\titan\titan_missile_ap_fly.p3d";		
+		class CamShakeExplode {
+			power = "(110*0.2)";
+			duration = "((round (110^0.5))*0.2 max 0.2)";
+			frequency = 20;
+			distance = "((8 + 110^0.5)*8)";
+		};
+		class CamShakeHit {
+			power = 110;
+			duration = "((round (110^0.25))*0.2 max 0.2)";
+			frequency = 20;
+			distance = 1;
+		};	
+
+	};
+	class itc_air_bolide_helper: itc_air_default_Det {
+		hit = 50;
+		indirectHit = 50;
+	};	
 };
