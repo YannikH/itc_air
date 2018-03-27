@@ -18,6 +18,15 @@ switch (_btn) do {
     case "R2": {
         [_namespace,(vehicle player), "laser_code_recv", "RECV LASER CODE", [true, {(_this > 1110 && _this < 1688)}], false] call itc_air_mfd_fnc_input_start;
     };
+    case "R3": {
+      _plane = (vehicle player);
+      _mode = _plane getVariable "tgp_lsst_mode";
+      switch(_mode) do {
+        case "LSS OFF": {_plane setVariable ["tgp_lsst_mode", "LSS"];};
+        case "LSS": {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
+        case "LST": {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
+      };
+    };
     case "R4": {
       _plane = (vehicle player);
       _curStep = _plane getVariable "tgp_fov_index";

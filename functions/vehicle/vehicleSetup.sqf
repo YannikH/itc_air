@@ -60,6 +60,8 @@ _vehicle setVariable ["tgp_fov_index", 0];
 _vehicle setVariable ["tgp_fov_steps", _fovSteps];
 _vehicle setVariable ["tgp_mode", 0];
 
+_vehicle setVariable ["tgp_lsst_mode", "LSS OFF"];
+
 _vehicle setVariable ["stpt_name", "NO WP"];
 _vehicle setVariable ["stpt_pos", [0,0,0]];
 
@@ -94,6 +96,14 @@ _vehicle setVariable ["SOI", "HMCS"];
     };
     if(!_inTGP && _plane getVariable "hmd") then {
         [_plane] call itc_air_ui_fnc_hmd_symbology;
+    };
+    //run laser spot search
+    if(_plane getVariable "tgp_lsst_mode" == "LSS") then {
+      [_plane] call itc_air_tgp_fnc_laser_spot_search_track;
+    };
+    if(_plane getVariable "tgp_lsst_mode" == "LST") then {
+      _track = typeOf (getPilotCameraTarget (vehicle player) select 2);
+      if(_track == "LaserTargetW" && _track == "LaserTargetE") then {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
     };
 
 }, 0, [_vehicle]] call CBA_fnc_addPerFrameHandler;

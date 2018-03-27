@@ -1,21 +1,10 @@
-if(!((vehicle player) isKindOf "Air")) exitWith {};
-_capable = (configFile >> "CfgVehicles" >> (typeOf vehicle player) >> "itc_air" >> "tgp")  call BIS_fnc_getCfgData;
-if(isNil {_capable}) exitWith {};
+params ["_plane"];
 
-_plane = vehicle player;
-_target = getPilotCameraTarget _plane;
+_dir = _plane vectorModelToWorld (getPilotCameraDirection _plane);
+_spot = [getPosASL _plane, _dir, _plane getVariable "tgp_fov", 5000, [1500, 1550], _plane getVariable "laser_code_recv"] call ace_laser_fnc_seekerFindLaserSpot;
 
-_target params ["_tracking", "_position", "_object"];
-
-_searchPos = getpos _plane;
-if(_tracking) then {
-    _searchPos = _position;
-    _lasers = nearestObjects [getpos _plane, ["laserTarget"], 8000];
-    {
-        //player sideChat format["%1",[_plane, "VIEW"] checkVisibility [getPos _plane, getPos _x]];
-        if((_x != laserTarget _plane) && ([_plane, "VIEW"] checkVisibility [getPosASL _plane, getPosASL _x] > 0.5)) exitWith {
-            _plane setPilotCameraTarget _x;
-            player sideChat "TRACKING LASER SPOT";
-        };
-    }forEach _lasers;
+if(!isNil{_spot select 0}) then {
+    _source = _spot select 1;
+    _plane setPilotCameraTarget (laserTarget _source);
+    _plane setVariable ["tgp_lsst_mode", "LST"];
 };
