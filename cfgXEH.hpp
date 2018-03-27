@@ -19,4 +19,9 @@ class Extended_FiredBIS_Eventhandlers {
             firedBIS = "_this call itc_air_ammo_fnc_fired_SAM_prox_fuze";
         };		
 	};	
+	class StaticWeapon {
+        class ITC_AIR_SAMPROXFUZE_firedEH {
+            firedBIS = "_this call itc_air_ammo_fnc_fired_SAM_prox_fuze";
+        };				
+	};
 };
