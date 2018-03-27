@@ -90,4 +90,16 @@ class cfgMagazines {
         ammo = "B_25mm";
         initSpeed = 1100;
     };
+
+    class 1000Rnd_Gatling_30mm_Plane_CAS_01_F;
+    class itc_1000rnd_30mm_ap : 1000Rnd_Gatling_30mm_Plane_CAS_01_F {
+      ammo = "itc_30mm_ap";
+      displayName = "30mm API";
+      displayNameShort = "30mm API";
+    };
+    class itc_1000rnd_30mm_mix : 1000Rnd_Gatling_30mm_Plane_CAS_01_F {
+      ammo = "itc_30mm_mix";
+      displayName = "30mm 4:1 Mix";
+      displayNameShort = "30mm  4:1 Mix";
+    };
 };

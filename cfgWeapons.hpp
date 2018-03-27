@@ -107,4 +107,19 @@ class CfgWeapons {
             reloadTime = 0.06;
         };
     };
+
+    class Gatling_30mm_Plane_CAS_01_F : CannonCore {
+      class LowROF;
+    };
+    class itc_weap_gau8 : Gatling_30mm_Plane_CAS_01_F {
+      magazines[] = {
+        "1000Rnd_Gatling_30mm_Plane_CAS_01_F",
+        "itc_1000rnd_30mm_ap",
+        "itc_1000rnd_30mm_mix"
+      };
+      class LowROF : LowROF {
+        burst = 1;
+        reloadtime = 0.015;
+      };
+    };
 };

@@ -50,4 +50,19 @@ class cfgAmmo {
         ITC_firedEvent = "itc_air_ammo_fnc_fired_wp";
         explosionEffects = "TB_MK13SmokeEffects";
     };
+
+    class B_30mm_APFSDS_Tracer_Red;
+    class itc_30mm_ap : B_30mm_APFSDS_Tracer_Red {
+      airFriction = -0.00036;
+      model = "\A3\Weapons_f\Data\bullettracer\tracer_red";
+    };
+
+    class SubmunitionBase;
+    class itc_30mm_mix : SubmunitionBase {
+      simulation = "shotSubmunitions";
+      submunitionAmmo[] = {"itc_30mm_ap",0.8,"Gatling_30mm_HE_Plane_CAS_01_F",0.2};
+      weaponType = "cannon";
+      model = "\A3\Weapons_f\empty";
+	    triggerTime = 0.01;
+    };
 };
