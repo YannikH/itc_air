@@ -107,4 +107,13 @@ class CfgWeapons {
             reloadTime = 0.06;
         };
     };
+
+    class autocannon_35mm : CannonCore {
+      class manual;
+    };
+    class itc_weap_2a38m : autocannon_35mm {
+      class manual : manual {
+        reloadTime = 0.01363636365;
+      };
+    };
 };

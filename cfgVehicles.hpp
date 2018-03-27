@@ -691,4 +691,21 @@ class cfgVehicles {
     class B_Heli_Transport_01_F: Heli_Transport_01_base_F {
       class itc_air : itc_air_default_heli_uh {};
     };
+
+    class APC_Tracked_01_base_F;
+    class B_APC_Tracked_01_base_F : APC_Tracked_01_base_F {
+      class Turrets;
+    };;
+    class B_APC_Tracked_01_AA_F : B_APC_Tracked_01_base_F {
+      class Turrets : Turrets {
+        class MainTurret;
+      };
+    };
+    class ITC_Spaag : B_APC_Tracked_01_AA_F {
+      class Turrets : Turrets {
+        class MainTurret : MainTurret {
+          weapons[] = {"itc_weap_2a38m","missiles_titan"};
+        };
+      };
+    };
 };
