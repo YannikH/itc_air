@@ -1,4 +1,12 @@
 class cfgAmmo {
+
+    class Bo_GBU12_LGB;
+    class ITC_ammo_gbu12 : Bo_GBU12_LGB {
+      ITC_firedEvent = "itc_air_ammo_fnc_paveway";
+      indirectHitRange = 4;
+      indirectHit = 600;
+      ace_frag_charge = 15000;
+    };
     class Bo_Mk82;
     class ITC_ammo_gbu38 : Bo_Mk82 {
         displayName = "GBU-38";
@@ -49,6 +57,10 @@ class cfgAmmo {
         explosive = 0.1;
         ITC_firedEvent = "itc_air_ammo_fnc_fired_wp";
         explosionEffects = "TB_MK13SmokeEffects";
+    };
+    class ITC_ammo_apkws_m151 : Rocket_04_HE_F {
+        displayName = "APKWS M151";
+        ITC_firedEvent = "itc_air_ammo_fnc_apkws";
     };
 
     class B_30mm_APFSDS_Tracer_Red;

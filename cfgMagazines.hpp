@@ -64,9 +64,10 @@ class cfgMagazines {
 
     hp_rocket("M151 Hydra HE","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F)
     hp_rocket("M156 Hydra WP","Rocket_04_HE_Plane_CAS_01_F",itc_ammo_Hydra_M156)
+    hp_rocket("M151 APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151)
 
     hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82)
-    hp_ser_der_ter("GBU-12","Bomb_04_Plane_CAS_01_F",Bo_GBU12_LGB)
+    hp_ser_der_ter("GBU-12","ITC_weap_gbu12",ITC_ammo_gbu12)
     hp_ser_der_ter("BL-778","BombCluster_03_F",BombCluster_03_Ammo_F)
     hp_ser_der_ter("CBU-100","BombCluster_01_F",BombCluster_01_Ammo_F)
 

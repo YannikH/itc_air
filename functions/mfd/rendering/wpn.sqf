@@ -25,4 +25,8 @@ if((currentWeapon _plane) isKindOf ["itc_weap_gbu38", configFile >> "CfgWeapons"
     _output set [5, str (_plane getVariable "laser_code_recv")];
     _output set [11, str _seekers];
 };
+
+if((currentWeapon _plane) isKindOf ["itc_weap_gbu12", configFile >> "CfgWeapons"] || (currentWeapon _plane) isKindOf ["ITC_weap_apkws", configFile >> "CfgWeapons"]) then {
+    _output set [5, str (_plane getVariable "paveway_laser_code")];
+};
 _output

@@ -32,7 +32,6 @@ _dropTime = time;
         };
     };
 
-    if(isNil{_targetCoordinates}) exitWith {};
     _position = getPosASL _projectile;
     (_this select 0) set [2, _position];
     (_projectile call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];

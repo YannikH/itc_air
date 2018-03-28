@@ -42,6 +42,9 @@ class CfgFunctions
             class set_var {
                 file = "itc_air\functions\common\setVarGlobal.sqf";
             };
+            class is_laser_code {
+                file = "itc_air\functions\common\isLaserCode.sqf";
+            };
         };
     };
     class itc_air_datalink {
@@ -108,6 +111,12 @@ class CfgFunctions
             };
             class fired_prox_fuze {
                 file = "itc_air\functions\ammo\proxFuze.sqf";
+            };
+            class paveway {
+                file = "itc_air\functions\ammo\paveway.sqf";
+            };
+            class apkws {
+                file = "itc_air\functions\ammo\apkws.sqf";
             };
         };
     };

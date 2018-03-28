@@ -49,7 +49,7 @@ _vehicle setVariable ["mfd_l", _capableMFD_L];
 _vehicle setVariable ["mfd_r", _capableMFD_R];
 _vehicle setVariable ["seat", _seat];
 
-_vehicle setVariable ["laser_code_xmit", 1111];
+_vehicle setVariable ["ace_laser_code", 1111];
 _vehicle setVariable ["laser_code_recv", 1111];
 
 [_vehicle, "laser_ir", false] call itc_air_common_fnc_set_var;
@@ -64,6 +64,13 @@ _vehicle setVariable ["tgp_lsst_mode", "LSS OFF"];
 
 _vehicle setVariable ["stpt_name", "NO WP"];
 _vehicle setVariable ["stpt_pos", [0,0,0]];
+
+if(isNil{_vehicle getVariable "paveway_laser_code"}) then {
+  _vehicle setVariable ["paveway_laser_code", 1111];
+};
+if(isNil{_vehicle getVariable "apkws_laser_code"}) then {
+  _vehicle setVariable ["apkws_laser_code", 1111];
+};
 
 _vehicle setVariable ["SOI", "HMCS"];
 [_vehicle, "SADL_GRP", 1] call itc_air_common_fnc_set_var;

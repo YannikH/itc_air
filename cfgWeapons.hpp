@@ -34,8 +34,11 @@ class CfgWeapons {
     */
 
     class RocketPods;
-    class Rocket_04_HE_Plane_CAS_01_F : RocketPods{
+    class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
         magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
+    };
+    class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
+        magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
     };
     class itc_weap_ffarlauncher_smoke : Rocket_04_HE_Plane_CAS_01_F {
         displayName = "Hydra (M156 WP)";
@@ -57,7 +60,7 @@ class CfgWeapons {
                 itc_hp_bru55_lau117_##AMMO \
             }; \
         };
-
+    class Bomb_04_Plane_CAS_01_F;
     #define magazines_hp_ser_der_ter(WEAP, PARENT, AMMO) \
         class WEAP : PARENT { \
             magazines[] += { \
@@ -67,7 +70,6 @@ class CfgWeapons {
             }; \
         };
     magazines_hp_ser_der_ter(Mk82BombLauncher,RocketPods,Bo_Mk82)
-    magazines_hp_ser_der_ter(Bomb_04_Plane_CAS_01_F,RocketPods,Bo_GBU12_LGB)
     magazines_hp_ser_der_ter(BombCluster_01_F,Bomb_04_Plane_CAS_01_F,BombCluster_01_Ammo_F)
     magazines_hp_ser_der_ter(BombCluster_03_F,BombCluster_01_F,BombCluster_03_Ammo_F)
 
@@ -89,6 +91,15 @@ class CfgWeapons {
         };
         reloadTime = 0.0;
         autoFire=false;
+    };
+
+    class ITC_weap_gbu12 : Bomb_04_Plane_CAS_01_F {
+      magazines[] = {
+          "itc_hp_dumb_ITC_ammo_gbu12",
+          "itc_hp_bru33_ITC_ammo_gbu12",
+          "itc_hp_bru42_ITC_ammo_gbu12"
+      };
+      canLock = 0;
     };
 
     class itc_weap_mk82_airburst : Mk82BombLauncher {

@@ -13,10 +13,10 @@ switch (_btn) do {
       _plane setVariable ["tgp_mode", _index];
     };
     case "R1": {
-        [_namespace,(vehicle player), "laser_code_xmit", "OWN LASER CODE", [true, {(_this > 1110 && _this < 1688)}], false] call itc_air_mfd_fnc_input_start;
+        [_namespace,(vehicle player), "ace_laser_code", "OWN LASER CODE", [true, {[_this] call itc_air_common_fnc_is_laser_code}], false] call itc_air_mfd_fnc_input_start;
     };
     case "R2": {
-        [_namespace,(vehicle player), "laser_code_recv", "RECV LASER CODE", [true, {(_this > 1110 && _this < 1688)}], false] call itc_air_mfd_fnc_input_start;
+        [_namespace,(vehicle player), "laser_code_recv", "RECV LASER CODE", [true, {[_this] call itc_air_common_fnc_is_laser_code}], false] call itc_air_mfd_fnc_input_start;
     };
     case "R3": {
       _plane = (vehicle player);

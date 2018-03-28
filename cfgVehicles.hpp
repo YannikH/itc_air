@@ -84,7 +84,16 @@ class cfgVehicles {
       };
     };
 
-    class Plane;
+    class Allvehicles;
+    class Air : Allvehicles {
+      class ACE_Actions;
+    };
+    class Plane : Air {
+      class ACE_Actions : ACE_Actions {
+        class ACE_MainActions;
+      };
+      class ACE_SelfActions;
+    };
     class Plane_Base_F: Plane {
       class Components;
       class ACE_SelfActions {
@@ -111,22 +120,46 @@ class cfgVehicles {
             statement = "[""HMCS""] call itc_air_mfd_fnc_soi_set";
           };
         };
-        /*
-        class ITC_FUEL_LOCK_ON {
-          displayName = "Disable fuel";
-          condition = "!isNil{(vehicle player) getVariable ""fuel_lock""} && !((vehicle player) getVariable ""fuel_locked"") && speed (vehicle player) == 0";
-          statement = "(vehicle player) setVariable [""fuel_lock"", true, true];(vehicle player) setVariable [""fuel_count"", fuel (vehicle player), true];(vehicle player) setFuel 0;";
-          distance = 2;
-          priority = 2.6;
+      };
+      class ACE_Actions : ACE_Actions {
+        class ACE_MainActions : ACE_MainActions {
+          class ITC_paveway_code {
+            displayName = Set paveways seeker code;
+            #define action_setCode(NUM) \
+            class setCode_##NUM { \
+              displayName = #NUM; \
+              condition = "(""ITC_weap_gbu12"" in weapons _target)"; \
+              statement = [_target, "paveway_laser_code", NUM] call itc_air_common_fnc_set_var; \
+              distance = 2; \
+            };
+            action_setCode(1111);
+            action_setCode(1112);
+            action_setCode(1113);
+            action_setCode(1114);
+            action_setCode(1115);
+            action_setCode(1116);
+            action_setCode(1117);
+            action_setCode(1118);
+          };
+          class ITC_apkws_code {
+            displayName = Set apkws seeker code;
+            #define action_setApkwsCode(NUM) \
+            class setCode_##NUM { \
+              displayName = #NUM; \
+              condition = "(""ITC_weap_apkws"" in weapons _target)"; \
+              statement = [_target, "apkws_laser_code", NUM] call itc_air_common_fnc_set_var; \
+              distance = 2; \
+            };
+            action_setApkwsCode(1111);
+            action_setApkwsCode(1112);
+            action_setApkwsCode(1113);
+            action_setApkwsCode(1114);
+            action_setApkwsCode(1115);
+            action_setApkwsCode(1116);
+            action_setApkwsCode(1117);
+            action_setApkwsCode(1118);
+          };
         };
-        class ITC_FUEL_LOCK_OFF {
-          displayName = "Enable fuel";
-          condition = "!isNil{(vehicle player) getVariable ""fuel_lock""} && ((vehicle player) getVariable ""fuel_locked"") && speed (vehicle player) == 0";
-          statement = "(vehicle player) setVariable [""fuel_lock"", false, true];(vehicle player) setFuel ((vehicle player) getVariable ""fuel_count"");(vehicle player) setVariable [""fuel_count"", 0, true];";
-          distance = 2;
-          priority = 2.6;
-        };
-        */
       };
     };
     class Plane_Fighter_04_Base_F : Plane_Base_F {
@@ -210,8 +243,8 @@ class cfgVehicles {
                         attachment[] = {
                             "PylonRack_Missile_AMRAAM_C_x1",
                             "PylonRack_Missile_AMRAAM_C_x1",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
                             "itc_hp_bru55_lau117_Missile_AGM_02_F",
                             "itc_hp_bru55_lau117_Missile_AGM_02_F"
                         };
@@ -266,7 +299,7 @@ class cfgVehicles {
                         UIposition[] = {0.15,0.35};
                     };
                     class pylon5 {
-                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
+                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
                         hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 1200;
                         priority = 3;
@@ -336,7 +369,7 @@ class cfgVehicles {
                         UIposition[] = {0.345,0.13};
                     };
                     class Pylons3 : Pylons1 {
-                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
+                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
                         hardpoints[] = {"itc_hp_lau88_hellfire","B_A143_BUZZARD_CENTER_PYLON","B_BIM9X_RAIL","itc_hp_dumb","itc_hp_dumb_rocket","itc_hp_lau117"};
                         maxweight = 500;
                         priority = 3;
@@ -557,6 +590,8 @@ class cfgVehicles {
         crew = "B_pilot_F";
         displayName="A-10E";
         incomingMissileDetectionSystem = 16;
+        weapons[] = {"itc_weap_gau8","Laserdesignator_pilotCamera","CMFlareLauncher"};
+        magazines[] = {"itc_1000rnd_30mm_mix","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine"};
         class pilotCamera : litening{};
         class Components : Components
         {
@@ -602,7 +637,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.2};
                         bay = -1;
-                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
+                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
                     };
                     class pylon5
                     {
@@ -611,7 +646,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.25};
                         bay = -1;
-                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
+                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
                     };
                     class pylon6 : pylon5
                     {
@@ -619,7 +654,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.3};
                         bay = -1;
-                        attachment = "itc_hp_dumb_Bo_GBU12_LGB";
+                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
                         mirroredMissilePos = 5;
                     };
                     class pylon7: pylon4
@@ -652,10 +687,10 @@ class cfgVehicles {
                             "",
                             "itc_hp_dumb_rocket_Rocket_04_HE_F",
                             "itc_hp_bru55_lau117_Missile_AGM_02_F",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
                             "itc_hp_bru55_lau117_Missile_AGM_02_F",
                             "itc_hp_dumb_rocket_Rocket_04_HE_F",
                             ""};
@@ -667,10 +702,10 @@ class cfgVehicles {
                             "",
                             "itc_hp_dumb_rocket_Rocket_04_HE_F",
                             "itc_hp_bru55_lau117_Missile_AGM_02_F",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
                             "itc_hp_smart_ITC_ammo_gbu38",
                             "itc_hp_smart_ITC_ammo_gbu38",
-                            "itc_hp_dumb_Bo_GBU12_LGB",
+                            "itc_hp_dumb_ITC_ammo_gbu12",
                             "itc_hp_bru55_lau117_Missile_AGM_02_F",
                             "itc_hp_dumb_rocket_Rocket_04_HE_F",
                             ""};
