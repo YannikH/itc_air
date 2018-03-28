@@ -23,13 +23,13 @@ _laserCode = (vehicle player) getVariable "apkws_laser_code";
         _angleToHoriz = if(_angleToHoriz > 180) then [{_angleToHoriz - 360},{_angleToHoriz}];
 
         if((_projectile getDir _targetCoordinates) > getDir _projectile) then {
-            _projectile setDir (getDir _projectile + 0.8);
+            _projectile setDir (getDir _projectile + 0.5);
         } else {
-            _projectile setDir (getDir _projectile - 0.8);
+            _projectile setDir (getDir _projectile - 0.5);
         };
 
         _diff = abs(_pitch - (_angleTo * -1));
-        _turnRate = 5;
+        _turnRate = 10;
         if(_pitch > (_angleTo * -1)) then {
             [_projectile, _pitch - (_diff / _turnRate), 0] call BIS_fnc_setPitchBank;
         } else {

@@ -36,9 +36,13 @@ class CfgWeapons {
     class RocketPods;
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
         magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
+        class Burst;
     };
     class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
         magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
+        class Burst : Burst {
+          salvo = 1;
+        }
     };
     class itc_weap_ffarlauncher_smoke : Rocket_04_HE_Plane_CAS_01_F {
         displayName = "Hydra (M156 WP)";

@@ -66,6 +66,7 @@ class cfgAmmo {
     class B_30mm_APFSDS_Tracer_Red;
     class itc_30mm_ap : B_30mm_APFSDS_Tracer_Red {
       airFriction = -0.00036;
+      hit = 60;
       model = "\A3\Weapons_f\Data\bullettracer\tracer_red";
     };
 
