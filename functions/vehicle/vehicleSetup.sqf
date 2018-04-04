@@ -86,7 +86,11 @@ _vehicle setVariable ["SOI", "HMCS"];
 
     //config plane data
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;
-    [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
+    if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir" || ITC_AIR_BROADCASTING) then {
+      [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
+    } else {
+      _plane setVariable ["tgp_dir", _dir];
+    };
     _curFov = call cba_fnc_getFov select 0;
     if(cameraView == "GUNNER" && (_curFov != _plane getVariable "tgp_fov")) then {
         _plane setVariable ["tgp_fov",_curFov];
