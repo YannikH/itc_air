@@ -641,7 +641,7 @@ class cfgVehicles {
                     };
                     class pylon5
                     {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart", "itc_hp_bru42"};
+                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart"};
                         priority = 1;
                         maxweight = 1200;
                         UIposition[] = {0.33,0.25};
@@ -714,7 +714,10 @@ class cfgVehicles {
                 };
             };
         };
-        class itc_air : itc_air_default_jet {};
+        acceleration = 350;
+        class itc_air : itc_air_default_jet {
+          mass = 12311;
+        };
     };
 
     class Heli_Attack_01_base_F;

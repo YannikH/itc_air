@@ -1,82 +1,89 @@
 class cfgMagazines {
+    class CA_Magazine;
+    class VehicleMagazine : CA_Magazine {
+      dragCoef = 0;
+    };
+
     class PylonMissile_1Rnd_Mk82_F;
     class PylonRack_2Rnd_BombCluster_03_F;
     class PylonRack_Missile_AGM_02_x2;
     class PylonRack_1Rnd_Missile_AGM_02_F;
     class PylonRack_7Rnd_Rocket_04_HE_F;
     class PylonRack_3Rnd_LG_scalpel;
-    #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT) \
+    #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT,TOTALMASS,DRAG) \
         class HP##_##AMMO : PARENT { \
             ammo = STRINGIFY(AMMO); \
             displayName = COUNT NAME; \
             displayNameShort = NAME; \
             pylonWeapon = WEAP; \
+            mass = TOTALMASS; \
             hardpoints[] = {STRINGIFY(HP)}; \
+            dragCoef = DRAG; \
         };
 
     //SINGLE HP DUMB
-    #define hp_single(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_dumb,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO,1x)
+    #define hp_single(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_dumb,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO,1x,__EVAL(WT*1),0)
 
-    #define hp_rocket(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_dumb_rocket,PylonRack_7Rnd_Rocket_04_HE_F,NAME,WEAP,AMMO,7x)
+    #define hp_rocket(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_dumb_rocket,PylonRack_7Rnd_Rocket_04_HE_F,NAME,WEAP,AMMO,7x,__EVAL(WT*7),0.79)
 
     //SINGLE HP SMART
-    #define hp_single_smart(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_smart,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO,1x)
+    #define hp_single_smart(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_smart,PylonMissile_1Rnd_Mk82_F,NAME,WEAP,AMMO,1x,__EVAL(WT*1),0)
 
     //SINGLE HP LAU117
-    #define hp_single_lau117(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_lau117,PylonRack_1Rnd_Missile_AGM_02_F,NAME,WEAP,AMMO,1x)
+    #define hp_single_lau117(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_lau117,PylonRack_1Rnd_Missile_AGM_02_F,NAME,WEAP,AMMO,1x,__EVAL(WT*1),0.2)
 
     //DUAL HP DUMB
-    #define hp_double(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,2x)
+    #define hp_double(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_bru33,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,2x,__EVAL(WT*2),0.6)
 
     //DUAL HP DUMB
-    #define hp_double_smart(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru55,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,2x)
+    #define hp_double_smart(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_bru55,PylonRack_2Rnd_BombCluster_03_F,NAME,WEAP,AMMO,2x,__EVAL(WT*2),0.6)
 
     //DUAL HP LAU117
-    #define hp_double_lau117(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru55_lau117,PylonRack_Missile_AGM_02_x2,NAME,WEAP,AMMO,2x)
+    #define hp_double_lau117(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_bru55_lau117,PylonRack_Missile_AGM_02_x2,NAME,WEAP,AMMO,2x,__EVAL(WT*2),0.8)
 
     //TRIPLE HP DUMB
-    #define hp_triple(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_bru42,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x)
+    #define hp_triple(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_bru42,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x,__EVAL(WT*3),0.74)
 
     //TRIPLE HP HELLFIRE
-    #define hp_triple_hellfire(NAME,WEAP,AMMO) \
-        hardPointMagazine(itc_hp_lau88_hellfire,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x)
+    #define hp_triple_hellfire(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_lau88_hellfire,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x,__EVAL(WT*3),0.5)
 
-    #define hp_ser_der_ter(NAME,WEAP,AMMO) \
-        hp_single(NAME,WEAP,AMMO) \
-        hp_double(NAME,WEAP,AMMO) \
-        hp_triple(NAME,WEAP,AMMO)
+    #define hp_ser_der_ter(NAME,WEAP,AMMO,WT) \
+        hp_single(NAME,WEAP,AMMO,WT) \
+        hp_double(NAME,WEAP,AMMO,WT) \
+        hp_triple(NAME,WEAP,AMMO,WT)
 
-    #define hp_ser_der_lau117(NAME,WEAP,AMMO) \
-        hp_single_lau117(NAME,WEAP,AMMO) \
-        hp_double_lau117(NAME,WEAP,AMMO)
+    #define hp_ser_der_lau117(NAME,WEAP,AMMO,WT) \
+        hp_single_lau117(NAME,WEAP,AMMO,WT) \
+        hp_double_lau117(NAME,WEAP,AMMO,WT)
 
-    #define hp_ser_der_smart(NAME,WEAP,AMMO) \
-        hp_single_smart(NAME,WEAP,AMMO) \
-        hp_double_smart(NAME,WEAP,AMMO)
+    #define hp_ser_der_smart(NAME,WEAP,AMMO,WT) \
+        hp_single_smart(NAME,WEAP,AMMO,WT) \
+        hp_double_smart(NAME,WEAP,AMMO,WT)
 
-    hp_rocket("M151 Hydra HE","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F)
-    hp_rocket("M156 Hydra WP","Rocket_04_HE_Plane_CAS_01_F",itc_ammo_Hydra_M156)
-    hp_rocket("M151 APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151)
+    hp_rocket("M151 Hydra HE","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F,6)
+    hp_rocket("M156 Hydra WP","Rocket_04_HE_Plane_CAS_01_F",itc_ammo_Hydra_M156,6)
+    hp_rocket("M151 APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
 
-    hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82)
-    hp_ser_der_ter("GBU-12","ITC_weap_gbu12",ITC_ammo_gbu12)
-    hp_ser_der_ter("BL-778","BombCluster_03_F",BombCluster_03_Ammo_F)
-    hp_ser_der_ter("CBU-100","BombCluster_01_F",BombCluster_01_Ammo_F)
+    hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82,227)
+    hp_ser_der_ter("GBU-12","ITC_weap_gbu12",ITC_ammo_gbu12,227)
+    hp_ser_der_ter("BL-778","BombCluster_03_F",BombCluster_03_Ammo_F,227)
+    hp_ser_der_ter("CBU-100","BombCluster_01_F",BombCluster_01_Ammo_F,227)
 
-    hp_ser_der_smart("GBU-38(v)1/B","itc_weap_gbu38",ITC_ammo_gbu38)
-    hp_ser_der_smart("GBU-38(v)4/B","itc_weap_gbu38",ITC_ammo_gbu38v3b)
-    hp_ser_der_smart("GBU-54","itc_weap_gbu54",ITC_ammo_gbu54)
-    hp_ser_der_smart("GBU-54 LDCB","itc_weap_gbu54",ITC_ammo_gbu54_lcdb)
+    hp_ser_der_smart("GBU-38(v)1/B","itc_weap_gbu38",ITC_ammo_gbu38,227)
+    hp_ser_der_smart("GBU-38(v)4/B","itc_weap_gbu38",ITC_ammo_gbu38v3b,227)
+    hp_ser_der_smart("GBU-54","itc_weap_gbu54",ITC_ammo_gbu54,227)
+    hp_ser_der_smart("GBU-54 LDCB","itc_weap_gbu54",ITC_ammo_gbu54_lcdb,227)
 
-    hp_ser_der_lau117("AGM-65G","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F)
+    hp_ser_der_lau117("AGM-65G","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F,50)
 
     class 6Rnd_ACE_Hellfire_AGM114K;
     class PylonRack_3Rnd_ACE_Hellfire_AGM114K : 6Rnd_ACE_Hellfire_AGM114K {

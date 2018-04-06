@@ -6,8 +6,16 @@ class cfgAmmo {
       indirectHitRange = 4;
       indirectHit = 600;
       ace_frag_charge = 15000;
+      dragCoef = 0.51;
     };
-    class Bo_Mk82;
+    class BombCore;
+    class Bo_Mk82 : BombCore {
+      dragCoef = 0.14;
+    };
+    class MissileCore;
+    class MissileBase : MissileCore {
+      dragCoef = 0.4;
+    };
     class ITC_ammo_gbu38 : Bo_Mk82 {
         displayName = "GBU-38";
         ITC_firedEvent = "itc_air_jdam_fnc_fired";
@@ -49,7 +57,9 @@ class cfgAmmo {
         indirectHit = 800;
         ace_frag_metal = 140000;
     };
-    class Rocket_04_HE_F;
+    class Rocket_04_HE_F : MissileBase {
+      dragCoef = -0.07;
+    };
     class itc_ammo_Hydra_M156 : Rocket_04_HE_F {
         displayName = "M156 WP";
         indirectHit = 1;
@@ -61,6 +71,10 @@ class cfgAmmo {
     class ITC_ammo_apkws_m151 : Rocket_04_HE_F {
         displayName = "APKWS M151";
         ITC_firedEvent = "itc_air_ammo_fnc_apkws";
+    };
+
+    class Missile_AGM_02_F : MissileBase {
+      dragCoef = 0.82;
     };
 
     class B_30mm_APFSDS_Tracer_Red;

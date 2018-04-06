@@ -38,7 +38,12 @@ if(_capableMFD_R) then {
 _capableRover = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "rover" >> "capable");
 _roverFreq = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "rover" >> "frequency_default");
 _seat = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
+_mass = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mass");
 _fovSteps = [_vehicle] call itc_air_common_fnc_get_fov_steps;
+
+if(_mass != -1) then {
+  _vehicle setMass _mass;
+};
 
 _vehicle setVariable ["fuel_lock", false];
 _vehicle setVariable ["hmd", (_capableHMD == 1)];
@@ -91,7 +96,9 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     //get basic info used for the HMD/TGP
-    _this select 0 params ["_plane"];
+    _this select 0 params ["_plane", "_lastFrame"];
+    if(time == _lastFrame) exitWith {};
+    _this select 0 set [1, time];
 
     //config plane data
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;
@@ -125,8 +132,10 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
       _track = typeOf (getPilotCameraTarget (vehicle player) select 2);
       if(_track == "LaserTargetW" && _track == "LaserTargetE") then {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
     };
-
-}, 0, [_vehicle]] call CBA_fnc_addPerFrameHandler;
+    if(ITC_AIR_FORCES && !isNil{_plane getVariable "mass"}) then {
+      [_plane] call itc_air_vehicle_fnc_apply_forces;
+    };
+}, 0, [_vehicle, 0]] call CBA_fnc_addPerFrameHandler;
 
 // SLOW UPDATE STUFF
 [{
@@ -151,4 +160,8 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
         _plane setVariable ["stpt_tof", _tofStr];
     };
 
+    if(ITC_AIR_FORCES) then {
+      _plane setVariable  ["mass",[_plane] call itc_air_ammo_fnc_calculate_mass];
+      _plane setVariable  ["drag",[_plane] call itc_air_ammo_fnc_calculate_drag];
+    };
 }, 1, [_vehicle, 1]] call CBA_fnc_addPerFrameHandler;

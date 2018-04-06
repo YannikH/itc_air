@@ -124,6 +124,12 @@ class CfgFunctions
             class apkws {
                 file = "itc_air\functions\ammo\apkws.sqf";
             };
+            class calculate_drag {
+                file = "itc_air\functions\ammo\calculateDrag.sqf";
+            };
+            class calculate_mass {
+                file = "itc_air\functions\ammo\calculateMass.sqf";
+            };
         };
     };
     class itc_air_jdam {
@@ -223,6 +229,9 @@ class CfgFunctions
         };
         class setup {
             file = "itc_air\functions\vehicle\vehicleSetup.sqf";
+        };
+        class apply_forces {
+            file = "itc_air\functions\vehicle\applyForces.sqf";
         };
       };
     };
