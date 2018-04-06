@@ -12,10 +12,10 @@ switch (_btn) do {
       [_plane, "SADL_SPI", !(_plane getVariable "SADL_SPI")] call itc_air_common_fnc_set_var;
     };
     case "R2": {
-        [_namespace,(vehicle player), "SADL_GRP", "SADL GROUP", [true, {(_this > 0 && _this < 100)}], true] call itc_air_mfd_fnc_input_start;
+        [_namespace,(vehicle player), "SADL_GRP", "SADL GROUP", [false, {((parseNumber _this) > 0 && (parseNumber _this) < 100)}], true] call itc_air_mfd_fnc_input_start;
     };
     case "R3": {
-        [_namespace,(vehicle player), "SADL_ID", "SADL OWN ID", [true, {(_this > 0 && _this < 100)}], true] call itc_air_mfd_fnc_input_start;
+        [_namespace,(vehicle player), "SADL_ID", "SADL OWN ID", [false, {((parseNumber _this) > 0 && (parseNumber _this) < 100)}], true] call itc_air_mfd_fnc_input_start;
     };
     case "B1": {[] call itc_air_mfd_fnc_swap;};
     case "B2": {_namespace setVariable["page","tad"];};

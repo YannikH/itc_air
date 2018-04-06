@@ -78,10 +78,12 @@ if(isNil{_vehicle getVariable "apkws_laser_code"}) then {
 };
 
 _vehicle setVariable ["SOI", "HMCS"];
-[_vehicle, "SADL_GRP", 1] call itc_air_common_fnc_set_var;
-[_vehicle, "SADL_ID", 1] call itc_air_common_fnc_set_var;
+[_vehicle, "SADL_GRP", "01"] call itc_air_common_fnc_set_var;
+[_vehicle, "SADL_ID", "01"] call itc_air_common_fnc_set_var;
 [_vehicle, "SADL_SPI", false] call itc_air_common_fnc_set_var;
-_vehicle setVariable ["SADL_MSGS", [["20-01",["WELCOME","TO","THE","WORLD","OF","SADL","TEXTING","OMG GURLS", "CAS JUST WENT", "MILLENIAL"]]]];
+if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
+  _vehicle setVariable ["SADL_MSGS", [["20-01",["WELCOME","TO","THE","WORLD","OF","SADL","TEXTING","OMG GURLS", "CAS JUST WENT", "MILLENIAL"], "00-00"]]];
+};
 
 // DRAW STUFF
 [{

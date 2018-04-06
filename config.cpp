@@ -56,6 +56,12 @@ class CfgFunctions
                 preInit = 1;
                 file = "itc_air\functions\datalink\init.sqf";
             };
+            class text_send {
+                file = "itc_air\functions\datalink\sendText.sqf";
+            };
+            class text_recv {
+                file = "itc_air\functions\datalink\recvText.sqf";
+            };
         };
     };
     class itc_air_rover {

@@ -7,7 +7,7 @@ _background = _display getVariable "background";
 
 if(!_composing) then {
   _index = _display getVariable "msg_index";
-  _index = _index max (count (_plane getVariable "SADL_MSGS") - 1) min 0;
+  _index = _index min (count (_plane getVariable "SADL_MSGS") - 1) max 0;
   _msg = (_plane getVariable "SADL_MSGS") select _index;
   if(!isNil{_msg}) then {
     _msgTxt = _msg select 1;
@@ -16,7 +16,7 @@ if(!_composing) then {
       _msgString = _msgString + format["                %1<br/>", _msgTxt select _i];
     };
     _output set [0, format["%1/%2", _index + 1, count(_plane getVariable "SADL_MSGS")]];
-    _output set [3, _msg select 0];
+    _output set [3, _msg select 2];
     _background ctrlSetStructuredText parseText _msgString;
   };
 } else {
