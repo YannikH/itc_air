@@ -35,6 +35,15 @@ _display setVariable ["feed_texture", _feed];
 _display setVariable ["feed_camera", nil];
 _display setVariable ["feed_cross", (_display displayCtrl (1207))];
 
+_display setVariable ["stat_scroll", 0];
+_display setVariable ["stpt_scroll", 0];
+
+_display setVariable ["msg_composing", false];
+_display setVariable ["msg_index", 0];
+_display setVariable ["msg_cur", ["","","","","","","","", "", ""]];
+_display setVariable ["msg_ln", ""];
+_display setVariable ["msg_to", "00-01"];
+
 _display setVariable ["background", (_display displayCtrl (1201))];
 _display setVariable ["soi_square", (_display displayCtrl (1208))];
 
@@ -55,6 +64,7 @@ _display setVariable ["soi_square", (_display displayCtrl (1208))];
     (_display getVariable "tad_map") ctrlSetFade 1;
     (_display getVariable "tad_map") ctrlCommit 0;
     (_display getVariable "background") ctrlSetFade 0;
+    (_display getVariable "background") ctrlSetStructuredText parseText "";
     (_display getVariable "background") ctrlCommit 0;
 
     _illumination = ([] call ace_common_fnc_ambientBrightness);
@@ -71,6 +81,10 @@ _display setVariable ["soi_square", (_display displayCtrl (1208))];
         case "lst": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_lst};
         case "com": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_com};
         case "tgp": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_tgp};
+        case "fcr": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_fcr};
+        case "msg": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_msg};
+        case "stat": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_stat};
+        case "stpt": {_MFD_TEXT = [_display] call itc_air_mfd_fnc_stpt};
     };
     _MFD_TEXT = _MFD_TEXT +( _display getVariable "quick");
     for "_i" from 0 to 17 step 1 do {

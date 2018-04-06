@@ -37,8 +37,16 @@ _handle = [{
         ITC_AIR_CURVIS = _cameraMode;
         [_cameraMode] call itc_air_rover_fnc_change_camera_mode;
     };
-    _target = _plane getVariable "tgp_dir";
-    ITC_ROVER_LOGIC setPosASL (_target select 1);
+    if(_plane isKindOf "UAV") then {
+      _dir = (_plane selectionPosition "PiP0_pos") vectorFromTo (_plane selectionPosition "PiP0_dir");
+      _pos = (getPos _plane) vectorAdd (_dir vectorMultiply 1000);
+      player sideChat "UAV";
+      //_cam setVectorDirAndUp [ _dir, _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]];
+      ITC_ROVER_LOGIC setPosASL (getPos player);
+    } else {
+      _target = _plane getVariable "tgp_dir";
+      ITC_ROVER_LOGIC setPosASL (_target select 1);
+    };
     _cam camSetTarget ITC_ROVER_LOGIC;
     _cam camCommit 1;
 }, 0, [ITC_ROVER_CAMERA, ITC_ROVER_LOGIC, ITC_ROVER_PLANE]] call CBA_fnc_addPerFrameHandler;

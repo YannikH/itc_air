@@ -610,7 +610,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.35,0};
                         bay = -1;
-                        attachment = "PylonRack_Missile_AMRAAM_D_x1";
+                        attachment = "PylonMissile_Missile_BIM9X_x1";
                     };
                     class pylon2
                     {

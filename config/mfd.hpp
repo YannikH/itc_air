@@ -2,6 +2,7 @@ class RscMapControl;
 class IGUIBack;
 class RscEdit;
 class RscText;
+class RscStructuredText;
 class RscTitles {
     class MFD_DIALOG_L {
         idd = 19991;
@@ -41,7 +42,7 @@ class RscTitles {
 
             showCountourInterval = 0;
         };
-        class MFD_L_BG : IGUIBack
+        class MFD_L_BG : RscStructuredText
         {
             idc = 1201;
             x = 0.0307812 * safezoneW + safezoneX;
@@ -324,7 +325,7 @@ class RscTitles {
             h = 0.308 * safezoneH;
             colorBackground[] = {0,0,0,1};
         };
-        class MFD_R_BG: IGUIBack
+        class MFD_R_BG: RscStructuredText
         {
             idc = 1201;
 

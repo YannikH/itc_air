@@ -21,8 +21,12 @@
   };
 
 class itc_air_mfd {
+  page(stat)};
+  page(fcr)};
   page(wpn)};
   page(sms)};
+  page(stpt)};
+  page(msg)};
   page(tad)
     defsoi(tad)
     defsoi_action(tad)
@@ -36,7 +40,7 @@ class itc_air_mfd {
   };
   class hmcs {
     class hmcs_slew {
-      file = itc_air\functions\mfd\soi_slew\hmcs.sqf;
+      file = "itc_air\functions\mfd\soi_slew\hmcs.sqf";
     };
   };
   class input {

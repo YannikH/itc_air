@@ -16,4 +16,4 @@ _distToWP = _plane distance _wpPos;
 ["<t color='#00ff00' size = '.5'>+</t>",-1,0.485,1,0,0, 794] spawn BIS_fnc_dynamicText;
 
 [_plane, _curWP] call itc_air_ui_fnc_poi_markers;
-[_plane, _curWP] call itc_air_ui_fnc_tof;
+//[_plane, _curWP] call itc_air_ui_fnc_tof;

@@ -21,4 +21,8 @@ switch (toLower _page) do {
     case "lst": {[_namespace,_btn] call itc_air_mfd_fnc_lst_btn;};
     case "com": {[_namespace,_btn] call itc_air_mfd_fnc_com_btn;};
     case "tgp": {[_namespace,_btn] call itc_air_mfd_fnc_tgp_btn;};
+    case "fcr": {[_namespace,_btn] call itc_air_mfd_fnc_fcr_btn;};
+    case "msg": {[_namespace,_btn] call itc_air_mfd_fnc_msg_btn;};
+    case "stat": {[_namespace,_btn] call itc_air_mfd_fnc_stat_btn;};
+    case "stpt": {[_namespace,_btn] call itc_air_mfd_fnc_stpt_btn;};
 };

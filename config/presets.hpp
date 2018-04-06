@@ -1,10 +1,10 @@
 class mfd_heli {
-  pages[] = {"", "", "", "", "", "", "", "", "", "", "", "", ""};
-  shortcuts[] = {"COM","TAD",""};
+  pages[] = {"", "", "", "", "STPT", "", "", "", "", "MSG", "", "", ""};
+  shortcuts[] = {"COM","TAD","STAT"};
   users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
 };
 class mfd_plane {
-  pages[] = {"", "", "", "", "COM", "", "", "", "", "WPN", "", "", ""};
+  pages[] = {"", "MSG", "STPT", "STAT", "COM", "", "", "", "", "WPN", "", "", ""};
   shortcuts[] = {"TAD","TGP","SMS"};
   users = 2; // 0 = pilot, 1 = gunner, 2 = both, 3 = passengers, 4 = all
 };

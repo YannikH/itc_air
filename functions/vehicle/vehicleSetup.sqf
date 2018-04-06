@@ -64,6 +64,11 @@ _vehicle setVariable ["tgp_lsst_mode", "LSS OFF"];
 
 _vehicle setVariable ["stpt_name", "NO WP"];
 _vehicle setVariable ["stpt_pos", [0,0,0]];
+_vehicle setVariable ["stpt_pos_str", ""];
+_vehicle setVariable ["stpt_tof", "N/A"];
+_waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
+
+_vehicle setVariable ["playtime", "N/A"];
 
 if(isNil{_vehicle getVariable "paveway_laser_code"}) then {
   _vehicle setVariable ["paveway_laser_code", 1111];
@@ -76,7 +81,9 @@ _vehicle setVariable ["SOI", "HMCS"];
 [_vehicle, "SADL_GRP", 1] call itc_air_common_fnc_set_var;
 [_vehicle, "SADL_ID", 1] call itc_air_common_fnc_set_var;
 [_vehicle, "SADL_SPI", false] call itc_air_common_fnc_set_var;
+_vehicle setVariable ["SADL_MSGS", [["20-01",["WELCOME","TO","THE","WORLD","OF","SADL","TEXTING","OMG GURLS", "CAS JUST WENT", "MILLENIAL"]]]];
 
+// DRAW STUFF
 [{
     if(!((vehicle player) isKindOf "Air")) exitWith {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
@@ -118,3 +125,28 @@ _vehicle setVariable ["SOI", "HMCS"];
     };
 
 }, 0, [_vehicle]] call CBA_fnc_addPerFrameHandler;
+
+// SLOW UPDATE STUFF
+[{
+    if(!((vehicle player) isKindOf "Air")) exitWith {
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
+    };
+
+    _this select 0 params ["_plane", "_prevFuel"];
+    _fuel = fuel _plane;
+    if(_prevFuel != _fuel) then {
+        _consumption = _prevFuel - _fuel;
+        _consumptionPerMinute = _consumption * 60;
+        _timeLeft = _fuel / _consumptionPerMinute;
+        _plane setVariable ["playtime", round _timeLeft];
+    };
+    (_this select 0) set [1, _fuel];
+
+    if(_plane getVariable "stpt_name" != "NO WP" && (vectorMagnitude (velocity _plane) != 0)) then {
+        _distToWP = (_plane getVariable "stpt_pos") distance _plane;
+        _tof = _distToWP / (0.01 + (vectorMagnitude (velocity _plane)));
+        _tofStr = format["%1:%2",round(_tof / 60), round (_tof % 60)];
+        _plane setVariable ["stpt_tof", _tofStr];
+    };
+
+}, 1, [_vehicle, 1]] call CBA_fnc_addPerFrameHandler;
