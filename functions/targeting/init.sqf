@@ -38,16 +38,6 @@ ITC_AIR_ICONS = [];
     [207, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
-
-[
-    "ITC",
-    "gripen_laser_search",
-    "Laser Spot Search/Track Enable",
-    {[0] call itc_air_tgp_fnc_laser_spot_search_track},
-    "",
-    [211, [false, false, false]]
-] call CBA_fnc_addKeybind;
-
 [
     "ITC",
     "gripen_soi_slew_tgp",

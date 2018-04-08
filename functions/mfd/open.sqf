@@ -44,6 +44,10 @@ _display setVariable ["msg_cur", ["","","","","","","","", "", ""]];
 _display setVariable ["msg_ln", ""];
 _display setVariable ["msg_to", "00-01"];
 
+_display setVariable ["stpt_name", ""];
+_display setVariable ["stpt_pos_str", ""];
+_display setVariable ["stpt_el", -1];
+
 _display setVariable ["background", (_display displayCtrl (1201))];
 _display setVariable ["soi_square", (_display displayCtrl (1208))];
 

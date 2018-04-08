@@ -16,11 +16,12 @@ _vehicle addEventHandler ["fired", {
     _vehicle setVariable ["bomb_flying", _this select 6];
 }];
 
-if(isNIl{missionNameSpace getVariable "SADL"}) then {
+if(isNIl{SADL}) then {
   [missionNameSpace, "SADL", [_vehicle]] call itc_air_common_fnc_set_var;
 } else {
-  _SADL = missionNameSpace getVariable "SADL";
-    [missionNameSpace, "SADL", _SADL + [_vehicle]] call itc_air_common_fnc_set_var;
+  if(!(_vehicle in SADL)) then {
+    [missionNameSpace, "SADL", SADL + [_vehicle]] call itc_air_common_fnc_set_var;
+  };
 };
 
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
@@ -87,16 +88,17 @@ _vehicle setVariable ["SOI", "HMCS"];
 [_vehicle, "SADL_ID", "01"] call itc_air_common_fnc_set_var;
 [_vehicle, "SADL_SPI", false] call itc_air_common_fnc_set_var;
 if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
-  _vehicle setVariable ["SADL_MSGS", [["20-01",["WELCOME","TO","THE","WORLD","OF","SADL","TEXTING","OMG GURLS", "CAS JUST WENT", "MILLENIAL"], "00-00"]]];
+  _vehicle setVariable ["SADL_MSGS", [["00-00",["","","","","","","","", "", ""], "00-00"]]];
 };
 
 // DRAW STUFF
 [{
-    if(!((vehicle player) isKindOf "Air")) exitWith {
+    _this select 0 params ["_plane", "_lastFrame"];
+    if(!((vehicle player) isKindOf "Air") || !alive _plane) exitWith {
+        [missionNameSpace, "SADL", SADL - [_plane]] call itc_air_common_fnc_set_var;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     //get basic info used for the HMD/TGP
-    _this select 0 params ["_plane", "_lastFrame"];
     if(time == _lastFrame) exitWith {};
     _this select 0 set [1, time];
 
@@ -133,17 +135,17 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
       if(_track == "LaserTargetW" && _track == "LaserTargetE") then {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
     };
     if(ITC_AIR_FORCES && !isNil{_plane getVariable "mass"}) then {
-      [_plane] call itc_air_vehicle_fnc_apply_forces;
+      [_plane, time - _lastFrame] call itc_air_vehicle_fnc_apply_forces;
     };
 }, 0, [_vehicle, 0]] call CBA_fnc_addPerFrameHandler;
 
 // SLOW UPDATE STUFF
 [{
-    if(!((vehicle player) isKindOf "Air")) exitWith {
+    _this select 0 params ["_plane", "_prevFuel"];
+    if(!((vehicle player) isKindOf "Air") || !alive _plane) exitWith {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
 
-    _this select 0 params ["_plane", "_prevFuel"];
     _fuel = fuel _plane;
     if(_prevFuel != _fuel) then {
         _consumption = _prevFuel - _fuel;

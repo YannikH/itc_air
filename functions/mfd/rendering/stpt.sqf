@@ -1,8 +1,27 @@
 params ["_display"];
-_output = ["NAME", "POS", "SAVE", "ORD UP", "ORD DN", "UP", "DN", "", "", "NEW", "", "", ""];
+_output = ["NAME", "POS", "EL", "ORD UP", "ORD DN", "UP", "DN", "", "", "NEW", "", "", ""];
 
 _plane = (vehicle player);
 _wayPoints = ace_player getVariable "ace_microdagr_waypoints";
+if(_display getVariable "stpt_pos_str" != "") then {
+  _pos = [_display getVariable "stpt_pos_str", true] call ace_common_fnc_getMapPosFromGrid;
+  _plane setVariable ["stpt_pos", _pos];
+  _wayPoints set [ITC_AIR_CURRENTWP, [_plane getVariable "stpt_name", _pos]];
+  _display setVariable ["stpt_pos_str",""];
+};
+if(_display getVariable "stpt_el" > -1) then {
+  _pos = _plane getVariable "stpt_pos";
+  _pos = [_pos select 0, _pos select 1, _display getVariable "stpt_el"];
+  _plane setVariable ["stpt_pos", _pos];
+  _wayPoints set [ITC_AIR_CURRENTWP, [_plane getVariable "stpt_name", _pos]];
+  _display setVariable ["stpt_el",-1];
+};
+if(_display getVariable "stpt_name" != "") then {
+  _plane setVariable ["stpt_name", _display getVariable "stpt_name"];
+  _wayPoints set [ITC_AIR_CURRENTWP, [_display getVariable "stpt_name", _plane getVariable "stpt_pos"]];
+  _display setVariable ["stpt_name",""];
+};
+
 if(isNil{_wayPoints}) then {_wayPoints = []};
 _background = _display getVariable "background";
 _scrollStart = _display getVariable "stpt_scroll";

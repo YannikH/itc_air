@@ -1,20 +1,13 @@
 params ["_namespace","_btn"];
 switch (_btn) do {
     case "L1": {
-      [_namespace,vehicle player, "stpt_name", "STPT NAME", [false, {_this != ""}], false] call itc_air_mfd_fnc_input_start;
+      [_namespace,_namespace, "stpt_name", "STPT NAME", [false, {_this != ""}], false] call itc_air_mfd_fnc_input_start;
     };
     case "L2": {
-      [_namespace,vehicle player, "stpt_pos_str", "STPT POS", [false, {_this != ""}], false] call itc_air_mfd_fnc_input_start;
+      [_namespace,_namespace, "stpt_pos_str", "STPT POS", [false, {_this != ""}], false] call itc_air_mfd_fnc_input_start;
     };
     case "L3": {
-      _wpList = ace_player getVariable "ace_microdagr_waypoints";
-      _plane = vehicle player;
-      _pos = _wpList select ITC_AIR_CURRENTWP select 1;
-      if(_plane getVariable "stpt_pos_str" != "") then {
-        _pos = [_plane getVariable "stpt_pos_str", true] call ace_common_fnc_getMapPosFromGrid;
-        _plane setVariable ["stpt_pos_str",""];
-      };
-      _wpList set [ITC_AIR_CURRENTWP, [_plane getVariable "stpt_name", _pos]];
+      [_namespace,_namespace, "stpt_el", "STPT POS", [true, {_this > 0}], false] call itc_air_mfd_fnc_input_start;
     };
     case "L4": {
       if(ITC_AIR_CURRENTWP == 0) exitWith {}; //already the first WP

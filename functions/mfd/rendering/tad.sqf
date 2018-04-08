@@ -36,14 +36,9 @@ _sadl = missionNameSpace getVariable "SADL";
        (_id != _plane getVariable "SADL_ID")
       ) then {
         _map drawIcon ["itc_air\data\UI\SADL.paa", [1,1,1,1], getPos _x,  15,15, 0,  ".", 0, 0.01];
-        if(_id < 10) then {
-          _map drawIcon ["itc_air\data\UI\SADL\L0.paa", [1,1,1,1], getPos _x,  15,15, 0,  ".", 0, 0.01];
-          _map drawIcon [format ["itc_air\data\UI\SADL\R%1.paa", _id], [1,1,1,1], getPos _x,  15,15, 0,  ".", 0, 0.01];
-        } else {
-          _nums = (str _id) splitString "";
-          _map drawIcon [format ["itc_air\data\UI\SADL\L%1.paa", _nums select 0], [1,1,1,1], getPos _x,  15,15, 0,  ".", 0, 0.01];
-          _map drawIcon [format ["itc_air\data\UI\SADL\R%1.paa", _nums select 1], [1,1,1,1], getPos _x,  15,15, 0,  ".", 0, 0.01];
-        };
+        _nums = _id splitString "";
+        _map drawIcon [format ["itc_air\data\UI\SADL\L%1.paa", _nums select 0], [1,1,1,1], getPos _x,  15,15, 0,  ".", 0, 0.01];
+        _map drawIcon [format ["itc_air\data\UI\SADL\R%1.paa", _nums select 1], [1,1,1,1], getPos _x,  15,15, 0,  ".", 0, 0.01];
         if(_x getVariable "SADL_SPI") then {
           _map drawLine [getPos _x, (_x getVariable "tgp_dir") select 1, [0,0,1,1]];
           _map drawIcon [format ["itc_air\data\UI\SADL\Mini-SPI.paa", _nums select 0], [1,1,1,1], (_x getVariable "tgp_dir") select 1,  15,15, 0,  ".", 0, 0.01];
