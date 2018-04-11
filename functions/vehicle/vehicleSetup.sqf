@@ -66,11 +66,15 @@ _vehicle setVariable ["tgp_mode", 0];
 
 _vehicle setVariable ["tgp_lsst_mode", "LSS OFF"];
 
+_vehicle setVariable ["stpt_index", 0];
 _vehicle setVariable ["stpt_name", "NO WP"];
 _vehicle setVariable ["stpt_pos", [0,0,0]];
 _vehicle setVariable ["stpt_pos_str", ""];
 _vehicle setVariable ["stpt_tof", "N/A"];
-_waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
+if(isNil{_vehicle getVariable "stpt_list"}) then {
+  _waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
+  _vehicle setVariable ["stpt_list", _waypoints];
+};
 
 _vehicle setVariable ["playtime", "N/A"];
 

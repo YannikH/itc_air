@@ -24,7 +24,7 @@ _map drawIcon ["itc_air\data\UI\WPT_MFD.paa", [1,1,1,1], ((_plane getVariable "t
 _map drawIcon ["itc_air\data\UI\PLN_MFD.paa", [1,1,1,1], getPos _plane,  45,45, getDir _plane,  ".", 0, 0.01];
 _map drawIcon ["itc_air\data\UI\CURSOR_MFD.paa", [1,1,1,1], (_centerPos vectorAdd ((_display getVariable "tad_cursor") vectorMultiply _fov)),  30,30, 0,  ".", 0, 0.01];
 //_map drawIcon ["itc_air\data\UI\WP32.paa", [1,1,1,1], _plane getVariable "stpt_pos",  15,15, 0, '', 0];
-_waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
+_waypoints = _plane getVariable "stpt_list";
 {
     _map drawIcon ["itc_air\data\UI\WP_MFD.paa", [1,1,1,1], _x select 1,  15,15, 0,  ".", 0, 0.01];
 }forEach _waypoints;

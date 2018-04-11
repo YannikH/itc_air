@@ -1,6 +1,5 @@
 params ["", "", "", "", "_ammo", "", "_projectile", "_gunner"];
 
-_targetIndex = ITC_AIR_CURRENTWP;
 _seekers = (configFile >> "CfgAmmo" >> _ammo >> "seekers") call BIS_fnc_getCfgData;
 
 if (!local _gunner) exitWith {};
@@ -11,7 +10,7 @@ _angle = ITC_AIR_IMPANGLE;
 _targetCoordinates = objNull;
 _laserCode = 1111;
 if("gps" in _seekers) then {
-    _targetCoordinates = ((([] call ace_microdagr_fnc_deviceGetWaypoints) select _targetIndex) select 1) vectorAdd [0,0,1];
+    _targetCoordinates = ((vehicle player) getVariable "stpt_pos") vectorAdd [0,0,1];
     (vehicle player) setVariable ["bomb_flying_target", _targetCoordinates];
 };
 if("laser" in _seekers) then {

@@ -159,6 +159,15 @@ class CfgFunctions
             class store {
                 file = "itc_air\functions\steerpoints\storePOI.sqf";
             };
+            class create {
+                file = "itc_air\functions\steerpoints\create.sqf";
+            };
+            class delete {
+                file = "itc_air\functions\steerpoints\delete.sqf";
+            };
+            class update {
+                file = "itc_air\functions\steerpoints\update.sqf";
+            };
         };
     };
     class itc_air_tgp {

@@ -2,14 +2,9 @@ params ["_plane"];
 
 _inTGP = (cameraView == "GUNNER");
 
-_waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
-_hasWP = (count _waypoints > 0);
-
-_curWP = ["NO WP", [0,0,0]];
-if(_hasWP) then {
-    _curWP = _waypoints select ITC_AIR_CURRENTWP;
-};
-_curWP params ["_wpName", "_wpPos"];
+_wpName = _plane getVariable "stpt_name";
+_wpPos = _plane getVariable "stpt_pos";
+_curWP = [_wpName, _wpPos];
 _distToWP = _plane distance _wpPos;
 
 //HMD CENTERPOINT, no need to put this in a function

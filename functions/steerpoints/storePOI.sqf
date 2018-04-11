@@ -8,16 +8,11 @@ _target = if(isNil{_target}) then [{_plane getVariable "tgp_dir"}, {[true, _targ
 
 _target params ["_tracking", "_position", "_object"];
 if(_tracking) then {
-    [
-        format["Mark %1", ITC_AIR_POI_NUM],
-        _position
-    ] call ace_microdagr_fnc_deviceAddWaypoint;
+    [_plane, format["Mark %1", ITC_AIR_POI_NUM], _position, ITC_AIR_POI_NUM + 1] remoteExec ["itc_air_steerpoints_fnc_create", (crew _plane), false];
     if(_plane getVariable "stpt_name" == "NO WP") then {
-      _plane setVariable ["stpt_name",format["Mark %1", ITC_AIR_POI_NUM]];
-      _plane setVariable ["stpt_pos",_position];
+      [0] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew _plane), false];
     };
-    player sideChat format["Mark %1 Stored in nav", ITC_AIR_POI_NUM];
-    ITC_AIR_POI_NUM = ITC_AIR_POI_NUM + 1;
+    //player sideChat format["Mark %1 Stored in nav", ITC_AIR_POI_NUM];
 };
 
 true

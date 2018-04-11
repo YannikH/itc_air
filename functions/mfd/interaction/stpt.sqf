@@ -1,4 +1,5 @@
 params ["_namespace","_btn"];
+_plane = vehicle player;
 switch (_btn) do {
     case "L1": {
       [_namespace,_namespace, "stpt_name", "STPT NAME", [false, {_this != ""}], false] call itc_air_mfd_fnc_input_start;
@@ -10,33 +11,34 @@ switch (_btn) do {
       [_namespace,_namespace, "stpt_el", "STPT POS", [true, {_this > 0}], false] call itc_air_mfd_fnc_input_start;
     };
     case "L4": {
-      if(ITC_AIR_CURRENTWP == 0) exitWith {}; //already the first WP
-      _wpList = ace_player getVariable "ace_microdagr_waypoints";
-      _prevWP = _wpList select (ITC_AIR_CURRENTWP - 1);
-      _wpList set [ITC_AIR_CURRENTWP - 1, _wpList select ITC_AIR_CURRENTWP];
-      _wpList set [ITC_AIR_CURRENTWP, _prevWP];
-      ITC_AIR_CURRENTWP = ITC_AIR_CURRENTWP - 1;
+      _curWPIndex = _plane getVariable "stpt_index";
+      if(_curWPIndex == 0) exitWith {}; //already the first WP
+      _wpList = _plane getVariable "stpt_list";
+      _prevWP = _wpList select (_curWPIndex - 1);
+      [_plane, _curWPIndex - 1, _wpList select _curWPIndex] remoteExec ["itc_air_steerpoints_fnc_update", (crew _plane), false];
+      [_plane, _curWPIndex, _prevWP] remoteExec ["itc_air_steerpoints_fnc_update", (crew _plane), false];
+      [-1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew _plane), false];
     };
     case "L5": {
-      _wpList = ace_player getVariable "ace_microdagr_waypoints";
-      if(ITC_AIR_CURRENTWP == (count _wpList) - 1) exitWith {}; //already the last WP
-      _nextWP = _wpList select (ITC_AIR_CURRENTWP + 1);
-      _wpList set [ITC_AIR_CURRENTWP + 1, _wpList select ITC_AIR_CURRENTWP];
-      _wpList set [ITC_AIR_CURRENTWP, _nextWP];
-      ITC_AIR_CURRENTWP = ITC_AIR_CURRENTWP + 1;
+      _curWPIndex = _plane getVariable "stpt_index";
+      _wpList = _plane getVariable "stpt_list";
+      if(_curWPIndex == (count _wpList) - 1) exitWith {}; //already the last WP
+      _nextWP = _wpList select (_curWPIndex + 1);
+      [_plane, _curWPIndex + 1, _wpList select _curWPIndex] remoteExec ["itc_air_steerpoints_fnc_update", (crew _plane), false];
+      [_plane, _curWPIndex, _nextWP] remoteExec ["itc_air_steerpoints_fnc_update", (crew _plane), false];
+      [1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew _plane), false];
     };
     case "R1": {
-      [-1] call itc_air_steerpoints_fnc_cycle;
+      [-1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew _plane), false];
     };
     case "R2": {
-      [1] call itc_air_steerpoints_fnc_cycle;
+      [1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew _plane), false];
     };
     case "R4": {
-      _wpList = ace_player getVariable "ace_microdagr_waypoints";
-      _wpList deleteAt ITC_AIR_CURRENTWP;
+      _curWPIndex = _plane getVariable "stpt_index";
+      [_curWPIndex] remoteExec ["itc_air_steerpoints_fnc_delete", (crew _plane), false];
     };
     case "R5": {
-      [format["Mark %1", ITC_AIR_POI_NUM], [0,0,0]] call ace_microdagr_fnc_deviceAddWaypoint;
-      ITC_AIR_POI_NUM = ITC_AIR_POI_NUM + 1;
+      [[0,0,0]] call itc_air_steerpoints_fnc_store;
     };
 };
