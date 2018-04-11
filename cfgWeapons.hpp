@@ -96,6 +96,12 @@ class CfgWeapons {
         reloadTime = 0.0;
         autoFire=false;
     };
+    class itc_weap_gbu39 : Mk82BombLauncher {
+        displayName = "GBU-39";
+        magazines[] = {"itc_hp_bru61_ITC_ammo_gbu39"};
+        reloadTime = 0.0;
+        autoFire=false;
+    };
 
     class ITC_weap_gbu12 : Bomb_04_Plane_CAS_01_F {
       magazines[] = {

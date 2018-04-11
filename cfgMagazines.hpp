@@ -6,6 +6,10 @@ class cfgMagazines {
 
     class PylonMissile_1Rnd_Mk82_F;
     class PylonRack_2Rnd_BombCluster_03_F;
+    class PylonRack_4rnd_BRU61 : PylonRack_2Rnd_BombCluster_03_F {
+      model = "\rhsafrf\addons\rhs_airweapons\rhs_pylon_mbd3_u4t_fab100";
+      count = 4;
+    };
     class PylonRack_Missile_AGM_02_x2;
     class PylonRack_1Rnd_Missile_AGM_02_F;
     class PylonRack_7Rnd_Rocket_04_HE_F;
@@ -56,6 +60,10 @@ class cfgMagazines {
     #define hp_triple_hellfire(NAME,WEAP,AMMO,WT) \
         hardPointMagazine(itc_hp_lau88_hellfire,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x,__EVAL(WT*3),0.5)
 
+    //TRIPLE HP HELLFIRE
+    #define hp_quad_sdb(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_bru61,PylonRack_4rnd_BRU61,NAME,WEAP,AMMO,4x,__EVAL(WT*3),0.1)
+
     #define hp_ser_der_ter(NAME,WEAP,AMMO,WT) \
         hp_single(NAME,WEAP,AMMO,WT) \
         hp_double(NAME,WEAP,AMMO,WT) \
@@ -82,6 +90,8 @@ class cfgMagazines {
     hp_ser_der_smart("GBU-38(v)4/B","itc_weap_gbu38",ITC_ammo_gbu38v3b,227)
     hp_ser_der_smart("GBU-54","itc_weap_gbu54",ITC_ammo_gbu54,227)
     hp_ser_der_smart("GBU-54 LDCB","itc_weap_gbu54",ITC_ammo_gbu54_lcdb,227)
+
+    hp_quad_sdb("GBU-39 SDB I","itc_weap_gbu39",ITC_ammo_gbu39,100)
 
     hp_ser_der_lau117("AGM-65G","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F,50)
 

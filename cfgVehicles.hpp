@@ -300,7 +300,7 @@ class cfgVehicles {
                     };
                     class pylon5 {
                         attachment = "itc_hp_dumb_ITC_ammo_gbu12";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        hardpoints[] = {"itc_hp_bru61","I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
                         maxweight = 1200;
                         priority = 3;
                         UIposition[] = {0.45,0.3};

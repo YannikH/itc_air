@@ -16,6 +16,22 @@ class cfgAmmo {
     class MissileBase : MissileCore {
       dragCoef = 0.4;
     };
+    class ITC_ammo_gbu39 : Bo_Mk82 {
+      dragCoef = 0.1;
+      displayName = "GBU-39 SDB I";
+      airFriction = 0.09;
+      thrust = 0.5;
+      thrustTime = 0.2;
+      weaponType = "bomb";
+      ITC_firedEvent = "itc_air_jdam_fnc_fired";
+      ITC_subMunition = "ITC_blu126_helper";
+      effectsFire = "";
+      effectsMissileInit = "";
+      effectsMissile = "";
+      indirectHitRange = 1;
+      indirectHit = 100;
+      seekers[] = {"gps"};
+    };
     class ITC_ammo_gbu38 : Bo_Mk82 {
         displayName = "GBU-38";
         ITC_firedEvent = "itc_air_jdam_fnc_fired";
