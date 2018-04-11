@@ -8,7 +8,7 @@ if(_stpt) then {
     _targetPos = ASLtoAGL ((getPilotCameraTarget _plane) select 1);
     _nearestObjects = nearestObjects [_targetPos, ["AllVehicles"], 20];
     if(!isNil {_nearestObjects} && count _nearestObjects > 0) then {
-      _plane setPilotCameraTarget (_nearestObjects select 0);
+      [(_nearestObjects select 0), _plane] call itc_air_tgp_fnc_target;
     };
   };
 };

@@ -1,5 +1,5 @@
 params ["_display"];
-_output = ["NAME", "POS", "EL", "ORD UP", "ORD DN", "UP", "DN", "", "", "NEW", "", "", ""];
+_output = ["NAME", "POS", "EL", "ORD UP", "ORD DN", "UP", "DN", "", "DEL", "NEW", "", "", ""];
 
 _plane = (vehicle player);
 _wayPoints = ace_player getVariable "ace_microdagr_waypoints";
@@ -24,7 +24,7 @@ if(_display getVariable "stpt_name" != "") then {
 
 if(isNil{_wayPoints}) then {_wayPoints = []};
 _background = _display getVariable "background";
-_scrollStart = _display getVariable "stpt_scroll";
+_scrollStart = 0 max (ITC_AIR_CURRENTWP - 4);
 _limit = (_scrollStart + 8) min (count _wayPoints - 1);
 
 _resString = format["<br/><t align='center'>showing stpt %1 to %2 of %3 </t> <br/><br/>", _scrollStart + 1, _limit + 1, count _wayPoints];

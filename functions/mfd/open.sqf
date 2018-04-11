@@ -36,7 +36,6 @@ _display setVariable ["feed_camera", nil];
 _display setVariable ["feed_cross", (_display displayCtrl (1207))];
 
 _display setVariable ["stat_scroll", 0];
-_display setVariable ["stpt_scroll", 0];
 
 _display setVariable ["msg_composing", false];
 _display setVariable ["msg_index", 0];
@@ -56,7 +55,7 @@ _display setVariable ["soi_square", (_display displayCtrl (1208))];
     (_this select 0) params ["_display", "_light"];
     if (!alive player || isNil {_display} || isNil{(vehicle player) getVariable "mfd_l"}) then {
         [_this select 1] call CBA_fnc_removePerFrameHandler;
-        2 cutText ["", "PLAIN"];3 cutText ["", "PLAIN"]; // this closes the dialogs
+        101 cutText ["", "PLAIN"];102 cutText ["", "PLAIN"]; // this closes the dialogs
         uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
     };
 

@@ -179,6 +179,9 @@ class CfgFunctions
             class create_camera {
                 file = "itc_air\functions\targeting\createCamera.sqf";
             };
+            class target {
+                file = "itc_air\functions\targeting\targetPod.sqf";
+            };
         };
     };
     class itc_air_ui {

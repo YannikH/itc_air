@@ -4,7 +4,7 @@ _capable = (configFile >> "CfgVehicles" >> (typeOf vehicle player) >> "itc_air" 
 if(isNil {_capable}) exitWith {};
 
 _plane = vehicle player;
-_target = if(isNil{_target}) then [{getPilotCameraTarget _plane}, {[true, _target]}];
+_target = if(isNil{_target}) then [{_plane getVariable "tgp_dir"}, {[true, _target]}];
 
 _target params ["_tracking", "_position", "_object"];
 if(_tracking) then {

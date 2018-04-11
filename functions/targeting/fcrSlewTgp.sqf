@@ -5,4 +5,4 @@ if(isNil {_capableHMD} || isNil {_capableTGP}) exitWith {};
 
 _plane = vehicle player;
 _targetPos = getPosASL cursorTarget;
-_plane setPilotCameraTarget _targetPos;
+[_targetPos, _plane] call itc_air_tgp_fnc_target;

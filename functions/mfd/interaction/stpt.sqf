@@ -26,12 +26,14 @@ switch (_btn) do {
       ITC_AIR_CURRENTWP = ITC_AIR_CURRENTWP + 1;
     };
     case "R1": {
-      _scrollStart = _namespace getVariable "stpt_scroll";
-      _namespace setVariable ["stpt_scroll",(_scrollStart - 1) max 0];
+      [-1] call itc_air_steerpoints_fnc_cycle;
     };
     case "R2": {
-      _scrollStart = _namespace getVariable "stpt_scroll";
-      _namespace setVariable ["stpt_scroll",(_scrollStart + 1)];
+      [1] call itc_air_steerpoints_fnc_cycle;
+    };
+    case "R4": {
+      _wpList = ace_player getVariable "ace_microdagr_waypoints";
+      _wpList deleteAt ITC_AIR_CURRENTWP;
     };
     case "R5": {
       [format["Mark %1", ITC_AIR_POI_NUM], [0,0,0]] call ace_microdagr_fnc_deviceAddWaypoint;

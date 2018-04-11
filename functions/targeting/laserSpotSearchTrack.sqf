@@ -5,6 +5,6 @@ _spot = [getPosASL _plane, _dir, 40, 5000, [1500, 1550], _plane getVariable "las
 
 if(!isNil{_spot select 0}) then {
     _source = _spot select 1;
-    _plane setPilotCameraTarget (laserTarget _source);
+    [(laserTarget _source), _plane] call itc_air_tgp_fnc_target;
     _plane setVariable ["tgp_lsst_mode", "LST"];
 };

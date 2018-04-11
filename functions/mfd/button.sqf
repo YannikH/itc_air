@@ -1,4 +1,5 @@
 params ["_mfdNameSpace","_btn"];
+if(_mfdNameSpace == "HMCS") exitWith {};
 _namespace = uiNameSpace getVariable _mfdNameSpace;
 playSound "Click";
 playSound "Click";

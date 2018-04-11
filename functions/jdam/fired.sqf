@@ -1,5 +1,9 @@
+params ["", "", "", "", "_ammo", "", "_projectile", "_gunner"];
+if (!local _gunner) exitWith {};
 _this call itc_air_jdam_fnc_guidance;
 _this call itc_air_jdam_fnc_fuzing;
+
+(vehicle player) setVariable ["bomb_flying", _projectile];
 
 /*
 params ["", "", "", "", "_ammo", "", "_projectile", "_gunner"];
@@ -19,7 +23,7 @@ if (!local _gunner) exitWith {};
         };
         _position = getPosATL _projectile;
         (_this select 0) set [4, _position];
-        
+
         _velocity = velocity _projectile;
         (_this select 0) set [7, _velocity];
         _dir = direction _projectile;
@@ -30,7 +34,7 @@ if (!local _gunner) exitWith {};
 
     if(_fuze == "prox" &&(_alt < 9 || !alive _projectile )) exitWith {
         createVehicle [_type, _position, [], 0, "FLY"];
-        deleteVehicle _projectile;        
+        deleteVehicle _projectile;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
 

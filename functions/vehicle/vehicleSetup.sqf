@@ -12,9 +12,6 @@ if(player != driver _vehicle && player != gunner _vehicle && !(player getVariabl
   _vehicle setVariable ["tgp", false];
   _vehicle setVariable ["rover", false];
 };
-_vehicle addEventHandler ["fired", {
-    _vehicle setVariable ["bomb_flying", _this select 6];
-}];
 
 if(isNIl{SADL}) then {
   [missionNameSpace, "SADL", [_vehicle]] call itc_air_common_fnc_set_var;
@@ -61,6 +58,7 @@ _vehicle setVariable ["laser_code_recv", 1111];
 [_vehicle, "laser_ir", false] call itc_air_common_fnc_set_var;
 [_vehicle, "laser_pulse", 0] call itc_air_common_fnc_set_var;
 
+_vehicle setVariable ["tgp_dir", [true, [0,0,0]]];
 _vehicle setVariable ["tgp_fov", (24 / 120)];
 _vehicle setVariable ["tgp_fov_index", 0];
 _vehicle setVariable ["tgp_fov_steps", _fovSteps];
@@ -104,10 +102,12 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
 
     //config plane data
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;
-    if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir" || ITC_AIR_BROADCASTING) then {
-      [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
-    } else {
-      _plane setVariable ["tgp_dir", _dir];
+    if(((_plane getVariable "seat" == "pilot") && (driver _plane == player)) || ((_plane getVariable "seat" == "gunner") && (gunner _plane == player))) then {
+      if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir" || ITC_AIR_BROADCASTING) then {
+        [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
+      } else {
+        _plane setVariable ["tgp_dir", _dir];
+      };
     };
     _curFov = call cba_fnc_getFov select 0;
     if(cameraView == "GUNNER" && (_curFov != _plane getVariable "tgp_fov")) then {

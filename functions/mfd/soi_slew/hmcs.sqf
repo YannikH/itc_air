@@ -7,6 +7,6 @@ if(_stpt) then {
 } else {
   if(_plane getVariable "tgp" && _plane getVariable "hmd") then {
     _targetPos = (ATLtoASL (screenToWorld [0.5,0.5]));
-    _plane setPilotCameraTarget _targetPos;
+    [_targetPos, _plane] call itc_air_tgp_fnc_target;
   };
 };

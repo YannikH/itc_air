@@ -7,5 +7,5 @@ _target = [_target select 0, _target select 1, getTerrainHeightASL _target];
 if(_stpt) then {
   [_target] call itc_air_steerpoints_fnc_store;
 } else {
-  _plane setPilotCameraTarget _target;
+  [_target, _plane] call itc_air_tgp_fnc_target;
 };

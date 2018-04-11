@@ -7,4 +7,4 @@ _dir = if(_addDir + _dir > 360) then [{_dir + _addDir - 360}, {_dir + _addDir}];
 _dist = ((_plane getVariable "tgp_fov") * 100);
 _newPos = _target getPos [_dist, _dir];
 _newPos = [_newPos select 0, _newPos select 1, getTerrainHeightASL _newPos];
-_plane setPilotcameratarget _newPos;
+[_newPos, _plane] call itc_air_tgp_fnc_target;

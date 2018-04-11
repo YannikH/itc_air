@@ -12,6 +12,7 @@ _targetCoordinates = objNull;
 _laserCode = 1111;
 if("gps" in _seekers) then {
     _targetCoordinates = ((([] call ace_microdagr_fnc_deviceGetWaypoints) select _targetIndex) select 1) vectorAdd [0,0,1];
+    (vehicle player) setVariable ["bomb_flying_target", _targetCoordinates];
 };
 if("laser" in _seekers) then {
   _laserCode = (vehicle player) getVariable "laser_code_recv";
