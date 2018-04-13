@@ -92,4 +92,10 @@ class cfgAmmo {
       model = "\A3\Weapons_f\empty";
 	    triggerTime = 0.01;
     };
+
+    class SmokeShellVehicle;
+    class ITC_ammo_chaff : SmokeShellVehicle {
+      weaponLockSystem = "8";
+      effectFly = "";
+    };
 };

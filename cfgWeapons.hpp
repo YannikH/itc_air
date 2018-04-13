@@ -137,4 +137,13 @@ class CfgWeapons {
         reloadtime = 0.015;
       };
     };
+
+    class SmokeLauncher;
+    class CMFlareLauncher : SmokeLauncher {
+      magazines[] += {"ITC_magazine_CMFlare"};
+    };
+    class itc_weap_chaffDispenser : CMFlareLauncher {
+      displayName = "ALE-47 CHAFF";
+      magazines[] = {"ITC_magazine_CMChaff"};
+    };
 };

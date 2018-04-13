@@ -181,8 +181,8 @@ class cfgVehicles {
         crew = "B_pilot_F";
         hiddenSelections[] = {"Camo_01","Camo_02","Camo_03","number_01","number_02","number_03"};
         hiddenSelectionsTextures[] = {"a3\air_f_jets\plane_fighter_04\data\Fighter_04_fuselage_01_co.paa","a3\air_f_jets\plane_fighter_04\data\Fighter_04_fuselage_02_co.paa","a3\air_f_jets\plane_fighter_04\data\fighter_04_misc_01_co.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_04_ca.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_04_ca.paa","a3\air_f_jets\plane_fighter_04\data\Numbers\Fighter_04_number_08_ca.paa"};
-        weapons[] = {"itc_weap_bk27","Laserdesignator_pilotCamera","CMFlareLauncher"};
-        magazines[] = {"itc_120rnd_27mm_he","Laserbatteries","240Rnd_CMFlare_Chaff_Magazine"};
+        weapons[] = {"itc_weap_bk27","Laserdesignator_pilotCamera","CMFlareLauncher", "itc_weap_chaffDispenser"};
+        magazines[] = {"itc_120rnd_27mm_he","Laserbatteries","ITC_magazine_CMFlare","ITC_magazine_CMChaff"};
         incomingMissileDetectionSystem = 16;
         class Components : Components {
             class SensorsManagerComponent {
@@ -728,5 +728,33 @@ class cfgVehicles {
     class Heli_Transport_01_base_F;
     class B_Heli_Transport_01_F: Heli_Transport_01_base_F {
       class itc_air : itc_air_default_heli_uh {};
+    };
+
+    class B_UAV_01_F;
+    class ITC_ALE50_W_RF : B_UAV_01_F {
+        displayName = "ALE 50 RF Decoy";
+        model = "\A3\Weapons_F_beta\Launchers\titan\titan_missile_at_fly";
+        threat[] = {1,1,1};
+        laserTarget = 0;
+        nvTarget = 0;
+        radarTarget = 1;
+        radarTargetSize = 2;
+        visualTarget = 1;
+        visualTargetSize = 2;
+        acceleration = 0;
+    };
+    class ITC_ALE50_W_IR : ITC_ALE50_W_RF {
+        displayName = "ALE 50 IR Decoy";
+        irTarget = 1;
+        irTargetSize = 2;
+        radarTarget = 0;
+    };
+    class ITC_ALE50_E_RF : ITC_ALE50_W_RF {
+        crew="O_UAV_AI";
+        side = 0;
+    };
+    class ITC_ALE50_E_IR : ITC_ALE50_W_IR {
+        crew="O_UAV_AI";
+        side = 0;
     };
 };

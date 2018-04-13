@@ -110,4 +110,17 @@ class cfgMagazines {
       displayName = "30mm 4:1 Mix";
       displayNameShort = "30mm  4:1 Mix";
     };
+
+    class 240Rnd_CMFlareMagazine;
+    class ITC_magazine_CMFlare : 240Rnd_CMFlareMagazine {
+      displayName = "ALE-47 FLARE";
+      ammo = "CMflareAmmo";
+      count = 120;
+    };
+    class 240Rnd_CMFlare_Chaff_Magazine;
+    class ITC_magazine_CMChaff : 240Rnd_CMFlare_Chaff_Magazine {
+      displayName = "ALE-47 CHAFF";
+      ammo = "ITC_ammo_chaff";
+      count = 120;
+    };
 };

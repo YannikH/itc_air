@@ -91,6 +91,8 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
   _vehicle setVariable ["SADL_MSGS", [["00-00",["","","","","","","","", "", ""], "00-00"]]];
 };
 
+_vehicle setVariable ["ale_deployed", []];
+
 // DRAW STUFF
 [{
     _this select 0 params ["_plane", "_lastFrame"];
