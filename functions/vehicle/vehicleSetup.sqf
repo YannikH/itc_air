@@ -23,6 +23,7 @@ if(isNIl{SADL}) then {
 
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
+_hasWSO = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "wso");
 _capableMFD_L = isClass (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left");
 if(_capableMFD_L) then {
   _vehicle setVariable["mfd_l_pages",(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left" >> "pages")  call BIS_fnc_getCfgData];
@@ -45,6 +46,7 @@ if(_mass != -1) then {
 
 _vehicle setVariable ["fuel_lock", false];
 _vehicle setVariable ["hmd", (_capableHMD == 1)];
+_vehicle setVariable ["wso", (_hasWSO == 1)];
 _vehicle setVariable ["tgp", (_capableTGP == 1)];
 _vehicle setVariable ["rover", (_capableRover == 1)];
 [_vehicle, "rover_freq", str _roverFreq] call itc_air_common_fnc_set_var;

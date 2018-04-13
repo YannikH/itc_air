@@ -40,8 +40,8 @@ ITC_AIR_MFD_CAMS = [];
 };}, "", [205, [true, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC","mfd_open_TGP", "Open MFD TGP", {
-    if(!dialog) then {
-        createDialog "TGP_DIALOG";
+    if(!dialog && (vehicle player) getVariable "wso" && player == (gunner (vehicle player))) then {
+      createDialog "TGP_DIALOG";
     };
 }, "", [208, [true, false, false]]] call CBA_fnc_addKeybind;
 

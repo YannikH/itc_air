@@ -17,6 +17,7 @@ class itc_air_default_jet {
     targeting_user = "pilot";
     hmd = 1;
     tgp = 1;
+    wso = 0;
     class mfd_left : mfd_plane {};
     class mfd_right : mfd_plane {};
 };
@@ -29,6 +30,7 @@ class itc_air_default_heli_ah {
     targeting_user = "gunner";
     hmd = 1;
     tgp = 1;
+    wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
 };
@@ -38,6 +40,7 @@ class itc_air_default_heli_uh {
     targeting_user = "gunner";
     hmd = 0;
     tgp = 0;
+    wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
 };

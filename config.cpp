@@ -23,6 +23,7 @@ class CfgPatches {
 #include "Dialog.hpp"
 #include "Dialog_rover.hpp"
 #include "config\mfd.hpp"
+#include "config\tgp.hpp"
 
 class CfgFunctions
 {
@@ -190,6 +191,21 @@ class CfgFunctions
             };
             class target {
                 file = "itc_air\functions\targeting\targetPod.sqf";
+            };
+            class wso_camera {
+                file = "itc_air\functions\targeting\wso\camera.sqf";
+            };
+            class wso_mouse_move {
+                file = "itc_air\functions\targeting\wso\mouseMove.sqf";
+            };
+            class wso_open {
+                file = "itc_air\functions\targeting\wso\open.sqf";
+            };
+            class wso_button {
+                file = "itc_air\functions\targeting\wso\button.sqf";
+            };
+            class wso_render {
+                file = "itc_air\functions\targeting\wso\render.sqf";
             };
         };
     };
