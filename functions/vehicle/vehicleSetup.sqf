@@ -95,6 +95,11 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
   _vehicle setVariable ["SADL_MSGS", [["00-00",["","","","","","","","", "", ""], "00-00"]]];
 };
 
+_vehicle setVariable ["rip_mode", "SGL"];
+_vehicle setVariable ["rip_qty", 1];
+_vehicle setVariable ["rip_dist", 50];
+_vehicle setVariable ["rip_cycle", false];
+
 // DRAW STUFF
 [{
     _this select 0 params ["_plane", "_lastFrame"];

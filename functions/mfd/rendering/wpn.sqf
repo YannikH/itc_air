@@ -30,4 +30,10 @@ if((currentWeapon _plane) isKindOf ["itc_weap_gbu12", configFile >> "CfgWeapons"
 if((currentWeapon _plane) isKindOf ["ITC_weap_apkws", configFile >> "CfgWeapons"]) then {
     _output set [5, str (_plane getVariable "apkws_laser_code")];
 };
+if((currentWeapon _plane) isKindOf ["Mk82BombLauncher", configFile >> "CfgWeapons"]) then {
+    _output set [6, format["%1",(_plane getVariable "rip_mode")]];
+    _output set [7, format["QTY %1",(_plane getVariable "rip_qty")]];
+    _output set [8, format["%1 M",(_plane getVariable "rip_dist")]];
+    _output set [9, format["CYC %1",if(_plane getVariable "rip_cycle")then[{"ON"},{"OFF"}]]];
+};
 _output

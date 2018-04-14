@@ -67,6 +67,8 @@ class CfgWeapons {
     class Bomb_04_Plane_CAS_01_F;
     #define magazines_hp_ser_der_ter(WEAP, PARENT, AMMO) \
         class WEAP : PARENT { \
+            reloadTime = 0.01; \
+		        magazineReloadTime = 0.01; \
             magazines[] += { \
                 itc_hp_dumb_##AMMO, \
                 itc_hp_bru33_##AMMO, \
@@ -82,7 +84,8 @@ class CfgWeapons {
     class itc_weap_gbu38 : Mk82BombLauncher {
         displayName = "GBU-38";
         magazines[] = {"itc_hp_smart_ITC_ammo_gbu38","itc_hp_smart_ITC_ammo_gbu38v3b","itc_hp_bru55_ITC_ammo_gbu38","itc_hp_bru55_ITC_ammo_gbu38v3b"};
-        reloadTime = 0.0;
+        reloadTime = 0.01; \
+		    magazineReloadTime = 0.01; \
         autoFire=false;
     };
     class itc_weap_gbu54 : itc_weap_gbu38 {

@@ -4,10 +4,10 @@ _seekers = (configFile >> "CfgAmmo" >> _ammo >> "seekers") call BIS_fnc_getCfgDa
 
 if (!local _gunner) exitWith {};
 
-if(count ([] call ace_microdagr_fnc_deviceGetWaypoints) == 0) exitWith{};
+if((vehicle player) getVariable "stpt_name" == "NO WP") exitWith{};
 
 _angle = ITC_AIR_IMPANGLE;
-_targetCoordinates = objNull;
+_targetCoordinates = nil;
 _laserCode = 1111;
 if("gps" in _seekers) then {
     _targetCoordinates = ((vehicle player) getVariable "stpt_pos") vectorAdd [0,0,1];
@@ -53,17 +53,18 @@ _dropTime = time;
     //SEPARATION STAGE
     if(_stage == "SEP") then {
         //player sideChat "SEPARATION";
-        if(time > _time + 1) then {
+        if(time > _time + 2) then {
             (_this select 0) set [4, "GLIDE"];
             //player sideChat "GLIDING";
         };
     };
 
-    //player sideChat format ["ANGLE %1 %2", _projectile getDir _targetCoordinates, getDir _projectile];
-    if((_projectile getDir _targetCoordinates) > getDir _projectile) then {
-        _projectile setDir (getDir _projectile + 0.5);
-    } else {
-        _projectile setDir (getDir _projectile - 0.5);
+    if(_stage == "GLIDE" || _stage == "DIVE") then {
+      if((_projectile getDir _targetCoordinates) > getDir _projectile) then {
+          _projectile setDir (getDir _projectile + 0.5);
+      } else {
+          _projectile setDir (getDir _projectile - 0.5);
+      };
     };
 
     _angleDiff = abs(_pitch - _angle);

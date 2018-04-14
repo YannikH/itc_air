@@ -15,6 +15,9 @@ ITC_AIR_CURVIS = 0;
 ITC_AIR_LINES = [];
 ITC_AIR_ICONS = [];
 
+itc_air_ripple_active = false;
+itc_air_ripple_dropcount = 0;
+
 ["vehicle", {_this call itc_air_vehicle_fnc_changed}, true] call CBA_fnc_addPlayerEventHandler;
 //[player, vehicle player] call itc_air_vehicle_fnc_changed;
 

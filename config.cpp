@@ -131,6 +131,9 @@ class CfgFunctions
             class calculate_mass {
                 file = "itc_air\functions\ammo\calculateMass.sqf";
             };
+            class ripple {
+                file = "itc_air\functions\ammo\ripple.sqf";
+            };
         };
     };
     class itc_air_jdam {
