@@ -39,6 +39,6 @@ _handle = [{
 
     _target = _plane getVariable "tgp_dir";
     _cam camSetTarget (ASLtoAGL (_target select 1));
-    _cam camCommit 0.2;
+    _cam camCommit 0.1;
 }, 0, [_cam, _plane]] call CBA_fnc_addPerFrameHandler;
 _cam

@@ -105,6 +105,7 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
     //get basic info used for the HMD/TGP
     if(time == _lastFrame) exitWith {};
     _this select 0 set [1, time];
+    _inTGP = (cameraView == "GUNNER");
 
     //config plane data
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;
@@ -112,7 +113,11 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
       if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir" || ITC_AIR_BROADCASTING) then {
         [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
       } else {
-        _plane setVariable ["tgp_dir", _dir];
+        if(_inTGP) then { //sync to WSO
+          [_plane, ["tgp_dir", _dir]] remoteExec ["setVariable", (crew _plane), false];
+        } else {
+          _plane setVariable ["tgp_dir", _dir];
+        };
       };
     };
     _curFov = call cba_fnc_getFov select 0;
@@ -125,7 +130,6 @@ if(isNil{_vehicle getVariable "SADL_MSGS"}) then {
     };
 
     //draw UI
-    _inTGP = (cameraView == "GUNNER");
     if(_inTGP && _plane getVariable "tgp") then {
         [_plane] call itc_air_ui_fnc_tgp_symbology;
     };

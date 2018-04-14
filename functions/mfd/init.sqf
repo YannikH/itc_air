@@ -6,6 +6,7 @@ ITC_AIR_MFD_CAMS = [];
     setMousePosition [0.5, 0.5];
     if (isNull curatorCamera) then {
       findDisplay 46 createDisplay "MFD_BTN";
+      findDisplay 46 createDisplay "MFD_BTN";
     };
   };
 }, "", [200, [false, false, false]]] call CBA_fnc_addKeybind;
@@ -16,6 +17,7 @@ ITC_AIR_MFD_CAMS = [];
     setMousePosition [0.5, 0.5];
     if (isNull curatorCamera) then {
       findDisplay 46 createDisplay "MFD_BTN";
+      findDisplay 46 createDisplay "MFD_BTN";
     };
   };
 }, {
@@ -24,6 +26,7 @@ ITC_AIR_MFD_CAMS = [];
 
 ["ITC","mfd_open_L", "Open MFD L", {
     if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} && (vehicle player) getVariable "mfd_l") then {
+        101 cutRsc ["MFD_DIALOG_L", "PLAIN", -1, true];
         101 cutRsc ["MFD_DIALOG_L", "PLAIN", -1, true];
     } else {
         uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];
@@ -34,13 +37,14 @@ ITC_AIR_MFD_CAMS = [];
 ["ITC","mfd_open_R", "Open MFD R", {
     if((isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"}) && (vehicle player) getVariable "mfd_r") then {
         102 cutRsc ["MFD_DIALOG_R", "PLAIN", -1, true];
+        102 cutRsc ["MFD_DIALOG_R", "PLAIN", -1, true];
     } else {
         uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
         102 cutText ["", "PLAIN"];
 };}, "", [205, [true, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC","mfd_open_TGP", "Open MFD TGP", {
-    if(!dialog && (vehicle player) getVariable "wso" && player == (gunner (vehicle player))) then {
+    if(!dialog && (vehicle player) getVariable "wso" && player != (driver (vehicle player))) then {
       createDialog "TGP_DIALOG";
     };
 }, "", [208, [true, false, false]]] call CBA_fnc_addKeybind;
