@@ -38,7 +38,9 @@ if(_qty == 0) exitWith {itc_air_ripple_active = false;};
     (_this select 0) set [2, getPos _plane];
     (_this select 0) set [5, (_qty - 1)];
     player forceWeaponFire [_weapon, _fireMode];
-    [1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew (vehicle player)), false];
+    if(_cycle) then {
+      [1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew (vehicle player)), false];
+    };
     if(_mode == "RIP PRS") then {
       [_weapon, _fireMode] spawn {
         sleep 0.01;

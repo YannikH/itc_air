@@ -96,7 +96,7 @@ class cfgVehicles {
     };
     class Plane_Base_F: Plane {
       class Components;
-      class ACE_SelfActions {
+      class ACE_SelfActions : ACE_SelfActions {
         class ITC_SOI {
           displayName = "Set SOI";
           condition = "[""any""] call itc_air_mfd_fnc_soi_capable";
