@@ -54,10 +54,23 @@ class cfgVehicles {
         };
     };
 
-    class Helicopter;
+    class Allvehicles;
+    class Air : Allvehicles {
+      class ACE_Actions;
+      class ACE_SelfActions;
+    };
+    class Plane : Air {
+      class ACE_Actions : ACE_Actions {
+        class ACE_MainActions;
+      };
+      class ACE_SelfActions : ACE_SelfActions {};
+    };
+    class Helicopter : Air {
+      class ACE_SelfActions : ACE_SelfActions {};
+    };
     class Helicopter_Base_F : Helicopter {
       class Components;
-      class ACE_SelfActions {
+      class ACE_SelfActions : ACE_SelfActions {
         class ITC_SOI {
           displayName = "Set SOI";
           condition = "[""any""] call itc_air_mfd_fnc_soi_capable";
@@ -82,17 +95,6 @@ class cfgVehicles {
           };
         };
       };
-    };
-
-    class Allvehicles;
-    class Air : Allvehicles {
-      class ACE_Actions;
-    };
-    class Plane : Air {
-      class ACE_Actions : ACE_Actions {
-        class ACE_MainActions;
-      };
-      class ACE_SelfActions;
     };
     class Plane_Base_F: Plane {
       class Components;

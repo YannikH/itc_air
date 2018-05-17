@@ -69,19 +69,19 @@ class cfgMagazines {
         hp_single_smart(NAME,WEAP,AMMO,WT) \
         hp_double_smart(NAME,WEAP,AMMO,WT)
 
-    hp_rocket("M151 Hydra HE","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F,6)
-    hp_rocket("M156 Hydra WP","Rocket_04_HE_Plane_CAS_01_F",itc_ammo_Hydra_M156,6)
-    hp_rocket("M151 APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
+    hp_rocket("M-151","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F,6)
+    hp_rocket("M-156","Rocket_04_HE_Plane_CAS_01_F",itc_ammo_Hydra_M156,6)
+    hp_rocket("APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
 
     hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82,227)
     hp_ser_der_ter("GBU-12","ITC_weap_gbu12",ITC_ammo_gbu12,227)
     hp_ser_der_ter("BL-778","BombCluster_03_F",BombCluster_03_Ammo_F,227)
     hp_ser_der_ter("CBU-100","BombCluster_01_F",BombCluster_01_Ammo_F,227)
 
-    hp_ser_der_smart("GBU-38(v)1/B","itc_weap_gbu38",ITC_ammo_gbu38,227)
-    hp_ser_der_smart("GBU-38(v)4/B","itc_weap_gbu38",ITC_ammo_gbu38v3b,227)
-    hp_ser_der_smart("GBU-54","itc_weap_gbu54",ITC_ammo_gbu54,227)
-    hp_ser_der_smart("GBU-54 LDCB","itc_weap_gbu54",ITC_ammo_gbu54_lcdb,227)
+    hp_ser_der_smart("GBU-38v1","itc_weap_gbu38",ITC_ammo_gbu38,227)
+    hp_ser_der_smart("GBU-38v4","itc_weap_gbu38",ITC_ammo_gbu38v3b,227)
+    hp_ser_der_smart("GBU-54v1","itc_weap_gbu54",ITC_ammo_gbu54,227)
+    hp_ser_der_smart("GBU-54v4","itc_weap_gbu54",ITC_ammo_gbu54_lcdb,227)
 
     hp_ser_der_lau117("AGM-65G","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F,50)
 

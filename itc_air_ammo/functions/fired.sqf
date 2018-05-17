@@ -17,7 +17,8 @@ if (isText _config) then {
     _this call (missionNamespace getVariable [getText _config, {}]);
 };
 
-if(_weapon isKindOf ["Mk82BombLauncher", configFile >> "CfgWeapons"]) then {
+_cursorAim = (configFile >> "CfgWeapons" >> _weapon >> "cursorAim") call BIS_fnc_getCfgData;
+if(_cursorAim == "bomb" || _cursorAim == "rocket") then {
   //player sideChat str format["%1 %2", itc_air_ripple_active, itc_air_ripple_dropcount];
   if(!itc_air_ripple_active && itc_air_ripple_dropcount <= 0) then {
     _this call itc_air_ammo_fnc_ripple;

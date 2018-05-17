@@ -15,7 +15,6 @@ class CfgPatches {
 #include "config\pods.hpp"
 #include "config\presets.hpp"
 
-#include "cfgAmmo.hpp"
 #include "cfgMagazines.hpp"
 #include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"
@@ -105,36 +104,6 @@ class CfgFunctions
         };
     };
     class itc_air_ammo {
-        class functions {
-            class fired {
-                file = "itc_air\functions\ammo\fired.sqf";
-            };
-            class init {
-                preInit = 1;
-                file = "itc_air\functions\ammo\init.sqf";
-            };
-            class fired_wp {
-                file = "itc_air\functions\ammo\firedWP.sqf";
-            };
-            class fired_prox_fuze {
-                file = "itc_air\functions\ammo\proxFuze.sqf";
-            };
-            class paveway {
-                file = "itc_air\functions\ammo\paveway.sqf";
-            };
-            class apkws {
-                file = "itc_air\functions\ammo\apkws.sqf";
-            };
-            class calculate_drag {
-                file = "itc_air\functions\ammo\calculateDrag.sqf";
-            };
-            class calculate_mass {
-                file = "itc_air\functions\ammo\calculateMass.sqf";
-            };
-            class ripple {
-                file = "itc_air\functions\ammo\ripple.sqf";
-            };
-        };
     };
     class itc_air_jdam {
         class functions {

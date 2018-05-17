@@ -37,6 +37,8 @@ class CfgWeapons {
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
         magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
         class Burst;
+        reloadTime = 0.01; \
+        magazineReloadTime = 0.01; \
     };
     class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
         magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
