@@ -8,7 +8,7 @@ _list = (_display displayCtrl 51500);
 _lbIndex = lbCurSel _list;
 switch(_btn) do {
   case "L2": {
-    _lbIndex = _lbIndex - 1;
+    _lbIndex = (_lbIndex - 1) max 0;
     _list lbSetCursel _lbIndex;
   };
   case "L4": {
@@ -24,7 +24,7 @@ switch(_btn) do {
     (_options # _lbIndex) set [2, _value];
   };
   case "L5": {
-    _lbIndex = _lbIndex + 1;
+    _lbIndex = (_lbIndex + 1) min ((count _options) - 1);
     _list lbSetCursel _lbIndex;
   };
   case "UFC": {
