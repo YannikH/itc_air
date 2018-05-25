@@ -1,0 +1,10 @@
+params ["_mfd", "_dir"];
+_addDir = [0,0,0] getDir _dir;
+_plane = (vehicle player);
+_target = ((_plane getVariable "tgp_dir") select 1);
+_dir = _plane getDir _target;
+_dir = if(_addDir + _dir > 360) then [{_dir + _addDir - 360}, {_dir + _addDir}];
+_dist = ((_plane getVariable "tgp_fov") * 100);
+_newPos = _target getPos [_dist, _dir];
+_newPos = [_newPos select 0, _newPos select 1, getTerrainHeightASL _newPos];
+_plane setPilotcameratarget _newPos;

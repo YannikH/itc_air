@@ -16,63 +16,42 @@ ITC_AIR_CURVIS = 0;
 ITC_AIR_LINES = [];
 ITC_AIR_ICONS = [];
 
-//(findDisplay 46) displayAddEventHandler ["KeyDown",{_this select 1 call itc_fnc_targeting_keydown}];
+["vehicle", {_this call itc_air_vehicle_fnc_changed}, true] call CBA_fnc_addPlayerEventHandler;
+//[player, vehicle player] call itc_air_vehicle_fnc_changed;
 
-["vehicle", {_this call itc_fnc_targeting_vehicle_changed_handler}, true] call CBA_fnc_addPlayerEventHandler;
-
-["ITC","gripen_waypoint_next", "Cycle WP next", {[1] call itc_fnc_targeting_cycleWp;}, "", [201, [false, false, false]]] call CBA_fnc_addKeybind;
-["ITC","gripen_waypoint_prev", "Cycle WP previous", {[-1] call itc_fnc_targeting_cycleWp;}, "", [209, [false, false, false]]] call CBA_fnc_addKeybind;
+["ITC","gripen_waypoint_next", "Cycle WP next", {[1] call itc_air_steerpoints_fnc_cycle;}, "", [201, [false, false, false]]] call CBA_fnc_addKeybind;
+["ITC","gripen_waypoint_prev", "Cycle WP previous", {[-1] call itc_air_steerpoints_fnc_cycle;}, "", [209, [false, false, false]]] call CBA_fnc_addKeybind;
 
 
-["ITC","gripen_fuze_next", "Cycle Fuze next", {["fuze",1] call itc_fnc_targeting_config_bomb;}, "", [201, [true, false, false]]] call CBA_fnc_addKeybind;
-["ITC","gripen_fuze_prev", "Cycle Fuze previous", {["fuze",-1] call itc_fnc_targeting_config_bomb;}, "", [209, [true, false, false]]] call CBA_fnc_addKeybind;
+["ITC","gripen_fuze_next", "Cycle Fuze next", {["fuze",1] call itc_air_jdam_fnc_config_bomb;}, "", [201, [true, false, false]]] call CBA_fnc_addKeybind;
+["ITC","gripen_fuze_prev", "Cycle Fuze previous", {["fuze",-1] call itc_air_jdam_fnc_config_bomb;}, "", [209, [true, false, false]]] call CBA_fnc_addKeybind;
 
-["ITC","gripen_imp_next", "Impact Angle +10", {["imp",10] call itc_fnc_targeting_config_bomb;}, "", [201, [false, true, false]]] call CBA_fnc_addKeybind;
-["ITC","gripen_imp_prev", "Impact Angle -10", {["imp",-10] call itc_fnc_targeting_config_bomb;}, "", [209, [false, true, false]]] call CBA_fnc_addKeybind;
-
+["ITC","gripen_imp_next", "Impact Angle +10", {["imp",10] call itc_air_jdam_fnc_config_bomb;}, "", [201, [false, true, false]]] call CBA_fnc_addKeybind;
+["ITC","gripen_imp_prev", "Impact Angle -10", {["imp",-10] call itc_air_jdam_fnc_config_bomb;}, "", [209, [false, true, false]]] call CBA_fnc_addKeybind;
 
 [
     "ITC",
-    "gripen_broadcast_toggle", 
-    "Datalink broadcast toggle", 
-    {[0] call itc_fnc_targeting_broadcastToggle;}, 
-    "", 
-    [210, [false, false, false]]
-] call CBA_fnc_addKeybind;
-
-[
-    "ITC",
-    "gripen_store_POI", 
-    "Store POI from TGP", 
-    {[0] call itc_fnc_targeting_store_poi;}, 
-    "", 
+    "gripen_store_POI",
+    "Store POI from SOI",
+    {[true] call itc_air_mfd_fnc_soi_slew},
+    "",
     [207, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
-
 [
     "ITC",
-    "gripen_laser_search", 
-    "Laser Spot Search/Track Enable", 
-    {[0] call itc_fnc_targeting_laser_spot_search_track}, 
-    "", 
-    [211, [false, false, false]]
-] call CBA_fnc_addKeybind;
-
-[
-    "ITC",
-    "gripen_hmd_slew_tgp", 
-    "HMD Slew TGP", 
-    {[0] call itc_fnc_targeting_hmd_tgp_slew}, 
-    "", 
+    "gripen_soi_slew_tgp",
+    "SOI Slew TGP",
+    {[false] call itc_air_mfd_fnc_soi_slew},
+    "",
     [20, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
 [
     "ITC",
-    "gripen_laser_ir", 
-    "Toggle IR Laser", 
-    {[0] call itc_fnc_targeting_laser_ir}, 
-    "", 
-    [38, [false, true, false]]
+    "gripen_fcr_slew_tgp",
+    "FCR Slew TGP",
+    {[0] call itc_air_tgp_fnc_fcr_slew},
+    "",
+    [20, [true, false, false]]
 ] call CBA_fnc_addKeybind;

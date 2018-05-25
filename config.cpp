@@ -1,13 +1,19 @@
 class CfgPatches {
     class itc_air {
-        name = "";
-        units[] = {"ITC_A10E", "itc_Gripen","ITC_ROVER_SIR"};
+        name = "ITC Aircraft";
+        author = "Yax";
+        units[] = {"ITC_A10E", "itc_Gripen", "ITC_A159", "ITC_F181E"};
+        weapons[] = {"ITC_ROVER_SIR"};
         requiredVersion = 1.0;
-        requiredAddons[] = {"CBA_Extended_EventHandlers", "A3_Air_F","A3_Air_F_Beta","A3_Air_F_EPC_Plane_CAS_01","A3_Air_F_EPB_Heli_Light_03","A3_CargoPoses_F","rhsusf_c_troops","rhsusf_c_heavyweapons","rhsusf_sounds","rhsusf_c_airweapons"};
-        icon = "\itc_air\data\UI\MDF.paa";
-        picture = "\itc_air\data\UI\MDF.paa";
+        requiredAddons[] = {"CBA_Extended_EventHandlers", "A3_Air_F","A3_Air_F_Beta","A3_Air_F_EPC_Plane_CAS_01","A3_Air_F_EPB_Heli_Light_03","A3_CargoPoses_F"};
+        icon = "\itc_air\data\UI\ITC.paa";
+        picture = "\itc_air\data\UI\ITC.paa";
     };
 };
+#define STRINGIFY(s) #s
+
+#include "config\pods.hpp"
+#include "config\presets.hpp"
 
 #include "cfgAmmo.hpp"
 #include "cfgMagazines.hpp"
@@ -16,112 +22,203 @@ class CfgPatches {
 
 #include "Dialog.hpp"
 #include "Dialog_rover.hpp"
+#include "config\mfd.hpp"
 
 class CfgFunctions
 {
-    class ITC
-    {
-        class general
-        {
-            class fired {
-                file = "itc_air\functions\fired.sqf";
+
+    #include "config\mfd_functions.cpp"
+    class itc_air_common {
+        class functions {
+            class get_turret_target {
+                file = "itc_air\functions\common\getTurretTargetPoint.sqf";
             };
-            class draw_laser_bundle {
-                file = "itc_air\functions\targeting\drawLaserBundle.sqf";
+            class get_turret_rotation {
+                file = "itc_air\functions\common\getTurretRotation.sqf";
             };
-            class set_global_variable {
-                file = "itc_air\functions\setGLobalVar.sqf";
+            class get_fov_steps {
+                file = "itc_air\functions\common\getFovSteps.sqf";
+            };
+            class set_var {
+                file = "itc_air\functions\common\setVarGlobal.sqf";
+            };
+            class is_laser_code {
+                file = "itc_air\functions\common\isLaserCode.sqf";
             };
         };
-
-        class ammo
-        {
-            class ammo_init {
+    };
+    class itc_air_datalink {
+        class functions {
+            class broadcast_toggle {
+                file = "itc_air\functions\datalink\broadcastToggle.sqf";
+            };
+            class init {
+                preInit = 1;
+                file = "itc_air\functions\datalink\init.sqf";
+            };
+            class text_send {
+                file = "itc_air\functions\datalink\sendText.sqf";
+            };
+            class text_recv {
+                file = "itc_air\functions\datalink\recvText.sqf";
+            };
+        };
+    };
+    class itc_air_rover {
+        class functions {
+            class can_open {
+                file = "itc_air\functions\rover\canRover.sqf";
+            };
+            class cycle_code {
+                file = "itc_air\functions\rover\cycle.sqf";
+            };
+            class open {
+                file = "itc_air\functions\rover\openRover.sqf";
+            };
+            class button {
+                file = "itc_air\functions\rover\roverButton.sqf";
+            };
+            class view_duo_touch {
+                file = "itc_air\functions\rover\openDuoTouch.sqf";
+            };
+            class change_camera_mode {
+                file = "itc_air\functions\rover\cameraMode.sqf";
+            };
+        };
+    };
+    class itc_air_ir_laser {
+        class functions {
+            class init {
+                preInit = 1;
+                file = "itc_air\functions\irLaser\init.sqf";
+            };
+            class toggle_pulse {
+                file = "itc_air\functions\irLaser\toggleLaserPulse.sqf";
+            };
+            class toggle {
+                file = "itc_air\functions\irLaser\laserIR.sqf";
+            };
+            class toggle_drawing {
+                file = "itc_air\functions\irLaser\toggleLaserLocal.sqf";
+            };
+        };
+    };
+    class itc_air_ammo {
+        class functions {
+            class fired {
+                file = "itc_air\functions\ammo\fired.sqf";
+            };
+            class init {
                 preInit = 1;
                 file = "itc_air\functions\ammo\init.sqf";
             };
-            class ammo_fired_wp {
+            class fired_wp {
                 file = "itc_air\functions\ammo\firedWP.sqf";
             };
-            class ammo_prox_fuze {
+            class fired_prox_fuze {
                 file = "itc_air\functions\ammo\proxFuze.sqf";
             };
-        };
-        class jdam {
-            class targeting_fired {
-                file = "itc_air\functions\targeting\fired.sqf";
+            class paveway {
+                file = "itc_air\functions\ammo\paveway.sqf";
             };
-            class targeting_init {
+            class apkws {
+                file = "itc_air\functions\ammo\apkws.sqf";
+            };
+            class calculate_drag {
+                file = "itc_air\functions\ammo\calculateDrag.sqf";
+            };
+            class calculate_mass {
+                file = "itc_air\functions\ammo\calculateMass.sqf";
+            };
+        };
+    };
+    class itc_air_jdam {
+        class functions {
+            class fired {
+                file = "itc_air\functions\jdam\fired.sqf";
+            };
+            class guidance {
+                file = "itc_air\functions\jdam\guidance.sqf";
+            };
+            class fuzing {
+                file = "itc_air\functions\jdam\fuzing.sqf";
+            };
+            class config_bomb {
+                file = "itc_air\functions\jdam\configBomb.sqf";
+            };
+        };
+    };
+    class itc_air_steerpoints {
+        class functions {
+            class cycle {
+                file = "itc_air\functions\steerpoints\cycleWP.sqf";
+            };
+            class target {
+                file = "itc_air\functions\steerpoints\targetWP.sqf";
+            };
+            class store {
+                file = "itc_air\functions\steerpoints\storePOI.sqf";
+            };
+        };
+    };
+    class itc_air_tgp {
+        class functions {
+            class init {
                 preInit = 1;
                 file = "itc_air\functions\targeting\init.sqf";
             };
-            class targeting_keyDown {
-                file = "itc_air\functions\targeting\keyDown.sqf";
-            };
-            class targeting_cycleWP {
-                file = "itc_air\functions\targeting\cycleWP.sqf";
-            };
-            class targeting_config_bomb {
-                file = "itc_air\functions\targeting\configBomb.sqf";
-            };
-            class targeting_targetWP {
-                file = "itc_air\functions\targeting\targetWP.sqf";
-            };
-            class targeting_broadcastToggle {
-                file = "itc_air\functions\targeting\broadcastToggle.sqf";
-            };
-            class targeting_store_poi {
-                file = "itc_air\functions\targeting\storePOI.sqf";
-            };
-            class targeting_laser_spot_search_track {
+            class laser_spot_search_track {
                 file = "itc_air\functions\targeting\laserSpotSearchTrack.sqf";
             };
-            class targeting_hmd_tgp_slew {
+            class hmd_slew {
                 file = "itc_air\functions\targeting\hmdSlewTgp.sqf";
             };
-            class targeting_render_3d {
-                file = "itc_air\functions\targeting\render3dassets.sqf";
-                preInit = 1;
+            class fcr_slew {
+                file = "itc_air\functions\targeting\fcrSlewTgp.sqf";
             };
-            class targeting_laser_ir {
-                file = "itc_air\functions\targeting\laserIR.sqf";
-            };
-            class targeting_laser_ir_local {
-                file = "itc_air\functions\targeting\toggleLaserLocal.sqf";
-            };
-            class targeting_vehicle_changed_handler {
-                file = "itc_air\functions\targeting\vehicleChangedHandler.sqf";
+            class create_camera {
+                file = "itc_air\functions\targeting\createCamera.sqf";
             };
         };
-
-        class rover {
-            class initRover {
+    };
+    class itc_air_ui {
+        class functions {
+            class draw_laser_bundle {
+                file = "itc_air\functions\UI\drawLaserBundle.sqf";
+            };
+            class render_3d {
+                file = "itc_air\functions\UI\render3dassets.sqf";
                 preInit = 1;
-                file = "itc_air\functions\rover\initROVER.sqf";
             };
-            class openRover {
-                file = "itc_air\functions\rover\openROVER.sqf";
+            class tgp_symbology {
+                file = "itc_air\functions\UI\drawTGPSymbology.sqf";
             };
-            class roverButton {
-                file = "itc_air\functions\rover\roverButton.sqf";
+            class pitch_bank_indicators {
+                file = "itc_air\functions\UI\pitchBankIndicators.sqf";
             };
-            class openDuoTouch {
-                file = "itc_air\functions\rover\openDuoTouch.sqf";
+            class sa_cue {
+                file = "itc_air\functions\UI\SACue.sqf";
             };
-            class canOpenRover {
-                file = "itc_air\functions\rover\canRover.sqf";
+            class laser_status {
+                file = "itc_air\functions\UI\laserStatus.sqf";
             };
-            class getRemoteCamera {
-                file = "itc_air\functions\rover\triggerCameraDir.sqf";
+            class yardstick {
+                file = "itc_air\functions\UI\yardstick.sqf";
             };
-            class getCameraDir {
-                file = "itc_air\functions\rover\getCameraDir.sqf";
+            class grid {
+                file = "itc_air\functions\UI\grid.sqf";
             };
-            class changeCameraMode {
-                file = "itc_air\functions\rover\cameraMode.sqf";
+            class hmd_symbology {
+                file = "itc_air\functions\UI\drawHMDSymbology.sqf";
             };
-            class broadCast {
-                file = "itc_air\functions\rover\roverBroadcast.sqf";
+            class poi_markers {
+                file = "itc_air\functions\UI\POImarkers.sqf";
+            };
+            class tof {
+                file = "itc_air\functions\UI\tof.sqf";
+            };
+            class tof_bomb {
+                file = "itc_air\functions\UI\tofBomb.sqf";
             };
         };
 
@@ -137,6 +234,19 @@ class CfgFunctions
                 file = "itc_air\functions\autopilot\autopilot.sqf";
             };
         };
+    };
+    class itc_air_vehicle {
+      class functions {
+        class changed {
+            file = "itc_air\functions\vehicle\vehicleChangedHandler.sqf";
+        };
+        class setup {
+            file = "itc_air\functions\vehicle\vehicleSetup.sqf";
+        };
+        class apply_forces {
+            file = "itc_air\functions\vehicle\applyForces.sqf";
+        };
+      };
     };
 };
 
@@ -205,61 +315,5 @@ class CfgCloudlets {
         circleRadius = 2.9;
         interval = 0.8;
         positionVar[] = {4, 8, 4};
-    };
-    class TargetingLaser
-    {
-        interval = "0.5 * speedSize + 0.5";      //interval of particle's creation
-        circleRadius = 0;                //radius around emitter where particles are created
-        circleVelocity[] = {0, 0, 0};        //direction and speed of movement of particle's circle
-        particleShape = \A3\data_f\ParticleEffects\Universal\Universal;     //path and name of file
-        particleFSNtieth = 16;           //coef; size of one particle's texture in pixels = 2048/coef
-        particleFSIndex = 12;            //index of start line on texture
-        particleFSFrameCount = 8;            //count of pictures in animation (starts on first picture in defined line - particleFSIndex)
-        particleFSLoop = 1;                  //loop of animation (0 - false, 1 - true)
-        angle = 0;                   //angle of particle
-        angleVar = 0;                //variability in angle of particle
-
-        animationName = "";
-        particleType = "Spaceobject";              //type of animation (Billboard (2D), Spaceobject (3D))
-        timerPeriod = 1;                 //interval of timer (how often is called script defined in parameter onTimerScript)
-        lifeTime = 1;                //life time of particle in seconds
-        moveVelocity[] = {0, 0, 0};              //direction and speed of movement of particle [x,z,y]
-        rotationVelocity = 0;            //direction and speed of rotation of particle [x,z,y]
-        weight = 1;                      //weight of particle (kg)
-        volume = 1;                      //volume of particle (m3)
-        rubbing = 0;              //how much is particle affected by wind/air resistance
-        size[] = {1,1,10000};              //size of particle during the life
-        color[] = {{1,252,75,1},{1,252,75,1}};         //color of particle during the life (r,g,b,a)
-        animationSpeed[] = {1};          //speed of animation (number of animation cycles in 1s)
-        randomDirectionPeriod = 0;           //interval of random speed change
-        randomDirectionIntensity = 0;        //intensity of random speed change
-        onTimerScript = "";                  //script triggered by timer (in variable "this" is stored position of particle)
-        beforeDestroyScript = "";            //script triggered before destroying of particle (in variable "this" is stored position of particle)
-        lifeTimeVar = 0;                 //variability in lifetime of particle
-        position[] = {0, 0, 0};                  //defines position of effect
-        positionVar[] = {0, 0, 0};           //variability in position of particle (each part of vector has it's own variability)
-        positionVarConst[] = {0, 0, 0};      //variability in position of particle (variablity of all parts of vector is the same)
-        moveVelocityVar[] = {0, 0, 0};       //variability in direction and speed of particle (each part of vector has it's own variability)
-        moveVelocityVarConst[] = {0, 0, 0};      //variability in direction and speed of particle (variablity of all parts of vector is the same)
-        rotationVelocityVar = 0;             //variability in rotation of particle
-        sizeVar = 0;                 //variability in size of particle
-        colorVar[] = {0, 0, 0, 0};           //variability in color of particle
-        randomDirectionPeriodVar = 0;        //variability in interval of random speed change
-        randomDirectionIntensityVar = 0;         //variability in intensity of random speed change
-        sizeCoef = 1;                            //size of particle = size parameter value * this coef (works only in some effects)
-        colorCoef[]={1,1,1,1};                   //color of particle = color parameter value * this coef (works only in some effects)
-        animationSpeedCoef = 1;                  //animation speed of particle = animationSpeed parameter value * this coef (works only in some effects)
-
-        destroyOnWaterSurface = 0;               //particle can exist - only underwater (-1), only above the water (1), everywhere (0)
-        destroyOnWaterSurfaceOffset = 0;         //offset of water surface in destroyOnWaterSurface parameter
-        onSurface = false;                        //placing of particle on (water) surface on start of it's existence, default value is true, works only if circleRadius > 0
-        keepOnSurface = false;                   //true for particle is stay on water surface - see notes bellow
-        surfaceOffset = 0;                       //offset of water surface in keepOnSurface parameter
-        bounceOnSurface = 0.6;                   //coef of speed's loosing in collision with ground, 0-1 for collisions, -1 disable collision
-        bounceOnSurfaceVar = 0.0;                //variability in speed's loosing in collision with ground
-        postEffects = "IEDMineFlame";            //effect triggered before destroying of particle
-        particleEffects = "ExplosionShardsFire"; //emitter of effect defined in this parameter is attached to each particle
-        blockAIVisibility = true;                //sets if particles are in the AI visibility tests (default true) - false for better performance but AI is able to see through particles
-        emissiveColor[] = {{30,30,30,0},{0,0,0,0}};  //sets emissivity of particle, 4th number has no meaning for now
     };
 };

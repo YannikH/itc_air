@@ -6,19 +6,7 @@ class CfgWeapons {
         picture = "\itc_air\data\UI\ROVER_icon_ca.paa";
     };
 
-    class rhs_weap_mk82;
-    class itc_weap_gbu38 : rhs_weap_mk82 {
-        displayName = "GBU-38";
-        magazines[] = {"ITC_1rnd_gbu38", "ITC_2rnd_gbu38", "ITC_1rnd_gbu38v3b", "ITC_2rnd_gbu38v3b"};
-        reloadTime = 0.0;
-        autoFire=false;
-    };
-
-    class itc_weap_mk82_airburst : rhs_weap_mk82 {
-        displayName = "Mk82 Airburst";
-        magazines[] = {"itc_mag_mk82_airburst", "itc_mag_mk82_airburst_3"};
-    };
-
+    /*
     class Gatling_30mm_Plane_CAS_01_F;
     class RHS_weap_gau8 : Gatling_30mm_Plane_CAS_01_F {
         class LowROF;
@@ -43,30 +31,84 @@ class CfgWeapons {
             burst = 1;
         };
     };
+    */
 
-    class rhs_weap_FFARLauncher;
-    class itc_weap_ffarlauncher_smoke : rhs_weap_FFARLauncher {
+    class RocketPods;
+    class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
+        magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
+        class Burst;
+    };
+    class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
+        magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
+        class Burst : Burst {
+          salvo = 1;
+        }
+    };
+    class itc_weap_ffarlauncher_smoke : Rocket_04_HE_Plane_CAS_01_F {
         displayName = "Hydra (M156 WP)";
         magazines[] = {"itc_mag_M156_7", "itc_mag_M156_19"};
         class EventHandlers
         {
             class ITC_EventHandlers
             {
-                fired = "_this call itc_fnc_ammo_fired_wp;";
+                fired = "_this call itc_air_ammo_fnc_fired_wp;";
             };
         };
     };
 
-    class RocketPods;
-    class Bomb_04_Plane_CAS_01_F: RocketPods
-    {
-        magazines[] += {"ITC_3rnd_gbu12", "itc_2rnd_gbu12"};
+    class MissileLauncher;
+    #define agmPylonMagazines(WEAP, AMMO) \
+        class WEAP : MissileLauncher { \
+            magazines[] += { \
+                itc_hp_lau117_##AMMO, \
+                itc_hp_bru55_lau117_##AMMO \
+            }; \
+        };
+    class Bomb_04_Plane_CAS_01_F;
+    #define magazines_hp_ser_der_ter(WEAP, PARENT, AMMO) \
+        class WEAP : PARENT { \
+            magazines[] += { \
+                itc_hp_dumb_##AMMO, \
+                itc_hp_bru33_##AMMO, \
+                itc_hp_bru42_##AMMO \
+            }; \
+        };
+    magazines_hp_ser_der_ter(Mk82BombLauncher,RocketPods,Bo_Mk82)
+    magazines_hp_ser_der_ter(BombCluster_01_F,Bomb_04_Plane_CAS_01_F,BombCluster_01_Ammo_F)
+    magazines_hp_ser_der_ter(BombCluster_03_F,BombCluster_01_F,BombCluster_03_Ammo_F)
+
+    agmPylonMagazines(Missile_AGM_02_Plane_CAS_01_F,Missile_AGM_02_F)
+
+    class itc_weap_gbu38 : Mk82BombLauncher {
+        displayName = "GBU-38";
+        magazines[] = {"itc_hp_smart_ITC_ammo_gbu38","itc_hp_smart_ITC_ammo_gbu38v3b","itc_hp_bru55_ITC_ammo_gbu38","itc_hp_bru55_ITC_ammo_gbu38v3b"};
+        reloadTime = 0.0;
+        autoFire=false;
+    };
+    class itc_weap_gbu54 : itc_weap_gbu38 {
+        displayName = "GBU-54";
+        magazines[] = {
+            "itc_hp_smart_ITC_ammo_gbu54",
+            "itc_hp_bru55_ITC_ammo_gbu54",
+            "itc_hp_smart_ITC_ammo_gbu54_lcdb",
+            "itc_hp_bru55_ITC_ammo_gbu54_lcdb"
+        };
+        reloadTime = 0.0;
+        autoFire=false;
     };
 
-    class rhs_weap_agm65;
-    class rhs_weap_agm65h: rhs_weap_agm65
-    {
-        magazines[] += {"itc_2rnd_agm65h"};
+    class ITC_weap_gbu12 : Bomb_04_Plane_CAS_01_F {
+      magazines[] = {
+          "itc_hp_dumb_ITC_ammo_gbu12",
+          "itc_hp_bru33_ITC_ammo_gbu12",
+          "itc_hp_bru42_ITC_ammo_gbu12"
+      };
+      canLock = 0;
+    };
+
+    class itc_weap_mk82_airburst : Mk82BombLauncher {
+        displayName = "Mk82 Airburst";
+        magazines[] = {"itc_mag_mk82_airburst", "itc_mag_mk82_airburst_3"};
     };
 
     class CannonCore;
@@ -79,5 +121,20 @@ class CfgWeapons {
         class manual : manual {
             reloadTime = 0.06;
         };
+    };
+
+    class Gatling_30mm_Plane_CAS_01_F : CannonCore {
+      class LowROF;
+    };
+    class itc_weap_gau8 : Gatling_30mm_Plane_CAS_01_F {
+      magazines[] = {
+        "1000Rnd_Gatling_30mm_Plane_CAS_01_F",
+        "itc_1000rnd_30mm_ap",
+        "itc_1000rnd_30mm_mix"
+      };
+      class LowROF : LowROF {
+        burst = 1;
+        reloadtime = 0.015;
+      };
     };
 };

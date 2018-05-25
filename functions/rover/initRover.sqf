@@ -1,2 +1,0 @@
-ITC_ROVER_FREQ = "";
-ITC_ROVER_FREQ_TEMP = "";
