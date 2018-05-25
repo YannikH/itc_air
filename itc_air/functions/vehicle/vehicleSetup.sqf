@@ -20,7 +20,7 @@ if(isNIl{SADL}) then {
     [missionNameSpace, "SADL", SADL + [_vehicle]] call itc_air_common_fnc_set_var;
   };
 };
-
+_options = [];
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
 _hasWSO = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "wso");
@@ -36,6 +36,10 @@ if(_capableMFD_R) then {
 };
 _capableRover = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "rover" >> "capable");
 _roverFreq = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "rover" >> "frequency_default");
+if(_capableRover == 1) then {
+  _options pushBack [missionNameSpace,"ITC_ROVER_FREQ",_roverFreq,"ROVER FREQ","","UFC",{((parseNumber _this) > 5240 && (parseNumber _this) < 5850)}, false];
+  _options pushBack [_vehicle,"roverOn",false,"ROVER ON","","cycle",[false, true]];
+};
 _seat = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
 _mass = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mass");
 _fovSteps = [_vehicle] call itc_air_common_fnc_get_fov_steps;
@@ -100,7 +104,13 @@ _vehicle setVariable ["rip_qty", 1];
 _vehicle setVariable ["rip_dist", 50];
 _vehicle setVariable ["rip_cycle", false];
 
+_vehicle setVariable ["options", _options];
+
+[_vehicle] call itc_air_dsms_fnc_init; 
+
+
 // DRAW STUFF
+itc_air_dsms_currentWeapon = "";
 [{
     _this select 0 params ["_plane", "_lastFrame"];
     if(!((vehicle player) isKindOf "Air") || !alive _plane) exitWith {
@@ -111,6 +121,11 @@ _vehicle setVariable ["rip_cycle", false];
     if(time == _lastFrame) exitWith {};
     _this select 0 set [1, time];
     _inTGP = (cameraView == "GUNNER");
+
+    if(currentWeapon (vehicle player) != itc_air_dsms_currentWeapon) then {
+      itc_air_dsms_currentWeapon = currentWeapon (vehicle player);
+      [] call itc_air_dsms_fnc_weaponChanged;
+    };
 
     //config plane data
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;

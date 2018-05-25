@@ -32,6 +32,12 @@ class CfgFunctions {
       class fireAndResetWeapon {
         file = "itc_air_ammo\functions\fireAndResetWeapon.sqf";
       };
+      class getAmmoProfileOptions {
+        file = "itc_air_ammo\functions\getAmmoProfileOptions.sqf";
+      };
+      class getFuzeOptions {
+        file = "itc_air_ammo\functions\getFuzeOptions.sqf";
+      };
     };
   };
 };

@@ -12,6 +12,22 @@ class CfgPatches {
 };
 #define STRINGIFY(s) #s
 
+#define page(NAME) \
+    class NAME {
+
+#define defsoi(NAME) \
+  class NAME##_soi { \
+    file = itc_air\functions\mfd\soi\NAME.sqf; \
+  };
+#define defsoi_action(NAME) \
+  class NAME##_soi_action { \
+    file = itc_air\functions\mfd\soi_action\NAME.sqf; \
+  };
+#define defsoi_slew(NAME) \
+  class NAME##_soi_slew { \
+    file = itc_air\functions\mfd\soi_slew\NAME.sqf; \
+  };
+
 #include "config\pods.hpp"
 #include "config\presets.hpp"
 
@@ -21,13 +37,10 @@ class CfgPatches {
 
 #include "Dialog.hpp"
 #include "Dialog_rover.hpp"
-#include "config\mfd.hpp"
 #include "config\tgp.hpp"
 
 class CfgFunctions
 {
-
-    #include "config\mfd_functions.cpp"
     class itc_air_common {
         class functions {
             class get_turret_target {
@@ -232,6 +245,63 @@ class CfgFunctions
         };
         class apply_forces {
             file = "itc_air\functions\vehicle\applyForces.sqf";
+        };
+      };
+    };
+    class itc_air_mfd {
+      page(tad)
+        defsoi(tad)
+        defsoi_action(tad)
+        defsoi_slew(tad)
+      };
+      page(tgp)
+        defsoi(tgp)
+        defsoi_slew(tgp)
+      };
+      class hmcs {
+        class hmcs_slew {
+          file = "itc_air\functions\mfd\soi_slew\hmcs.sqf";
+        };
+      };
+      class input {
+        class input_cancel {
+          file = "itc_air\functions\mfd\input\cancel.sqf";
+        };
+        class input_save {
+          file = "itc_air\functions\mfd\input\save.sqf";
+        };
+        class input_start {
+          file = "itc_air\functions\mfd\input\start.sqf";
+        };
+      };
+      class buttons {
+        class illum {
+          file = "itc_air\functions\mfd\interaction\illum.sqf";
+        };
+        class swap {
+          file = "itc_air\functions\mfd\interaction\swap.sqf";
+        };
+      };
+      class generic {
+      };
+      class soi {
+        class soi_capable {
+          file = "itc_air\functions\mfd\soi\capable.sqf";
+        };
+        class soi_set {
+          file = "itc_air\functions\mfd\soi\set.sqf";
+        };
+        class soi_input {
+          file = "itc_air\functions\mfd\soi\input.sqf";
+        };
+        class soi_action {
+          file = "itc_air\functions\mfd\soi_action\action.sqf";
+        };
+        class soi_slew {
+          file = "itc_air\functions\mfd\soi_slew\slew.sqf";
+        };
+        class soi_stpt {
+          file = "itc_air\functions\mfd\soi_action\stpt.sqf";
         };
       };
     };

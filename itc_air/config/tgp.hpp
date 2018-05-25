@@ -1,3 +1,8 @@
+class RscMapControl;
+class IGUIBack;
+class RscEdit;
+class RscText;
+class RscStructuredText;
 class TGP_DIALOG {
     idd = 19993;
     movingEnable = true;

@@ -8,3 +8,9 @@ class CfgPatches {
         requiredAddons[] = {};
     };
 };
+
+#include "config\cfgFunctions.hpp"
+
+#include "uiConfig\mfdBaseClasses.hpp"
+#include "uiConfig\mfd.hpp"
+#include "uiConfig\mfdButtons.hpp"
