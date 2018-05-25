@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call itc_fnc_autpilotToggleMode;
+ * [] call itc_air_autopilot_fnc_autpilotToggleMode;
  *
  * Public: No
  */

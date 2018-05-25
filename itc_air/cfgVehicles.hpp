@@ -716,9 +716,7 @@ class cfgVehicles {
                 };
             };
         };
-        acceleration = 350;
         class itc_air : itc_air_default_jet {
-          mass = 12311;
         };
     };
 

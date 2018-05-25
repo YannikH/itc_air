@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [] call ITC_fnc_autpilot;
+ * [] call itc_air_autopilot_fnc_autpilot;
  *
  * Public: No
  */
@@ -157,7 +157,7 @@ pfhID = [{
 	//we use force applied far in front of the nose of the plane so we don't have to worry when
 	//about bank when we want to point nose vertically up
 	private _pitchForce = (_targetVelocityAngle - _velocityAngle) * AP_PITCH_FORCE_MULT * _weightMult;
-	
+
 	//we want only small samples to not account for large errors
 	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
 		ITC_AP_VaCalibrationCounter = ITC_AP_VaCalibrationCounter + 1;
@@ -181,7 +181,7 @@ pfhID = [{
 	//BANK
 	//linear relationship between offset and force proved to have most stable results
 	private _bankTorque = (_targetBank - _bank) * AP_BANK_TORQUE_MULT * _weightMult;
-	
+
 	//Calibration
 	if (abs _bankTorque < AP_BANK_CALIBRATION_TRESH) then {
 		ITC_AP_BankCalibrationCounter = ITC_AP_BankCalibrationCounter + 1;
