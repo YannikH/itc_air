@@ -234,6 +234,19 @@ class CfgFunctions
                 file = "itc_air\functions\UI\tofBomb.sqf";
             };
         };
+
+        class autopilot {
+            class autopilotInit {
+                preInit = 1;
+                file = "itc_air\functions\autopilot\autopilotInit.sqf";
+            };
+            class autopilotToggleMode {
+                file = "itc_air\functions\autopilot\autopilotToggleMode.sqf";
+            };
+            class autopilot {
+                file = "itc_air\functions\autopilot\autopilot.sqf";
+            };
+        };
     };
     class itc_air_vehicle {
       class functions {
