@@ -19,10 +19,10 @@ if(!isNil {_guidanceTypes}) then {
         _optionsList pushBack ["impAng","60","IMP ANG","UFC",{(_this > 9 && _this < 90)}];
       };
       case "laser": {
-        _optionsList pushBack ["impAng","60","IMP ANG","UFC",{[_this] call itc_air_common_fnc_is_laser_code}];
+        _optionsList pushBack ["laserCode","1111","LASER CODE","UFC",{[_this] call itc_air_common_fnc_is_laser_code}];
       };
       case "autolaser": {
-        _optionsList pushBack ["autolaser","OFF","AUTO LS","cycle",["ON","T-10","OFF"]];
+        _optionsList pushBack ["autolaser","OFF","AUTO LS","cycle",["ON","OFF"]];
       };
     };
   }forEach _guidanceTypes;

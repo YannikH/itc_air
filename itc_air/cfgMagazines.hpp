@@ -84,6 +84,7 @@ class cfgMagazines {
     hp_ser_der_smart("GBU-54v4","itc_weap_gbu54",ITC_ammo_gbu54_lcdb,227)
 
     hp_ser_der_lau117("AGM-65G","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F,50)
+    hp_ser_der_lau117("AGM-65E","itc_air_weapon_maverick_e",itc_ammo_agm65e,50)
 
     class 6Rnd_ACE_Hellfire_AGM114K;
     class PylonRack_3Rnd_ACE_Hellfire_AGM114K : 6Rnd_ACE_Hellfire_AGM114K {

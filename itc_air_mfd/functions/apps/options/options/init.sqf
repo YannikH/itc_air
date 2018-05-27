@@ -3,7 +3,7 @@ params ["_display"];
 #include "..\..\..\mfdDefines.hpp"
 
 _vehicle = vehicle player;
-_options = _vehicle getVariable "options";
+_options = _vehicle getVariable "itc_air_options";
 
 _list = (_display displayCtrl 51500);
 lbClear _list;

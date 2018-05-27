@@ -4,4 +4,5 @@ params ["_display"];
 (_display displayCtrl L5) ctrlSetText "STPT";
 //(_display displayCtrl L5) ctrlSetText "MSG";
 
+(_display displayCtrl R4) ctrlSetText "MAV";
 (_display displayCtrl R5) ctrlSetText "OPT";

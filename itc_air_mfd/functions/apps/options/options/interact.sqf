@@ -3,7 +3,8 @@ params ["_display", "_btn"];
 #include "..\..\dsms\dsmsMacros.hpp"
 (_btn splitString "") params ["_side", "_num"];
 _plane = vehicle player;
-_options = _plane getVariable "options";
+_options = _plane getVariable "itc_air_options";
+if(count _options == 0) exitWith {false};
 _list = (_display displayCtrl 51500);
 _lbIndex = lbCurSel _list;
 switch(_btn) do {
@@ -19,6 +20,10 @@ switch(_btn) do {
       };
       case "cycle": {
         _value = CYCLEVALUE(_dataInfo,_value);
+        _namespace setVariable [_key, _value];
+        if(!isNil {_onChange}) then {
+          [_value] call _onChange;
+        };
       };
     };
     (_options # _lbIndex) set [2, _value];
@@ -33,10 +38,14 @@ switch(_btn) do {
     if(_value call (_optionsSet # 6)) then {
       _optionsSet set [2, _value];
       _options set [_lbIndex, _optionsSet];
+      _namespace setVariable [_key, _value];
+      if(!isNil {_onChange}) then {
+        [_value] call _onChange;
+      };
     };
   };
 };
-_plane setVariable ["options",_options];
+_plane setVariable ["itc_air_options",_options];
 
 
 lbClear _list;
@@ -46,7 +55,9 @@ for "_i" from 0 to (count _options - 1) step 1 do {
   _list lbSetTextRight [_index,format["%1",_value]];
 };
 _list lbSetCurSel _lbIndex;
-(_display displayCtrl 51011) ctrlSetText format["%1", _options # _lbIndex # 3];
-(_display displayCtrl 51013) ctrlSetText format["%1", _options # _lbIndex # 2];
+if(_lbIndex > -1) then {
+  (_display displayCtrl 51011) ctrlSetText format["%1", _options # _lbIndex # 3];
+  (_display displayCtrl 51013) ctrlSetText format["%1", _options # _lbIndex # 2];
+};
 
 false

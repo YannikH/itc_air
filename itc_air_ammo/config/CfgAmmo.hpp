@@ -87,6 +87,18 @@ class cfgAmmo {
       dragCoef = 0.82;
     };
 
+    class itc_ammo_agm65e : Missile_AGM_02_F {
+      class Components {};
+      ITC_firedEvent = "itc_air_ammo_fnc_fired_lmav";
+      flightProfiles[] = {"Direct"};
+      class Direct {
+        ascendHeight = 150.0;
+        descendDistance = 200.0;
+        minDistance = 150.0;
+        ascendAngle = 70.0;
+      };
+    };
+
     class B_30mm_APFSDS_Tracer_Red;
     class itc_30mm_ap : B_30mm_APFSDS_Tracer_Red {
       airFriction = -0.00036;

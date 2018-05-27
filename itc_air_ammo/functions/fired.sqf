@@ -28,3 +28,7 @@ if(_cursorAim == "bomb" || _cursorAim == "rocket") then {
     itc_air_ripple_dropcount = 0;
   };
 };
+
+if(vehicle player getVariable "autolaser" && isNull (laserTarget vehicle player)) then {
+  ["Laserdesignator_pilotCamera","Laserdesignator_pilotCamera"] call itc_air_ammo_fnc_fireAndResetWeapon;
+};

@@ -22,7 +22,7 @@ _display setVariable ["tad_fov", 1];
 _display setVariable ["tad_cursor", [0,1000,0]];
 _display setVariable ["tad_expand", 0];
 _display setVariable ["tad_pos", [0,0,0]];
-
+_display setVariable ["sensor",""];
 
 [{
   _this select 0 params ["_display","_vehicle", "_app", "_page"];
@@ -34,6 +34,7 @@ _display setVariable ["tad_pos", [0,0,0]];
 
   if(_display getVariable "app" != _app) then { //check if app switched
     [_display] call itc_air_mfd_fnc_clear; //clear app pages
+    _display setVariable ["sensor",""];
     if(_app != "") then { //clear the previous app if it existed
       [_display] call (_display getVariable "appClear"); //clear app pages
     };

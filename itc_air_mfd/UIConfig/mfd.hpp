@@ -21,6 +21,8 @@ class MFD : RscControlsGroup {
             colorBackground[] = {0,0,0,1};
         };
         #include "pages\tgp\tgpView.hpp"
+        #include "pages\mav\lmav.hpp"
+        #include "pages\mav\mavoff.hpp"
         #include "pages\dsms\status.hpp"
         #include "pages\dsms\profilemain.hpp"
         #include "pages\dsms\profileset.hpp"

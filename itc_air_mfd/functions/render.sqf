@@ -1,6 +1,6 @@
 params ["_display"];
 #include "mfdDefines.hpp"
-private _apps = ["TGP","DSMS","STAT","MAV","CLR"];
+private _apps = ["TGP","DSMS","STAT","TAD","CLR"];
 for "_i" from 0 to 4 do {
   (_display displayCtrl (B1 + _i)) ctrlSetText "TGP";
   _color = if(_apps # _i == _display getVariable "app") then [{[0,0,0,1]},{[0,1,0,1]}];

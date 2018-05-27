@@ -20,6 +20,16 @@ if(isNIl{SADL}) then {
     [missionNameSpace, "SADL", SADL + [_vehicle]] call itc_air_common_fnc_set_var;
   };
 };
+private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
+{
+  private _funcName = format["itc_air_%1_fnc_setup",toLower _x];
+  private _func = (missionNamespace getVariable _funcName);
+  if(!isNil {_func}) then {
+    [_vehicle] call _func;
+  };
+}forEach _systems;
+_vehicle setVariable ["itc_air_systems", _systems];
+_vehicle setVariable ["itc_air_systems_pfh", []];
 _options = [];
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
@@ -34,12 +44,6 @@ if(_capableMFD_R) then {
   _vehicle setVariable["mfd_r_pages",(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right" >> "pages")  call BIS_fnc_getCfgData];
   _vehicle setVariable["mfd_r_quick",["SWAP"] + ((configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right" >> "shortcuts")  call BIS_fnc_getCfgData) + ["LST"]];
 };
-_capableRover = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "rover" >> "capable");
-_roverFreq = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "rover" >> "frequency_default");
-if(_capableRover == 1) then {
-  _options pushBack [missionNameSpace,"ITC_ROVER_FREQ",_roverFreq,"ROVER FREQ","","UFC",{((parseNumber _this) > 5240 && (parseNumber _this) < 5850)}, false];
-  _options pushBack [_vehicle,"roverOn",false,"ROVER ON","","cycle",[false, true]];
-};
 _seat = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
 _mass = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mass");
 _fovSteps = [_vehicle] call itc_air_common_fnc_get_fov_steps;
@@ -52,8 +56,6 @@ _vehicle setVariable ["fuel_lock", false];
 _vehicle setVariable ["hmd", (_capableHMD == 1)];
 _vehicle setVariable ["wso", (_hasWSO == 1)];
 _vehicle setVariable ["tgp", (_capableTGP == 1)];
-_vehicle setVariable ["rover", (_capableRover == 1)];
-[_vehicle, "rover_freq", str _roverFreq] call itc_air_common_fnc_set_var;
 _vehicle setVariable ["mfd_l", _capableMFD_L];
 _vehicle setVariable ["mfd_r", _capableMFD_R];
 _vehicle setVariable ["seat", _seat];
@@ -104,9 +106,9 @@ _vehicle setVariable ["rip_qty", 1];
 _vehicle setVariable ["rip_dist", 50];
 _vehicle setVariable ["rip_cycle", false];
 
-_vehicle setVariable ["options", _options];
+//_vehicle setVariable ["itc_air_options", _options];
 
-[_vehicle] call itc_air_dsms_fnc_init; 
+[_vehicle] call itc_air_dsms_fnc_init;
 
 
 // DRAW STUFF

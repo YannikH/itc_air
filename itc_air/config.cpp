@@ -159,7 +159,7 @@ class CfgFunctions
     class itc_air_tgp {
         class functions {
             class init {
-                preInit = 1;
+                postInit = 1;
                 file = "itc_air\functions\targeting\init.sqf";
             };
             class laser_spot_search_track {

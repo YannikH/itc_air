@@ -20,6 +20,7 @@ class itc_air_default_jet {
     wso = 0;
     class mfd_left : mfd_plane {};
     class mfd_right : mfd_plane {};
+    systems[] = {"MFD_L","MFD_R","DSMS","STPT","TGP","HMD","SOI","AUTOPILOT","ROVER","IRLAS","WSO"};
 };
 
 class itc_air_default_heli_ah {

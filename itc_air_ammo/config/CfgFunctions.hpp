@@ -38,6 +38,9 @@ class CfgFunctions {
       class getFuzeOptions {
         file = "itc_air_ammo\functions\getFuzeOptions.sqf";
       };
+      class fired_lmav {
+        file = "itc_air_ammo\functions\fired_lmav.sqf";
+      };
     };
   };
 };

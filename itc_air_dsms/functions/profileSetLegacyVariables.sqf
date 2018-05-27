@@ -27,3 +27,8 @@ switch(_fuzeSelected) do {
   };
 };
 ITC_AIR_PROGFUZE = _fuze;
+
+private _autolaser = _profiles findIf {_x # 0 == "autolaser"};
+if(_autolaser > -1) then {
+  (vehicle player) setVariable ["autolaser",((_profiles # _autolaser) # 1 == "ON")];
+};
