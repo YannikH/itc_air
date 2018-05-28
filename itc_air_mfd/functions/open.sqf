@@ -25,10 +25,17 @@ _display setVariable ["tad_pos", [0,0,0]];
 _display setVariable ["sensor",""];
 
 [{
-  _this select 0 params ["_display","_vehicle", "_app", "_page"];
-  if(!alive player) then { //ensure player is alive and dialog is open
+  _this select 0 params ["_display","_vehicle", "_app", "_page","_lastFrame"];
+  if(!alive player || !((vehicle player) isKindOf "Air") || !alive _vehicle) then { //ensure player is alive and dialog is open
     [_this select 1] call CBA_fnc_removePerFrameHandler;
+    uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];
+    101 cutText ["", "PLAIN"];
+    uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
+    102 cutText ["", "PLAIN"];
   };
+
+  if(time == _lastFrame) exitWith {};
+  _this select 0 set [4, time];
 
   [_display] call itc_air_mfd_fnc_render;
 
@@ -59,4 +66,4 @@ _display setVariable ["sensor",""];
   };
   (_this select 0) set [2, _app];
   (_this select 0) set [3, _page];
-}, 0, [_display, _vehicle, "", ""]] call CBA_fnc_addPerFrameHandler;
+}, 0, [_display, _vehicle, "", "", 0]] call CBA_fnc_addPerFrameHandler;

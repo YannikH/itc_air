@@ -19,17 +19,21 @@ ITC_AP_mode = 0;
 ITC_AP_isEnabled = false;
 
 ["ITC", "ITC_ToggleApMode", ["Toggle autopilot mode", "Switches between ALT, ALT/HDG, PATH"], {}, {
-	if (!(vehicle player isKindOf "Plane") && {driver vehicle player == player} && ("AUTOPILOT" in (vehicle player getVariable "itc_air_systems"))) exitWith {};
-	call itc_air_autopilot_fnc_autopilotToggleMode;
+	if (!(vehicle player isKindOf "Plane") && {driver vehicle player == player}) exitWith {};
+	if("AUTOPILOT" in (vehicle player getVariable ["itc_air_systems",[]])) then {
+		call itc_air_autopilot_fnc_autopilotToggleMode;
+	};
 }, [0x0F, [true, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC", "ITC_enableAutopilot", ["Enable autopilot", "Enables autopilot"], {}, {
-	if (!(vehicle player isKindOf "Plane") && {driver vehicle player == player} && ("AUTOPILOT" in (vehicle player getVariable "itc_air_systems"))) exitWith {};
-	if (ITC_AP_isEnabled) then {
-		ITC_AP_isEnabled = false;
-	} else {
-		ITC_AP_isEnabled = true;
-		[vehicle player, ITC_AP_mode] call itc_air_autopilot_fnc_autopilot;
+	if (!(vehicle player isKindOf "Plane") && {driver vehicle player == player}) exitWith {};
+	if("AUTOPILOT" in (vehicle player getVariable ["itc_air_systems",[]])) then {
+		if (ITC_AP_isEnabled) then {
+			ITC_AP_isEnabled = false;
+		} else {
+			ITC_AP_isEnabled = true;
+			[vehicle player, ITC_AP_mode] call itc_air_autopilot_fnc_autopilot;
+		};
 	};
 }, [0x0F, [false, true, false]]] call CBA_fnc_addKeybind;
 

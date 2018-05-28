@@ -47,17 +47,11 @@ switch(_btn) do {
 };
 _plane setVariable ["itc_air_options",_options];
 
-
-lbClear _list;
-for "_i" from 0 to (count _options - 1) step 1 do {
-  (_options # _i) params ["_namespace","_key","_value","_label","_onChange","_dataType","_dataInfo","_dataVar"];
-  _index = _list lbAdd _label;
-  _list lbSetTextRight [_index,format["%1",_value]];
-};
 _list lbSetCurSel _lbIndex;
 if(_lbIndex > -1) then {
-  (_display displayCtrl 51011) ctrlSetText format["%1", _options # _lbIndex # 3];
-  (_display displayCtrl 51013) ctrlSetText format["%1", _options # _lbIndex # 2];
+  private _opt = (_options # _lbIndex);
+  (_display displayCtrl 51011) ctrlSetText format["%1", _opt # 3];
+  (_display displayCtrl 51013) ctrlSetText format["%1", format["%1",(_opt # 0) getVariable [(_opt # 1),"ERR"]]];
 };
 
 false

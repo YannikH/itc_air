@@ -6,5 +6,7 @@ params ["_display"];
 invertText(_display,T2);
 (_display displayCtrl T3) ctrlSetText "DAM";
 
-(_display displayCtrl 211201) ctrlShow false;
-(_display displayCtrl 211000) ctrlShow false;
+(_display displayCtrl L45) ctrlSetText "ALT MSL";
+
+//(_display displayCtrl 211201) ctrlShow false;
+//(_display displayCtrl 211202) ctrlShow false;
