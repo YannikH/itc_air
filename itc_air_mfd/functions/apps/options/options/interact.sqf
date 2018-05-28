@@ -16,7 +16,7 @@ switch(_btn) do {
     (_options # _lbIndex) params ["_namespace","_key","_value","_label","_onChange","_dataType","_dataInfo","_dataVar"];
     switch(_dataType) do {
       case "UFC": {
-        [_display getVariable "displayVariable", "profile", _dataVar] call itc_air_ufc_fnc_prepareInput;
+        [_display getVariable "displayVariable", "option", _dataVar] call itc_air_ufc_fnc_prepareInput;
       };
       case "cycle": {
         _value = CYCLEVALUE(_dataInfo,_value);
@@ -33,14 +33,15 @@ switch(_btn) do {
     _list lbSetCursel _lbIndex;
   };
   case "UFC": {
-    params ["_display", "_btn", "_variable", "_value"];
-    _optionsSet = (_options # _lbIndex);
-    if(_value call (_optionsSet # 6)) then {
-      _optionsSet set [2, _value];
+    params ["_display", "_btn", "_variable", "_newValue"];
+    private _optionsSet = (_options # _lbIndex);
+    _optionsSet params ["_namespace","_key","_value","_label","_onChange","_dataType","_dataInfo","_dataVar"];
+    if(_newValue call _dataInfo) then {
+      _optionsSet set [2, _newValue];
       _options set [_lbIndex, _optionsSet];
-      _namespace setVariable [_key, _value];
+      _namespace setVariable [_key, _newValue];
       if(!isNil {_onChange}) then {
-        [_value] call _onChange;
+        [_newValue] call _onChange;
       };
     };
   };
@@ -48,10 +49,5 @@ switch(_btn) do {
 _plane setVariable ["itc_air_options",_options];
 
 _list lbSetCurSel _lbIndex;
-if(_lbIndex > -1) then {
-  private _opt = (_options # _lbIndex);
-  (_display displayCtrl 51011) ctrlSetText format["%1", _opt # 3];
-  (_display displayCtrl 51013) ctrlSetText format["%1", format["%1",(_opt # 0) getVariable [(_opt # 1),"ERR"]]];
-};
 
 false

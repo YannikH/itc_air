@@ -25,7 +25,7 @@ _handle = [{
     _target = _plane getVariable "tgp_dir";
     _forwardModifier = vectorMagnitude (velocity _plane) * 0.2;
     _cam camSetPos (_plane modelToWorld [2.7,2 + _forwardModifier,-0.8]);
-    _cam camSetTarget (ASLtoAGL (_target select 1));
+    _cam camSetTarget (_target select 1);
     _cam camCommit 0.2;
 }, 0, [_cam, _plane, _texture, _display]] call CBA_fnc_addPerFrameHandler;
 _cam

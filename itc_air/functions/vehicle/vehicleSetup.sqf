@@ -21,6 +21,7 @@ if(isNIl{SADL}) then {
   };
 };
 _vehicle setVariable ["itc_air_options", []];
+_vehicle setVariable ["itc_air_systems_pfh", []];
 private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
 {
   private _funcName = format["itc_air_%1_fnc_setup",toLower _x];
@@ -30,7 +31,6 @@ private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air
   };
 }forEach _systems;
 _vehicle setVariable ["itc_air_systems", _systems];
-_vehicle setVariable ["itc_air_systems_pfh", []];
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
 _hasWSO = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "wso");
