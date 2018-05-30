@@ -23,6 +23,9 @@ class cfgFunctions {
       class compilePage {
         file = "itc_air_mfd\functions\util\compilePage.sqf";
       };
+      class setup {
+        file = "itc_air_mfd\functions\setup.sqf";
+      };
     };
   };
 };

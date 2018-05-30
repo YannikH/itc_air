@@ -20,7 +20,7 @@ class itc_air_default_jet {
     wso = 0;
     class mfd_left : mfd_plane {};
     class mfd_right : mfd_plane {};
-    systems[] = {"MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
+    systems[] = {"DSMS","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
 };
 
 class itc_air_default_heli_ah {
@@ -34,6 +34,7 @@ class itc_air_default_heli_ah {
     wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
+    systems[] = {"MFD","MFD_L","MFD_R"};
 };
 
 class itc_air_default_heli_uh {
@@ -44,4 +45,5 @@ class itc_air_default_heli_uh {
     wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
+    systems[] = {"MFD","MFD_L","MFD_R"};
 };

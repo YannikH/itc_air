@@ -320,7 +320,7 @@ class RscTitles {
           w = SCALE * 0.525;
           h = SCALE * 0.7;
         };
-        class MFD_L : MFD {};
+        class MFD : MFD {};
     };
     class ITC_AIR_MFD_R : ITC_AIR_MFD_L {
         idd = 19992;
@@ -340,6 +340,6 @@ class RscTitles {
           w = SCALE * 0.525;
           h = SCALE * 0.7;
         };
-        class MFD_R : MFD_R {};
+        class MFD : MFD_R {};
     };
 };

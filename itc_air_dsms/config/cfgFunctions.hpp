@@ -13,8 +13,8 @@ class cfgFunctions {
       class weaponChanged {
         file = "itc_air_dsms\functions\weaponChanged.sqf";
       };
-      class init {
-        file = "itc_air_dsms\functions\init.sqf";
+      class setup {
+        file = "itc_air_dsms\functions\setup.sqf";
       };
       class profileSetLegacyVariables {
         file = "itc_air_dsms\functions\profileSetLegacyVariables.sqf";

@@ -11,7 +11,7 @@ _profiles = [];
       _profiles pushBack ([_x] call itc_air_dsms_fnc_generateWeaponProfile);
     };
   };
-}forEach (magazines _plane);
+}forEach (_plane magazinesTurret [-1]);
 {
   if(!(_x in _existingWeaponProfiles)) then {
     _weaponName = (configFile >> "CfgWeapons" >> _x >> "displayName") call BIS_fnc_getCfgData;
@@ -21,5 +21,5 @@ _profiles = [];
       _plane setVariable ["gunProfile",_index];
     };
   };
-}forEach (weapons _plane);
+}forEach (_plane weaponsTurret [-1]);
 _profiles
