@@ -10,7 +10,10 @@ if([_display, _button] call (_display getVariable "pageInteract")) exitWith {pla
 if([_display, _button] call (_display getVariable "appInteract")) exitWith {player sideChat "app exit";};
 
 (_button splitString "") params ["_side", "_num"];
-if(_side =="B") exitWith {
+if(_button == "B5") exitWith {
+  _display setVariable["app","LST"];
+};
+if(_side =="B" && parseNumber _num > 0) exitWith {
   _i = (parseNumber _num) - 1;
-  _display setVariable["app",toLower (["TGP","DSMS","STAT","TAD","dispprog"] select _i)];
+  _display setVariable["app",toLower ((_display getVariable "shortCuts") select _i)];
 };

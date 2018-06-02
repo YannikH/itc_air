@@ -630,7 +630,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.34,0.1};
                         bay = -1;
-                        attachment = "itc_hp_lau117_Missile_AGM_02_F";
+                        attachment = "itc_hp_lau117_itc_ammo_agm65h";
                     };
                     class pylon4
                     {
@@ -648,7 +648,7 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.25};
                         bay = -1;
-                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
+                        attachment = "itc_hp_smart_ITC_ammo_gbu38";
                     };
                     class pylon6 : pylon5
                     {
@@ -656,7 +656,6 @@ class cfgVehicles {
                         maxweight = 1200;
                         UIposition[] = {0.33,0.3};
                         bay = -1;
-                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
                         mirroredMissilePos = 5;
                     };
                     class pylon7: pylon4

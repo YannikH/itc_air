@@ -2,12 +2,12 @@ params ["_display", "_variable", "_input","_input_idc","_feed"];
 uiNamespace setVariable [_variable, _display];
 _display setVariable ["displayVariable", _variable];
 _vehicle = vehicle player;
-if(!(_vehicle isKindOf "Man")) then {
-  //_tabletClass = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_land" >> "tablet")  call BIS_fnc_getCfgData;
-};
-//_vehicle setVariable ["apps", (configFile >> "CfgWeapons" >> _tabletClass >> "apps")  call BIS_fnc_getCfgData];
-//_vehicle setVariable ["app", (_vehicle getVariable "apps") # 0];
-_display setVariable ["app", "dsms"];
+
+private _mfdApps = _vehicle getVariable "itc_air_mfd_apps";
+_display setVariable ["shortCuts", _mfdApps select [0, 4]];
+_display setVariable ["apps", _mfdApps select [4,6]];
+
+_display setVariable ["app", "lst"];
 
 (ctrlPosition (_display displayCtrl 2200)) params ["_x","_y","_w","_h"];
 (_display displayCtrl 61500) ctrlShow false;

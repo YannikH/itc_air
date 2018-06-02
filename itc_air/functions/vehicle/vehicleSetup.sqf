@@ -12,7 +12,7 @@ if(player != driver _vehicle && player != gunner _vehicle && !(player getVariabl
   _vehicle setVariable ["tgp", false];
   _vehicle setVariable ["rover", false];
 };
-
+/*
 if(isNIl{SADL}) then {
   [missionNameSpace, "SADL", [_vehicle]] call itc_air_common_fnc_set_var;
 } else {
@@ -20,6 +20,7 @@ if(isNIl{SADL}) then {
     [missionNameSpace, "SADL", SADL + [_vehicle]] call itc_air_common_fnc_set_var;
   };
 };
+*/
 _vehicle setVariable ["itc_air_options", []];
 _vehicle setVariable ["itc_air_systems_pfh", []];
 private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
@@ -103,17 +104,12 @@ _vehicle setVariable ["rip_qty", 1];
 _vehicle setVariable ["rip_dist", 50];
 _vehicle setVariable ["rip_cycle", false];
 
-//_vehicle setVariable ["itc_air_options", _options];
-
-[_vehicle] call itc_air_dsms_fnc_init;
-
-
 // DRAW STUFF
 itc_air_dsms_currentWeapon = "";
 [{
     _this select 0 params ["_plane", "_lastFrame"];
     if(!((vehicle player) isKindOf "Air") || !alive _plane) exitWith {
-        [missionNameSpace, "SADL", SADL - [_plane]] call itc_air_common_fnc_set_var;
+        //[missionNameSpace, "SADL", SADL - [_plane]] call itc_air_common_fnc_set_var;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     //get basic info used for the HMD/TGP
@@ -123,7 +119,9 @@ itc_air_dsms_currentWeapon = "";
 
     if(currentWeapon (vehicle player) != itc_air_dsms_currentWeapon) then {
       itc_air_dsms_currentWeapon = currentWeapon (vehicle player);
-      [] call itc_air_dsms_fnc_weaponChanged;
+      if("DSMS" in (_plane getvariable ["itc_air_systems",[]])) then {
+        [] call itc_air_dsms_fnc_weaponChanged;
+      };
     };
 
     //config plane data

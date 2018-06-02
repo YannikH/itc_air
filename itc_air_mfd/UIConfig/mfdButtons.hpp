@@ -466,9 +466,11 @@ class ITC_AIR_MFDButtons {
         UFCGroup
     };
     class MFDButtons_L : ITC_AIR_MFDButtons_Base {
+      idc = 1502;
       onLoad = "(_this # 0) setVariable[""display"",""ITC_AIR_MFD_L""]";
     };
     class MFDButtons_R : MFDButtons_L {
+      idc = 1503;
       x = safezoneX + safeZoneW - (SCALE * 0.75);
       y = safezoneY + safeZoneH - (SCALE * 1);
       onLoad = "(_this # 0) setVariable[""display"",""ITC_AIR_MFD_R""]";

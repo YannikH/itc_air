@@ -89,6 +89,12 @@ class CfgWeapons {
       modes[] = {"Direct"};
     };
 
+    class itc_air_weapon_maverick_h : Missile_AGM_02_Plane_CAS_01_F {
+      displayName = "AGM-65H";
+      magazines[] = {"itc_hp_lau117_itc_ammo_agm65h","itc_hp_bru55_lau117_itc_ammo_agm65h"};
+      modes[] = {"Direct"};
+    };
+
     class itc_weap_gbu38 : Mk82BombLauncher {
         displayName = "GBU-38";
         magazines[] = {"itc_hp_smart_ITC_ammo_gbu38","itc_hp_smart_ITC_ammo_gbu38v3b","itc_hp_bru55_ITC_ammo_gbu38","itc_hp_bru55_ITC_ammo_gbu38v3b"};

@@ -22,6 +22,7 @@ class MFD : RscControlsGroup {
         };
         #include "pages\tgp\tgpView.hpp"
         #include "pages\mav\lmav.hpp"
+        #include "pages\mav\ccdmav.hpp"
         #include "pages\mav\mavoff.hpp"
         #include "pages\dsms\status.hpp"
         #include "pages\dsms\profilemain.hpp"
@@ -310,7 +311,7 @@ class RscTitles {
         //onLoad = "[(_this select 0), ""ITC_AIR_MFD_L"",""MFD_L_INPUT"",19993,""MFD_L_FEED""] call itc_air_mfd_fnc_open";
         controls[]=
         {
-            MFD_L
+            MFD
         };
         class MFD_MAP : RscMapControl
         {
@@ -330,7 +331,7 @@ class RscTitles {
         };
         controls[]=
         {
-            MFD_R
+            MFD
         };
         class MFD_MAP : RscMapControl
         {
