@@ -9,7 +9,8 @@ _display setVariable ["apps", _mfdApps select [4,6]];
 
 _display setVariable ["app", "lst"];
 
-(ctrlPosition (_display displayCtrl 2200)) params ["_x","_y","_w","_h"];
+//(ctrlPosition (_display displayCtrl 61500)) params ["_x","_y","_w","_h"];
+private _x = 0.1375 * 0.9; private _y = 0.18 * 0.9; private _w = 0.475 * 0.9; private _h = 0.66 * 0.9;
 (_display displayCtrl 61500) ctrlShow false;
 _display setVariable ["center", [_x + (_w / 2), _y + (_h / 2)]];
 _display setVariable ["width", _w];

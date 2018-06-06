@@ -1,0 +1,15 @@
+ITC_AIR_FCR_CURSOR_DIR params ["_az", "_rng"];
+private _plane = vehicle player;
+private _drawOriginPos = if(ITC_AIR_FCR_FREEZE) then [{ITC_AIR_FCR_FREEZE_POS},{(getPos _plane)}];
+private _drawOriginDir = if(ITC_AIR_FCR_FREEZE) then [{ITC_AIR_FCR_FREEZE_DIR},{(getDir _plane)}];
+private _targetPos = _drawOriginPos getPos [_rng, (_drawOriginDir + _az)];
+//player sideChat str [_az,_rng];
+private _targetPos = [_targetPos # 0, _targetPos # 1, 0];
+private _target = nearestObjects [_targetPos, ["Land","Car","Tank","Boat","Ship"], 300] # 0;
+if(isNil {_target}) exitWith {};
+//player sideChat str [_targetPos, _target];
+_plane setPilotCameraTarget (getPosASL _target);
+ITC_AIR_MAVERICK_GSTAB = true;
+ITC_AIR_MAVERICK_TRACK = getPosATL _target;
+ITC_AIR_FCR_CURSOR_TRACKING = true;
+ITC_AIR_FCR_CURSOR_TRACK = getPosATL _target;

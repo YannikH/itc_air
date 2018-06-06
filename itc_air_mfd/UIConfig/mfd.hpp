@@ -24,6 +24,7 @@ class MFD : RscControlsGroup {
         #include "pages\mav\lmav.hpp"
         #include "pages\mav\ccdmav.hpp"
         #include "pages\mav\mavoff.hpp"
+        #include "pages\fcr\ag.hpp"
         #include "pages\dsms\status.hpp"
         #include "pages\dsms\profilemain.hpp"
         #include "pages\dsms\profileset.hpp"

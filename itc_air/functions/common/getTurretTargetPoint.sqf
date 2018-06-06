@@ -18,7 +18,7 @@ if(isNil{_turretIndex}) then {
 if(_turretIndex == -1) exitWith {
     getPilotCameraTarget (_vehicle) params ["_locked", "_target"];
     _target = if(_locked) then [{_target}, {
-      _vehicle modelToWorld ((getPilotCameraDirection _vehicle) vectorMultiply 1000)
+      _vehicle modelToWorldWorld ((getPilotCameraDirection _vehicle) vectorMultiply 1000)
     }];
     [_locked, _target, (visiblePosition _vehicle) vectorAdd [1,2,-2]];
 };

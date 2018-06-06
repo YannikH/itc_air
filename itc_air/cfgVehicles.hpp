@@ -317,7 +317,10 @@ class cfgVehicles {
             class VehicleSystemsDisplayManagerComponentRight;
         };
         class pilotCamera : litening{};
-        class itc_air : itc_air_default_jet {};
+        class itc_air : itc_air_default_jet {
+          mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
+          systems[] = {"DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
+        };
     };
 
     class Plane_Fighter_03_base_F;
@@ -345,7 +348,10 @@ class cfgVehicles {
         weapons[] = {"CMFlareLauncher", "Laserdesignator_pilotCamera"};
         magazines[] = {"120Rnd_CMFlare_Chaff_Magazine", "Laserbatteries"};
 		    scopeCurator=2;
-        class itc_air : itc_air_default_jet {};
+        class itc_air : itc_air_default_jet {
+          mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
+          systems[] = {"DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
+        };
         class pilotCamera : litening{};
         class Components : Components {
             class SensorsManagerComponent;
@@ -569,7 +575,10 @@ class cfgVehicles {
             class VehicleSystemsDisplayManagerComponentLeft;
             class VehicleSystemsDisplayManagerComponentRight;
         };
-        class itc_air : itc_air_default_jet {};
+        class itc_air : itc_air_default_jet {
+          mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
+          systems[] = {"DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
+        };
     };
 
     class Plane_CAS_01_base_F : Plane_Base_F { };

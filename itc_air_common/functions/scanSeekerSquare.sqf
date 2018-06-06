@@ -1,5 +1,5 @@
 
-params ["_target","_fov","_resolution","_distance"];
+params ["_target","_fov","_resolution"];
 private ["_intersectPos","_intersect","_xDirection"];
 private _plane = vehicle player;
 
