@@ -23,6 +23,10 @@ switch(_btn) do {
       case "cycle": {
         _value = CYCLEVALUE(_dataOptions,_value);
       };
+      case "STPT": {
+        _value = vehicle player getVariable "stpt_name";
+        _dataOptions = vehicle player getVariable "stpt_pos";
+      };
     };
     _profileOptions set [_profileOptionsIndex, [_key, _value, _label, _dataType, _dataOptions]];
   };
@@ -77,14 +81,15 @@ if(count _profileOptions > 0) then {
   (_display displayCtrl 121011) ctrlSetText _label;
   (_display displayCtrl 121012) ctrlSetText "VAL";
   (_display displayCtrl 121013) ctrlSetText _value;
+
+  _text = "";
+  {
+    _x params ["_key","_value","_label"];
+    _text = _text + "<t color='#00ff00' align='left'>" + _label + ":</t>";
+    _text = _text + "<t color='#00ff00' align='right'>" + _value + "</t>";
+    _text = _text + "<br/>";
+  }forEach _profileOptions;
+  (_display displayCtrl 121100) ctrlSetStructuredText parseText _text;
 };
-_text = "";
-{
-  _x params ["_key","_value","_label"];
-  _text = _text + "<t color='#00ff00' align='left'>" + _label + ":</t>";
-  _text = _text + "<t color='#00ff00' align='right'>" + _value + "</t>";
-  _text = _text + "<br/>";
-}forEach _profileOptions;
-(_display displayCtrl 121100) ctrlSetStructuredText parseText _text;
 PROFILESAVE;
 false

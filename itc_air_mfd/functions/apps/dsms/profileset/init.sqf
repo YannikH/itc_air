@@ -7,10 +7,16 @@ PROFILELOAD(PROFILEEDITNAME);
 _plane = vehicle player;
 
 (_display displayCtrl 121000) ctrlSetText _profileName;
-(_display displayCtrl 121003) ctrlSetText str _rip_qty;
-(_display displayCtrl 121007) ctrlSetText _release_mode;
- (_display displayCtrl R2) ctrlSetText _rip_mode;
- if(_type == "bomb") then {
+if(_type != "missile") then {
+  (_display displayCtrl 121002) ctrlSetText "RIP QTY";
+  (_display displayCtrl 121003) ctrlSetText str _rip_qty;
+  (_display displayCtrl 121007) ctrlSetText _release_mode;
+  (_display displayCtrl R2) ctrlSetText _rip_mode;
+} else {
+  (_display displayCtrl 121002) ctrlSetText "";
+  (_display displayCtrl 121003) ctrlSetText "";
+};
+if(_type == "bomb") then {
   (_display displayCtrl 121004) ctrlSetText "M";
   (_display displayCtrl 121005) ctrlSetText str _rip_dist;
   (_display displayCtrl 121006) ctrlSetText "MODE";

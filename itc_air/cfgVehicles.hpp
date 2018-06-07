@@ -512,7 +512,7 @@ class cfgVehicles {
                     };
                     class pylon3 {
                         attachment = "itc_hp_lau117_Missile_AGM_02_F";
-                        hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117","itc_hp_harpoon"};
                         maxweight = 1050;
                         priority = 11;
                         UIposition[] = {0.55,0.35};

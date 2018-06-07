@@ -21,5 +21,15 @@ if(_type == "rocket") then {
   _plane setVariable ["rip_qty", _rip_qty];
   _plane setVariable ["rip_dist", 1];
 };
+if(_type == "missile") then {
+  _plane setVariable ["rip_mode", 1];
+  _plane setVariable ["rip_qty", 1];
+  {
+    _plane setVariable ["prof_" + (_x # 0), (_x # 1)];
+    if(_x # 3 == "stpt") then {
+      _plane setVariable ["prof_" + (_x # 0) + "_pos", (_x # 4)];
+    };
+  }forEach _profileVariables;
+};
 (uiNameSpace getVariable "ITC_AIR_MFD_L") setVariable ["profileChanged",true];
 (uiNameSpace getVariable "ITC_AIR_MFD_R") setVariable ["profileChanged",true];

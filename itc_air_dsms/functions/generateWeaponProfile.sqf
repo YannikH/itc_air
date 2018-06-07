@@ -21,6 +21,18 @@ switch(_cursorAim) do {
       ["","SGL",1,0]
     ];
   };
+  case "missile": {
+    if(_ammoType == "itc_ammo_agm84") then {
+      _options = [_ammoType] call itc_air_ammo_fnc_getAmmoProfileOptions;
+      _profile = [
+        [_weapon,_ammoName, _ammoName,-1,_cursorAim,true],
+        ["CCIP","SGL",1,50],
+        _options
+      ];
+    } else {
+      _profile = [[_weapon,_ammoName, _ammoName,-1,_cursorAim,false],[]];
+    };
+  };
   default {
     _profile = [[_weapon,_ammoName, _ammoName,-1,_cursorAim,false],[]];
   };
