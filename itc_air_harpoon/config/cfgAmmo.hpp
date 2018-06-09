@@ -14,10 +14,17 @@ class cfgAmmo {
       ascendAngle = 70.0;
     };
     maxSpeed = 320;
-    thrustTime = 60;
+    initSpeed = 50;
+    thrustTime = 300;
+    thrust = 10;
     timeToLive = 800;
-    indirectHit = 200;
-    indirectHitRange = 4;
-    hit = 5000;
+    submunitionAmmo = "itc_ammo_penetrator_agm84";
+  };
+
+  class ammo_Penetrator_AGM_02;
+  class itc_ammo_penetrator_agm84 : ammo_Penetrator_AGM_02 {
+    hit=2000;
+    indirectHit=1000;
+    indirectHitRange=20;
   };
 };

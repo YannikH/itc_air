@@ -577,7 +577,7 @@ class cfgVehicles {
         };
         class itc_air : itc_air_default_jet {
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
+          systems[] = {"F181E","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
         };
     };
 

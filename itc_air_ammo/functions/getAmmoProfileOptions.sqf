@@ -2,10 +2,10 @@ params ["_ammo"];
 _optionsList = [];
 //option: [key, value, label, dataType, dataOptions]
 _noseFuze = getText (configFile >> "CfgAmmo" >> _ammo >> "ITC_noseFuze");
-_optionsList = _optionsList + (["nose",_noseFuze] call itc_air_ammo_fnc_getFuzeOptions);
+_optionsList = _optionsList + (["nose",_noseFuze,"N/"] call itc_air_ammo_fnc_getFuzeOptions);
 
 _tailFuze = getText (configFile >> "CfgAmmo" >> _ammo >> "ITC_tailFuze");
-_optionsList = _optionsList + (["tail",_tailFuze] call itc_air_ammo_fnc_getFuzeOptions);
+_optionsList = _optionsList + (["tail",_tailFuze,"T/"] call itc_air_ammo_fnc_getFuzeOptions);
 
 if(_tailFuze != "" && _noseFuze != "") then {
   _optionsList pushBack ["fuzeSel","N/T","FUZE","cycle",["N/T","NOSE","TAIL"]];
@@ -32,8 +32,8 @@ if(!isNil {_guidanceTypes}) then {
         _optionsList pushBack ["search","10","BOL SRCH","UFC",{(_this > 0)}];
         _optionsList pushBack ["destruct","20","BOL DESTR","UFC",{(_this > 10)}];
         _optionsList pushBack ["bearing","0","BOL BRG","UFC",{(_this > -1 && _this <= 360)}];
-        _optionsList pushBack ["fxp","OFF","BOL FXP","cycle",["ON","OFF"]];
-        _optionsList pushBack ["fxp_pos","","BOL FXP","STPT",""];
+        //_optionsList pushBack ["fxp","OFF","BOL FXP","cycle",["ON","OFF"]];
+        //_optionsList pushBack ["fxp_pos","","BOL FXP","STPT",""];
         _optionsList pushBack ["hptp","OFF","BOL HPTP","cycle",["ON","OFF"]];
         _optionsList pushBack ["hptp_pos","","BOL HPTP","STPT",""];
       };
