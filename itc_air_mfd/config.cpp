@@ -14,3 +14,4 @@ class CfgPatches {
 #include "uiConfig\mfdBaseClasses.hpp"
 #include "uiConfig\mfd.hpp"
 #include "uiConfig\mfdButtons.hpp"
+#include "uiConfig\mfdSTLButtons.hpp"

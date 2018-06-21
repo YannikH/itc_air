@@ -24,14 +24,17 @@ if(isNIl{SADL}) then {
 _vehicle setVariable ["itc_air_options", []];
 _vehicle setVariable ["itc_air_systems_pfh", []];
 private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
+private _activeSystems = [];
 {
   private _funcName = format["itc_air_%1_fnc_setup",toLower _x];
   private _func = (missionNamespace getVariable _funcName);
   if(!isNil {_func}) then {
     [_vehicle] call _func;
+    _activeSystems pushBack _x;
   };
 }forEach _systems;
 _vehicle setVariable ["itc_air_systems", _systems];
+_vehicle setVariable ["itc_air_systems_active", _activeSystems];
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
 _hasWSO = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "wso");
@@ -78,7 +81,7 @@ _vehicle setVariable ["stpt_pos", [0,0,0]];
 _vehicle setVariable ["stpt_pos_str", ""];
 _vehicle setVariable ["stpt_tof", "N/A"];
 if(isNil{_vehicle getVariable "stpt_list"}) then {
-  _waypoints = [] call ace_microdagr_fnc_deviceGetWaypoints;
+  _waypoints = ([] call ace_microdagr_fnc_deviceGetWaypoints) + [];
   _vehicle setVariable ["stpt_list", _waypoints];
 };
 
@@ -107,7 +110,7 @@ _vehicle setVariable ["rip_cycle", false];
 // DRAW STUFF
 itc_air_dsms_currentWeapon = "";
 [{
-    _this select 0 params ["_plane", "_lastFrame"];
+    _this select 0 params ["_plane", "_lastFrame","_lastBroadCast"];
     if(!((vehicle player) isKindOf "Air") || !alive _plane) exitWith {
         //[missionNameSpace, "SADL", SADL - [_plane]] call itc_air_common_fnc_set_var;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
@@ -128,7 +131,12 @@ itc_air_dsms_currentWeapon = "";
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;
     if(((_plane getVariable "seat" == "pilot") && (driver _plane == player)) || ((_plane getVariable "seat" == "gunner") && (gunner _plane == player))) then {
       if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir" || ITC_AIR_BROADCASTING) then {
-        [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
+        if(time + 0.2 > _lastBroadCast) then {
+          [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
+          _lastBroadCast = time;
+        } else {
+          _plane setVariable ["tgp_dir", _dir];
+        }
       } else {
         if(_inTGP) then { //sync to WSO
           [_plane, ["tgp_dir", _dir]] remoteExec ["setVariable", (crew _plane), false];
@@ -166,7 +174,7 @@ itc_air_dsms_currentWeapon = "";
       [_plane, time - _lastFrame] call itc_air_vehicle_fnc_apply_forces;
     };
     */
-}, 0, [_vehicle, 0]] call CBA_fnc_addPerFrameHandler;
+}, 0, [_vehicle, 0,0]] call CBA_fnc_addPerFrameHandler;
 
 // SLOW UPDATE STUFF
 [{

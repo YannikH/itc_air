@@ -1,42 +1,56 @@
 ITC_AIR_MFD_CAMS = [];
 
-["ITC Air","itc_air_mfd_cursor_toggle", "Toggle MFD cursor",{
+["ITC Air","itc_air_mfd_cursor_toggle", "Show MFD cursor",{
   //(findDisplay 19992) closeDisplay 2;
   if(!isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} || !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} ) then {
     setMousePosition [0.5, 0.5];
     if (isNull curatorCamera) then {
-      findDisplay 46 createDisplay "ITC_AIR_MFDButtons";
+      findDisplay 46 createDisplay (vehicle player getVariable "mfdButtons");
     };
   };
 }, "", [200, [false, false, false]]] call CBA_fnc_addKeybind;
-
+/*
 ["ITC Air","itc_air_mfd_cursor_hold", "Hold MFD cursor",{
   //(findDisplay 19992) closeDisplay 2;
   if(!isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} || !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} ) then {
     setMousePosition [0.5, 0.5];
     if (isNull curatorCamera) then {
-      findDisplay 46 createDisplay "ITC_AIR_MFDButtons";
+      findDisplay 46 createDisplay (vehicle player getVariable "mfdButtons");
     };
   };
 }, {
   //(findDisplay 19992) closeDisplay 2;
 }, [62, [false, false, false]]] call CBA_fnc_addKeybind;
-
+*/
 ["ITC Air","itc_air_mfd_open_L", "Open MFD L", {
     if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} && (vehicle player) getVariable "mfd_l") then {
+      if(vehicle player getVariable "mfdType" == "touch") then {
+        101 cutRsc ["ITC_AIR_MFD_STL_L1", "PLAIN", -1, true];
+        //103 cutRsc ["ITC_AIR_MFD_STL_L2", "PLAIN", -1, true];
+      } else {
         101 cutRsc ["ITC_AIR_MFD_L", "PLAIN", -1, true];
+      };
     } else {
         uiNameSpace setVariable ["ITC_AIR_MFD_L",nil];
         101 cutText ["", "PLAIN"];
+        //uiNameSpace setVariable ["ITC_AIR_MFD_L2",nil];
+        //103 cutText ["", "PLAIN"];
     };
 }, "", [203, [true, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC Air","itc_air_mfd_open_R", "Open MFD R", {
     if((isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"}) && (vehicle player) getVariable "mfd_r") then {
+      if(vehicle player getVariable "mfdType" == "touch") then {
+        102 cutRsc ["ITC_AIR_MFD_STL_R1", "PLAIN", -1, true];
+        //104 cutRsc ["ITC_AIR_MFD_STL_R2", "PLAIN", -1, true];
+      } else {
         102 cutRsc ["ITC_AIR_MFD_R", "PLAIN", -1, true];
+      };
     } else {
-        uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
-        102 cutText ["", "PLAIN"];
+      uiNameSpace setVariable ["ITC_AIR_MFD_R",nil];
+      102 cutText ["", "PLAIN"];
+      //uiNameSpace setVariable ["ITC_AIR_MFD_R2",nil];
+      //104 cutText ["", "PLAIN"];
 };}, "", [205, [true, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC Air","itc_air_mfd_open_TGP", "Open MFD TGP", {
@@ -44,41 +58,6 @@ ITC_AIR_MFD_CAMS = [];
       createDialog "TGP_DIALOG";
     };
 }, "", [208, [true, false, false]]] call CBA_fnc_addKeybind;
-
-["ITC Air","itc_air_mfd_soi_up", "SOI UP", {
-  if(!isNil{(vehicle player) getVariable "SOI"}) then {
-    [0,1,0] call itc_air_mfd_fnc_soi_input;
-  };
-  false
-}, "", [200, [false, false, false]],true] call CBA_fnc_addKeybind;
-
-["ITC Air","itc_air_mfd_soi_dn", "SOI DOWN", {
-  if(!isNil{(vehicle player) getVariable "SOI"}) then {
-    [0,-1,0] call itc_air_mfd_fnc_soi_input;
-  };
-  false
-}, "", [208, [false, false, false]],true] call CBA_fnc_addKeybind;
-
-["ITC Air","itc_air_mfd_soi_lf", "SOI LEFT", {
-  if(!isNil{(vehicle player) getVariable "SOI"}) then {
-    [-1,0,0] call itc_air_mfd_fnc_soi_input;
-  };
-  false
-}, "", [203, [false, false, false]],true] call CBA_fnc_addKeybind;
-
-["ITC Air","itc_air_mfd_soi_rt", "SOI RIGHT", {
-  if(!isNil{(vehicle player) getVariable "SOI"}) then {
-    [1,0,0] call itc_air_mfd_fnc_soi_input;
-  };
-  false
-}, "", [205, [false, false, false]],true] call CBA_fnc_addKeybind;
-
-["ITC Air","itc_air_mfd_soi_action", "SOI ACTION", {
-  if(!isNil{(vehicle player) getVariable "SOI"}) then {
-    call itc_air_mfd_fnc_soi_action;
-  };
-  false
-}, "", [208, [false, true, false]],true] call CBA_fnc_addKeybind;
 
 ["ITC MFD","mfd_btn_short_L1", "MFD BTN L1",{[(vehicle player) getVariable "SOI","L1"] call itc_air_mfd_fnc_button}, "", [79, [true, false, false]]] call CBA_fnc_addKeybind;
 ["ITC MFD","mfd_btn_short_L2", "MFD BTN L2",{[(vehicle player) getVariable "SOI","L2"] call itc_air_mfd_fnc_button}, "", [80, [true, false, false]]] call CBA_fnc_addKeybind;

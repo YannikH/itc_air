@@ -1,6 +1,6 @@
 params ["_magazine"];
 _weapon = (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") call BIS_fnc_getCfgData;
-if(isNil {_weapon}) exitWith {};
+if(isNil {_weapon} || {_weapon == ""}) exitWith {};
 _profile = [[_weapon,-1],["CCIP","SGL","1","50M"]];
 _cursorAim = (configFile >> "CfgWeapons" >> _weapon >> "cursorAim") call BIS_fnc_getCfgData;
 _cursorAim = if(_weapon isKindOf ["CMFlareLauncher", configFile >> "CfgWeapons"]) then [{"flare"},{_cursorAim}];

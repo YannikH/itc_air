@@ -5,5 +5,8 @@ switch(_btn) do {
   case "T3": {
     _display setVariable ["page","stat"];
   };
+  case "T4": {
+    _display setVariable ["page","sys"];
+  };
 };
 false

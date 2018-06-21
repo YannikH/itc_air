@@ -6,3 +6,4 @@ params ["_display"];
 
 resetText(_display,T2);
 resetText(_display,T3);
+resetText(_display,T4);

@@ -7,6 +7,9 @@ class cfgFunctions {
       class cycleBay {
         file = "itc_air_f181e\functions\cycleBay.sqf";
       };
+      class shutDown {
+        file = "itc_air_f181e\functions\shutDown.sqf";
+      };
     };
   };
 };

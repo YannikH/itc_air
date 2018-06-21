@@ -9,6 +9,10 @@ _display setVariable ["apps", _mfdApps select [4,6]];
 
 _display setVariable ["app", "lst"];
 
+if(_vehicle getVariable "mfdType" == "touch") then {
+  (_display displayCtrl 1200) ctrlShow false;
+};
+
 //(ctrlPosition (_display displayCtrl 61500)) params ["_x","_y","_w","_h"];
 private _x = 0.1375 * 0.9; private _y = 0.18 * 0.9; private _w = 0.475 * 0.9; private _h = 0.66 * 0.9;
 (_display displayCtrl 61500) ctrlShow false;

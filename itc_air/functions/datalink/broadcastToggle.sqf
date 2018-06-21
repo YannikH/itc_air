@@ -48,5 +48,5 @@ _handle = [{
     _turret = -1;
     if(_operator == "gunner") then {_turret = 0;};
     [_plane, "itc_datalink", [true, [], [], _plane getVariable "ROVER_FREQ", ITC_AIR_CURVIS, ITC_AIR_CURFOV]] call itc_air_common_fnc_set_var;
-}, 0, [_operator]] call CBA_fnc_addPerFrameHandler;
+}, 0.5, [_operator]] call CBA_fnc_addPerFrameHandler;
 };

@@ -27,37 +27,3 @@ itc_air_ripple_dropcount = 0;
 ["ITC","gripen_waypoint_prev", "Cycle WP previous", {
   [-1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew (vehicle player)), false];
 }, "", [209, [false, false, false]]] call CBA_fnc_addKeybind;
-
-
-["ITC","gripen_fuze_next", "Cycle Fuze next", {["fuze",1] call itc_air_jdam_fnc_config_bomb;}, "", [201, [true, false, false]]] call CBA_fnc_addKeybind;
-["ITC","gripen_fuze_prev", "Cycle Fuze previous", {["fuze",-1] call itc_air_jdam_fnc_config_bomb;}, "", [209, [true, false, false]]] call CBA_fnc_addKeybind;
-
-["ITC","gripen_imp_next", "Impact Angle +10", {["imp",10] call itc_air_jdam_fnc_config_bomb;}, "", [201, [false, true, false]]] call CBA_fnc_addKeybind;
-["ITC","gripen_imp_prev", "Impact Angle -10", {["imp",-10] call itc_air_jdam_fnc_config_bomb;}, "", [209, [false, true, false]]] call CBA_fnc_addKeybind;
-
-[
-    "ITC",
-    "gripen_store_POI",
-    "Store POI from SOI",
-    {[true] call itc_air_mfd_fnc_soi_slew},
-    "",
-    [207, [false, false, false]]
-] call CBA_fnc_addKeybind;
-
-[
-    "ITC",
-    "gripen_soi_slew_tgp",
-    "SOI Slew TGP",
-    {[false] call itc_air_mfd_fnc_soi_slew},
-    "",
-    [20, [false, false, false]]
-] call CBA_fnc_addKeybind;
-
-[
-    "ITC",
-    "gripen_fcr_slew_tgp",
-    "FCR Slew TGP",
-    {[0] call itc_air_tgp_fnc_fcr_slew},
-    "",
-    [20, [true, false, false]]
-] call CBA_fnc_addKeybind;

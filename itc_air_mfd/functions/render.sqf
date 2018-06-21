@@ -22,3 +22,5 @@ for "_i" from 0 to 3 step 1 do {
 (_display displayCtrl pblc3) ctrlSetAngle [(-1 * _bank) + (-45 + _pitch), 0.5, 0.5];
 
 (_display displayCtrl 1028) ctrlShow (_bank > 75 || _bank < -75 || _pitch > 20 || _pitch < -20);
+
+(_display displayCtrl 1207) ctrlShow (ITC_AIR_SOI == (_display getVariable "sensor"));

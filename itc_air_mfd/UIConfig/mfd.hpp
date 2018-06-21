@@ -14,10 +14,10 @@ class MFD : RscControlsGroup {
         class IGUIBack_2200: IGUIBack
         {
             idc = 2200;
-            x = SCALE * 0.1;
-            y = SCALE * 0.1;
-            w = SCALE * 0.55;
-            h = SCALE * 0.8;
+          	x = SCALE * 0.1125;
+          	y = SCALE * 0.16;
+          	w = SCALE * 0.525;
+          	h = SCALE * 0.7;
             colorBackground[] = {0,0,0,1};
         };
         #include "pages\tgp\tgpView.hpp"
@@ -25,10 +25,12 @@ class MFD : RscControlsGroup {
         #include "pages\mav\ccdmav.hpp"
         #include "pages\mav\mavoff.hpp"
         #include "pages\fcr\ag.hpp"
+        #include "pages\ew\ew.hpp"
         #include "pages\dsms\status.hpp"
         #include "pages\dsms\profilemain.hpp"
         #include "pages\dsms\profileset.hpp"
         #include "pages\dsms\inventory.hpp"
+        #include "pages\sms\sms.hpp"
         #include "pages\tad\tad.hpp"
         #include "pages\stat\nav.hpp"
         #include "pages\stat\status.hpp"
@@ -83,6 +85,15 @@ class MFD : RscControlsGroup {
         {
         	idc = 1206;
         	text = "itc_air_mfd\data\ui\pblp.paa";
+        };
+        class RscPicture_1207: RscPicture
+        {
+            idc = 1207;
+            text = "itc_air_mfd\data\ui\SOI.paa";
+            x = SCALE *0;
+            y = SCALE *0;
+            w = SCALE *0.75;
+            h = SCALE *1;
         };
         class L1: ITC_AIR_MfdText
         {
@@ -344,4 +355,5 @@ class RscTitles {
         };
         class MFD : MFD_R {};
     };
+    #include "mfdSTL.hpp"
 };

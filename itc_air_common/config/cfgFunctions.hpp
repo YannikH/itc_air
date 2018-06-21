@@ -4,6 +4,9 @@ class cfgFunctions {
       class addOption {
         file = "itc_air_common\functions\addOption.sqf";
       };
+      class removeOption {
+        file = "itc_air_common\functions\removeOption.sqf";
+      };
       class intersectAtPolar {
         file = "itc_air_common\functions\intersectAtPolar.sqf";
       };

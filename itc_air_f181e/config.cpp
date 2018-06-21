@@ -10,3 +10,4 @@ class CfgPatches {
 };
 
 #include "config\cfgFunctions.hpp"
+#include "config\cfgVehicles.hpp"
