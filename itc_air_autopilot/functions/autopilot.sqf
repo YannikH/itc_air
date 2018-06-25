@@ -104,7 +104,7 @@ pfhID = [{
 
 	//first we need to figure out whether to cancel autopilot
 	private _velocityAngleDiseng = abs (_velocityAngle - _targetVelocityAngle) > AP_DISENG_MAX_VELOCITY_ANGLE_DIFF;
-	private _hdgDiseng = abs (_hdg - ITC_AP_TargetHdg) > AP_DISENG_MAX_HDG_DIFF;
+	private _hdgDiseng = false; // abs (_hdg - ITC_AP_TargetHdg) > AP_DISENG_MAX_HDG_DIFF;
 	private _bankDiseng = abs (_bank - _targetBank) > AP_DISENG_MAX_BANK_DIFF;
 
 	private _avionicsDamaged = false;
