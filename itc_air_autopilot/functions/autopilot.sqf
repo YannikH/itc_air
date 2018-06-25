@@ -18,8 +18,8 @@
  */
 
 //after how much deviation AP will disengage, all values in degrees
-#define AP_DISENG_MAX_VELOCITY_ANGLE_DIFF 10
-#define AP_DISENG_MAX_BANK_DIFF 20
+#define AP_DISENG_MAX_VELOCITY_ANGLE_DIFF 20
+#define AP_DISENG_MAX_BANK_DIFF 40
 #define AP_DISENG_MAX_HDG_DIFF 10
 
 //values used to finetune aggressiveness of autopilot.
@@ -27,7 +27,7 @@
 #define AP_PLANE_WEIGHT_MULT 0.0001
 #define AP_PITCH_FORCE_MULT 1
 #define AP_BANK_TORQUE_MULT 300
-#define AP_YAW_TORQUE_MULT 2000
+#define AP_YAW_TORQUE_MULT 800
 
 //if autopilot applies force below this treshold, we assume that we are on course
 //and only deviation is due to plane's flight characteristics, so we will use these values to calibrate
@@ -46,7 +46,7 @@ private _targetVelocityAngle = _vZ atan2 _vXY; //note: it doesn't line up with i
 private _targetBank = (_plane call BIS_fnc_getPitchBank) select 1;
 private _weightMult = getMass _plane * AP_PLANE_WEIGHT_MULT;
 
-ITC_AP_Mode = _mode;
+ITC_AP_mode = _mode;
 ITC_AP_TargetAlt = getPosASL _plane select 2;
 ITC_AP_TargetHdg = getDir _plane;
 
@@ -127,9 +127,6 @@ pfhID = [{
 	) exitWith {
 		//we exit
 		[_this select 1] call CBA_fnc_removePerFrameHandler;
-		ITC_AP_Mode = -1;
-		ITC_AP_TargetAlt = nil;
-		ITC_AP_TargetHdg = nil;
 
 		//this value is set to false in key handler where we toggle AP off
 		if (!ITC_AP_isEnabled) exitWith {
@@ -188,6 +185,12 @@ pfhID = [{
 	//note that applied force is in world space (not relative to plane)
 	_plane addForce [[0,0,_pitchForce],[0,500,0]];
 
+	//BANK TURN
+	if (_mode == 1) then {
+		private _bankTurn = -30 max ((_hdg - ITC_AP_TargetHdg) / 0.5) min 30;
+		_targetBank = _targetBank - _bankTurn;
+	};
+
 	//BANK
 	//linear relationship between offset and force proved to have most stable results
 	private _bankTorque = (_targetBank - _bank) * AP_BANK_TORQUE_MULT * _weightMult;
@@ -212,7 +215,7 @@ pfhID = [{
 
 	//YAW
 	if (_mode == 1) then {
-		private _yawTorque = (ITC_AP_TargetHdg - _hdg) * AP_YAW_TORQUE_MULT * _weightMult;
+		private _yawTorque = (-10 max (ITC_AP_TargetHdg - _hdg) min 10) * AP_YAW_TORQUE_MULT * _weightMult;
 
 		//Calibration
 		if (abs _yawTorque < AP_YAW_CALIBRATION_TRESH) then {
