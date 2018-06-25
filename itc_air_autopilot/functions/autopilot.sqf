@@ -101,7 +101,7 @@ pfhID = [{
 	private _bank = _pitchBank select 1;
 
 	private _altDifference = ITC_AP_TargetAlt - (getPosASL _plane select 2);
-	private _targetClimbRate = -(4000 * 0.00508) max (_altDifference / 10) min (4000 * 0.00508); // m/s, 0.00508fpm = 1m/s
+	private _targetClimbRate = -(4000 * 0.00508) max (_altDifference / 4) min (4000 * 0.00508); // m/s, 0.00508fpm = 1m/s
 	private _targetVelocityAngle = -30 max (asin (_targetClimbRate / (vectorMagnitude velocity _plane))) min 30; // max pitch -30 ~ 30
 
 	//first we need to figure out whether to cancel autopilot
