@@ -45,10 +45,10 @@ private _vZ = velocity _plane select 2;
 private _targetVelocityAngle = _vZ atan2 _vXY; //note: it doesn't line up with in-game TVV (in-game TVV is shit - you fly level even if it's not on horizon)
 private _targetBank = (_plane call BIS_fnc_getPitchBank) select 1;
 private _weightMult = getMass _plane * AP_PLANE_WEIGHT_MULT;
+
+ITC_AP_Mode = _mode;
 ITC_AP_TargetAlt = getPosASL _plane select 2;
-if (_mode == 1) then {
-	ITC_AP_TargetHdg = getDir _plane;
-};
+ITC_AP_TargetHdg = getDir _plane;
 
 //hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, ITC_AP_TargetHdg];
 
@@ -127,6 +127,7 @@ pfhID = [{
 	) exitWith {
 		//we exit
 		[_this select 1] call CBA_fnc_removePerFrameHandler;
+		ITC_AP_Mode = -1;
 		ITC_AP_TargetAlt = nil;
 		ITC_AP_TargetHdg = nil;
 
