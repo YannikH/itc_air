@@ -44,10 +44,11 @@ private _vXY = sqrt (_vX * _vX + _vY * _vY);
 private _vZ = velocity _plane select 2;
 private _targetVelocityAngle = _vZ atan2 _vXY; //note: it doesn't line up with in-game TVV (in-game TVV is shit - you fly level even if it's not on horizon)
 private _targetBank = (_plane call BIS_fnc_getPitchBank) select 1;
-private _targetHdg = getDir _plane;
 private _weightMult = getMass _plane * AP_PLANE_WEIGHT_MULT;
+ITC_AP_TargetAlt = getPosASL _plane select 2;
+ITC_AP_TargetHdg = getDir _plane;
 
-//hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, _targetHdg];
+//hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, ITC_AP_TargetHdg];
 
 //these variables are global because we can't easily initialize local ones in pfh
 ITC_AP_VaCalibrationCounter = 0;
@@ -80,7 +81,7 @@ playSound "Click";
 hint "autopilot on";
 
 pfhID = [{
-	_this select 0 params ["_plane", "_targetVelocityAngle", "_targetBank", "_targetHdg", "_weightMult", "_mode"];
+	_this select 0 params ["_plane", "_targetBank", "_weightMult", "_mode"];
 
 	if (time == ITC_AP_lastFrameTime) exitWith {};
 	ITC_AP_lastFrameTime = time; //we do this to check if we are not in pause menu
@@ -97,9 +98,12 @@ pfhID = [{
 	private _pitch = _pitchBank select 0;
 	private _bank = _pitchBank select 1;
 
+	private _targetClimbRate = -12.7 max (ITC_AP_TargetAlt - (getPosASL _plane select 2)) min 12.7; // m/s, 12.7m/s = 2500fpm
+	private _targetVelocityAngle = -30 max (asin (_targetClimbRate / (vectorMagnitude velocity _plane))) min 30; // max pitch -30 ~ 30
+
 	//first we need to figure out whether to cancel autopilot
 	private _velocityAngleDiseng = abs (_velocityAngle - _targetVelocityAngle) > AP_DISENG_MAX_VELOCITY_ANGLE_DIFF;
-	private _hdgDiseng = abs (_hdg - _targetHdg) > AP_DISENG_MAX_HDG_DIFF;
+	private _hdgDiseng = abs (_hdg - ITC_AP_TargetHdg) > AP_DISENG_MAX_HDG_DIFF;
 	private _bankDiseng = abs (_bank - _targetBank) > AP_DISENG_MAX_BANK_DIFF;
 
 	private _avionicsDamaged = false;
@@ -150,7 +154,7 @@ pfhID = [{
 			hint "Autopilot off - Heading limit";
 		};
 
-		//systemChat format ["aborting autopilot!, va: %1, bank: %2, hdg: %3", abs (_velocityAngle - _targetVelocityAngle), abs (_bank - _targetBank), abs (_hdg - _targetHdg)];
+		//systemChat format ["aborting autopilot!, va: %1, bank: %2, hdg: %3", abs (_velocityAngle - _targetVelocityAngle), abs (_bank - _targetBank), abs (_hdg - ITC_AP_TargetHdg)];
 	};
 
 	//VELOCITY ANGLE
@@ -202,7 +206,7 @@ pfhID = [{
 
 	//YAW
 	if (_mode == 1) then {
-		private _yawTorque = (_targetHdg - _hdg) * AP_YAW_TORQUE_MULT * _weightMult;
+		private _yawTorque = (ITC_AP_TargetHdg - _hdg) * AP_YAW_TORQUE_MULT * _weightMult;
 
 		//Calibration
 		if (abs _yawTorque < AP_YAW_CALIBRATION_TRESH) then {
@@ -222,4 +226,4 @@ pfhID = [{
 		//systemChat format ["pf %1, yt %2", _pitchForce, _yawTorque];
 	};
 
-}, 0.1, [_plane, _targetVelocityAngle, _targetBank, _targetHdg, _weightMult, _mode]] call CBA_fnc_addPerFrameHandler;
+}, 0.1, [_plane, _targetBank, _weightMult, _mode]] call CBA_fnc_addPerFrameHandler;
