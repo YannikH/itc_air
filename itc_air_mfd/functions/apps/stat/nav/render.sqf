@@ -24,9 +24,9 @@ if((_vehicle getVariable "stpt_name") != "NO WP") then {
   (_display displayCtrl R3) ctrlSetText str round (_vehicle getDir (_vehicle getVariable "stpt_pos"));
 };
 
-if !(ITC_AP_Mode < 0) then {
+if (ITC_AP_isEnabled) then {
   (_display displayCtrl R4) ctrlSetText format["%1m", round ITC_AP_TargetAlt];
-  if (ITC_AP_Mode isEqualTo 1) then {
+  if (ITC_AP_mode isEqualTo 1) then {
     (_display displayCtrl R45) ctrlSetText "AP ALT/HDG";
     (_display displayCtrl R5) ctrlSetText format["HDG %1", round ITC_AP_TargetHdg];
   } else {
