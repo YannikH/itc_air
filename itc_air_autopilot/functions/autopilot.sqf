@@ -20,14 +20,14 @@
 //after how much deviation AP will disengage, all values in degrees
 #define AP_DISENG_MAX_VELOCITY_ANGLE_DIFF 20
 #define AP_DISENG_MAX_BANK_DIFF 40
-#define AP_DISENG_MAX_HDG_DIFF 10
+// #define AP_DISENG_MAX_HDG_DIFF 10
 
 //values used to finetune aggressiveness of autopilot.
 //light planes are yanked harder and big ones don't respond too quickly
 #define AP_PLANE_WEIGHT_MULT 0.0001
 #define AP_PITCH_FORCE_MULT 1
 #define AP_BANK_TORQUE_MULT 300
-#define AP_YAW_TORQUE_MULT 800
+#define AP_YAW_TORQUE_MULT 2000
 
 //if autopilot applies force below this treshold, we assume that we are on course
 //and only deviation is due to plane's flight characteristics, so we will use these values to calibrate
@@ -164,8 +164,8 @@ pfhID = [{
 	private _hdgRotate = 0;
 	if (_mode == 1) then {
 		_hdgRotate = ITC_AP_TargetHdg - _hdg + ([0, 360] select ((_hdg > 180) && ((_hdg - 180) > ITC_AP_TargetHdg)));
-		private _bankTurn = -30 max (_hdgRotate / -0.5) min 30;
-		_targetBank = _targetBank - _bankTurn;
+		private _bankTurn = -30 max (_hdgRotate * 2) min 30;
+		_targetBank = _targetBank + _bankTurn;
 	};
 
 	//BANK
@@ -193,7 +193,7 @@ pfhID = [{
 	//YAW
 	private _yawTorque = 0;
 	if (_mode == 1) then {
-		_yawTorque = (-10 max _hdgRotate min 10) * AP_YAW_TORQUE_MULT * _weightMult;
+		_yawTorque = (-3 max _hdgRotate min 3) * AP_YAW_TORQUE_MULT * _weightMult;
 
 		//Calibration
 		if (abs _yawTorque < AP_YAW_CALIBRATION_TRESH) then {
@@ -217,7 +217,8 @@ pfhID = [{
 	//VELOCITY ANGLE
 	//we use force applied far in front of the nose of the plane so we don't have to worry when
 	//about bank when we want to point nose vertically up
-	private _pitchForce = (_targetVelocityAngle - _velocityAngle + abs ((-10 max _hdgRotate min 10) * (sin _bank) * 0.5)) * AP_PITCH_FORCE_MULT * _weightMult;
+	private _yawCompensation = abs ((-3 max _hdgRotate min 3) * (sin _bank) * 2);
+	private _pitchForce = (_targetVelocityAngle - _velocityAngle + _yawCompensation) * AP_PITCH_FORCE_MULT * _weightMult;
 
 	//we want only small samples to not account for large errors
 	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
