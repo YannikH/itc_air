@@ -27,7 +27,8 @@
 #define AP_PLANE_WEIGHT_MULT 0.0001
 #define AP_PITCH_FORCE_MULT 1
 #define AP_BANK_TORQUE_MULT 300
-#define AP_YAW_TORQUE_MULT 2000
+#define AP_YAW_TORQUE_MULT 2500
+#define AP_YAW_BOUND 2
 
 //if autopilot applies force below this treshold, we assume that we are on course
 //and only deviation is due to plane's flight characteristics, so we will use these values to calibrate
@@ -193,7 +194,7 @@ pfhID = [{
 	//YAW
 	private _yawTorque = 0;
 	if (_mode == 1) then {
-		_yawTorque = (-3 max _hdgRotate min 3) * AP_YAW_TORQUE_MULT * _weightMult;
+		_yawTorque = (-AP_YAW_BOUND max _hdgRotate min AP_YAW_BOUND) * AP_YAW_TORQUE_MULT * _weightMult;
 
 		//Calibration
 		if (abs _yawTorque < AP_YAW_CALIBRATION_TRESH) then {
@@ -217,7 +218,7 @@ pfhID = [{
 	//VELOCITY ANGLE
 	//we use force applied far in front of the nose of the plane so we don't have to worry when
 	//about bank when we want to point nose vertically up
-	private _yawCompensation = abs ((-3 max _hdgRotate min 3) * (sin _bank) * 2);
+	private _yawCompensation = abs ((-AP_YAW_BOUND max _hdgRotate min AP_YAW_BOUND) * (sin _bank) * AP_YAW_TORQUE_MULT / 2000);
 	private _pitchForce = (_targetVelocityAngle - _velocityAngle + _yawCompensation) * AP_PITCH_FORCE_MULT * _weightMult;
 
 	//we want only small samples to not account for large errors
