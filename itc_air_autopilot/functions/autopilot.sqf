@@ -160,31 +160,6 @@ pfhID = [{
 		//systemChat format ["aborting autopilot!, va: %1, bank: %2, hdg: %3", abs (_velocityAngle - _targetVelocityAngle), abs (_bank - _targetBank), abs (_hdg - ITC_AP_TargetHdg)];
 	};
 
-	//VELOCITY ANGLE
-	//we use force applied far in front of the nose of the plane so we don't have to worry when
-	//about bank when we want to point nose vertically up
-	private _pitchForce = (_targetVelocityAngle - _velocityAngle) * AP_PITCH_FORCE_MULT * _weightMult;
-
-	//we want only small samples to not account for large errors
-	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
-		ITC_AP_VaCalibrationCounter = ITC_AP_VaCalibrationCounter + 1;
-		ITC_AP_VaCalibrationSum = ITC_AP_VaCalibrationSum + _pitchForce;
-
-		//below we count average force deficit from last 100 samples, we add it to the offset and reset the counter
-		//it is done to prevent situations where plane slowly drifts up or down due to it's flight model
-		//(in default behaviour AP would try to apply very small force over a long time while plane slowly looses altitude)
-		if (ITC_AP_VaCalibrationCounter == 100) then {
-			ITC_AP_VaCalibrationCounter = 0;
-			ITC_AP_VaCalibrationOffset = ITC_AP_VaCalibrationOffset + ITC_AP_VaCalibrationSum / 100;
-			ITC_AP_VaCalibrationSum = 0;
-		};
-		_pitchForce = _pitchForce + ITC_AP_VaCalibrationOffset;
-	};
-
-	//we apply the force to point in front of plane's nose
-	//note that applied force is in world space (not relative to plane)
-	_plane addForce [[0,0,_pitchForce],[0,500,0]];
-
 	//BANK TURN
 	private _hdgRotate = 0;
 	if (_mode == 1) then {
@@ -237,5 +212,31 @@ pfhID = [{
 		_plane addTorque (_plane vectorModelToWorld [0,0,_yawTorque]);
 		//systemChat format ["pf %1, yt %2", _pitchForce, _yawTorque];
 	};
+
+
+	//VELOCITY ANGLE
+	//we use force applied far in front of the nose of the plane so we don't have to worry when
+	//about bank when we want to point nose vertically up
+	private _pitchForce = (_targetVelocityAngle - _velocityAngle + ((-10 max _hdgRotate min 10) * (abs sin _bank) * 0.5)) * AP_PITCH_FORCE_MULT * _weightMult;
+
+	//we want only small samples to not account for large errors
+	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
+		ITC_AP_VaCalibrationCounter = ITC_AP_VaCalibrationCounter + 1;
+		ITC_AP_VaCalibrationSum = ITC_AP_VaCalibrationSum + _pitchForce;
+
+		//below we count average force deficit from last 100 samples, we add it to the offset and reset the counter
+		//it is done to prevent situations where plane slowly drifts up or down due to it's flight model
+		//(in default behaviour AP would try to apply very small force over a long time while plane slowly looses altitude)
+		if (ITC_AP_VaCalibrationCounter == 100) then {
+			ITC_AP_VaCalibrationCounter = 0;
+			ITC_AP_VaCalibrationOffset = ITC_AP_VaCalibrationOffset + ITC_AP_VaCalibrationSum / 100;
+			ITC_AP_VaCalibrationSum = 0;
+		};
+		_pitchForce = _pitchForce + ITC_AP_VaCalibrationOffset;
+	};
+
+	//we apply the force to point in front of plane's nose
+	//note that applied force is in world space (not relative to plane)
+	_plane addForce [[0,0,_pitchForce],[0,500,0]];
 
 }, 0.1, [_plane, _targetBank, _weightMult, _mode]] call CBA_fnc_addPerFrameHandler;
