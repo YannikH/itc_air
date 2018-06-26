@@ -217,7 +217,7 @@ pfhID = [{
 	//VELOCITY ANGLE
 	//we use force applied far in front of the nose of the plane so we don't have to worry when
 	//about bank when we want to point nose vertically up
-	private _pitchForce = (_targetVelocityAngle - _velocityAngle + ((-10 max _hdgRotate min 10) * (abs sin _bank) * 0.5)) * AP_PITCH_FORCE_MULT * _weightMult;
+	private _pitchForce = (_targetVelocityAngle - _velocityAngle + abs ((-10 max _hdgRotate min 10) * (sin _bank) * 0.5)) * AP_PITCH_FORCE_MULT * _weightMult;
 
 	//we want only small samples to not account for large errors
 	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
