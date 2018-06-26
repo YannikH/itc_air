@@ -186,8 +186,10 @@ pfhID = [{
 	_plane addForce [[0,0,_pitchForce],[0,500,0]];
 
 	//BANK TURN
+	private _hdgRotate = 0;
 	if (_mode == 1) then {
-		private _bankTurn = -30 max ((_hdg - ITC_AP_TargetHdg) / 0.5) min 30;
+		_hdgRotate = ITC_AP_TargetHdg + ([0, 360] select ((_hdg > ITC_AP_TargetHdg) && (((_hdg + 180) % 360) > ITC_AP_TargetHdg))) - _hdg;
+		private _bankTurn = -30 max (_hdgRotate / -0.5) min 30;
 		_targetBank = _targetBank - _bankTurn;
 	};
 
@@ -214,8 +216,9 @@ pfhID = [{
 
 
 	//YAW
+	private _yawTorque = 0;
 	if (_mode == 1) then {
-		private _yawTorque = (-10 max (ITC_AP_TargetHdg - _hdg) min 10) * AP_YAW_TORQUE_MULT * _weightMult;
+		_yawTorque = (-10 max _hdgRotate min 10) * AP_YAW_TORQUE_MULT * _weightMult;
 
 		//Calibration
 		if (abs _yawTorque < AP_YAW_CALIBRATION_TRESH) then {
