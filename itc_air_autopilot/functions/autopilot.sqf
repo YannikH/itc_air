@@ -163,7 +163,7 @@ pfhID = [{
 	//BANK TURN
 	private _hdgRotate = 0;
 	if (_mode == 1) then {
-		_hdgRotate = ITC_AP_TargetHdg + ([0, 360] select ((_hdg > ITC_AP_TargetHdg) && (((_hdg + 180) % 360) > ITC_AP_TargetHdg))) - _hdg;
+		_hdgRotate = ITC_AP_TargetHdg - _hdg + ([0, 360] select ((_hdg > 180) && ((_hdg - 180) > ITC_AP_TargetHdg)));
 		private _bankTurn = -30 max (_hdgRotate / -0.5) min 30;
 		_targetBank = _targetBank - _bankTurn;
 	};
