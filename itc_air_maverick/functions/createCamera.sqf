@@ -7,7 +7,6 @@ _cam camSetFov 0.05;
 //_cam attachTo [_plane, [2.7,2,-0.8]];
 _cam cameraEffect ["internal", "BACK", "MAVERICK_FEED"];
 _cam camCommit 0;
-"MAVERICK_FEED" setPiPEffect [3,1,1,0.4,0,[0,0,0,0],[1,1,1,0],[1,1,1,1]];
 
 ITC_AIR_MAVERICK_CAM = _cam;
 

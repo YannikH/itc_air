@@ -1,5 +1,8 @@
 params ["_display"];
-if(currentWeapon (vehicle player) != "itc_air_weapon_maverick_h" || ((vehicle player) ammo "itc_air_weapon_maverick_h") == 0) exitWith {
+if(
+  (currentWeapon (vehicle player) != "itc_air_weapon_maverick_h" || ((vehicle player) ammo "itc_air_weapon_maverick_h") == 0) &&
+  (currentWeapon (vehicle player) != "itc_air_weapon_maverick_g" || ((vehicle player) ammo "itc_air_weapon_maverick_g") == 0)
+  ) exitWith {
   _display setVariable ["page","mavoff"];
 };
 

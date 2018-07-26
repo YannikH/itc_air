@@ -90,7 +90,7 @@ class cfgVehicles {
           };
           class SOI_HMCS : SOI_L {
             displayName = "SOI HMCS";
-            condition = "[""hmd""] call itc_air_mfd_fnc_soi_capable";
+            condition = "[""hmcs""] call itc_air_mfd_fnc_soi_capable";
             statement = "[""HMCS""] call itc_air_mfd_fnc_soi_set";
           };
         };
@@ -291,7 +291,7 @@ class cfgVehicles {
                     };
                     class pylon3 {
                         attachment = "itc_hp_bru55_ITC_ammo_gbu38";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117","itc_hp_bru61"};
                         maxweight = 750;
                         priority = 4;
                         UIposition[] = {0.5,0.35};
@@ -302,7 +302,7 @@ class cfgVehicles {
                     };
                     class pylon5 {
                         attachment = "itc_hp_dumb_ITC_ammo_gbu12";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL","itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117","itc_hp_bru61"};
                         maxweight = 1200;
                         priority = 3;
                         UIposition[] = {0.45,0.3};
@@ -320,7 +320,7 @@ class cfgVehicles {
         class itc_air : itc_air_default_jet {
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
           systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
-          mfdType = "touch";
+          //mfdType = "touch";
         };
     };
 

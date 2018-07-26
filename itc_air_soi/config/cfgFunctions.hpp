@@ -2,7 +2,7 @@ class cfgFunctions {
   class itc_air_soi {
     class functions {
       class init {
-        preInit = 1;
+        postInit = 1;
         file = "itc_air_soi\functions\init.sqf";
       };
       class setup {
@@ -10,6 +10,12 @@ class cfgFunctions {
       };
       class cycle {
         file = "itc_air_soi\functions\cycle.sqf";
+      };
+      class down {
+        file = "itc_air_soi\functions\down.sqf";
+      };
+      class up {
+        file = "itc_air_soi\functions\up.sqf";
       };
     };
   };

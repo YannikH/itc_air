@@ -10,4 +10,5 @@ if(_capable == "any") exitWith {
 
 if(_capable == "left") exitWith { (vehicle player) getVariable "mfd_l" };
 if(_capable == "right") exitWith { (vehicle player) getVariable "mfd_r" };
-if(_capable == "hmd") exitWith { (vehicle player) getVariable "hmd" };
+//if(_capable == "center") exitWith { (vehicle player) getVariable "mfd_c" };
+if(_capable == "hmd" || _capable == "hmcs") exitWith { (vehicle player) getVariable "hmd" };

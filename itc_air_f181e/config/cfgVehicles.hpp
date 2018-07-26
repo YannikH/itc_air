@@ -59,8 +59,8 @@ class cfgVehicles {
           class pylons {
             class pylon1 {
                 attachment = "PylonRack_Missile_AMRAAM_D_x1";
-                hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55"};
-                maxweight = 300;
+                hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55","itc_hp_bru61"};
+                maxweight = 600;
                 priority = 12;
                 UIposition[] = {0.6,0.45};
             };
@@ -70,7 +70,7 @@ class cfgVehicles {
             };
             class pylon3 {
                 attachment = "itc_hp_lau117_Missile_AGM_02_F";
-                hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117","itc_hp_harpoon"};
+                hardpoints[] = {"B_BIM9X_RAIL","B_BIM9X_DUAL_RAIL","B_AMRAAM_D_RAIL","B_AMRAAM_D_DUAL_RAIL","itc_hp_dumb", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117","itc_hp_harpoon","itc_hp_bru61"};
                 maxweight = 1050;
                 priority = 11;
                 UIposition[] = {0.55,0.35};
@@ -95,7 +95,7 @@ class cfgVehicles {
             class pylonBayCenter1 {
                 attachment = "PylonMissile_Missile_AMRAAM_D_INT_x1";
                 bay = 3;
-                hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart"};
+                hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart","itc_hp_bru61"};
                 maxweight = 1200;
                 priority = 9;
                 UIposition[] = {0.33,0.3};
@@ -119,7 +119,7 @@ class cfgVehicles {
             class pylonBayCenter5 {
                 attachment = "PylonMissile_Bomb_GBU12_x1";
                 bay = 3;
-                hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart"};
+                hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart","itc_hp_bru61"};
                 maxweight = 1200;
                 priority = 5;
                 UIposition[] = {0.33,0.5};
@@ -136,7 +136,7 @@ class cfgVehicles {
     class itc_air : itc_air_default_jet {
       mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
       systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
-      mfdType = "touch";
+      //mfdType = "touch";
     };
   };
 	class ITC_F181E_Stealth: Plane_Fighter_01_Base_F
@@ -147,7 +147,7 @@ class cfgVehicles {
     class itc_air : itc_air_default_jet {
       mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
       systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","AWES_COMPAT"};
-      mfdType = "touch";
+      //mfdType = "touch";
     };
 		class AnimationSources: AnimationSources
 		{
@@ -206,7 +206,7 @@ class cfgVehicles {
 					};
 					class pylonBayCenter1
 					{
-            hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart"};
+            hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart","itc_hp_bru61"};
 						priority = 9;
 						attachment = "PylonMissile_Missile_AMRAAM_D_INT_x1";
 						maxweight = 1200;
@@ -234,7 +234,7 @@ class cfgVehicles {
 					};
 					class pylonBayCenter5
 					{
-            hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart"};
+            hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart","itc_hp_bru61"};
 						priority = 5;
 						attachment = "itc_hp_dumb_ITC_ammo_gbu12";
 						maxweight = 1200;

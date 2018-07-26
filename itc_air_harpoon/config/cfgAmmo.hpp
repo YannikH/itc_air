@@ -1,8 +1,8 @@
 class cfgAmmo {
   class Missile_AGM_02_F;
   class itc_ammo_agm84 : Missile_AGM_02_F {
-    model = "\A3\Weapons_F_EPC\Ammo\Missile_AGM_01_fly_F.p3d";
-    proxyShape = "\A3\Weapons_F_EPC\Ammo\Missile_AGM_01_F.p3d";
+    model = "\A3\Weapons_F_Jets\Ammo\Missile_SAM_02_fly_F.p3d";
+    proxyShape = "\A3\Weapons_F_Jets\Ammo\Missile_SAM_02_fly_F.p3d";
     class Components {};
     ITC_firedEvent = "itc_air_harpoon_fnc_fired";
     flightProfiles[] = {"Direct"};

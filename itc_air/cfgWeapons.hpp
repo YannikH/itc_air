@@ -83,6 +83,12 @@ class CfgWeapons {
 
     agmPylonMagazines(Missile_AGM_02_Plane_CAS_01_F,Missile_AGM_02_F)
 
+    class itc_air_weapon_maverick_g : Missile_AGM_02_Plane_CAS_01_F {
+      displayName = "AGM-65G";
+      magazines[] = {"itc_hp_lau117_itc_ammo_agm65g","itc_hp_bru55_lau117_itc_ammo_agm65g"};
+      modes[] = {"Direct"};
+    };
+
     class itc_air_weapon_maverick_e : Missile_AGM_02_Plane_CAS_01_F {
       displayName = "AGM-65E";
       magazines[] = {"itc_hp_lau117_itc_ammo_agm65e","itc_hp_bru55_lau117_itc_ammo_agm65e"};

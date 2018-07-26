@@ -22,4 +22,9 @@ class itc_air_cfgFuzes {
     programmable = 1;
 		modes[] = {"PD","DLY"};
 	};
+	class sdb {
+    displayName = "SDB FZE";
+    programmable = 1;
+		modes[] = {"PD","DLY","PROX"};
+	};
 };

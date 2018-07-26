@@ -10,8 +10,8 @@ _laserCode = (vehicle player) getVariable "apkws_laser_code";
     [_this select 1] call CBA_fnc_removePerFrameHandler;
   };
 
-  _spot = [getPosASL _projectile, velocity _projectile, 40, 5500, [1500, 1550], _laserCode] call ace_laser_fnc_seekerFindLaserSpot;
-  if(!isNil{_spot select 0} && time > _launchTime + 0.5) then {
+  _spot = [getPosASL _projectile, velocity _projectile, 20, 5500, [1500, 1550], _laserCode] call ace_laser_fnc_seekerFindLaserSpot;
+  if(!isNil{_spot select 0} && time > _launchTime + 1) then {
     private _targetCoordinates = (_spot select 0) vectorAdd [0,0,1];
     private _position = getPosASL _projectile;
     (_projectile call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];
@@ -20,8 +20,8 @@ _laserCode = (vehicle player) getVariable "apkws_laser_code";
     private _vectorModelSpace = _projectile vectorWorldToModel _vectToTargetDiff;
     private _angleX = asin (_vectorModelSpace # 0);
     private _angleY = asin (_vectorModelSpace # 2);
-    _turnRate = 6 * _frameTime;
-    _projectile setDir (getDir _projectile) + (_turnRate / 5 * _angleX);
-    [_projectile, _pitch + (_turnRate / 5 * _angleY), 0] call BIS_fnc_setPitchBank;
+    _turnRate = 4 * _frameTime;
+    _projectile setDir (getDir _projectile) + ((_turnRate * _angleX) min _angleX);
+    [_projectile, _pitch + ((_turnRate * _angleY) min _angleY), 0] call BIS_fnc_setPitchBank;
   };
 }, 0, [_projectile, _ammo, getPosATL _projectile, _laserCode, time, time]] call CBA_fnc_addPerFrameHandler;

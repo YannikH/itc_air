@@ -10,6 +10,7 @@ class cfgMagazines {
     class PylonRack_1Rnd_Missile_AGM_02_F;
     class PylonRack_7Rnd_Rocket_04_HE_F;
     class PylonRack_3Rnd_LG_scalpel;
+    class PylonRack_Bomb_SDB_x4;
     #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT,TOTALMASS,DRAG) \
         class HP##_##AMMO : PARENT { \
             ammo = STRINGIFY(AMMO); \
@@ -56,6 +57,10 @@ class cfgMagazines {
     #define hp_triple_hellfire(NAME,WEAP,AMMO,WT) \
         hardPointMagazine(itc_hp_lau88_hellfire,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x,__EVAL(WT*3),0.5)
 
+    //DUAL HP DUMB
+    #define hp_quad_sdb(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_bru61,PylonRack_Bomb_SDB_x4,NAME,WEAP,AMMO,4x,__EVAL(WT*4),0.6)
+
     #define hp_ser_der_ter(NAME,WEAP,AMMO,WT) \
         hp_single(NAME,WEAP,AMMO,WT) \
         hp_double(NAME,WEAP,AMMO,WT) \
@@ -83,9 +88,10 @@ class cfgMagazines {
     hp_ser_der_smart("GBU-54v1","itc_weap_gbu54",ITC_ammo_gbu54,227)
     hp_ser_der_smart("GBU-54v4","itc_weap_gbu54",ITC_ammo_gbu54_lcdb,227)
 
-    hp_ser_der_lau117("AGM-65G","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F,50)
+    hp_ser_der_lau117("AGM-65G(vanilla)","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F,50)
+    hp_ser_der_lau117("AGM-65G","itc_air_weapon_maverick_g",itc_ammo_agm65g,50)
     hp_ser_der_lau117("AGM-65E","itc_air_weapon_maverick_e",itc_ammo_agm65e,50)
-    hp_ser_der_lau117("AGM-65H","itc_air_weapon_maverick_h",itc_ammo_agm65h,50)
+    hp_ser_der_lau117("AGM-65K","itc_air_weapon_maverick_h",itc_ammo_agm65h,50)
 
     class 6Rnd_ACE_Hellfire_AGM114K;
     class PylonRack_3Rnd_ACE_Hellfire_AGM114K : 6Rnd_ACE_Hellfire_AGM114K {

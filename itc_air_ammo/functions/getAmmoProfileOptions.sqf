@@ -15,6 +15,9 @@ _guidanceTypes =  (configFile >> "CfgAmmo" >> _ammo >> "ITC_guidanceOptions") ca
 if(!isNil {_guidanceTypes}) then {
   {
     switch(_x) do {
+      case "sdb": {
+        _optionsList pushBack ["impAz","60","IMP AZ","UFC",{(_this >= 0 && _this <= 360)}];
+      };
       case "jdam": {
         _optionsList pushBack ["impAng","60","IMP ANG","UFC",{(_this > 9 && _this < 90)}];
       };

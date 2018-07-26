@@ -101,6 +101,9 @@ class cfgAmmo {
     class itc_ammo_agm65h : itc_ammo_agm65e {
       ITC_firedEvent = "itc_air_maverick_fnc_fired_ccdmav";
     };
+    class itc_ammo_agm65g : itc_ammo_agm65e {
+      ITC_firedEvent = "itc_air_maverick_fnc_fired_ccdmav";
+    };
 
     class B_30mm_APFSDS_Tracer_Red;
     class itc_30mm_ap : B_30mm_APFSDS_Tracer_Red {

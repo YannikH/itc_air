@@ -127,6 +127,10 @@ itc_air_dsms_currentWeapon = "";
       };
     };
 
+    if(!isNil{ITC_AIR_SOI_SLEW}) then {
+      ITC_AIR_SOI_SLEW call itc_air_mfd_fnc_soi_input;
+    };
+
     //config plane data
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;
     if(((_plane getVariable "seat" == "pilot") && (driver _plane == player)) || ((_plane getVariable "seat" == "gunner") && (gunner _plane == player))) then {
