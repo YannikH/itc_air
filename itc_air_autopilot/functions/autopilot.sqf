@@ -18,16 +18,17 @@
  */
 
 //after how much deviation AP will disengage, all values in degrees
-#define AP_DISENG_MAX_VELOCITY_ANGLE_DIFF 10
-#define AP_DISENG_MAX_BANK_DIFF 20
-#define AP_DISENG_MAX_HDG_DIFF 10
+#define AP_DISENG_MAX_VELOCITY_ANGLE_DIFF 20
+#define AP_DISENG_MAX_BANK_DIFF 40
+// #define AP_DISENG_MAX_HDG_DIFF 10
 
 //values used to finetune aggressiveness of autopilot.
 //light planes are yanked harder and big ones don't respond too quickly
 #define AP_PLANE_WEIGHT_MULT 0.0001
 #define AP_PITCH_FORCE_MULT 1
 #define AP_BANK_TORQUE_MULT 300
-#define AP_YAW_TORQUE_MULT 2000
+#define AP_YAW_TORQUE_MULT 2500
+#define AP_YAW_BOUND 2
 
 //if autopilot applies force below this treshold, we assume that we are on course
 //and only deviation is due to plane's flight characteristics, so we will use these values to calibrate
@@ -44,10 +45,13 @@ private _vXY = sqrt (_vX * _vX + _vY * _vY);
 private _vZ = velocity _plane select 2;
 private _targetVelocityAngle = _vZ atan2 _vXY; //note: it doesn't line up with in-game TVV (in-game TVV is shit - you fly level even if it's not on horizon)
 private _targetBank = (_plane call BIS_fnc_getPitchBank) select 1;
-private _targetHdg = getDir _plane;
 private _weightMult = getMass _plane * AP_PLANE_WEIGHT_MULT;
 
-//hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, _targetHdg];
+ITC_AP_mode = _mode;
+ITC_AP_TargetAlt = getPosASL _plane select 2;
+ITC_AP_TargetHdg = getDir _plane;
+
+//hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, ITC_AP_TargetHdg];
 
 //these variables are global because we can't easily initialize local ones in pfh
 ITC_AP_VaCalibrationCounter = 0;
@@ -80,7 +84,7 @@ playSound "Click";
 hint "autopilot on";
 
 pfhID = [{
-	_this select 0 params ["_plane", "_targetVelocityAngle", "_targetBank", "_targetHdg", "_weightMult", "_mode"];
+	_this select 0 params ["_plane", "_targetBank", "_weightMult", "_mode"];
 
 	if (time == ITC_AP_lastFrameTime) exitWith {};
 	ITC_AP_lastFrameTime = time; //we do this to check if we are not in pause menu
@@ -97,9 +101,13 @@ pfhID = [{
 	private _pitch = _pitchBank select 0;
 	private _bank = _pitchBank select 1;
 
+	private _altDifference = ITC_AP_TargetAlt - (getPosASL _plane select 2);
+	private _targetClimbRate = -(4000 * 0.00508) max (_altDifference / 6) min (4000 * 0.00508); // m/s, 0.00508fpm = 1m/s
+	private _targetVelocityAngle = -30 max (asin (_targetClimbRate / (vectorMagnitude velocity _plane))) min 30; // max pitch -30 ~ 30
+
 	//first we need to figure out whether to cancel autopilot
 	private _velocityAngleDiseng = abs (_velocityAngle - _targetVelocityAngle) > AP_DISENG_MAX_VELOCITY_ANGLE_DIFF;
-	private _hdgDiseng = abs (_hdg - _targetHdg) > AP_DISENG_MAX_HDG_DIFF;
+	private _hdgDiseng = false; // abs (_hdg - ITC_AP_TargetHdg) > AP_DISENG_MAX_HDG_DIFF;
 	private _bankDiseng = abs (_bank - _targetBank) > AP_DISENG_MAX_BANK_DIFF;
 
 	private _avionicsDamaged = false;
@@ -150,33 +158,16 @@ pfhID = [{
 			hint "Autopilot off - Heading limit";
 		};
 
-		//systemChat format ["aborting autopilot!, va: %1, bank: %2, hdg: %3", abs (_velocityAngle - _targetVelocityAngle), abs (_bank - _targetBank), abs (_hdg - _targetHdg)];
+		//systemChat format ["aborting autopilot!, va: %1, bank: %2, hdg: %3", abs (_velocityAngle - _targetVelocityAngle), abs (_bank - _targetBank), abs (_hdg - ITC_AP_TargetHdg)];
 	};
 
-	//VELOCITY ANGLE
-	//we use force applied far in front of the nose of the plane so we don't have to worry when
-	//about bank when we want to point nose vertically up
-	private _pitchForce = (_targetVelocityAngle - _velocityAngle) * AP_PITCH_FORCE_MULT * _weightMult;
-
-	//we want only small samples to not account for large errors
-	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
-		ITC_AP_VaCalibrationCounter = ITC_AP_VaCalibrationCounter + 1;
-		ITC_AP_VaCalibrationSum = ITC_AP_VaCalibrationSum + _pitchForce;
-
-		//below we count average force deficit from last 100 samples, we add it to the offset and reset the counter
-		//it is done to prevent situations where plane slowly drifts up or down due to it's flight model
-		//(in default behaviour AP would try to apply very small force over a long time while plane slowly looses altitude)
-		if (ITC_AP_VaCalibrationCounter == 100) then {
-			ITC_AP_VaCalibrationCounter = 0;
-			ITC_AP_VaCalibrationOffset = ITC_AP_VaCalibrationOffset + ITC_AP_VaCalibrationSum / 100;
-			ITC_AP_VaCalibrationSum = 0;
-		};
-		_pitchForce = _pitchForce + ITC_AP_VaCalibrationOffset;
+	//BANK TURN
+	private _hdgRotate = 0;
+	if (_mode == 1) then {
+		_hdgRotate = ITC_AP_TargetHdg - _hdg + ([0, 360] select ((_hdg > 180) && ((_hdg - 180) > ITC_AP_TargetHdg)));
+		private _bankTurn = -30 max (_hdgRotate * 2) min 30;
+		_targetBank = _targetBank + _bankTurn;
 	};
-
-	//we apply the force to point in front of plane's nose
-	//note that applied force is in world space (not relative to plane)
-	_plane addForce [[0,0,_pitchForce],[0,500,0]];
 
 	//BANK
 	//linear relationship between offset and force proved to have most stable results
@@ -201,8 +192,9 @@ pfhID = [{
 
 
 	//YAW
+	private _yawTorque = 0;
 	if (_mode == 1) then {
-		private _yawTorque = (_targetHdg - _hdg) * AP_YAW_TORQUE_MULT * _weightMult;
+		_yawTorque = (-AP_YAW_BOUND max _hdgRotate min AP_YAW_BOUND) * AP_YAW_TORQUE_MULT * _weightMult;
 
 		//Calibration
 		if (abs _yawTorque < AP_YAW_CALIBRATION_TRESH) then {
@@ -222,4 +214,31 @@ pfhID = [{
 		//systemChat format ["pf %1, yt %2", _pitchForce, _yawTorque];
 	};
 
-}, 0.1, [_plane, _targetVelocityAngle, _targetBank, _targetHdg, _weightMult, _mode]] call CBA_fnc_addPerFrameHandler;
+
+	//VELOCITY ANGLE
+	//we use force applied far in front of the nose of the plane so we don't have to worry when
+	//about bank when we want to point nose vertically up
+	private _yawCompensation = abs ((-AP_YAW_BOUND max _hdgRotate min AP_YAW_BOUND) * (sin _bank) * AP_YAW_TORQUE_MULT / 2000);
+	private _pitchForce = (_targetVelocityAngle - _velocityAngle + _yawCompensation) * AP_PITCH_FORCE_MULT * _weightMult;
+
+	//we want only small samples to not account for large errors
+	if (abs _pitchForce < AP_VA_CALIBRATION_TRESH) then {
+		ITC_AP_VaCalibrationCounter = ITC_AP_VaCalibrationCounter + 1;
+		ITC_AP_VaCalibrationSum = ITC_AP_VaCalibrationSum + _pitchForce;
+
+		//below we count average force deficit from last 100 samples, we add it to the offset and reset the counter
+		//it is done to prevent situations where plane slowly drifts up or down due to it's flight model
+		//(in default behaviour AP would try to apply very small force over a long time while plane slowly looses altitude)
+		if (ITC_AP_VaCalibrationCounter == 100) then {
+			ITC_AP_VaCalibrationCounter = 0;
+			ITC_AP_VaCalibrationOffset = ITC_AP_VaCalibrationOffset + ITC_AP_VaCalibrationSum / 100;
+			ITC_AP_VaCalibrationSum = 0;
+		};
+		_pitchForce = _pitchForce + ITC_AP_VaCalibrationOffset;
+	};
+
+	//we apply the force to point in front of plane's nose
+	//note that applied force is in world space (not relative to plane)
+	_plane addForce [[0,0,_pitchForce],[0,500,0]];
+
+}, 0.1, [_plane, _targetBank, _weightMult, _mode]] call CBA_fnc_addPerFrameHandler;

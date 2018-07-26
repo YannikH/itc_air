@@ -24,6 +24,16 @@ if((_vehicle getVariable "stpt_name") != "NO WP") then {
   (_display displayCtrl R3) ctrlSetText str round (_vehicle getDir (_vehicle getVariable "stpt_pos"));
 };
 
+if (ITC_AP_isEnabled) then {
+  (_display displayCtrl R4) ctrlSetText format["%1m", round ITC_AP_TargetAlt];
+  if (ITC_AP_mode isEqualTo 1) then {
+    (_display displayCtrl R45) ctrlSetText "AP ALT/HDG";
+    (_display displayCtrl R5) ctrlSetText format["HDG %1", round ITC_AP_TargetHdg];
+  } else {
+    (_display displayCtrl R45) ctrlSetText "AP ALT";
+  };
+};
+
 (_display displayCtrl L1) ctrlSetText format["%1%2",round ((fuel _vehicle) * 100),"%"];
 (_display displayCtrl L12) ctrlSetText "FUEL";
 (_display displayCtrl L2) ctrlSetText format["%1 min",_vehicle getVariable "playtime"];
