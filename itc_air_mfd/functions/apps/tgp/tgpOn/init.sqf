@@ -14,6 +14,9 @@ if(isNil{_display getVariable "feed_camera"}) then {
 (_display displayCtrl L3) ctrlSetText "OFF";
 (_display displayCtrl L34) ctrlSetText "L";
 
+(_display displayCtrl L45) ctrlSetText "SLEW";
+(_display displayCtrl L5) ctrlSetText "5";
+
 (_display displayCtrl R1) ctrlSetText "OFF";
 (_display displayCtrl R12) ctrlSetText "MRK";
 (_display displayCtrl R2) ctrlSetText "0 Hz";
@@ -21,6 +24,8 @@ if(isNil{_display getVariable "feed_camera"}) then {
 (_display displayCtrl R3) ctrlSetText "+";
 (_display displayCtrl R34) ctrlSetText "FOV";
 (_display displayCtrl R4) ctrlSetText "-";
+
+(_display displayCtrl T3) ctrlSetText "FWD";
 
 //(_display displayCtrl 32201) ctrlShow false;
 (_display displayCtrl 32202) ctrlShow false;

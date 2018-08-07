@@ -11,6 +11,7 @@ invertText(_display,T5);
 (_display displayCtrl 721003) ctrlSetText str ITC_AIR_MAVERICK_SLEWSPD;
 
 _this call itc_air_maverick_fnc_createCamera;
+_display setVariable ["sensor","maverick"];
 
 if(currentWeapon (vehicle player) == "itc_air_weapon_maverick_h") then {
   "MAVERICK_FEED" setPiPEffect [3,1,1,0.4,0,[0,0,0,0],[1,1,1,0],[1,1,1,1]];

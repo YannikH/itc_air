@@ -49,6 +49,7 @@ switch(_btn) do {
     _modes = ["CCIP","CCRP"];
     _release_mode = CYCLEVALUE(_modes,_release_mode);
     _releaseSettings set [0, _release_mode];
+    itc_air_fcs_ccrpOn = (_release_mode == "CCRP");
     (_display displayCtrl 121007) ctrlSetText _release_mode;
   };
   case "UFC": {

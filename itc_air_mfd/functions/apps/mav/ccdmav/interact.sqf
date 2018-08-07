@@ -10,7 +10,6 @@ switch(_btn) do {
   };
   case "R3": {
     ITC_AIR_MAVERICK_SLEWSPD = if(ITC_AIR_MAVERICK_SLEWSPD < 2) then [{5},{ITC_AIR_MAVERICK_SLEWSPD - 2}];
-    (_display displayCtrl 721003) ctrlSetText str ITC_AIR_MAVERICK_SLEWSPD;
   };
 };
 false

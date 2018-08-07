@@ -8,7 +8,7 @@ if(_capable == "any") exitWith {
   ((vehicle player) getVariable "mfd_l") || ((vehicle player) getVariable "mfd_r")
 };
 
-if(_capable == "left") exitWith { (vehicle player) getVariable "mfd_l" };
-if(_capable == "right") exitWith { (vehicle player) getVariable "mfd_r" };
+if(_capable == "left") exitWith { (vehicle player) getVariable "mfd_l" && !isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} };
+if(_capable == "right") exitWith { (vehicle player) getVariable "mfd_r" && !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} };
 //if(_capable == "center") exitWith { (vehicle player) getVariable "mfd_c" };
 if(_capable == "hmd" || _capable == "hmcs") exitWith { (vehicle player) getVariable "hmd" };

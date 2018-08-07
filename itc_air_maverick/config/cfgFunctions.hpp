@@ -19,6 +19,9 @@ class cfgFunctions {
       class createCamera {
         file = "itc_air_maverick\functions\createCamera.sqf";
       };
+      class keys {
+        file = "itc_air_maverick\functions\keys.sqf";
+      };
     };
   };
 };

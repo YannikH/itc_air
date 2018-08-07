@@ -2,12 +2,14 @@ ITC_AIR_MFD_CAMS = [];
 
 ["ITC Air","itc_air_mfd_cursor_toggle", "Show MFD cursor",{
   //(findDisplay 19992) closeDisplay 2;
-  if(!isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} || !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} ) then {
+  //if(!isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} || !isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"} ) then {
+  if("UFC" in ((vehicle player) getVariable "itc_air_systems")) then {
     setMousePosition [0.5, 0.5];
     if (isNull curatorCamera) then {
       findDisplay 46 createDisplay (vehicle player getVariable "mfdButtons");
     };
   };
+  //};
 }, "", [200, [false, false, false]]] call CBA_fnc_addKeybind;
 /*
 ["ITC Air","itc_air_mfd_cursor_hold", "Hold MFD cursor",{
@@ -59,6 +61,17 @@ ITC_AIR_MFD_CAMS = [];
     };
 }, "", [208, [true, false, false]]] call CBA_fnc_addKeybind;
 
+[
+    "ITC_AIR_MFD_SCALE",
+    "SLIDER",
+    "MFD Size",
+    "ITC Air",
+    [0, 2, 1, 1],
+    nil,
+    {}
+] call CBA_Settings_fnc_init;
+
+/*
 ["ITC MFD","mfd_btn_short_L1", "MFD BTN L1",{[(vehicle player) getVariable "SOI","L1"] call itc_air_mfd_fnc_button}, "", [79, [true, false, false]]] call CBA_fnc_addKeybind;
 ["ITC MFD","mfd_btn_short_L2", "MFD BTN L2",{[(vehicle player) getVariable "SOI","L2"] call itc_air_mfd_fnc_button}, "", [80, [true, false, false]]] call CBA_fnc_addKeybind;
 ["ITC MFD","mfd_btn_short_L3", "MFD BTN L3",{[(vehicle player) getVariable "SOI","L3"] call itc_air_mfd_fnc_button}, "", [81, [true, false, false]]] call CBA_fnc_addKeybind;
@@ -76,3 +89,4 @@ ITC_AIR_MFD_CAMS = [];
 ["ITC MFD","mfd_btn_short_R3", "MFD BTN R3",{[(vehicle player) getVariable "SOI","R3"] call itc_air_mfd_fnc_button}, "", [81, [false, false, true]]] call CBA_fnc_addKeybind;
 ["ITC MFD","mfd_btn_short_R4", "MFD BTN R4",{[(vehicle player) getVariable "SOI","R4"] call itc_air_mfd_fnc_button}, "", [75, [false, false, true]]] call CBA_fnc_addKeybind;
 ["ITC MFD","mfd_btn_short_R5", "MFD BTN R5",{[(vehicle player) getVariable "SOI","R5"] call itc_air_mfd_fnc_button}, "", [76, [false, false, true]]] call CBA_fnc_addKeybind;
+*/

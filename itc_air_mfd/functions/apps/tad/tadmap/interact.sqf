@@ -16,6 +16,12 @@ switch (_btn) do {
     _i = (_i + 1) min (count _steps - 1);
     _display setVariable ["tad_fov", _steps select _i];
   };
+  case "L3": {
+    ITC_AIR_TAD_HOOKMODE = ITC_AIR_TAD_HOOKMODE + 1;
+    if(ITC_AIR_TAD_HOOKMODE == count ITC_AIR_TAD_HOOKMODES) then {
+      ITC_AIR_TAD_HOOKMODE = 0;
+    };
+  };
 };
 
 

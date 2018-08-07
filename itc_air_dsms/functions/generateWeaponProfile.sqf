@@ -18,7 +18,7 @@ switch(_cursorAim) do {
   case "rocket": {
     _profile = [
       [_weapon,_ammoName, _ammoName,-1,_cursorAim,true],
-      ["","SGL",1,0]
+      ["","SGL",1,100]
     ];
   };
   case "missile": {

@@ -13,6 +13,12 @@ class cfgFunctions {
       class scanSeekerSquare {
         file = "itc_air_common\functions\scanSeekerSquare.sqf";
       };
+      class systemStart {
+        file = "itc_air_common\functions\systemStart.sqf";
+      };
+      class systemStop {
+        file = "itc_air_common\functions\systemStop.sqf";
+      };
     };
   };
 };

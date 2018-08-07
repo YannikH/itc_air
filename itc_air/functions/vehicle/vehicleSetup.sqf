@@ -21,20 +21,40 @@ if(isNIl{SADL}) then {
   };
 };
 */
+
+
+_vehicle setVariable ["stpt_index", 0];
+_vehicle setVariable ["stpt_name", "NO WP"];
+_vehicle setVariable ["stpt_pos", [0,0,0]];
+_vehicle setVariable ["stpt_pos_str", ""];
+_vehicle setVariable ["stpt_tof", "N/A"];
+if(isNil{_vehicle getVariable "stpt_list"}) then {
+  _waypoints = ([] call ace_microdagr_fnc_deviceGetWaypoints) + [];
+  _vehicle setVariable ["stpt_list", _waypoints];
+};
+
 _vehicle setVariable ["itc_air_options", []];
-_vehicle setVariable ["itc_air_systems_pfh", []];
 private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
-private _activeSystems = [];
 {
-  private _funcName = format["itc_air_%1_fnc_setup",toLower _x];
-  private _func = (missionNamespace getVariable _funcName);
-  if(!isNil {_func}) then {
-    [_vehicle] call _func;
-    _activeSystems pushBack _x;
-  };
+  /*
+  private _arrays = [_activeSystems, _pfhSystems, _pshSystems];
+  private _systemName = _x;
+  {
+    private _funcName = format["itc_air_%1_fnc_%2", _systemName,toLower _x];
+    private _func = (missionNamespace getVariable _funcName);
+    if(!isNil {_func}) then {
+      if(toLower _x == "setup") then {
+        [_vehicle] call _func;
+      };
+      (_arrays # _forEachIndex) pushBack _systemName;
+    };
+  }forEach ["setup", "perFrame", "perSecond"];
+  */
+  [_vehicle, _x] call itc_air_common_fnc_systemStart;
 }forEach _systems;
-_vehicle setVariable ["itc_air_systems", _systems];
-_vehicle setVariable ["itc_air_systems_active", _activeSystems];
+private _activeSystems = _vehicle getVariable ["itc_air_systems_active",[]];
+_vehicle setVariable ["itc_air_systems",_systems];
+
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
 _hasWSO = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "wso");
@@ -75,16 +95,6 @@ _vehicle setVariable ["tgp_mode", 0];
 
 _vehicle setVariable ["tgp_lsst_mode", "LSS OFF"];
 
-_vehicle setVariable ["stpt_index", 0];
-_vehicle setVariable ["stpt_name", "NO WP"];
-_vehicle setVariable ["stpt_pos", [0,0,0]];
-_vehicle setVariable ["stpt_pos_str", ""];
-_vehicle setVariable ["stpt_tof", "N/A"];
-if(isNil{_vehicle getVariable "stpt_list"}) then {
-  _waypoints = ([] call ace_microdagr_fnc_deviceGetWaypoints) + [];
-  _vehicle setVariable ["stpt_list", _waypoints];
-};
-
 _vehicle setVariable ["playtime", "N/A"];
 
 if(isNil{_vehicle getVariable "paveway_laser_code"}) then {
@@ -110,10 +120,13 @@ _vehicle setVariable ["rip_cycle", false];
 // DRAW STUFF
 itc_air_dsms_currentWeapon = "";
 [{
-    _this select 0 params ["_plane", "_lastFrame","_lastBroadCast"];
+    _this select 0 params ["_plane", "_lastFrame","_lastBroadCast","_systems"];
     if(!((vehicle player) isKindOf "Air") || !alive _plane) exitWith {
         //[missionNameSpace, "SADL", SADL - [_plane]] call itc_air_common_fnc_set_var;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
+        {
+          [(vehicle player), _x] call itc_air_common_fnc_systemStop;
+        }forEach _systems;
     };
     //get basic info used for the HMD/TGP
     if(time == _lastFrame) exitWith {};
@@ -162,23 +175,23 @@ itc_air_dsms_currentWeapon = "";
     if(_inTGP && _plane getVariable "tgp") then {
         [_plane] call itc_air_ui_fnc_tgp_symbology;
     };
-    if(!_inTGP && _plane getVariable "hmd" && _plane getVariable ["itc_air_hmd_on",false]) then {
-        [_plane] call itc_air_ui_fnc_hmd_symbology;
-    };
+    //if(!_inTGP && _plane getVariable "hmd" && _plane getVariable ["itc_air_hmd_on",false]) then {
+    //    [_plane] call itc_air_ui_fnc_hmd_symbology;
+    //};
     //run laser spot search
     if(_plane getVariable "tgp_lsst_mode" == "LSS") then {
       [_plane] call itc_air_tgp_fnc_laser_spot_search_track;
     };
     if(_plane getVariable "tgp_lsst_mode" == "LST") then {
-      _track = typeOf (getPilotCameraTarget (vehicle player) select 2);
-      if(_track == "LaserTargetW" && _track == "LaserTargetE") then {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
+      if(!((getPilotCameraTarget _plane) # 2 isKindOf "laserTarget")) then {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
     };
-    /*
-    if(ITC_AIR_FORCES && !isNil{_plane getVariable "mass"}) then {
-      [_plane, time - _lastFrame] call itc_air_vehicle_fnc_apply_forces;
-    };
-    */
-}, 0, [_vehicle, 0,0]] call CBA_fnc_addPerFrameHandler;
+
+    {
+      private _funcName = format["itc_air_%1_fnc_perFrame",toLower _x];
+      private _func = (missionNamespace getVariable _funcName);
+      [_plane] call _func;
+    }forEach (_plane getVariable "itc_air_systems_pfh");
+}, 0, [_vehicle, 0,0, _activeSystems]] call CBA_fnc_addPerFrameHandler;
 
 // SLOW UPDATE STUFF
 [{
@@ -207,10 +220,9 @@ itc_air_dsms_currentWeapon = "";
         _plane setVariable ["stpt_tof", _tofStr];
     };
 
-    /*
-    if(ITC_AIR_FORCES) then {
-      _plane setVariable  ["mass",[_plane] call itc_air_ammo_fnc_calculate_mass];
-      _plane setVariable  ["drag",[_plane] call itc_air_ammo_fnc_calculate_drag];
-    };
-    */
+    {
+      private _funcName = format["itc_air_%1_fnc_perSecond",toLower _x];
+      private _func = (missionNamespace getVariable _funcName);
+      [_plane] call _func;
+    }forEach (_plane getVariable "itc_air_systems_psh");
 }, 1, [_vehicle, 1, 0]] call CBA_fnc_addPerFrameHandler;

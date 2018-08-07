@@ -13,8 +13,16 @@ if(_pilotCameraTarget # 0) then {
   _gridArea = [worldName] call ace_common_fnc_getMGRSdata;
   _grid = [_pilotCameraTarget # 1] call ace_common_fnc_getMapGridFromPos;
   _str = format ["%1  %2  %3  %4", _gridArea select 0, _gridArea select 1, _grid select 0, _grid select 1];
+  (_display displayCtrl 31004) ctrlShow true;
+  (_display displayCtrl 31000) ctrlShow true;
+  (_display displayCtrl 31005) ctrlShow true;
   (_display displayCtrl 31004) ctrlSetText _str;
   (_display displayCtrl 31000) ctrlSetText (if(!isNull (_pilotCameraTarget # 2)) then [{"POINT"},{"AREA"}]);
+  (_display displayCtrl 31005) ctrlSetText str round getTerrainHeightASL (_pilotCameraTarget # 1);
+} else {
+  (_display displayCtrl 31004) ctrlShow false;
+  (_display displayCtrl 31000) ctrlShow false;
+  (_display displayCtrl 31005) ctrlShow false;
 };
 
 _str = "";
@@ -31,7 +39,6 @@ if(_laserOn && _vehicle getVariable "laser_ir") then {
 };
 
 (_display displayCtrl 31001) ctrlSetText _str;
-(_display displayCtrl 31005) ctrlSetText str round getTerrainHeightASL (_pilotCameraTarget # 1);
 (_display displayCtrl 31002) ctrlSetText (["DTV","NTV","FLIR"] # (_vehicle getVariable "tgp_mode"));
 (_display displayCtrl R5) ctrlSetText (["DTV","NTV","FLIR"] # (_vehicle getVariable "tgp_mode"));
 (_display displayCtrl 31003) ctrlSetText str round ((getPosATL _vehicle) # 2);
@@ -42,3 +49,5 @@ if(_laserOn && _vehicle getVariable "laser_ir") then {
 (_display displayCtrl L3) ctrlSetText (if(_laserOn) then [{"ON"},{"OFF"}]);
 (_display displayCtrl L2) ctrlSetText str (_vehicle getVariable "laser_code_recv");
 (_display displayCtrl L4) ctrlSetText str (_vehicle getVariable "ace_laser_code");
+
+(_display displayCtrl L5) ctrlSetText str ITC_AIR_TGP_SLEWSPD;

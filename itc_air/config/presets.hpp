@@ -20,7 +20,7 @@ class itc_air_default_jet {
     wso = 0;
     class mfd_left : mfd_plane {};
     class mfd_right : mfd_plane {};
-    systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER"};
+    systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS"};
     mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV"};
     mfdType = "classic";
 };
@@ -36,7 +36,7 @@ class itc_air_default_heli_ah {
     wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
-    systems[] = {"MFD","MFD_L","MFD_R"};
+    systems[] = {"MFD","MFD_L","MFD_R","UFC"};
     mfdApps[] = {"STAT","TAD","STPT","OPT"};
     mfdType = "classic";
 };
@@ -49,7 +49,7 @@ class itc_air_default_heli_uh {
     wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
-    systems[] = {"MFD","MFD_L","MFD_R"};
+    systems[] = {"MFD","MFD_L","MFD_R","UFC"};
     mfdApps[] = {"STAT","TAD","STPT","OPT"};
     mfdType = "classic";
 };

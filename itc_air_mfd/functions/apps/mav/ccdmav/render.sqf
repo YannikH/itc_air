@@ -9,6 +9,7 @@ if(
 private _pointCross = (_display displayCtrl 722204);
 private _rangeCaret = (_display displayCtrl 721202);
 (_display displayCtrl 722201) ctrlShow false;
+(_display displayCtrl 721003) ctrlSetText str ITC_AIR_MAVERICK_SLEWSPD;
 
 _plane = vehicle player;
 

@@ -20,25 +20,31 @@ switch(_btn) do {
     _index = (_index + 1) min ((count _systems) - 1);
     _list lbSetCurSel _index;
   };
+  case "R1": {
+    if(_systems # _index in _systemsAct) then {
+      private _sys = _systems # _index;
+      private _setupFuncName = format["itc_air_%1_fnc_setup",toLower _sys];
+      private _setupFunc = (missionNamespace getVariable _setupFuncName);
+      [_plane] call _setupFunc;
+    };
+  };
   case "R2": {
     if(_systems # _index in _systemsAct) then {
       private _sys = _systems # _index;
       private _shutDownFuncName = format["itc_air_%1_fnc_shutDown",toLower _sys];
-      private _setupFuncName = format["itc_air_%1_fnc_setup",toLower _sys];
       private _shutDownFunc = (missionNamespace getVariable _shutDownFuncName);
-      private _setupFunc = (missionNamespace getVariable _setupFuncName);
       if(!isNil {_shutDownFunc}) then {
         [_plane] call _shutDownFunc;
       };
-      [_plane] call _setupFunc;
     };
   };
 };
 if(_systems # _index in _systemsAct) then {
+  (_display displayCtrl R1) ctrlSetText "START";
   (_display displayCtrl R12) ctrlSetText "SYS";
-  (_display displayCtrl R2) ctrlSetText "RESET";
+  (_display displayCtrl R2) ctrlSetText "STOP";
 } else {
-  (_display displayCtrl R12) ctrlSetText "";
+  (_display displayCtrl R1) ctrlSetText "";
   (_display displayCtrl R2) ctrlSetText "";
 };
 false

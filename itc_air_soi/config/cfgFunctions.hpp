@@ -17,6 +17,12 @@ class cfgFunctions {
       class up {
         file = "itc_air_soi\functions\up.sqf";
       };
+      class ms_down {
+        file = "itc_air_soi\functions\ms\down.sqf";
+      };
+      class ms_up {
+        file = "itc_air_soi\functions\ms\up.sqf";
+      };
     };
   };
 };

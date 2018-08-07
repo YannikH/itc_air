@@ -11,14 +11,14 @@ switch(_btn) do {
   case "R3": {
     _curStep = _vehicle getVariable "tgp_fov_index";
     _steps = _vehicle getVariable "tgp_fov_steps";
-    _curStep = if(_curStep + 1 >= count _steps) then [{0}, {_curStep + 1}];
+    _curStep = (_curStep + 1) min ((count _steps) - 1);
     _vehicle setVariable ["tgp_fov_index", _curStep];
     _vehicle setVariable ["tgp_fov", _steps select _curStep];
   };
   case "R4" : {
     _curStep = _vehicle getVariable "tgp_fov_index";
     _steps = _vehicle getVariable "tgp_fov_steps";
-    _curStep = if(_curStep - 1 < 0) then [{count _steps - 1}, {_curStep - 1}];
+    _curStep = (_curStep - 1) max 0;
     _vehicle setVariable ["tgp_fov_index", _curStep];
     _vehicle setVariable ["tgp_fov", _steps select _curStep];
   };
@@ -43,6 +43,13 @@ switch(_btn) do {
   };
   case "L4": {
     [_display getVariable "displayVariable", "LSR", true] call itc_air_ufc_fnc_prepareInput;
+  };
+  case "L5": {
+      ITC_AIR_TGP_SLEWSPD = if(ITC_AIR_TGP_SLEWSPD > 3) then [{1},{ITC_AIR_TGP_SLEWSPD + 2}];
+  };
+  case "T3": {
+    [_vehicle, objNull] remoteExec ["setPilotCameraTarget", (crew _vehicle), false];
+    [_vehicle, [0,0]] remoteExec ["setPilotCameraRotation", (crew _vehicle), false];
   };
   case "UFC": {
     params ["_display", "_btn", "_variable", "_value"];

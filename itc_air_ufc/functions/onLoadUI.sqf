@@ -1,4 +1,6 @@
 params ["_display", "_variable"];
+//[_display,(configFile >> "ITC_AIR_MFDButtons" >> "MFDButtons_L"),ITC_AIR_MFD_SCALE] call itc_air_mfd_fnc_rescaleControlsGroup;
+//[_display,(configFile >> "ITC_AIR_MFDButtons" >> "MFDButtons_R"),ITC_AIR_MFD_SCALE] call itc_air_mfd_fnc_rescaleControlsGroup;
 _display setVariable ["displayVariable", _variable];
 _vehicle = vehicle player;
 

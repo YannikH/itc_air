@@ -18,6 +18,8 @@ ITC_AIR_ICONS = [];
 itc_air_ripple_active = false;
 itc_air_ripple_dropcount = 0;
 
+ITC_AIR_TGP_SLEWSPD = 1;
+
 ["vehicle", {_this call itc_air_vehicle_fnc_changed}, true] call CBA_fnc_addPlayerEventHandler;
 //[player, vehicle player] call itc_air_vehicle_fnc_changed;
 

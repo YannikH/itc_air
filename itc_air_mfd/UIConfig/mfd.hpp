@@ -36,6 +36,7 @@ class MFD : RscControlsGroup {
         #include "pages\stat\status.hpp"
         #include "pages\stpt\stpt.hpp"
         #include "pages\options\options.hpp"
+        #include "pages\wpn\wpn.hpp"
         class RscPicture_1200: RscPicture
         {
             idc = 1200;

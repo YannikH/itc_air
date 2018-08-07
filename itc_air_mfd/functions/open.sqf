@@ -1,11 +1,13 @@
 params ["_display", "_variable", "_input","_input_idc","_feed"];
 uiNamespace setVariable [_variable, _display];
+//[_display,(configFile >> "RscTitles" >> "ITC_AIR_MFD_L" >> "MFD"),ITC_AIR_MFD_SCALE] call itc_air_mfd_fnc_rescaleControlsGroup;
+//[_display, 61500, ITC_AIR_MFD_SCALE] call itc_air_mfd_fnc_rescaleMFDControl
 _display setVariable ["displayVariable", _variable];
 _vehicle = vehicle player;
 
 private _mfdApps = _vehicle getVariable "itc_air_mfd_apps";
 _display setVariable ["shortCuts", _mfdApps select [0, 4]];
-_display setVariable ["apps", _mfdApps select [4,6]];
+_display setVariable ["apps", _mfdApps select [4,10]];
 
 _display setVariable ["app", "lst"];
 

@@ -37,13 +37,15 @@ class CfgWeapons {
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
         magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
         class Burst;
-        reloadTime = 0.01; \
-        magazineReloadTime = 0.01; \
+        reloadTime = 0.01;
+        magazineReloadTime = 0.01;
     };
     class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
         magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
         class Burst : Burst {
           salvo = 1;
+          reloadTime = 0.1;
+          magazineReloadTime = 0.1;
         }
     };
     class itc_weap_ffarlauncher_smoke : Rocket_04_HE_Plane_CAS_01_F {
@@ -96,7 +98,7 @@ class CfgWeapons {
     };
 
     class itc_air_weapon_maverick_h : Missile_AGM_02_Plane_CAS_01_F {
-      displayName = "AGM-65H";
+      displayName = "AGM-65K";
       magazines[] = {"itc_hp_lau117_itc_ammo_agm65h","itc_hp_bru55_lau117_itc_ammo_agm65h"};
       modes[] = {"Direct"};
     };

@@ -23,4 +23,13 @@ for "_i" from 0 to 3 step 1 do {
 
 (_display displayCtrl 1028) ctrlShow (_bank > 75 || _bank < -75 || _pitch > 20 || _pitch < -20);
 
+if(_display getVariable "displayVariable" == (vehicle player) getVariable "SOI") then {
+  if((_display getVariable "sensor") == "") then {
+    call itc_air_soi_fnc_cycle;
+  } else {
+    if((_display getVariable "sensor") != ITC_AIR_SOI) then {
+      [_display getVariable "displayVariable"] call itc_air_mfd_fnc_soi_set;
+    };
+  };
+};
 (_display displayCtrl 1207) ctrlShow (ITC_AIR_SOI == (_display getVariable "sensor"));

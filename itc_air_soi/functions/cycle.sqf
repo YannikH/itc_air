@@ -1,7 +1,7 @@
 //params [["_desired","_next"]];
 private ["_capable"];
 private _options = ["left", "right", "hmd"];
-private _sources = ["ITC_AIR_MFD_L","ITC_AIR_MFD_R","HMCS"];
+private _sources = ["ITC_AIR_MFD_L","ITC_AIR_MFD_R","HMD"];
 private _current = _sources find ((vehicle player) getVariable "SOI");
 private _foundNext = false;
 while {!_foundNext} do {

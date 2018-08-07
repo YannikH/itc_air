@@ -24,7 +24,7 @@ if((_vehicle getVariable "stpt_name") != "NO WP") then {
   (_display displayCtrl R3) ctrlSetText str round (_vehicle getDir (_vehicle getVariable "stpt_pos"));
 };
 
-if (ITC_AP_isEnabled) then {
+if (ITC_AP_isEnabled && "AP-MAN" in ((vehicle player) getVariable "itc_air_systems")) then {
   (_display displayCtrl R4) ctrlSetText format["%1m", round ITC_AP_TargetAlt];
   if (ITC_AP_mode isEqualTo 1) then {
     (_display displayCtrl R45) ctrlSetText "AP ALT/HDG";
