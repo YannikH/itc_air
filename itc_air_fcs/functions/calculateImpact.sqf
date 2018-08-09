@@ -37,17 +37,11 @@
           _altATL = getTerrainHeightASL  _simulatedPos;
           _aboveLand = _altATL < _alt;
       };
-      // Calculate next velocity frame;
-      //player sideChat str [sqrt _airFriction * _vx, sqrt _airFriction * 0.25];
-      _vx = _vx + (sqrt _airFriction * _vx) * _frame;
-      _vy = _vy + (sqrt _sideAirFriction * _vy) * _frame;
-      //_vx = _vx - _frictionFwd;
-      //_frictionUd = _vx * _vy * _sideAirFriction;
-      //_frictionUd = _frictionUd * 0.1 * _sideAirFriction;
-      //_vy = _vy - _frictionUd;
-      //_vy = _vy - ((-0.002 * _airFriction) * (_vy * _vy) * _frame);
-      //_vx = _vx + (_vx * _vel * _airFriction * _frame);
-      //_vy = _vy + (_vy * _vel * _airFriction * _frame);
+
+      //_vel = sqrt(_vx*_vx + _vy*_vy);
+      //_vx = _vx - (_vel * _airFriction * _frame);
+      //_vy = _vy - (_vel * _sideAirFriction * _frame);
+
       _vy = _vy + (_grav * _frame);
       // Increment positions
       _y = _y + (_vy * _frame);
@@ -55,6 +49,6 @@
       // Increment frame count.
       _fc = _fc + 1;
   };
-  player sideChat format ["alt %1 tAlt %2",_simulatedPos # 2, getTerrainHeightASL  _simulatedPos];
-  drawIcon3D ["a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa", [1,1,1,1], [_simulatedPos # 0, _simulatedPos # 1, 1], 1, 1, 0, str (_fc * _frame), 0, 0.05, "PuristaMedium"];
+  //player sideChat format ["alt %1 tAlt %2",_simulatedPos # 2, getTerrainHeightASL  _simulatedPos];
+  //drawIcon3D ["a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa", [1,1,1,1], [_simulatedPos # 0, _simulatedPos # 1, 1], 1, 1, 0, str (_fc * _frame), 0, 0.05, "PuristaMedium"];
   [_simulatedPos, _fc * _frame]

@@ -11,9 +11,15 @@ if(_tailFuze != "" && _noseFuze != "") then {
   _optionsList pushBack ["fuzeSel","N/T","FUZE","cycle",["N/T","NOSE","TAIL"]];
 };
 
+
 _guidanceTypes =  (configFile >> "CfgAmmo" >> _ammo >> "ITC_guidanceOptions") call BIS_fnc_getCfgData;
 if(!isNil {_guidanceTypes}) then {
   {
+    private _funcName = format["itc_air_%1_fnc_getGuidanceOptions", _x];
+    private _func = (missionNamespace getVariable _funcName);
+    if(!isNil {_func}) then {
+      _optionsList = _optionsList + _this call _func;
+    };
     switch(_x) do {
       case "sdb": {
         _optionsList pushBack ["impAz","60","IMP AZ","UFC",{(_this >= 0 && _this <= 360)}];

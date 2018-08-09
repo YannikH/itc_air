@@ -11,12 +11,14 @@ _releaseSettings params ["_release_mode","_rip_mode","_rip_qty","_rip_dist"];
 _plane setVariable ["profileName", _profileName];
 (vehicle player) setVariable ["autolaser",false];
 if(_type == "bomb") then {
+  itc_air_fcs_ccrpOn = (toLower _release_mode == "ccrp");
   _plane setVariable ["rip_mode", _rip_mode];
   _plane setVariable ["rip_qty", _rip_qty];
   _plane setVariable ["rip_dist", _rip_dist];
   [_profileVariables] call itc_air_dsms_fnc_profileSetLegacyVariables;
 };
 if(_type == "rocket") then {
+  itc_air_fcs_ccrpOn = (toLower _release_mode == "ccrp");
   _plane setVariable ["rip_mode", _rip_mode];
   _plane setVariable ["rip_qty", _rip_qty];
   _plane setVariable ["rip_dist", 1];
