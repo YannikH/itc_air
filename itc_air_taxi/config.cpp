@@ -5,8 +5,9 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.0;
-        requiredAddons[] = {};
+        requiredAddons[] = {"cba_xeh"};
     };
 };
 
 #include "config\cfgFunctions.hpp"
+#include "config\cfgEventHandlers.hpp"

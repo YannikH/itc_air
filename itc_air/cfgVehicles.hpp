@@ -291,7 +291,7 @@ class cfgVehicles {
                     };
                     class pylon3 {
                         attachment = "itc_hp_bru55_ITC_ammo_gbu38";
-                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117","itc_hp_bru61"};
+                        hardpoints[] = {"I_BIM9X","I_AMRAAM_C_RAIL", "itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru33", "itc_hp_bru55", "itc_hp_bru55_lau117","itc_hp_bru61","itc_hp_harpoon"};
                         maxweight = 750;
                         priority = 4;
                         UIposition[] = {0.5,0.35};
@@ -319,7 +319,7 @@ class cfgVehicles {
         class pilotCamera : litening{};
         class itc_air : itc_air_default_jet {
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","AGCAS"};
           //mfdType = "touch";
         };
     };
@@ -351,7 +351,7 @@ class cfgVehicles {
 		    scopeCurator=2;
         class itc_air : itc_air_default_jet {
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","TGP"};
         };
         class pilotCamera : litening{};
         class Components : Components {
@@ -552,7 +552,7 @@ class cfgVehicles {
             };
         };
         class itc_air : itc_air_default_jet {
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","SADL","FCS","ACMI"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","SADL","FCS","ACMI","GCAS","TGP"};
         };
     };
 

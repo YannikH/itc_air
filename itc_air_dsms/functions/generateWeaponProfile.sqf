@@ -22,7 +22,7 @@ switch(_cursorAim) do {
     ];
   };
   case "missile": {
-    if(_ammoType == "itc_ammo_agm84") then {
+    if(_ammoType in ["itc_ammo_agm84","itc_ammo_jassm"]) then {
       _options = [_ammoType] call itc_air_ammo_fnc_getAmmoProfileOptions;
       _profile = [
         [_weapon,_ammoName, _ammoName,-1,_cursorAim,true],

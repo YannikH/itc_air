@@ -20,7 +20,7 @@
 //after how much deviation AP will disengage, all values in degrees
 #define AP_DISENG_MAX_VELOCITY_ANGLE_DIFF 20
 #define AP_DISENG_MAX_BANK_DIFF 40
-// #define AP_DISENG_MAX_HDG_DIFF 10
+#define AP_DISENG_MAX_HDG_DIFF 10
 
 //values used to finetune aggressiveness of autopilot.
 //light planes are yanked harder and big ones don't respond too quickly
@@ -68,12 +68,20 @@ ITC_AP_YawCalibrationOffset = 0;
 
 ITC_AP_lastFrameTime = 0;
 
+//used to make sure the heading disable is turned off when using manual direction
+itc_air_ap_apman = false;
+
 //modes are ALT (velocity_angle=0 + bank) - 0, ALT/HDG (velocity_angle=0 + hdg + bank=0) - 1, PATH (velocity_angle + bank=0) - 2
+//AGCAS - 3
 if (_mode == 0 || _mode == 1) then {
 	_targetVelocityAngle = 0;
 };
 if (_mode == 1 || _mode == 2) then {
 	_targetBank = 0;
+};
+if(_mode == 3) then {
+	_targetBank = 0;
+	_targetVelocityAngle = 20;
 };
 
 //playing sound over itself should amplify it's volume
@@ -107,8 +115,14 @@ pfhID = [{
 
 	//first we need to figure out whether to cancel autopilot
 	private _velocityAngleDiseng = abs (_velocityAngle - _targetVelocityAngle) > AP_DISENG_MAX_VELOCITY_ANGLE_DIFF;
-	private _hdgDiseng = false; // abs (_hdg - ITC_AP_TargetHdg) > AP_DISENG_MAX_HDG_DIFF;
+	private _hdgDiseng = (abs (_hdg - ITC_AP_TargetHdg) > AP_DISENG_MAX_HDG_DIFF) && !itc_air_ap_apman;
 	private _bankDiseng = abs (_bank - _targetBank) > AP_DISENG_MAX_BANK_DIFF;
+
+	if(_mode == 3) then {
+		_velocityAngleDiseng = false;
+		_hdgDiseng = false;
+		_bankDiseng = false;
+	};
 
 	private _avionicsDamaged = false;
 	if (!isNil {_plane getHitPointDamage "HitAvionics"}) then { //some vehicles might not have this hitpoint name
@@ -216,8 +230,11 @@ pfhID = [{
 
 
 	//VELOCITY ANGLE
-	//we use force applied far in front of the nose of the plane so we don't have to worry when
+	//we use force applied far in front of the nose of the plane so we don't have to worry
 	//about bank when we want to point nose vertically up
+	if(_mode == 3) then {
+		_targetVelocityAngle = 20;
+	};
 	private _yawCompensation = abs ((-AP_YAW_BOUND max _hdgRotate min AP_YAW_BOUND) * (sin _bank) * AP_YAW_TORQUE_MULT / 2000);
 	private _pitchForce = (_targetVelocityAngle - _velocityAngle + _yawCompensation) * AP_PITCH_FORCE_MULT * _weightMult;
 

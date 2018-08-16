@@ -5,4 +5,5 @@
     case "tad": {[_mfd, _this] call itc_air_mfd_fnc_tad_soi};
     case "maverick": {[_mfd, _this] call itc_air_maverick_fnc_slew};
     case "fcr": {[_mfd, _this] call itc_air_fcr_fnc_slew};
+    case "hmd": {[_mfd, _this] call itc_air_hmd_fnc_slew};
   };

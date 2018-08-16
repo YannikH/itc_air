@@ -30,6 +30,9 @@ ITC_AP_isEnabled = false;
 	if("AUTOPILOT" in (vehicle player getVariable ["itc_air_systems",[]])) then {
 		if (ITC_AP_isEnabled) then {
 			ITC_AP_isEnabled = false;
+			if(ITC_AP_mode == 3) then {
+				ITC_AP_mode = ["ALT","ALT/HDG","PATH"] find ITC_AP_modeString;
+			};
 		} else {
 			ITC_AP_isEnabled = true;
 			[vehicle player, ITC_AP_mode] call itc_air_autopilot_fnc_autopilot;

@@ -5,7 +5,7 @@ class CfgPatches {
       units[] = {};
       weapons[] = {};
       requiredVersion = 1.0;
-      requiredAddons[] = {};
+      requiredAddons[] = {"itc_air_ammo"};
   };
 };
 
@@ -13,3 +13,4 @@ class CfgPatches {
 #include "config\cfgWeapons.hpp"
 #include "config\cfgAmmo.hpp"
 #include "config\cfgMagazines.hpp"
+#include "config\cfgFuzes.hpp"

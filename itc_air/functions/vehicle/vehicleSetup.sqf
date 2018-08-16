@@ -32,44 +32,33 @@ if(isNil{_vehicle getVariable "stpt_list"}) then {
   _waypoints = ([] call ace_microdagr_fnc_deviceGetWaypoints) + [];
   _vehicle setVariable ["stpt_list", _waypoints];
 };
+_vehicle setVariable ["wpt_list", []];
+_vehicle setVariable ["mkpt_list", []];
 
 _vehicle setVariable ["itc_air_options", []];
 private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
+_vehicle setVariable ["itc_air_systems",_systems];
 {
-  /*
-  private _arrays = [_activeSystems, _pfhSystems, _pshSystems];
-  private _systemName = _x;
-  {
-    private _funcName = format["itc_air_%1_fnc_%2", _systemName,toLower _x];
-    private _func = (missionNamespace getVariable _funcName);
-    if(!isNil {_func}) then {
-      if(toLower _x == "setup") then {
-        [_vehicle] call _func;
-      };
-      (_arrays # _forEachIndex) pushBack _systemName;
-    };
-  }forEach ["setup", "perFrame", "perSecond"];
-  */
   [_vehicle, _x] call itc_air_common_fnc_systemStart;
 }forEach _systems;
 private _activeSystems = _vehicle getVariable ["itc_air_systems_active",[]];
-_vehicle setVariable ["itc_air_systems",_systems];
 
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
 _hasWSO = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "wso");
-_capableMFD_L = isClass (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left");
+_capableMFD_L = (isClass (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left") || "MFD_L" in _systems);
+_capableMFD_R = (isClass (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right") || "MFD_R" in _systems);
+/*
 if(_capableMFD_L) then {
   _vehicle setVariable["mfd_l_pages",(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left" >> "pages")  call BIS_fnc_getCfgData];
   _vehicle setVariable["mfd_l_quick",["SWAP"] + ((configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left" >> "shortcuts")  call BIS_fnc_getCfgData) + ["LST"]];
 };
-_capableMFD_R = isClass (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right");
 if(_capableMFD_R) then {
   _vehicle setVariable["mfd_r_pages",(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right" >> "pages")  call BIS_fnc_getCfgData];
   _vehicle setVariable["mfd_r_quick",["SWAP"] + ((configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right" >> "shortcuts")  call BIS_fnc_getCfgData) + ["LST"]];
 };
+*/
 _seat = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
-_fovSteps = [_vehicle] call itc_air_common_fnc_get_fov_steps;
 
 
 
@@ -86,12 +75,6 @@ _vehicle setVariable ["laser_code_recv", 1111];
 
 [_vehicle, "laser_ir", false] call itc_air_common_fnc_set_var;
 [_vehicle, "laser_pulse", 0] call itc_air_common_fnc_set_var;
-
-_vehicle setVariable ["tgp_dir", [true, [0,0,0]]];
-_vehicle setVariable ["tgp_fov", (24 / 120)];
-_vehicle setVariable ["tgp_fov_index", 0];
-_vehicle setVariable ["tgp_fov_steps", _fovSteps];
-_vehicle setVariable ["tgp_mode", 0];
 
 _vehicle setVariable ["tgp_lsst_mode", "LSS OFF"];
 
@@ -116,7 +99,7 @@ _vehicle setVariable ["rip_mode", "SGL"];
 _vehicle setVariable ["rip_qty", 1];
 _vehicle setVariable ["rip_dist", 50];
 _vehicle setVariable ["rip_cycle", false];
-
+itc_air_paused = false;
 // DRAW STUFF
 itc_air_dsms_currentWeapon = "";
 [{
@@ -129,6 +112,7 @@ itc_air_dsms_currentWeapon = "";
         }forEach _systems;
     };
     //get basic info used for the HMD/TGP
+    itc_air_paused = (time == _lastFrame);
     if(time == _lastFrame) exitWith {};
     _this select 0 set [1, time];
     _inTGP = (cameraView == "GUNNER");
@@ -138,10 +122,6 @@ itc_air_dsms_currentWeapon = "";
       if("DSMS" in (_plane getvariable ["itc_air_systems",[]])) then {
         [] call itc_air_dsms_fnc_weaponChanged;
       };
-    };
-
-    if(!isNil{ITC_AIR_SOI_SLEW}) then {
-      ITC_AIR_SOI_SLEW call itc_air_mfd_fnc_soi_input;
     };
 
     //config plane data

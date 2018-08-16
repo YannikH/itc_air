@@ -15,5 +15,7 @@ if(_button == "B5") exitWith {
 };
 if(_side =="B" && parseNumber _num > 0) exitWith {
   _i = (parseNumber _num) - 1;
-  _display setVariable["app",toLower ((_display getVariable "shortCuts") select _i)];
+  if(!isNil{((_display getVariable "shortCuts") # _i)}) then {
+    _display setVariable["app",toLower ((_display getVariable "shortCuts") # _i)];
+  };
 };

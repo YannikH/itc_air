@@ -7,7 +7,7 @@ private _latLongAlt = [getPosASL _plane] call itc_air_acmi_fnc_getPosLatLongAlt;
 (_plane call bis_fnc_getPitchBank) params ["_pitch","_bank"];
 private _printStr = format[
   "%1,T=%2|%3|%4|%5|%6|%10|%8|%9|%7",
-  ITC_AIR_ACMI_ID toFixed 0,
+  (_plane getVariable "acmi_id"),
   _latLongAlt # 1,
   _latLongAlt # 0,
   round (_latLongAlt # 2),

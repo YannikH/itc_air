@@ -3,13 +3,14 @@ class cfgAmmo {
   class ammo_Missile_Cruise_01;
   class itc_ammo_jassm : ammo_Missile_Cruise_01 {
     displayName = "AGM-158 JASSM";
-    ITC_firedEvent = "itc_air_wpn_jassm_fnc_fired";
+    ITC_firedEvent = "itc_air_jassm_fnc_fired";
+    ITC_subMunition = "itc_sdb_helper";
     model = "\a3\weapons_f_sams\Ammo\Bomb_06_F_fly";
     proxyShape = "\a3\weapons_f_sams\Ammo\Bomb_06_F";
     seekers[] = {"gps"};
     ITC_noseFuze = "JASSM";
     ITC_tailFuze = "";
-    ITC_guidanceOptions[] = {"wpn_jassm"};
+    ITC_guidanceOptions[] = {"jassm"};
     autoSeekTarget = 0;
     laserLock = 0;
     weaponType = "missile";
@@ -28,5 +29,9 @@ class cfgAmmo {
       ascendAngle = 70.0;
     };
     class Components {};
+  };
+  class itc_ammo_jassm_helper : itc_ammo_jassm {
+    timeToLive = 0.1;
+    ace_frag_force = 1;
   };
 };

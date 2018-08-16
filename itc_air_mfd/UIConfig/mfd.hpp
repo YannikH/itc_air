@@ -37,6 +37,8 @@ class MFD : RscControlsGroup {
         #include "pages\stpt\stpt.hpp"
         #include "pages\options\options.hpp"
         #include "pages\wpn\wpn.hpp"
+
+        #include "components\obsSymbols.hpp"
         class RscPicture_1200: RscPicture
         {
             idc = 1200;
@@ -293,6 +295,20 @@ class MFD : RscControlsGroup {
         	text = "CHECK ATTITUDE"; //--- ToDo: Localize;
         	x = SCALE * 0.2;
         	y = SCALE * 0.64;
+        	w = SCALE * 0.35;
+        	h = SCALE * 0.08;
+        	colorText[] = {0,0,0,1};
+        	colorBackground[] = {1,0,0,1};
+        	colorShadow[] = {0,0,0,0};
+        	sizeEx = SCALE * 0.08;
+          style = 2;
+        };
+        class RscText_1029: RscText
+        {
+        	idc = 1029;
+        	text = "GCAS BREAK X"; //--- ToDo: Localize;
+        	x = SCALE * 0.2;
+        	y = SCALE * 0.4;
         	w = SCALE * 0.35;
         	h = SCALE * 0.08;
         	colorText[] = {0,0,0,1};

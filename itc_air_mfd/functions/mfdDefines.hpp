@@ -30,6 +30,17 @@
 #define T4 1026
 #define T5 1027
 
+#define OL1 1221
+#define OL2 1222
+#define OL3 1223
+#define OL4 1224
+#define OL5 1225
+#define OR1 1231
+#define OR2 1232
+#define OR3 1233
+#define OR4 1234
+#define OR5 1235
+
 #define pblc1 1201
 #define pblc2 1204
 #define pblc3 1205
@@ -38,3 +49,9 @@
 
 #define invertText(DISPLAY,IDC) (_display displayCtrl IDC) ctrlSetTextColor [0,0,0,1];(_display displayCtrl IDC) ctrlSetBackgroundColor [0,1,0,1]
 #define resetText(DISPLAY,IDC) (_display displayCtrl IDC) ctrlSetTextColor [0,1,0,1];(_display displayCtrl IDC) ctrlSetBackgroundColor [0,0,0,0]
+#define ROTARY(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\rotary.paa"; (_display displayCtrl IDC) ctrlShow true
+#define BRANCHL(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\branchl.paa"; (_display displayCtrl IDC) ctrlShow true
+#define BRANCHR(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\branchr.paa"; (_display displayCtrl IDC) ctrlShow true
+#define SYSACT(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\sysact.paa"; (_display displayCtrl IDC) ctrlShow true
+#define DATA(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\data.paa"; (_display displayCtrl IDC) ctrlShow true
+#define INCDEC(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\incdec.paa"; (_display displayCtrl IDC) ctrlShow true

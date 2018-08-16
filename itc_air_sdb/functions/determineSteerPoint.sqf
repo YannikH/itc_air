@@ -12,7 +12,7 @@ if(_stage == "SEP") exitWith {
   };
   _return
 };
-
+/*
 if(_stage == "NAV" || _stage == "INS") then {
   private _navStages = ["NAV","INS","GLIDE"];
   if((_projectile distance2D _steerPoint) < 100 && abs _angleX > 90) then {
@@ -25,7 +25,7 @@ if(_stage == "INS") then {
   _return set [1,(_this call itc_air_sdb_fnc_insSteerPoint)];
   //[ASLtoAGL (_return # 1), "ColorGreen"] call test_fnc_mark;
 };
-
+*/
 if(_stage == "GLIDE") then {
   _return set [1,_targetCoordinates];
   //[ASLtoAGL (_return # 1), "ColorYellow"] call test_fnc_mark;

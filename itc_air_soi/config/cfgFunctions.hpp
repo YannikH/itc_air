@@ -23,6 +23,9 @@ class cfgFunctions {
       class ms_up {
         file = "itc_air_soi\functions\ms\up.sqf";
       };
+      class perFrame {
+        file = "itc_air_soi\functions\perFrame.sqf";
+      };
     };
   };
 };

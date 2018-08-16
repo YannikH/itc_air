@@ -19,11 +19,13 @@ switch(_btn) do {
     switch(_variable) do {
       case "targetAlt": {
         ITC_AP_TargetAlt = _value;
+        itc_air_ap_apman = true;
         // [ITC_AP_TargetAlt, ITC_AP_TargetHdg] remoteExec ["itc_air_autopilot_fnc_update", (crew _vehicle), false];
         // Todo: send update ALT/HDG to crews
       };
       case "targetHdg": {
         ITC_AP_TargetHdg = _value;
+        itc_air_ap_apman = true;
         // [ITC_AP_TargetAlt, ITC_AP_TargetHdg] remoteExec ["itc_air_autopilot_fnc_update", (crew _vehicle), false];
       };
     };

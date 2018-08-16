@@ -1,5 +1,5 @@
 class cfgFunctions {
-  class itc_air_wpn_jassm {
+  class itc_air_jassm {
     class functions {
       class getGuidanceOptions {
         file = "itc_air_wpn_jassm\functions\getGuidanceOptions.sqf";
@@ -25,8 +25,8 @@ class cfgFunctions {
       class determineSteerPoint {
         file = "itc_air_wpn_jassm\functions\determineSteerPoint.sqf";
       };
-      class terrainFollow {
-        file = "itc_air_wpn_jassm\functions\terrainFollow.sqf";
+      class AGCAS {
+        file = "itc_air_wpn_jassm\functions\AGCAS.sqf";
       };
     };
   };

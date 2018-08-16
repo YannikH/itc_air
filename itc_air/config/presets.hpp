@@ -18,9 +18,7 @@ class itc_air_default_jet {
     hmd = 1;
     tgp = 1;
     wso = 0;
-    class mfd_left : mfd_plane {};
-    class mfd_right : mfd_plane {};
-    systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS"};
+    systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","GCAS","TGP"};
     mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV"};
     mfdType = "classic";
 };

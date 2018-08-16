@@ -27,6 +27,17 @@ if(isNil{_display getVariable "feed_camera"}) then {
 
 (_display displayCtrl T3) ctrlSetText "FWD";
 
+//SYSACT(OL1);
+//DATA(OL2);
+//SYSACT(OL3);
+//DATA(OL4);
+//ROTARY(OL5);
+//SYSACT(OR1);
+//ROTARY(OR2);
+//SYSACT(OR3);
+//SYSACT(OR4);
+//SYSACT(ORt);
+
 //(_display displayCtrl 32201) ctrlShow false;
 (_display displayCtrl 32202) ctrlShow false;
 (_display displayCtrl 32203) ctrlShow false;
