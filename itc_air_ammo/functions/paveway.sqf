@@ -1,5 +1,5 @@
 params ["", "", "", "", "_ammo", "", "_projectile", "_gunner"];
-_laserCode = (vehicle player) getVariable "paveway_laser_code";
+_laserCode = (vehicle player) getVariable ["paveway_laser_code",1111];
 
 [{
     (_this select 0) params ["_projectile", "_ammo", "_position", "_laserCode"];

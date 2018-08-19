@@ -4,10 +4,10 @@ class Tgp : ITC_AIR_PAGE {
     class Rsc3Picture: RscPicture
     {
         idc = 32200;
-        //x = (SCALE * 0.375) - (safeZoneW / 4);
-        //y = (SCALE * 0.5) - (safeZoneH / 4);
-        //w = safeZoneW / 2;
-        //h = safeZoneH / 2;
+        //x = (SCALE * 0.375) - (safeZoneW / 4) + (0.05 * 3/4);
+        //y = (SCALE * 0.5) - (safeZoneH / 4) + (0.05);
+        //w = safeZoneW / 2 + (0.025 * 3/4);
+        //h = safeZoneH / 2 + 0.025;
         x = SCALE * 0.1125;
         y = SCALE * 0.16;
         w = SCALE * 0.525;

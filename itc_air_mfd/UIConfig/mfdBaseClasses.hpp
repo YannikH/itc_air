@@ -10,6 +10,7 @@ class RscEdit;
 class RscText;
 class RscStructuredText;
 class RscControlsGroup;
+class RscControlsGroupNoScrollbars;
 class RscFrame;
 class RscListBox;
 class RscButton;
@@ -44,7 +45,7 @@ class ITC_AIR_MfdStructuredText: RscStructuredText
   sizeEx = SCALE * 0.04;
 	colorShadow[] = {0,0,0,0};
 };
-class ITC_AIR_PAGE : RscControlsGroup {
+class ITC_AIR_PAGE : RscControlsGroupNoScrollbars {
   onLoad = "(_this # 0) ctrlShow false";
   x = 0;
   y = 0;

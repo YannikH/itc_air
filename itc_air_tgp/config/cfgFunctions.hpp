@@ -14,6 +14,12 @@ class cfgFunctions {
       class slew {
         file = "itc_air_tgp\functions\slew.sqf";
       };
+      class perFrame {
+        file = "itc_air_tgp\functions\perFrame.sqf";
+      };
+      class perSecond {
+        file = "itc_air_tgp\functions\perSecond.sqf";
+      };
     };
   };
 };

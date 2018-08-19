@@ -70,59 +70,9 @@ class cfgVehicles {
     };
     class Helicopter_Base_F : Helicopter {
       class Components;
-      class ACE_SelfActions : ACE_SelfActions {
-        class ITC_SOI {
-          displayName = "Set SOI";
-          condition = "[""any""] call itc_air_mfd_fnc_soi_capable";
-          distance = 2;
-          priority = 2.6;
-          class SOI_L {
-            displayName = "SOI MFD Left";
-            condition = "[""left""] call itc_air_mfd_fnc_soi_capable";
-            statement = "[""ITC_AIR_MFD_L""] call itc_air_mfd_fnc_soi_set";
-            distance = 2;
-            priority = 2.6;
-          };
-          class SOI_R : SOI_L {
-            displayName = "SOI MFD Right";
-            condition = "[""right""] call itc_air_mfd_fnc_soi_capable";
-            statement = "[""ITC_AIR_MFD_R""] call itc_air_mfd_fnc_soi_set";
-          };
-          class SOI_HMCS : SOI_L {
-            displayName = "SOI HMCS";
-            condition = "[""hmcs""] call itc_air_mfd_fnc_soi_capable";
-            statement = "[""HMCS""] call itc_air_mfd_fnc_soi_set";
-          };
-        };
-      };
     };
     class Plane_Base_F: Plane {
       class Components;
-      class ACE_SelfActions : ACE_SelfActions {
-        class ITC_SOI {
-          displayName = "Set SOI";
-          condition = "[""any""] call itc_air_mfd_fnc_soi_capable";
-          distance = 2;
-          priority = 2.6;
-          class SOI_L {
-            displayName = "SOI MFD Left";
-            condition = "[""left""] call itc_air_mfd_fnc_soi_capable";
-            statement = "[""ITC_AIR_MFD_L""] call itc_air_mfd_fnc_soi_set";
-            distance = 2;
-            priority = 2.6;
-          };
-          class SOI_R : SOI_L {
-            displayName = "SOI MFD Right";
-            condition = "[""right""] call itc_air_mfd_fnc_soi_capable";
-            statement = "[""ITC_AIR_MFD_R""] call itc_air_mfd_fnc_soi_set";
-          };
-          class SOI_HMCS : SOI_L {
-            displayName = "SOI HMCS";
-            condition = "[""hmd""] call itc_air_mfd_fnc_soi_capable";
-            statement = "[""HMCS""] call itc_air_mfd_fnc_soi_set";
-          };
-        };
-      };
       class ACE_Actions : ACE_Actions {
         class ACE_MainActions : ACE_MainActions {
           class ITC_paveway_code {
@@ -318,8 +268,9 @@ class cfgVehicles {
         };
         class pilotCamera : litening{};
         class itc_air : itc_air_default_jet {
+          tgp_overlay = "itc_air_tgp\data\overlay_jas39_2048.paa";
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","AGCAS"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","AGCAS","TGP","WPT_A10C"};
           //mfdType = "touch";
         };
     };
@@ -351,7 +302,7 @@ class cfgVehicles {
 		    scopeCurator=2;
         class itc_air : itc_air_default_jet {
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","TGP"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","TGP","WPT_A10C"};
         };
         class pilotCamera : litening{};
         class Components : Components {
@@ -405,154 +356,6 @@ class cfgVehicles {
                     };
                 };
             };
-        };
-    };
-
-    class Plane_CAS_01_base_F : Plane_Base_F { };
-    class Plane_CAS_01_dynamicLoadout_base_F : Plane_CAS_01_base_F {
-        class Components : Components {
-            class SensorsManagerComponent;
-            class TransportCountermeasuresComponent;
-            class TransportPylonsComponent;
-            class VehicleSystemsDisplayManagerComponentLeft;
-            class VehicleSystemsDisplayManagerComponentRight;
-        };
-    };
-    class ITC_A10E : Plane_CAS_01_dynamicLoadout_base_F {
-        side = 1;
-        scope = 2;
-        scopeCurator = 2;
-        faction = "BLU_F";
-        vehicleClass = "Air";
-        editorSubcategory = "EdSubcat_Planes";
-        crew = "B_pilot_F";
-        displayName="A-10E";
-        incomingMissileDetectionSystem = 16;
-        weapons[] = {"itc_weap_gau8","Laserdesignator_pilotCamera","CMFlareLauncher"};
-        magazines[] = {"itc_1000rnd_30mm_mix","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine"};
-        class pilotCamera : litening{};
-        class Components : Components
-        {
-            class SensorsManagerComponent;
-            class TransportCountermeasuresComponent;
-            class VehicleSystemsDisplayManagerComponentLeft;
-            class VehicleSystemsDisplayManagerComponentRight;
-            class TransportPylonsComponent  : TransportPylonsComponent
-            {
-                class pylons
-                {
-                    class pylon1
-                    {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket", "B_BIM9X_DUAL_RAIL"};
-                        priority = 5;
-                        maxweight = 1200;
-                        UIposition[] = {0.35,0};
-                        bay = -1;
-                        attachment = "PylonMissile_Missile_BIM9X_x1";
-                    };
-                    class pylon2
-                    {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket"};
-                        priority = 4;
-                        maxweight = 1200;
-                        UIposition[] = {0.345,0.05};
-                        bay = -1;
-                        attachment = "itc_hp_dumb_rocket_Rocket_04_HE_F";
-                    };
-                    class pylon3
-                    {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_dumb_rocket", "itc_hp_smart", "itc_hp_lau117", "itc_hp_bru42"};
-                        priority = 3;
-                        maxweight = 1200;
-                        UIposition[] = {0.34,0.1};
-                        bay = -1;
-                        attachment = "itc_hp_lau117_itc_ammo_agm65h";
-                    };
-                    class pylon4
-                    {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart", "itc_hp_bru42"};
-                        priority = 2;
-                        maxweight = 1200;
-                        UIposition[] = {0.33,0.2};
-                        bay = -1;
-                        attachment = "itc_hp_dumb_ITC_ammo_gbu12";
-                    };
-                    class pylon5
-                    {
-                        hardpoints[] = {"itc_hp_dumb", "itc_hp_smart"};
-                        priority = 1;
-                        maxweight = 1200;
-                        UIposition[] = {0.33,0.25};
-                        bay = -1;
-                        attachment = "itc_hp_smart_ITC_ammo_gbu38";
-                    };
-                    class pylon6 : pylon5
-                    {
-                        priority = 1;
-                        maxweight = 1200;
-                        UIposition[] = {0.33,0.3};
-                        bay = -1;
-                        mirroredMissilePos = 5;
-                    };
-                    class pylon7: pylon4
-                    {
-                        UIposition[] = {0.33,0.35};
-                        mirroredMissilePos = 4;
-                    };
-                    class pylon8: pylon3
-                    {
-                        UIposition[] = {0.34,0.45};
-                        mirroredMissilePos = 3;
-                    };
-                    class pylon9: pylon2
-                    {
-                        UIposition[] = {0.345,0.5};
-                        mirroredMissilePos = 2;
-                    };
-                    class pylon10: pylon1
-                    {
-                        UIposition[] = {0.345,0.55};
-                        mirroredMissilePos = 1;
-                        attachment = "";
-                    };
-                };
-                class Presets
-                {
-                    class AT
-                    {
-                        attachment[] = {
-                            "",
-                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
-                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
-                            "itc_hp_dumb_ITC_ammo_gbu12",
-                            "itc_hp_dumb_ITC_ammo_gbu12",
-                            "itc_hp_dumb_ITC_ammo_gbu12",
-                            "itc_hp_dumb_ITC_ammo_gbu12",
-                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
-                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
-                            ""};
-                        displayname = "Anti-Tank";
-                    };
-                    class CAS
-                    {
-                        attachment[] = {
-                            "",
-                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
-                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
-                            "itc_hp_dumb_ITC_ammo_gbu12",
-                            "itc_hp_smart_ITC_ammo_gbu38",
-                            "itc_hp_smart_ITC_ammo_gbu38",
-                            "itc_hp_dumb_ITC_ammo_gbu12",
-                            "itc_hp_bru55_lau117_Missile_AGM_02_F",
-                            "itc_hp_dumb_rocket_Rocket_04_HE_F",
-                            ""};
-                        displayname = "Close Air Support";
-                    };
-                };
-            };
-        };
-        class itc_air : itc_air_default_jet {
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","SADL","FCS","ACMI","GCAS","TGP"};
         };
     };
 

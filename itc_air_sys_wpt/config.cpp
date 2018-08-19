@@ -1,5 +1,5 @@
 class CfgPatches {
-  class itc_air_wpt_a10c {
+  class itc_air_wpt {
       name = "ITC Aircraft";
       author = "Yax";
       units[] = {};

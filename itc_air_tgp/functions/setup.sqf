@@ -6,3 +6,13 @@ _vehicle setVariable ["tgp_fov_index", 0];
 _vehicle setVariable ["tgp_fov_steps", _fovSteps];
 _vehicle setVariable ["tgp_mode", 0];
 itc_air_tgp_capable = true;
+104 cutRsc ["ITC_AIR_A10E_TGP", "PLAIN", -1, true];
+
+private _overlay = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp_overlay");
+private _display = uiNameSpace getVariable "ITC_AIR_TGP_UI";
+if(_overlay != "") then {
+  (_display displayCtrl 1200) ctrlSetText _overlay;
+} else {
+  (_display displayCtrl 1200) ctrlShow false;
+};
+(_display displayCtrl 1200) ctrlCommit 0;

@@ -91,7 +91,7 @@ class DSMSProfileMain : ITC_AIR_PAGE {
           x = SCALE * 0.2;
           y = SCALE * 0.24;
           w = SCALE * 0.35;
-          h = SCALE * 0.04
+          h = SCALE * 0.04;
           style = 2;
       };
       class Rsc11Listbox_1500: ITC_AIR_ListBox

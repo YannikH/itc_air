@@ -6,33 +6,6 @@ class CfgWeapons {
         picture = "\itc_air\data\UI\ROVER_icon_ca.paa";
     };
 
-    /*
-    class Gatling_30mm_Plane_CAS_01_F;
-    class RHS_weap_gau8 : Gatling_30mm_Plane_CAS_01_F {
-        class LowROF;
-    };
-    class ITC_weap_gau8 : RHS_weap_gau8 {
-        class LowROF : LowROF {
-            class StandardSound;
-            displayName = "Lo";
-            textureType = "burst";
-            reloadTime = 0.03;
-            burst = 1;
-            //reloadtime = 0.02857; //this is real one (2100rpm) but due to sound configuration default value is there
-        };
-        class HighROF : LowROF {
-            class StandardSound:  StandardSound{
-                begin1[] = {"A3\Sounds_F\arsenal\weapons_vehicles\gatling_30mm\30mm_01_burst", 5.62341, 1, 1500, {12852, 16079.5}};
-                soundBegin[] = {"begin1", 1};
-            };
-            displayName = "Hi";
-            textureType = "fullAuto";
-            reloadtime = 0.015;
-            burst = 1;
-        };
-    };
-    */
-
     class RocketPods;
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
         magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
@@ -152,6 +125,7 @@ class CfgWeapons {
       class LowROF;
     };
     class itc_weap_gau8 : Gatling_30mm_Plane_CAS_01_F {
+      //dispersion=0.001;
       magazines[] = {
         "1000Rnd_Gatling_30mm_Plane_CAS_01_F",
         "itc_1000rnd_30mm_ap",
@@ -160,6 +134,7 @@ class CfgWeapons {
       class LowROF : LowROF {
         burst = 1;
         reloadtime = 0.015;
+        dispersion = 0.003;
       };
     };
 };

@@ -152,9 +152,9 @@ itc_air_dsms_currentWeapon = "";
     };
 
     //draw UI
-    if(_inTGP && _plane getVariable "tgp") then {
-        [_plane] call itc_air_ui_fnc_tgp_symbology;
-    };
+    //if(_inTGP && _plane getVariable "tgp") then {
+    //    [_plane] call itc_air_ui_fnc_tgp_symbology;
+    //};
     //if(!_inTGP && _plane getVariable "hmd" && _plane getVariable ["itc_air_hmd_on",false]) then {
     //    [_plane] call itc_air_ui_fnc_hmd_symbology;
     //};

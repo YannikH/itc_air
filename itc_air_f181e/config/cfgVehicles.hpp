@@ -134,8 +134,9 @@ class cfgVehicles {
       class VehicleSystemsDisplayManagerComponentRight;
     };
     class itc_air : itc_air_default_jet {
+      tgp_overlay = "itc_air_tgp\data\overlay_f181e_2048.paa";
       mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP"};
+      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP","WPT_A10C"};
       //mfdType = "touch";
     };
   };
@@ -145,8 +146,9 @@ class cfgVehicles {
 		displayName = "F-181E (Stealth)";
 		radarTargetSize = 0.4;
     class itc_air : itc_air_default_jet {
+      tgp_overlay = "itc_air_tgp\data\overlay_f181e_2048.paa";
       mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP"};
+      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP","WPT_A10C"};
       //mfdType = "touch";
     };
 		class AnimationSources: AnimationSources

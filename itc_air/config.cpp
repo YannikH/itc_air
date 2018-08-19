@@ -2,7 +2,7 @@ class CfgPatches {
     class itc_air {
         name = "ITC Aircraft";
         author = "Yax";
-        units[] = {"ITC_A10E", "itc_Gripen", "ITC_A159", "ITC_F181E"};
+        units[] = {"itc_Gripen", "ITC_A159", "ITC_F181E"};
         weapons[] = {"ITC_ROVER_SIR"};
         requiredVersion = 1.0;
         requiredAddons[] = {"CBA_Extended_EventHandlers", "A3_Air_F","A3_Air_F_Beta","A3_Air_F_EPC_Plane_CAS_01","A3_Air_F_EPB_Heli_Light_03","A3_CargoPoses_F"};
