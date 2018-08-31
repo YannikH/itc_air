@@ -1,5 +1,6 @@
 class RscPicture;
 class RscControlsGroupNoScrollbars;
+class RscText;
 class RscTitles {
   class ITC_AIR_SCORPION {
     idd = 19995;
@@ -35,8 +36,8 @@ class RscTitles {
         {
         	idc = 1201;
         	text = "itc_air_hmd\data\ui\CTR_NSOI.paa";
-        	x = 0 + (safeZoneW / 2) - 0.015;
-        	y = 0 + (safeZoneH / 2) - (0.015 * (3/4));
+        	x = 0 + (safeZoneW / 2) - (0.015 * (3/4));
+        	y = 0 + (safeZoneH / 2) - 0.015;
         	w = 0.03 * (3/4);
         	h = 0.03;
         };
@@ -58,6 +59,36 @@ class RscTitles {
           w = 0.3 * (3/4);
           h = 0.35;
         	text = "itc_air_hmd\data\ui\GCAS_X.paa";
+        };
+        class RscHMDTextBearing: RscText
+        {
+        	idc = 1001;
+          colorText[] = {0,1,0,1};
+          sizeEx = 0.04;
+        	colorShadow[] = {0,0,0,0};
+          style = 2;
+
+        	x = 0 + (safeZoneW / 2) - (0.04 * (3/4));
+        	y = 0 + (safeZoneH / 4) - 0.02;
+        	w = 0.08 * (3/4);
+        	h = 0.04;
+
+        	text = "000";
+        };
+        class RscHMDTextStpt: RscHMDTextBearing
+        {
+          idc = 1002;
+          x = 0 + ((safeZoneW / 6) * 4);
+          y = 0 + ((safeZoneH / 4) * 3);
+          w = 0.1;
+          text = "000";
+          style = 1;
+        };
+        class RscHMDTextStptTof: RscHMDTextStpt
+        {
+          idc = 1003;
+          y = 0 + ((safeZoneH / 4) * 3) + 0.04;
+          style = 1;
         };
       };
     }

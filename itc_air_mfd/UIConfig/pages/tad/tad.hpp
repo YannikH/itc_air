@@ -1,7 +1,6 @@
 class ITC_MFD_PAGE_TAD : ITC_AIR_PAGE {
   idc = 10600;
   class Controls {
-    /*
     class Rsc6Text_1010: ITC_AIR_MfdTextBg
     {
       idc = 61010;
@@ -30,7 +29,23 @@ class ITC_MFD_PAGE_TAD : ITC_AIR_PAGE {
     	h = SCALE * 0.04;
       style = 2;
     };
-    */
+    class Rsc6Text_1005: ITC_AIR_MfdTextBg
+    {
+    	idc = 61005;
+      x = SCALE *0.52;
+      w = SCALE *0.1;
+      h = SCALE *0.04;
+      y = SCALE *0.68;
+      style = 1;
+    };
+    class Rsc6Text_1006: ITC_AIR_MfdTextBg
+    {
+    	idc = 61006;
+      x = SCALE *0.5+(0.125 - 0.08);
+      w = SCALE *0.08;
+      h = SCALE *0.04;
+      y = SCALE *0.72;
+    };
     class Rsc6Text_1002: ITC_AIR_MfdTextBg
     {
     	idc = 61002;

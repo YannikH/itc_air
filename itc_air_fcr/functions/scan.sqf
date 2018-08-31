@@ -4,7 +4,7 @@ ITC_AIR_FCR_LASTFRAME = time;
 private _scanCenter = 0;
 if(_frameTime == 0) exitWith {};
 if(!ITC_AIR_FCR_SNOWPLOW) then {
-  private _stpt = (_plane getVariable "stpt_pos");
+  private _stpt = itc_air_wpt_pos;
   ITC_AIR_FCR_RNG = _plane distance _stpt;
   private _relDir = ((((getPos _plane) vectorFromTo _stpt) call CBA_fnc_vectDir) - (getDir _plane)) call CBA_fnc_simplifyAngle180;
   _relDir = if(_relDir > 180) then [{_relDir - 360}, {_relDir}];

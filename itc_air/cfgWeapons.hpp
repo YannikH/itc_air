@@ -76,25 +76,6 @@ class CfgWeapons {
       modes[] = {"Direct"};
     };
 
-    class itc_weap_gbu38 : Mk82BombLauncher {
-        displayName = "GBU-38";
-        magazines[] = {"itc_hp_smart_ITC_ammo_gbu38","itc_hp_smart_ITC_ammo_gbu38v3b","itc_hp_bru55_ITC_ammo_gbu38","itc_hp_bru55_ITC_ammo_gbu38v3b"};
-        reloadTime = 0.01; \
-		    magazineReloadTime = 0.01; \
-        autoFire=false;
-    };
-    class itc_weap_gbu54 : itc_weap_gbu38 {
-        displayName = "GBU-54";
-        magazines[] = {
-            "itc_hp_smart_ITC_ammo_gbu54",
-            "itc_hp_bru55_ITC_ammo_gbu54",
-            "itc_hp_smart_ITC_ammo_gbu54_lcdb",
-            "itc_hp_bru55_ITC_ammo_gbu54_lcdb"
-        };
-        reloadTime = 0.0;
-        autoFire=false;
-    };
-
     class ITC_weap_gbu12 : Bomb_04_Plane_CAS_01_F {
       magazines[] = {
           "itc_hp_dumb_ITC_ammo_gbu12",

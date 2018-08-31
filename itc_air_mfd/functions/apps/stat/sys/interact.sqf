@@ -3,6 +3,7 @@ params ["_display", "_btn"];
 _plane = vehicle player;
 private _systems = _plane getVariable "itc_air_systems";
 private _systemsAct = _plane getVariable "itc_air_systems_active";
+private _systemsAll = _plane getVariable "itc_air_systems_available";
 _list = (_display displayCtrl 21500);
 _index = lbCurSel _list;
 switch(_btn) do {
@@ -21,30 +22,32 @@ switch(_btn) do {
     _list lbSetCurSel _index;
   };
   case "R1": {
-    if(_systems # _index in _systemsAct) then {
+    if(_systems # _index in _systems) then {
       private _sys = _systems # _index;
-      private _setupFuncName = format["itc_air_%1_fnc_setup",toLower _sys];
-      private _setupFunc = (missionNamespace getVariable _setupFuncName);
-      [_plane] call _setupFunc;
+      [(vehicle player), _sys] call itc_air_common_fnc_systemStart;
     };
   };
   case "R2": {
-    if(_systems # _index in _systemsAct) then {
+    if(_systems # _index in _systems) then {
       private _sys = _systems # _index;
-      private _shutDownFuncName = format["itc_air_%1_fnc_shutDown",toLower _sys];
-      private _shutDownFunc = (missionNamespace getVariable _shutDownFuncName);
-      if(!isNil {_shutDownFunc}) then {
-        [_plane] call _shutDownFunc;
-      };
+      [(vehicle player), _sys] call itc_air_common_fnc_systemStop;
     };
   };
 };
-if(_systems # _index in _systemsAct) then {
-  (_display displayCtrl R1) ctrlSetText "START";
+
+if(_systems # _index in (_plane getVariable "itc_air_systems_active")) then {
+  (_display displayCtrl R1) ctrlSetText "";
+  _list lbSetTextRight [_index, "ACTIVE"];
   (_display displayCtrl R12) ctrlSetText "SYS";
   (_display displayCtrl R2) ctrlSetText "STOP";
 } else {
-  (_display displayCtrl R1) ctrlSetText "";
-  (_display displayCtrl R2) ctrlSetText "";
+  if(_systems # _index in _systemsAll) then {
+    (_display displayCtrl R1) ctrlSetText "START";
+    _list lbSetTextRight [_index, "OFF"];
+    (_display displayCtrl R2) ctrlSetText "";
+  } else {
+    (_display displayCtrl R1) ctrlSetText "";
+    (_display displayCtrl R2) ctrlSetText "";
+  };
 };
 false

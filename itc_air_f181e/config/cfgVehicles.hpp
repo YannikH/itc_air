@@ -96,7 +96,7 @@ class cfgVehicles {
                 attachment = "PylonMissile_Missile_AMRAAM_D_INT_x1";
                 bay = 3;
                 hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart","itc_hp_bru61"};
-                maxweight = 1200;
+                maxweight = 900;
                 priority = 9;
                 UIposition[] = {0.33,0.3};
             };
@@ -108,7 +108,7 @@ class cfgVehicles {
                 attachment = "";
                 bay = 3;
                 hardpoints[] = {};
-                maxweight = 1200;
+                maxweight = 900;
                 priority = 7;
                 UIposition[] = {0.33,0.4};
             };
@@ -120,7 +120,7 @@ class cfgVehicles {
                 attachment = "PylonMissile_Bomb_GBU12_x1";
                 bay = 3;
                 hardpoints[] = {"B_AMRAAM_D_INT","itc_hp_dumb", "itc_hp_smart","itc_hp_bru61"};
-                maxweight = 1200;
+                maxweight = 900;
                 priority = 5;
                 UIposition[] = {0.33,0.5};
             };
@@ -136,7 +136,7 @@ class cfgVehicles {
     class itc_air : itc_air_default_jet {
       tgp_overlay = "itc_air_tgp\data\overlay_f181e_2048.paa";
       mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP","WPT_A10C"};
+      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP","WPT","TAD"};
       //mfdType = "touch";
     };
   };
@@ -148,7 +148,7 @@ class cfgVehicles {
     class itc_air : itc_air_default_jet {
       tgp_overlay = "itc_air_tgp\data\overlay_f181e_2048.paa";
       mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP","WPT_A10C"};
+      systems[] = {"F181E","UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","GCAS","AGCAS","TGP","WPT","TAD"};
       //mfdType = "touch";
     };
 		class AnimationSources: AnimationSources

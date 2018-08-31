@@ -20,7 +20,7 @@ switch (_key) do {
         ITC_AIR_HMD_GSTAB = false;
       };
       case "LEFT": {
-        [AGLtoASL _target] call itc_air_steerpoints_fnc_store;
+        [AGLtoASL _target] call itc_air_wpt_fnc_generate;
       };
       case "RIGHT": {
         [AGLtoASL _target, vehicle player] call itc_air_tgp_fnc_target;

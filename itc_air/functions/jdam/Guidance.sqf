@@ -4,13 +4,13 @@ _seekers = (configFile >> "CfgAmmo" >> _ammo >> "seekers") call BIS_fnc_getCfgDa
 
 if (!local _gunner) exitWith {};
 
-if((vehicle player) getVariable "stpt_name" == "NO WP") exitWith{};
+  if(([] call itc_air_wpt_fnc_getCurrent) # 0 == "N/A") exitWith{};
 
 _angle = ITC_AIR_IMPANGLE;
 _targetCoordinates = nil;
-_laserCode = 1111;
+_laserCode = -1;
 if("gps" in _seekers) then {
-    _targetCoordinates = ((vehicle player) getVariable "stpt_pos") vectorAdd [0,0,1];
+    _targetCoordinates = ([] call itc_air_wpt_fnc_getCurrent) # 2;
     (vehicle player) setVariable ["bomb_flying_target", _targetCoordinates];
 };
 if("laser" in _seekers) then {

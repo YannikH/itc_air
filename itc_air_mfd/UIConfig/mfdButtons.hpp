@@ -25,7 +25,7 @@ class ITC_AIR_MFDButtons_Base : RscControlsGroup {
         };
         class RscButton_1602: ITC_AIR_MfdButton
         {
-            idc = -1;
+            idc = 1501;
             x = 0;
             y = SCALE * 0.22;
             w = SCALE * 0.1;
@@ -34,7 +34,7 @@ class ITC_AIR_MFDButtons_Base : RscControlsGroup {
         };
         class RscButton_1603: ITC_AIR_MfdButton
         {
-            idc = -1;
+            idc = 1502;
             x = 0;
             y = SCALE * 0.34;
             w = SCALE * 0.1;
@@ -43,7 +43,7 @@ class ITC_AIR_MFDButtons_Base : RscControlsGroup {
         };
         class RscButton_1604: ITC_AIR_MfdButton
         {
-            idc = -1;
+            idc = 1503;
             x = 0;
             y = SCALE * 0.44;
             w = SCALE * 0.1;
@@ -52,7 +52,7 @@ class ITC_AIR_MFDButtons_Base : RscControlsGroup {
         };
         class RscButton_1605: ITC_AIR_MfdButton
         {
-            idc = -1;
+            idc = 1504;
             x = 0;
             y = SCALE * 0.54;
             w = SCALE * 0.1;
@@ -462,7 +462,7 @@ class ITC_AIR_UFC : RscControlsGroup {
       idc = 1115;
       text = "L2"; //--- ToDo: Localize;
       x = 0.2875;
-      y = 0.02 + 0.138;
+      y = 0.01 + 0.138;
       w = 0.075;
       h = 0.08;
     };
@@ -507,7 +507,7 @@ class ITC_AIR_UFC : RscControlsGroup {
       idc = 1119;
       text = "R2"; //--- ToDo: Localize;
       x = 0.3625;
-      y = 0.02 + 0.138;
+      y = 0.01 + 0.138;
       w = 0.075;
       h = 0.08;
     };
@@ -559,7 +559,7 @@ class ITC_AIR_UFC : RscControlsGroup {
     	idc = 1615;
     	text = "L2"; //--- ToDo: Localize;
     	x = 0.2875;
-    	y = 0.138;
+    	y = 0.128;
     	w = 0.075;
     	h = 0.08;
     	onButtonClick = "[""0""] call itc_air_ufc_fnc_sideButton";
@@ -609,7 +609,7 @@ class ITC_AIR_UFC : RscControlsGroup {
     	idc = 1619;
     	text = "R2"; //--- ToDo: Localize;
     	x = 0.3625;
-    	y = 0.138;
+    	y = 0.128;
     	w = 0.075;
     	h = 0.08;
     	onButtonClick = "[""4""] call itc_air_ufc_fnc_sideButton";

@@ -1,10 +1,7 @@
 params ["_mfd", "_dir"];
-_mfd = uiNamespace getVariable ((vehicle player) getVariable "SOI");
-_cursorPos = _mfd getVariable "tad_cursor";
 _add = (_dir vectorMultiply 100);
-if(_mfd getVariable "tad_expand" == 1) then {
-  _pos = _mfd getVariable "tad_pos";
-  _mfd setVariable ["tad_pos", _pos vectorAdd _add];
+if(itc_air_tad_expand == 1) then {
+  itc_air_tad_pos = itc_air_tad_pos vectorAdd _add;
 } else {
-  _mfd setVariable ["tad_cursor", (_cursorPos vectorAdd _add)];
+  itc_air_tad_cursor = itc_air_tad_cursor vectorAdd _add;
 };

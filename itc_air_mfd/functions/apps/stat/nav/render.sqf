@@ -12,16 +12,16 @@ _northDir = 360 - (getDir _vehicle);
 (_display displayCtrl 211000) ctrlSetText format["HDG %1", round (getDir _vehicle)];
 (_display displayCtrl 211001) ctrlSetText format["%1 KTS", round ((speed _vehicle) * 0.539957)];
 
-if((_vehicle getVariable "stpt_name") != "NO WP") then {
-  _dir = _vehicle getRelDir (_vehicle getVariable "stpt_pos");
+if(itc_air_wpt_name != "N/A") then {
+  _dir = _vehicle getRelDir itc_air_wpt_pos;
   (_display displayCtrl 211202) ctrlSetAngle [_dir, 0.5, 0.5];
 
-  (_display displayCtrl R1) ctrlSetText format["%1km",round ((_vehicle distance (_vehicle getVariable "stpt_pos")) / 1000)];
-  (_display displayCtrl R12) ctrlSetText (_vehicle getVariable "stpt_name");
-  (_display displayCtrl R2) ctrlSetText (_vehicle getVariable "stpt_tof");
+  (_display displayCtrl R1) ctrlSetText format["%1km",round ((_vehicle distance itc_air_wpt_pos) / 1000)];
+  (_display displayCtrl R12) ctrlSetText itc_air_wpt_name;
+  (_display displayCtrl R2) ctrlSetText itc_air_wpt_tof;
 
   (_display displayCtrl R23) ctrlSetText "CTS";
-  (_display displayCtrl R3) ctrlSetText str round (_vehicle getDir (_vehicle getVariable "stpt_pos"));
+  (_display displayCtrl R3) ctrlSetText str round (_vehicle getDir itc_air_wpt_pos);
 };
 
 if (ITC_AP_isEnabled && "AP-MAN" in ((vehicle player) getVariable "itc_air_systems")) then {

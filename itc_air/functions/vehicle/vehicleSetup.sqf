@@ -42,6 +42,7 @@ _vehicle setVariable ["itc_air_systems",_systems];
   [_vehicle, _x] call itc_air_common_fnc_systemStart;
 }forEach _systems;
 private _activeSystems = _vehicle getVariable ["itc_air_systems_active",[]];
+_vehicle setVariable ["itc_air_systems_available",_activeSystems];
 
 _capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
 _capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
@@ -61,8 +62,6 @@ if(_capableMFD_R) then {
 _seat = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
 
 
-
-_vehicle setVariable ["fuel_lock", false];
 _vehicle setVariable ["hmd", (_capableHMD == 1)];
 _vehicle setVariable ["wso", (_hasWSO == 1)];
 _vehicle setVariable ["tgp", (_capableTGP == 1)];
@@ -151,13 +150,6 @@ itc_air_dsms_currentWeapon = "";
         _plane setVariable ["tgp_mode",currentVisionMode player];
     };
 
-    //draw UI
-    //if(_inTGP && _plane getVariable "tgp") then {
-    //    [_plane] call itc_air_ui_fnc_tgp_symbology;
-    //};
-    //if(!_inTGP && _plane getVariable "hmd" && _plane getVariable ["itc_air_hmd_on",false]) then {
-    //    [_plane] call itc_air_ui_fnc_hmd_symbology;
-    //};
     //run laser spot search
     if(_plane getVariable "tgp_lsst_mode" == "LSS") then {
       [_plane] call itc_air_tgp_fnc_laser_spot_search_track;
@@ -192,13 +184,6 @@ itc_air_dsms_currentWeapon = "";
         _plane setVariable ["playtime", round _timeLeft];
     };
     (_this select 0) set [1, _fuel];
-
-    if(_plane getVariable "stpt_name" != "NO WP" && (vectorMagnitude (velocity _plane) != 0)) then {
-        _distToWP = (_plane getVariable "stpt_pos") distance _plane;
-        _tof = _distToWP / (0.01 + (vectorMagnitude (velocity _plane)));
-        _tofStr = format["%1:%2",round(_tof / 60), round (_tof % 60)];
-        _plane setVariable ["stpt_tof", _tofStr];
-    };
 
     {
       private _funcName = format["itc_air_%1_fnc_perSecond",toLower _x];

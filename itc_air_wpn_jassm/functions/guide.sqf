@@ -1,8 +1,9 @@
 params ["", "", "", "", "_ammo", "", "_projectile", "_gunner"];
-if((vehicle player) getVariable "stpt_name" == "NO WP") exitWith{};
+if(([] call itc_air_wpt_fnc_getCurrent) # 0 == "N/A") exitWith{};
+if (!local _gunner) exitWith {};
 _angle = ITC_AIR_IMPANGLE;
 _azimuth = 0;
-_targetCoordinates = ((vehicle player) getVariable "stpt_pos") vectorAdd [0,0,1];
+_targetCoordinates = ([] call itc_air_wpt_fnc_getCurrent) # 2;
 (vehicle player) setVariable ["bomb_flying_target", _targetCoordinates];
 _dropTime = time;
 //GUIDANCE

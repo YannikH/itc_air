@@ -1,7 +1,8 @@
 params ["_display", "_variable", "_input","_input_idc","_feed"];
 uiNamespace setVariable [_variable, _display];
+//_this call test_fnc_resizeMFD;
 //[_display,(configFile >> "RscTitles" >> "ITC_AIR_MFD_L" >> "MFD"),ITC_AIR_MFD_SCALE] call itc_air_mfd_fnc_rescaleControlsGroup;
-//[_display, 61500, ITC_AIR_MFD_SCALE] call itc_air_mfd_fnc_rescaleMFDControl
+//[_display, 61500, ITC_AIR_MFD_SCALE] call itc_air_mfd_fnc_rescaleMFDControl;
 _display setVariable ["displayVariable", _variable];
 _vehicle = vehicle player;
 
@@ -24,11 +25,6 @@ _display setVariable ["height", _h];
 
 _display setVariable ["pages", _pages];
 _display setVariable ["quick", _quick];
-_display setVariable ["tad_map", (_display displayCtrl (1200))];
-_display setVariable ["tad_fov", 1];
-_display setVariable ["tad_cursor", [0,1000,0]];
-_display setVariable ["tad_expand", 0];
-_display setVariable ["tad_pos", [0,0,0]];
 _display setVariable ["sensor",""];
 
 [{

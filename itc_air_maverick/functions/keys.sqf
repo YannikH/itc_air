@@ -16,7 +16,7 @@ switch (_key) do {
       };
       case "LEFT": {
         if(ITC_AIR_MAVERICK_GSTAB) then {
-          [AGLtoASL ITC_AIR_MAVERICK_TRACK] call itc_air_steerpoints_fnc_store;
+          [AGLtoASL ITC_AIR_MAVERICK_TRACK] call itc_air_wpt_fnc_generate;
         };
       };
     }

@@ -22,10 +22,3 @@ ITC_AIR_TGP_SLEWSPD = 1;
 
 ["vehicle", {_this call itc_air_vehicle_fnc_changed}, true] call CBA_fnc_addPlayerEventHandler;
 //[player, vehicle player] call itc_air_vehicle_fnc_changed;
-
-["ITC","gripen_waypoint_next", "Cycle WP next", {
-  [1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew (vehicle player)), false];
-}, "", [201, [false, false, false]]] call CBA_fnc_addKeybind;
-["ITC","gripen_waypoint_prev", "Cycle WP previous", {
-  [-1] remoteExec ["itc_air_steerpoints_fnc_cycle", (crew (vehicle player)), false];
-}, "", [209, [false, false, false]]] call CBA_fnc_addKeybind;

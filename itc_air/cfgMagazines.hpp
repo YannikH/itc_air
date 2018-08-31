@@ -83,11 +83,6 @@ class cfgMagazines {
     hp_ser_der_ter("BL-778","BombCluster_03_F",BombCluster_03_Ammo_F,227)
     hp_ser_der_ter("CBU-100","BombCluster_01_F",BombCluster_01_Ammo_F,227)
 
-    hp_ser_der_smart("GBU-38v1","itc_weap_gbu38",ITC_ammo_gbu38,227)
-    hp_ser_der_smart("GBU-38v4","itc_weap_gbu38",ITC_ammo_gbu38v3b,227)
-    hp_ser_der_smart("GBU-54v1","itc_weap_gbu54",ITC_ammo_gbu54,227)
-    hp_ser_der_smart("GBU-54v4","itc_weap_gbu54",ITC_ammo_gbu54_lcdb,227)
-
     hp_ser_der_lau117("AGM-65G(vanilla)","Missile_AGM_02_Plane_CAS_01_F",Missile_AGM_02_F,50)
     hp_ser_der_lau117("AGM-65G","itc_air_weapon_maverick_g",itc_ammo_agm65g,50)
     hp_ser_der_lau117("AGM-65E","itc_air_weapon_maverick_e",itc_ammo_agm65e,50)

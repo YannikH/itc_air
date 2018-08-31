@@ -342,7 +342,7 @@ class RscTitles {
         {
             MFD
         };
-        class MFD_MAP : RscMapControl
+        class MFD_MAP : ITC_Air_MFDMap
         {
           idc = 61500;
           x = safezoneX + (SCALE * 0.1125);
@@ -362,7 +362,7 @@ class RscTitles {
         {
             MFD
         };
-        class MFD_MAP : RscMapControl
+        class MFD_MAP : ITC_Air_MFDMap
         {
           idc = 61500;
           x = safezoneX + safeZoneW - (SCALE * 0.75) + (SCALE * 0.1125);

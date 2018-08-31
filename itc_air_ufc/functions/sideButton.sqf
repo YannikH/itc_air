@@ -5,4 +5,4 @@ if(_button == "FXD1" || _button == "FXD2") exitWith {
   call _func;
 };
 private _functions = missionNameSpace getVariable ("ITC_AIR_UFC_" + ITC_AIR_UFC_SRC + "_COLUMNS_FNC");
-call (_functions # (parseNumber _button));
+[] call (_functions # (parseNumber _button));

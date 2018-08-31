@@ -10,6 +10,9 @@ class cfgFunctions {
       class reverse {
         file = "itc_air_taxi\functions\reverse.sqf";
       };
+      class throttleLock {
+        file = "itc_air_taxi\functions\throttleLock.sqf";
+      };
     };
   };
 };

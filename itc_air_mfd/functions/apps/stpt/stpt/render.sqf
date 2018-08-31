@@ -12,7 +12,7 @@ if(isNil{_wayPoints}) then {_wayPoints = []};
 _list lbSetCurSel _curWPIndex;
 (_display displayCtrl 1002) ctrlSetText (_vehicle getVariable "stpt_name");
 (_display displayCtrl 41000) ctrlSetText (_vehicle getVariable "stpt_name");
-_grid = [_vehicle getVariable "stpt_pos", true] call ace_common_fnc_getMapGridFromPos;
+_grid = [itc_air_wpt_pos, true] call ace_common_fnc_getMapGridFromPos;
 _el = round ((_vehicle getVariable "stpt_pos") # 2);
 
 (_display displayCtrl 41001) ctrlSetText format["MGRS %1", _grid];

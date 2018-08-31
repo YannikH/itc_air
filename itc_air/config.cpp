@@ -120,15 +120,6 @@ class CfgFunctions
     };
     class itc_air_jdam {
         class functions {
-            class fired {
-                file = "itc_air\functions\jdam\fired.sqf";
-            };
-            class guidance {
-                file = "itc_air\functions\jdam\guidance.sqf";
-            };
-            class fuzing {
-                file = "itc_air\functions\jdam\fuzing.sqf";
-            };
             class config_bomb {
                 file = "itc_air\functions\jdam\configBomb.sqf";
             };

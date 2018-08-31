@@ -21,7 +21,7 @@ switch (_key) do {
         _vehicle setVariable ["tgp_mode", _index];
       };
       case "LEFT": {
-        [nil] call itc_air_steerpoints_fnc_store;
+        [((_vehicle getVariable "tgp_dir") # 1)] call itc_air_wpt_fnc_generate;
       };
       case "RIGHT": {
         ["Laserdesignator_pilotCamera","Laserdesignator_pilotCamera"] call itc_air_ammo_fnc_fireAndResetWeapon;

@@ -16,6 +16,9 @@ class RscListBox;
 class RscButton;
 class RscPicture;
 
+class ITC_Air_MFDMap : RscMapControl {
+};
+
 class ITC_AIR_MfdText: RscText
 {
   colorText[] = MFDGRN;
