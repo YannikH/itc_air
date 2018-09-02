@@ -23,18 +23,6 @@ if(isNIl{SADL}) then {
 */
 
 
-_vehicle setVariable ["stpt_index", 0];
-_vehicle setVariable ["stpt_name", "NO WP"];
-_vehicle setVariable ["stpt_pos", [0,0,0]];
-_vehicle setVariable ["stpt_pos_str", ""];
-_vehicle setVariable ["stpt_tof", "N/A"];
-if(isNil{_vehicle getVariable "stpt_list"}) then {
-  _waypoints = ([] call ace_microdagr_fnc_deviceGetWaypoints) + [];
-  _vehicle setVariable ["stpt_list", _waypoints];
-};
-_vehicle setVariable ["wpt_list", []];
-_vehicle setVariable ["mkpt_list", []];
-
 _vehicle setVariable ["itc_air_options", []];
 private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
 _vehicle setVariable ["itc_air_systems",_systems];
@@ -125,7 +113,12 @@ itc_air_dsms_currentWeapon = "";
 
     //config plane data
     _dir = [_plane] call itc_air_common_fnc_get_turret_target;
-    if(((_plane getVariable "seat" == "pilot") && (driver _plane == player)) || ((_plane getVariable "seat" == "gunner") && (gunner _plane == player))) then {
+    if(
+        itc_air_tgp_capable && (
+          ((_plane getVariable "seat" == "pilot") && (driver _plane == player)) ||
+          ((_plane getVariable "seat" == "gunner") && (gunner _plane == player))
+        )
+      ) then {
       if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir" || ITC_AIR_BROADCASTING) then {
         if(time + 0.2 > _lastBroadCast) then {
           [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;

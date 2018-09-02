@@ -1,10 +1,10 @@
 ["ITC Air","itc_air_soi_cycle", "SOI CYCLE",{call itc_air_soi_fnc_cycle;}, "", [210, [false, false, false]]] call CBA_fnc_addKeybind;
 
-["ITC Air","itc_air_soi_markpoint","Store markpoint from SPI",
-{[true] call itc_air_mfd_fnc_soi_slew;},"",[207, [false, false, false]]] call CBA_fnc_addKeybind;
+//["ITC Air","itc_air_soi_markpoint","Store markpoint from SPI",
+//{[true] call itc_air_mfd_fnc_soi_slew;},"",[207, [false, false, false]]] call CBA_fnc_addKeybind;
 
-["ITC Air","itc_air_soi_slew","SOI Slew",
-{[false] call itc_air_mfd_fnc_soi_slew;},"",[20, [false, false, false]]] call CBA_fnc_addKeybind;
+//["ITC Air","itc_air_soi_slew","SOI Slew",
+//{[false] call itc_air_mfd_fnc_soi_slew;},"",[20, [false, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC Air","itc_air_soi_up", "SOI UP",
 {[0,1,0] call itc_air_soi_fnc_down;},

@@ -47,6 +47,9 @@ class cfgFunctions {
       class perSecond {
         file = "itc_air_sys_wpt\functions\perSecond.sqf";
       };
+      class import {
+        file = "itc_air_sys_wpt\functions\import.sqf";
+      };
     };
   };
 };

@@ -1,7 +1,7 @@
 class cfgFunctions {
   class itc_air_tgp {
     class functions {
-      class init {
+      class sysInit { //old tgp tgp_fnc_init still exists
         postInit = 1;
         file = "itc_air_tgp\functions\init.sqf";
       };

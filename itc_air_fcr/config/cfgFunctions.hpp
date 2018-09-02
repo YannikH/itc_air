@@ -19,6 +19,9 @@ class cfgFunctions {
       class getScanTargetVector {
         file = "itc_air_fcr\functions\getScanTargetVector.sqf";
       };
+      class keys {
+        file = "itc_air_fcr\functions\keys.sqf";
+      };
     };
   };
 };

@@ -14,4 +14,4 @@ itc_air_tad_expand = 0;
 itc_air_tad_pos = [0,0,0];
 
 itc_air_tad_hook = nil;
-itc_air_tad_hookRadius = 200;
+itc_air_tad_hookRadius = 400;

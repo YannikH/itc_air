@@ -7,7 +7,7 @@ class cfgMagazines {
   #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT,TOTALMASS,DRAG) \
     class HP##_##AMMO : PARENT { \
       ammo = STRINGIFY(AMMO); \
-      displayName = COUNT NAME; \
+      displayName = COUNT NAME (itc); \
       displayNameShort = NAME; \
       pylonWeapon = WEAP; \
       mass = TOTALMASS; \

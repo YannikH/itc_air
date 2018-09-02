@@ -34,7 +34,7 @@ class itc_air_default_heli_ah {
     wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
-    systems[] = {"MFD","MFD_L","MFD_R","UFC"};
+    systems[] = {"MFD","MFD_L","MFD_R","UFC","TAD"};
     mfdApps[] = {"STAT","TAD","STPT","OPT"};
     mfdType = "classic";
 };
@@ -47,7 +47,7 @@ class itc_air_default_heli_uh {
     wso = 0;
     class mfd_left : mfd_heli {};
     class mfd_right : mfd_heli {};
-    systems[] = {"MFD","MFD_L","MFD_R","UFC"};
+    systems[] = {"MFD","MFD_L","MFD_R","UFC","TAD"};
     mfdApps[] = {"STAT","TAD","STPT","OPT"};
     mfdType = "classic";
 };

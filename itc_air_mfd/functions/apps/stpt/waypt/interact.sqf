@@ -14,6 +14,9 @@ switch (_btn) do {
   case "R4": {
     [1] call itc_air_wpt_fnc_reorder;
   };
+  case "L3": {
+    [] call itc_air_wpt_fnc_import;
+  };
   case "L4": {
     [] call itc_air_wpt_fnc_delete;
   };

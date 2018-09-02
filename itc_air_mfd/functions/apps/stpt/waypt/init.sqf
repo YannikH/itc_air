@@ -8,6 +8,9 @@ params ["_display"];
 
 invertText(_display,T3);
 
+(_display displayCtrl L23) ctrlSetText "MDAGR";
+(_display displayCtrl L3) ctrlSetText "IMPRT";
+
 (_display displayCtrl L4) ctrlSetText "DEL";
 (_display displayCtrl L5) ctrlSetText "NEW";
 (_display displayCtrl R1) ctrlSetText "MGRS";

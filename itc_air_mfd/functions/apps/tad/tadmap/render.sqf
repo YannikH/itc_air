@@ -16,7 +16,9 @@ _centerPos = if(itc_air_tad_expand == 0) then [{getPos _plane}, {itc_air_tad_pos
 _map drawEllipse [getPos _plane, 2500, 2500, 0, [0,1,0,1]];
 _map drawEllipse [getPos _plane, 5000, 5000, 0, [0,1,0,1]];
 
-_map drawIcon ["itc_air_mfd\data\UI\WPT_MFD.paa", [1,1,1,1], ((_plane getVariable "tgp_dir") select 1),  20,20, 0,  ".", 0, 0.01];
+if(itc_air_tgp_capable) then {
+  _map drawIcon ["itc_air_mfd\data\UI\WPT_MFD.paa", [1,1,1,1], ((_plane getVariable "tgp_dir") select 1),  20,20, 0,  ".", 0, 0.01];
+};
 _map drawIcon [itc_air_ownship_icon, [1,1,1,1], getPos _plane,  45,45, getDir _plane,  ".", 0, 0.01];
 _map drawIcon ["itc_air_mfd\data\UI\CURSOR_MFD.paa", [1,1,1,1], (_centerPos vectorAdd (itc_air_tad_cursor vectorMultiply _fov)),  30,30, 0,  ".", 0, 0.01];
 
