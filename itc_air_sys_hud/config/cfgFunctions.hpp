@@ -5,7 +5,7 @@ class cfgFunctions {
         file = "itc_air_sys_hud\functions\setup.sqf";
       };
       class shutDown {
-        file = "itc_air_hud\functions\shutDown.sqf";
+        file = "itc_air_sys_hud\functions\shutDown.sqf";
       };
       class perFrame {
         file = "itc_air_sys_hud\functions\perFrame.sqf";

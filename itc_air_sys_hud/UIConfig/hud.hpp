@@ -15,7 +15,7 @@ class RscTitles {
     {
         ITC_HUD_UI_GRP
     };
-    onLoad = "uiNameSpace setVariable [""ITC_AIR_HMD_UI"", (_this select 0)]";
+    onLoad = "uiNameSpace setVariable [""ITC_AIR_HUD_UI"", (_this select 0)]";
     class ITC_HUD_UI_GRP : RscControlsGroupNoScrollbars {
       idc = 13379;
       x = safeZoneX;
