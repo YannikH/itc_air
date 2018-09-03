@@ -5,6 +5,7 @@ private _impactPoint = itc_air_fcs_ccip_impactPos;
 
 itc_air_ccrp_lastPickleHold = time;
 _plane = vehicle player;
+//([currentMagazine _plane, _plane] call itc_air_fcs_fnc_calculateImpact) params ["_impactPos", "_tof"];
 //_impactPoint = [currentMagazine _plane, _plane] call getDrawPos;
 //_impactPoint = _plane call getDrawPos;;
 //drawIcon3D ["a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa", [1,1,1,1], [_impactPoint # 0 # 0, _impactPoint # 0 # 1, 1], 1, 1, 0, "", 0, 0.05, "PuristaMedium"];

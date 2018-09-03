@@ -17,6 +17,10 @@ if (isText _config) then {
     _this call (missionNamespace getVariable [getText _config, {}]);
 };
 
+itc_air_fcs_firedTime = cba_missionTime;
+itc_air_fcs_tof = itc_air_fcs_ccip_impactTime;
+_this call itc_air_fcs_fnc_ccrpFired;
+
 _cursorAim = (configFile >> "CfgWeapons" >> _weapon >> "cursorAim") call BIS_fnc_getCfgData;
 if(_cursorAim == "bomb" || _cursorAim == "rocket") then {
   //player sideChat str format["%1 %2", itc_air_ripple_active, itc_air_ripple_dropcount];

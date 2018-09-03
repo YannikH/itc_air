@@ -11,6 +11,9 @@ class cfgFunctions {
       class perFrame {
         file = "itc_air_sys_fcs\functions\perFrame.sqf";
       };
+      class perSecond {
+        file = "itc_air_sys_fcs\functions\perSecond.sqf";
+      };
       class ccrpPerFrame {
         file = "itc_air_sys_fcs\functions\ccrp\ccrpPerFrame.sqf";
       };
@@ -37,6 +40,9 @@ class cfgFunctions {
       };
       class getDrawPos {
         file = "itc_air_sys_fcs\functions\ccip\getDrawPos.sqf";
+      };
+      class ccrpFired {
+        file = "itc_air_sys_fcs\functions\ccrp\fired.sqf";
       };
     };
   };

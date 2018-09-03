@@ -87,4 +87,4 @@ for "_i" from 1 to _maxIterations do {
 
 };
 _result = _ATLPos;
-[_result, _resultIndex, _positions];
+[_result, _resultIndex, _positions,_elapsedTime];

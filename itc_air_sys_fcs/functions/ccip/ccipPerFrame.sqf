@@ -5,7 +5,9 @@ itc_air_fcs_ccip_enabled = true;
 itc_air_fcs_startTime = diag_tickTime;
 
 _info = [_plane] call itc_air_fcs_fnc_getDrawPos;
-
+if(!isNil{_info} && {count _info == 4}) then {
+  itc_air_fcs_ccip_impactTime = _info # 3;
+};
 itc_air_fcs_endTime = diag_tickTime;
 _pos = _info select 0;
 itc_air_fcs_ccip_resultIndex = _info select 1;

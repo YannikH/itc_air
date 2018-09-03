@@ -42,7 +42,7 @@ for "_i" from 1 to _maxIterations do {
 	//be accurate with that worse resolution.
 	//_time = _maxResolution min (_i^-4);
 
-	//_elapsedTime = _elapsedTime + _dt;
+	_elapsedTime = _elapsedTime + _dt;
 	//Calculate vector magnitude so that velocity vectors are calculated properly
 	_vectorM = vectorMagnitude _velocity;
 	_vectorM = _vectorM*_airFriction;
@@ -70,4 +70,4 @@ for "_i" from 1 to _maxIterations do {
 
 _result = _ATLPos;
 
-[_result, _resultIndex, _positions];
+[_result, _resultIndex, _positions, _elapsedTime];
