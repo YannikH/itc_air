@@ -98,6 +98,16 @@ class Tgp : ITC_AIR_PAGE {
     	h = SCALE * 0.04;
       style = 2;
     };
+    class Rsc3Text_1006: ITC_AIR_MfdTextBg
+    {
+    	idc = 31006;
+    	text = "N/A"; //--- ToDo: Localize;
+    	x = SCALE * 0.5;
+    	y = SCALE * 0.64;
+    	w = SCALE * 0.05;
+    	h = SCALE * 0.04;
+      style = 2;
+    };
     /*
     class Rsc3Text_1006: ITC_AIR_MfdText
     {

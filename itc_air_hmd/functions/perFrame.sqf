@@ -25,14 +25,14 @@ if(cameraView != "INTERNAL") exitWith {
 
 (_UI displayCtrl 1001) ctrlSetText str round ([0,0,0] getdir getCameraViewDirection player);
 
-if(_wpName != "N/A" && {_wpPos # 0 != 0 && _wpPos # 1 != 0}) then {
-  drawIcon3d ["itc_air_hmd\data\UI\MSNPT.paa", [1,1,0,1], ASLtoAGL _wpPos, 0.4, 0.4, 0, format["%1", _wpName], 1, 0.05, "PuristaMedium", "center"];
-  (_UI displayCtrl 1002) ctrlSetText format ["%1 %2", _wpName, _name];
-  (_UI displayCtrl 1003) ctrlSetText itc_air_wpt_tof;
-} else {
-  (_UI displayCtrl 1002) ctrlSetText "";
-  (_UI displayCtrl 1003) ctrlSetText "";
-};
+//if(_wpName != "N/A" && {_wpPos # 0 != 0 && _wpPos # 1 != 0}) then {
+//  drawIcon3d ["itc_air_hmd\data\UI\MSNPT.paa", [1,1,0,1], ASLtoAGL _wpPos, 0.4, 0.4, 0, format["%1", _wpName], 1, 0.05, "PuristaMedium", "center"];
+//  (_UI displayCtrl 1002) ctrlSetText format ["%1 %2", _wpName, _name];
+//  (_UI displayCtrl 1003) ctrlSetText itc_air_wpt_tof;
+//} else {
+//  (_UI displayCtrl 1002) ctrlSetText "";
+//  (_UI displayCtrl 1003) ctrlSetText "";
+//};
 
 {
   drawIcon3d ["itc_air_hmd\data\UI\MSNPT.paa", [1,1,0,1], (ASLtoAGL (_x # 2)), 0.4, 0.4, 0, "", 1, 0.05, "PuristaMedium", "center"];

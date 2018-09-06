@@ -22,7 +22,7 @@ if((_plane distance2D _targ < _plane distance2D _impactPoint) && _dist < 50 && !
     //player sideChat format ["PICKLE RELEASE TOF %1", round (_impactPoint # 1)];
 };
 if(!itc_air_ccrp_PickleRelease) then {
-    player sideChat format ["PICKLE HOLD %1", _dist];
+    //player sideChat format ["PICKLE HOLD %1", _dist];
 };
 itc_air_ccrp_lastDist = _dist;
 

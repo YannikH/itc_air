@@ -4,6 +4,7 @@ itc_air_fcs_ccrp_frame = 0;
 itc_air_ccrp_lastPickleHold = time;
 itc_air_ccrp_PickleRelease = false;
 itc_air_ccrp_lastDist = 100;
+itc_air_fcs_ccrpOn = false;
 
 itc_air_fcs_ccip_impactTime = 0;
 

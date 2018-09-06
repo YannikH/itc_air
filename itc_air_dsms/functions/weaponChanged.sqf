@@ -10,6 +10,7 @@ _profileSettings params ["_weapon","_profileName","_ammo","_station","_type"];
 _releaseSettings params ["_release_mode","_rip_mode","_rip_qty","_rip_dist"];
 _plane setVariable ["profileName", _profileName];
 (vehicle player) setVariable ["autolaser",false];
+itc_air_fcs_ccrpOn = false;
 if(_type == "bomb") then {
   itc_air_fcs_ccrpOn = (toLower _release_mode == "ccrp");
   _plane setVariable ["rip_mode", _rip_mode];

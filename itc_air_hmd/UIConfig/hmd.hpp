@@ -74,7 +74,7 @@ class RscTitles {
         	h = 0.04;
 
         	text = "000";
-        };
+        };/*
         class RscHMDTextStpt: RscHMDTextBearing
         {
           idc = 1002;
@@ -89,7 +89,7 @@ class RscTitles {
           idc = 1003;
           y = 0 + ((safeZoneH / 4) * 3) + 0.04;
           style = 1;
-        };
+        };*/
       };
     }
   };

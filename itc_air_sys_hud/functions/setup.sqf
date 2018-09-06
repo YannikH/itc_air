@@ -1,7 +1,7 @@
 params ["_vehicle"];
 //[_vehicle, [_vehicle,"itc_air_hmd_on",true,"HMD ON",{},"cycle",[false, true]]] call itc_air_common_fnc_addOption;
 //[_vehicle, [missionNameSpace,"itc_air_hideHUD",false,"HIDE HUD",{},"cycle",[false, true]]] call itc_air_common_fnc_addOption;
-104 cutRsc ["ITC_AIR_HUD", "PLAIN", -1, true];
+105 cutRsc ["ITC_AIR_HUD", "PLAIN", -1, true];
 
 ITC_AIR_HUD_LIMS = [
   getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "itc_air" >> "HUD_TL"),

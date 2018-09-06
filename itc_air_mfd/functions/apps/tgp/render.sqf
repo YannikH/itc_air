@@ -4,6 +4,13 @@ params ["_display", "_btn"];
 _vehicle = vehicle player;
 _pilotCameraTarget = getPilotCameraTarget _vehicle;
 
+private _tot = (_display displayCtrl 31006);
+if(isNil{itc_air_fcs_firedTime} || {itc_air_fcs_firedTime == -1}) then {
+  _tot ctrlSetText str (round itc_air_fcs_ccip_impactTime);
+} else {
+  _tot ctrlSetText str (round ((itc_air_fcs_firedTime + itc_air_fcs_tof) - cba_missionTime));
+};
+
 (_display displayCtrl 32202) ctrlShow (_vehicle getVariable "tgp_fov" >= 0.2);
 (_display displayCtrl 32203) ctrlShow (_vehicle getVariable "tgp_lsst_mode" != "LSS OFF");
 (_display displayCtrl 32204) ctrlShow (_vehicle getVariable "laser_ir");

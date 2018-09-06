@@ -10,6 +10,15 @@ class cfgFunctions {
       class perFrame {
         file = "itc_air_sys_hud\functions\perFrame.sqf";
       };
+      class printCCRP {
+        file = "itc_air_sys_hud\functions\printCCRP.sqf";
+      };
+      class printText {
+        file = "itc_air_sys_hud\functions\printText.sqf";
+      };
+      class printIcons {
+        file = "itc_air_sys_hud\functions\printIcons.sqf";
+      };
       //class keys {
       //  file = "itc_air_hmd\functions\keys.sqf";
       //};
