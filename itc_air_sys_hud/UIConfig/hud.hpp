@@ -69,6 +69,14 @@ class RscTitles {
           h = 0.04;
         	text = "itc_air_hmd\data\UI\WP.paa";
         };
+        class RscHUDTGP: RscPicture
+        {
+        	idc = 1206;
+          x = 0;y = 0;
+          w = 0.04 * (3/4);
+          h = 0.04;
+        	text = "itc_air_hmd\data\UI\TGP.paa";
+        };
       };
     };
     class ITC_HUD_CCRP_UI_GRP : RscControlsGroupNoScrollbars {

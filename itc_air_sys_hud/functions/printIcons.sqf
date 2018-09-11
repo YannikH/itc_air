@@ -31,3 +31,24 @@ if(_wpName != "N/A" && {_wpPos # 0 != 0 && _wpPos # 1 != 0}) then {
     _wp ctrlCommit 0;
   };
 };
+
+private _tgp = (_UI displayCtrl 1206);
+_tgp ctrlShow false;
+if(itc_air_tgp_capable) then {
+  _tgpDir = _plane getVariable "tgp_dir";
+  if(_tgpDir select 0) then {
+    _pos = worldToScreen (ASLtoAGL (_tgpDir select 1));
+      _tgp ctrlShow true;
+      if(count _pos == 2) then {
+      _screenPos = [
+        ((_pos # 0) - safeZoneX - (0.02 * 3/4)),
+        ((_pos # 1) - safeZoneY - 0.02)
+      ];
+      _tgp ctrlSetPosition [
+        (_screenPos#0) min (_xLimits#0) max (_xLimits#1),
+        (_screenPos#1) min (_yLimits#0) max (_yLimits#1)
+      ];
+      _tgp ctrlCommit 0;
+    };
+  };
+};

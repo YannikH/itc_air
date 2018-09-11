@@ -17,6 +17,9 @@ class cfgFunctions {
       class setup {
         file = "itc_air_sys_gcas\functions\setup.sqf";
       };
+      class shutDown {
+        file = "itc_air_sys_gcas\functions\shutDown.sqf";
+      };
     };
   };
 };

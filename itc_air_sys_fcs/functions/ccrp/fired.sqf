@@ -9,7 +9,7 @@ if(
 ) exitWith {};
 //player sideChat format["fired %1", _ammo];
 //player sideChat format["CCRP REL"];
-private _impactPos = itc_air_fcs_ccip_impactPos getPos [random [0, 15,30], getDir _projectile];
+private _impactPos = AGLtoASL ((itc_air_fcs_ccip_impactPos) getPos [random [-10, 0,10], getDir _projectile]);
 
 [{
   (_this select 0) params ["_projectile", "_lastFrameTime", "_impactPos"];

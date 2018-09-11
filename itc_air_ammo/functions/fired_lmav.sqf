@@ -12,7 +12,7 @@ _laserCode = (vehicle player) getVariable "itc_air_lmav_code";
 
   _spot = [getPosASL _projectile, vectorDir _projectile, 5, 16000, [1500, 1550], _laserCode] call ace_laser_fnc_seekerFindLaserSpot;
   if(!isNil{_spot select 0}) then {
-    private _targetCoordinates = (_spot select 0) vectorAdd [0,0,1];
+    private _targetCoordinates = (_spot select 0) vectorAdd [0,0,0];
     private _position = getPosASL _projectile;
     (_projectile call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];
     private _vectToTarget = _position vectorFromTo _targetCoordinates;

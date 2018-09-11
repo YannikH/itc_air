@@ -2,6 +2,11 @@ params ["_plane"];
 
 if(itc_air_fcs_ccrp_frame < 10) exitWith {itc_air_fcs_ccrp_frame = itc_air_fcs_ccrp_frame + 1;};
 private _impactPoint = itc_air_fcs_ccip_impactPos;
+if((_plane getVariable "rip_mode") == "RIP SGL" || {(_plane getVariable "rip_mode") == "RIP PRS"}) then {
+  private _rippleAdjust = ((_plane getVariable "rip_qty") * (_plane getVariable "rip_dist")) / 2;
+  private _rippleDir = (getPos _plane) getDir _impactPoint;
+  _impactPoint = _impactPoint getPos [_rippleAdjust, _rippleDir];
+};
 
 itc_air_ccrp_lastPickleHold = time;
 _plane = vehicle player;
@@ -10,7 +15,7 @@ _plane = vehicle player;
 //_impactPoint = _plane call getDrawPos;;
 //drawIcon3D ["a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa", [1,1,1,1], [_impactPoint # 0 # 0, _impactPoint # 0 # 1, 1], 1, 1, 0, "", 0, 0.05, "PuristaMedium"];
 _targ = itc_air_wpt_pos;
-_dist = _targ distance _impactPoint;
+_dist = _targ distance2D _impactPoint;
 //player sideChat str _dist;
 if((_plane distance2D _targ < _plane distance2D _impactPoint) && _dist < 50 && !itc_air_ccrp_PickleRelease) then {
     //player forceWeaponFire [currentWeapon _plane,currentWeapon _plane];

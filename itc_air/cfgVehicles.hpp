@@ -270,7 +270,7 @@ class cfgVehicles {
         class itc_air : itc_air_default_jet {
           tgp_overlay = "itc_air_tgp\data\overlay_jas39_2048.paa";
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","AGCAS","TGP","WPT","TAD"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","AGCAS","TGP","WPT","TAD","HUD"};
           //mfdType = "touch";
         };
     };
@@ -302,7 +302,7 @@ class cfgVehicles {
 		    scopeCurator=2;
         class itc_air : itc_air_default_jet {
           mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","TGP","WPT","TAD"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","TGP","WPT","TAD","HUD"};
         };
         class pilotCamera : litening{};
         class Components : Components {
