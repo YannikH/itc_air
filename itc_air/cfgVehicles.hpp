@@ -113,6 +113,7 @@ class cfgVehicles {
           };
         };
       };
+      class itc_air : itc_air_default_jet {};
     };
     class Plane_Fighter_04_Base_F : Plane_Base_F {
         class Components : Components {
