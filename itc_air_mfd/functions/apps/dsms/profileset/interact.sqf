@@ -24,8 +24,8 @@ switch(_btn) do {
         _value = CYCLEVALUE(_dataOptions,_value);
       };
       case "STPT": {
-        _value = vehicle player getVariable "stpt_name";
-        _dataOptions = vehicle player getVariable "stpt_pos";
+        _value = itc_air_wpt_pos;
+        _dataOptions = itc_air_wpt_name;
       };
     };
     _profileOptions set [_profileOptionsIndex, [_key, _value, _label, _dataType, _dataOptions]];

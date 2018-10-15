@@ -20,6 +20,10 @@ class cfgFunctions {
       class perSecond {
         file = "itc_air_tgp\functions\perSecond.sqf";
       };
+
+      class lssSearch {
+        file = "itc_air_tgp\functions\lss\search.sqf";
+      };
     };
   };
 };

@@ -1,4 +1,2 @@
-ITC_AIR_SOI = "HMD";
-ITC_AIR_SENSOR = "HMD";
 ITC_AIR_SPI = [0,0,0];
 ITC_AIR_SPI_GET = {[0,0,0]};

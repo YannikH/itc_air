@@ -1,6 +1,6 @@
 params ["_display"];
 #include "..\..\mfdDefines.hpp"
-
+REQUIRE("MAVERICK");
 if(currentWeapon (vehicle player) == "itc_air_weapon_maverick_e") exitWith {
   "lmav"
 };

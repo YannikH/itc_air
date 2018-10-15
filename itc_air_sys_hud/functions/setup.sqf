@@ -1,6 +1,11 @@
 params ["_vehicle"];
 //[_vehicle, [_vehicle,"itc_air_hmd_on",true,"HMD ON",{},"cycle",[false, true]]] call itc_air_common_fnc_addOption;
 //[_vehicle, [missionNameSpace,"itc_air_hideHUD",false,"HIDE HUD",{},"cycle",[false, true]]] call itc_air_common_fnc_addOption;
+
+//itc_air_hud_drawEh = addmissioneventhandler ["Draw3d",{
+//  [] call itc_air_hud_fnc_drawHandler;
+//}];
+
 105 cutRsc ["ITC_AIR_HUD", "PLAIN", -1, true];
 
 ITC_AIR_HUD_LIMS = [

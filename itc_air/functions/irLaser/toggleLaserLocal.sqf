@@ -6,7 +6,7 @@ if(_plane getVariable "laser_ir") then {
         _plane,
         {
             _plane = _this;
-            _data = _plane getVariable "tgp_dir";
+            _data = _plane getVariable "itc_air_network_target";
             _data params ["_broadcasting", "_target", ""];
             _tgpPos = ASLtoAGL _target;
             private _memPointName = getText (configFile >> "CfgVehicles" >> typeOf _plane >> "memoryPointDriverOptics");

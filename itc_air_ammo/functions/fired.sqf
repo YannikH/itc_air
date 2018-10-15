@@ -1,8 +1,12 @@
 params ["_unit", "_weapon", "", "", "_ammo", "", "_projectile", "_gunner"];
-
+if(!local _gunner || _unit != vehicle player) exitWith {};
 if (isNull _projectile) then {
     _projectile = nearestObject [_unit, _ammo];
     _this set [6, _projectile];
+};
+
+if(itc_air_drop_force) then {
+  _this call itc_air_ammo_fnc_dropForce;
 };
 
 private _gunner = [_unit, _weapon] call CBA_fnc_getFirer select 0;

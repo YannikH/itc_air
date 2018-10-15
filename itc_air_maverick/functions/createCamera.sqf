@@ -12,11 +12,12 @@ ITC_AIR_MAVERICK_CAM = _cam;
 
 [{
    _this select 0 params ["_plane","_display"];
-   if (_display isEqualTo displayNull || (_display getVariable ["page",""]) != "ccdmav") exitWith {
-       camDestroy ITC_AIR_MAVERICK_CAM;
-       ITC_AIR_MAVERICK_CAM cameraEffect ["terminate", "back", "MAVERICK_FEED"];
-       ITC_AIR_MAVERICK_CAM = nil;
-       [_this select 1] call CBA_fnc_removePerFrameHandler;
+   private _mavSelected = ((currentWeapon _plane) isKindOf ["Missile_AGM_02_Plane_CAS_01_F",(configFile >> "CfgWeapons")]);
+   if (_display isEqualTo displayNull || (_display getVariable ["page",""]) != "ccdmav" || !_mavSelected) exitWith {
+     camDestroy ITC_AIR_MAVERICK_CAM;
+     ITC_AIR_MAVERICK_CAM cameraEffect ["terminate", "back", "MAVERICK_FEED"];
+     ITC_AIR_MAVERICK_CAM = nil;
+     [_this select 1] call CBA_fnc_removePerFrameHandler;
    };
    //_cam camSetPos (getPos _plane);
    ITC_AIR_MAVERICK_CAM cameraEffect ["internal", "BACK", "MAVERICK_FEED"];

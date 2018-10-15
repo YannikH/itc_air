@@ -75,7 +75,8 @@ class cfgMagazines {
         hp_double_smart(NAME,WEAP,AMMO,WT)
 
     hp_rocket("M-151","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F,6)
-    hp_rocket("M-156","Rocket_04_HE_Plane_CAS_01_F",itc_ammo_Hydra_M156,6)
+    hp_rocket("M-156 WP","itc_weap_hydra_m156",itc_ammo_Hydra_M156,6)
+    hp_rocket("M-257 ILLUM","itc_weap_hydra_m257",itc_ammo_Hydra_M257,6)
     hp_rocket("APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
 
     hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82,227)

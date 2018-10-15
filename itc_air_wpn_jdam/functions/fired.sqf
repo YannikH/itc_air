@@ -15,5 +15,5 @@ if("laser" in _seekers) then {
   _laserCode = (vehicle player) getVariable "laser_code_recv";
 };
 
-[itc_air_jdam_fnc_guidePfh, 0, [_projectile, _dropTime, _targetCoordinates,_laserCode,_angle,"SEP",_dropTime]] call CBA_fnc_addPerFrameHandler;
+[itc_air_jdam_fnc_guidePfh, 0, [_projectile, _dropTime, _targetCoordinates,_laserCode,_angle,"SEP",_dropTime,time, nil,[0,0,0]]] call CBA_fnc_addPerFrameHandler;
 _this call itc_air_jdam_fnc_fuzing;

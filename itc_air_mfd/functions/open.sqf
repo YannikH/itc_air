@@ -44,6 +44,7 @@ _display setVariable ["sensor",""];
 
   if(_display getVariable "app" != _app) then { //check if app switched
     [_display] call itc_air_mfd_fnc_clear; //clear app pages
+    (_display displayCtrl (1030)) ctrlShow false;
     _display setVariable ["sensor",""];
     if(_app != "") then { //clear the previous app if it existed
       [_display] call (_display getVariable "appClear"); //clear app pages

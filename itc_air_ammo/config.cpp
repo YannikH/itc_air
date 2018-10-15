@@ -5,7 +5,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.0;
-        requiredAddons[] = {};
+        requiredAddons[] = {"CBA_Extended_EventHandlers"};
     };
 };
 #include "config\cfgAmmo.hpp"

@@ -19,6 +19,9 @@ class cfgFunctions {
       class printIcons {
         file = "itc_air_sys_hud\functions\printIcons.sqf";
       };
+      class drawHandler {
+        file = "itc_air_sys_hud\functions\drawHandler.sqf";
+      };
       //class keys {
       //  file = "itc_air_hmd\functions\keys.sqf";
       //};

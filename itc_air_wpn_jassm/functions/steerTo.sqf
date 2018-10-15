@@ -9,7 +9,7 @@ private _ktsMul = 1.94384;
 private _maxBank = 40;
 private _yawRate = 5 * _frameTime;
 private _bankRate = (abs _angleX min 1) * (180 * _frameTime);
-private _diveRate = 40 * _frameTime;
+private _diveRate = 50 * _frameTime;
 private _desiredBank = (4 * _angleX) min _maxBank max -_maxBank;
 
 private _pullUp = (

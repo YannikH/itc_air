@@ -1,5 +1,7 @@
 params ["_display", "_btn"];
 private _map = _display displayCtrl 61500;
+(ctrlPosition _map) params ["_x","_y","_w","_h"];
+private _radius = ((_map ctrlMapScreenToWorld [_x,_y]) distance (_map ctrlMapScreenToWorld [_x + _w,_y])) / 2;
 
 [_display,_map] call itc_air_tad_fnc_drawHook;
 
@@ -7,14 +9,15 @@ _fov = itc_air_tad_fov;
 _output set [0, format["FOV %1", round(_fov * 100)]];
 _plane = (vehicle player);
 
+(_display displayCtrl 61003) ctrlSetText str round(_radius * 0.9);
 (_display displayCtrl 61002) ctrlSetText str round(_fov * 100);
 
 (_display displayCtrl 1001) ctrlSetText (if(itc_air_tad_map_on)then[{"ON"},{"OFF"}]);
 
 _centerPos = if(itc_air_tad_expand == 0) then [{getPos _plane}, {itc_air_tad_pos}];
 
-_map drawEllipse [getPos _plane, 2500, 2500, 0, [0,1,0,1]];
-_map drawEllipse [getPos _plane, 5000, 5000, 0, [0,1,0,1]];
+_map drawEllipse [getPos _plane, _radius * 0.9, _radius * 0.9, 0, [0,1,0,1]];
+_map drawEllipse [getPos _plane, _radius * 0.45, _radius * 0.45, 0, [0,1,0,1]];
 
 if(itc_air_tgp_capable) then {
   _map drawIcon ["itc_air_mfd\data\UI\WPT_MFD.paa", [1,1,1,1], ((_plane getVariable "tgp_dir") select 1),  20,20, 0,  ".", 0, 0.01];

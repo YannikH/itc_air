@@ -144,6 +144,16 @@ class RscTitles {
           style = 2;
         	sizeEx = 0.07;
         };
+        class TGP_TOT: TGP_POS
+        {
+        	idc = 11003;
+        	x = 0.6484531 * safezoneW + 0;
+        	y = 0.799 * safezoneH + 0;
+        	w = 0.0309375 * safezoneW;
+        	h = 0.033 * safezoneH;
+        	colorBackground[] = {0,0,0,1};
+          style = 2;
+        };
         /*
         class TGP_VIS: TGP_POS
         {

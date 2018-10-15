@@ -1,5 +1,7 @@
-if(!isNil{test_fnc_ccipPerFrame}) exitWith {_this call test_fnc_ccipPerFrame};
 params ["_plane"];
+private _interval = if(itc_air_fcs_releaseKeyDown && itc_air_fcs_ccrpOn) then [{5},{10}];
+if(itc_air_fcs_ccip_frame < _interval) exitWith {itc_air_fcs_ccip_frame = itc_air_fcs_ccip_frame + 1;};
+itc_air_fcs_ccip_frame = 0;
 
 itc_air_fcs_ccip_enabled = true;
 itc_air_fcs_startTime = diag_tickTime;

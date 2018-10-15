@@ -41,6 +41,14 @@ if(_laserOn && _plane getVariable "laser_ir") then {
     };
 };
 (_display displayCtrl 11002) ctrlSetText _str;
+
+
+private _tot = (_display displayCtrl 11003);
+if(isNil{itc_air_fcs_firedTime} || {itc_air_fcs_firedTime == -1}) then {
+  _tot ctrlSetText str (round itc_air_fcs_ccip_impactTime);
+} else {
+  _tot ctrlSetText str (round ((itc_air_fcs_firedTime + itc_air_fcs_tof) - cba_missionTime));
+};
 /*
 (_display displayCtrl 11003) ctrlSetText (["DTV","NTV","FLIR"] # (_plane getVariable "tgp_mode"));
 

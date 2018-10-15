@@ -52,13 +52,13 @@ class cfgAmmo {
       ace_frag_force = 1;
   };
   class itc_mk83_helper : ITC_blu126_helper {
-    hit = 6000;
+    hit = 9000;
     indirectHit = 1500;
     indirectHitRange = 30;
   };
   class itc_mk84_helper : ITC_blu126_helper {
-  hit = 6000;
-  indirectHit = 800;
-  indirectHitRange = 60;
+    hit = 10000;
+    indirectHit = 800;
+    indirectHitRange = 60;
   };
 };

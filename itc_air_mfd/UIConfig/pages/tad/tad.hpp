@@ -56,5 +56,15 @@ class ITC_MFD_PAGE_TAD : ITC_AIR_PAGE {
     	h = SCALE * 0.04;
       style = 1;
     };
+    class Rsc6Text_1003: ITC_AIR_MfdTextBg
+    {
+    	idc = 61003;
+    	text = "70"; //--- ToDo: Localize;
+    	x = SCALE * 0.125;
+    	y = SCALE * 0.18;
+    	w = SCALE * 0.075;
+    	h = SCALE * 0.04;
+      style = 1;
+    };
   };
 };

@@ -22,6 +22,12 @@ class cfgFunctions {
       class keys {
         file = "itc_air_maverick\functions\keys.sqf";
       };
+      class perFrame {
+        file = "itc_air_maverick\functions\perFrame.sqf";
+      };
+      class laserScan {
+        file = "itc_air_maverick\functions\laserScan.sqf";
+      };
     };
   };
 };

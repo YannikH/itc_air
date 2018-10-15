@@ -3,6 +3,7 @@ class IGUIBack;
 class RscEdit;
 class RscText;
 class RscStructuredText;
+class RscPicture;
 class TGP_DIALOG {
     idd = 19993;
     movingEnable = true;

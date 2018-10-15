@@ -55,3 +55,7 @@
 #define SYSACT(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\sysact.paa"; (_display displayCtrl IDC) ctrlShow true
 #define DATA(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\data.paa"; (_display displayCtrl IDC) ctrlShow true
 #define INCDEC(IDC) (_display displayCtrl IDC) ctrlSetText "itc_air_mfd\data\ui\obsSymb\incdec.paa"; (_display displayCtrl IDC) ctrlShow true
+#define REQUIRE(SYSTEM) if(!(SYSTEM in (vehicle player getVariable ["itc_air_systems_active",[]]))) exitWith { \
+  (_display displayCtrl 1030) ctrlShow true; \
+  "" \
+}

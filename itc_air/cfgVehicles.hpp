@@ -19,41 +19,6 @@ class SensorTemplateDataLink;
     };
 
 class cfgVehicles {
-    class Man;
-    class CAManBase: Man {
-        class ACE_SelfActions {
-            class ITC_ROVER {
-                displayName = "Datalink";
-                condition = "[_player] call itc_air_rover_fnc_can_open";
-                statement = "";
-                priority = 2.6;
-                showDisabled = 1;
-                exceptions[] = {"isNotInside","isNotSitting"};
-                class ITC_ROVER_OPEN {
-                    displayName = "Rover SIR V2.5";
-                    condition = "'ITC_ROVER_SIR' in (items _player)";
-                    statement = "[] call itc_air_rover_fnc_open;";
-                    priority = 2.6;
-                    showDisabled = 1;
-                    icon = "itc_air\data\UI\ROVER_icon_ca.paa";
-                exceptions[] = {"isNotInside","isNotSitting"};
-                    enableInside = 1;
-                };
-                class ITC_TABLET_OPEN {
-                    displayName = "Duo-Touch II";
-                    condition = "'ACE_HuntIR_monitor' in (items _player)";
-                    statement = "[] call itc_air_rover_fnc_view_duo_touch;";
-                    distance = 2;
-                    priority = 2.6;
-                    showDisabled = 1;
-                    icon = "\z\ace\addons\huntir\UI\w_huntir_monitor_ca.paa";
-                exceptions[] = {"isNotInside","isNotSitting"};
-                    enableInside = 1;
-                };
-            };
-        };
-    };
-
     class Allvehicles;
     class Air : Allvehicles {
       class ACE_Actions;
@@ -269,8 +234,8 @@ class cfgVehicles {
         class pilotCamera : litening{};
         class itc_air : itc_air_default_jet {
           tgp_overlay = "itc_air_tgp\data\overlay_jas39_2048.paa";
-          mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","AGCAS","TGP","WPT","TAD","HUD"};
+          mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR","EW"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","AGCAS","TGP","WPT","TAD","HUD","EW"};
           //mfdType = "touch";
         };
     };
@@ -301,8 +266,8 @@ class cfgVehicles {
         magazines[] = {"120Rnd_CMFlare_Chaff_Magazine", "Laserbatteries"};
 		    scopeCurator=2;
         class itc_air : itc_air_default_jet {
-          mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR"};
-          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","FCS","ACMI","TGP","WPT","TAD","HUD"};
+          mfdApps[] = {"DSMS","TGP","STAT","TAD","STPT","OPT","MAV","FCR","EW"};
+          systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","FCR","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","AP-MAN","ROVER","SADL","FCS","ACMI","GCAS","TGP","WPT","TAD","HUD","EW"};
         };
         class pilotCamera : litening{};
         class Components : Components {

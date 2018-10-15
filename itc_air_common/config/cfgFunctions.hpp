@@ -19,6 +19,9 @@ class cfgFunctions {
       class systemStop {
         file = "itc_air_common\functions\systemStop.sqf";
       };
+      class getConfig {
+        file = "itc_air_common\functions\getConfig.sqf";
+      };
     };
   };
 };

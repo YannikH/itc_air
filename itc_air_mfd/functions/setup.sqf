@@ -1,5 +1,7 @@
 params ["_vehicle"];
 
+itc_air_soi_providers pushBack "MFD";
+
 private _mfdApps = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfdApps") call BIS_fnc_getCfgData;
 _vehicle setVariable ["itc_air_mfd_apps", _mfdApps];
 

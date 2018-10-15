@@ -8,8 +8,15 @@ class CfgFunctions {
         preInit = 1;
         file = "itc_air_ammo\functions\init.sqf";
       };
+      class postInit {
+        postInit = 1;
+        file = "itc_air_ammo\functions\postInit.sqf";
+      };
       class fired_wp {
         file = "itc_air_ammo\functions\firedWP.sqf";
+      };
+      class fired_m257 {
+        file = "itc_air_ammo\functions\fired_m257.sqf";
       };
       class fired_prox_fuze {
         file = "itc_air_ammo\functions\proxFuze.sqf";
@@ -40,6 +47,9 @@ class CfgFunctions {
       };
       class fired_lmav {
         file = "itc_air_ammo\functions\fired_lmav.sqf";
+      };
+      class dropForce {
+        file = "itc_air_ammo\functions\dropForce.sqf";
       };
     };
   };

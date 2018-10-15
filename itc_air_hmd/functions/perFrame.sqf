@@ -1,7 +1,7 @@
 params ["_plane"];
 private ["_icon"];
 private _UI = uiNameSpace getVariable "ITC_AIR_HMD_UI";
-if(cameraView != "INTERNAL") exitWith {
+if(cameraView != "INTERNAL" || dialog) exitWith {
   if(!isNil{_UI}) then {
     (_UI displayCtrl 13379) ctrlShow false;
   };

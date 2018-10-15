@@ -25,6 +25,9 @@ class cfgFunctions {
       class spi {
         file = "itc_air_hmd\functions\spi.sqf";
       };
+      class cycle {
+        file = "itc_air_hmd\functions\cycle.sqf";
+      };
     };
   };
 };

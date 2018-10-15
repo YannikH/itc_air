@@ -61,15 +61,15 @@ ITC_AIR_MFD_CAMS = [];
     };
 }, "", [208, [true, false, false]]] call CBA_fnc_addKeybind;
 
-[
-    "ITC_AIR_MFD_SCALE",
-    "SLIDER",
-    "MFD Size",
-    "ITC Air",
-    [0, 2, 1, 1],
-    nil,
-    {}
-] call CBA_Settings_fnc_init;
+//[
+//    "ITC_AIR_MFD_SCALE",
+//    "SLIDER",
+//    "MFD Size",
+//    "ITC Air",
+//    [0, 2, 1, 1],
+//    nil,
+//    {}
+//] call CBA_Settings_fnc_init;
 
 /*
 ["ITC MFD","mfd_btn_short_L1", "MFD BTN L1",{[(vehicle player) getVariable "SOI","L1"] call itc_air_mfd_fnc_button}, "", [79, [true, false, false]]] call CBA_fnc_addKeybind;

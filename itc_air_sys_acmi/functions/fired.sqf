@@ -9,10 +9,10 @@ private _isFlare = _weapon isKindOf ["CMFlareLauncher", configFile >> "CfgWeapon
 _cursorAim = if(_isFlare) then [{"flare"},{_cursorAim}];
 private _type = if(_isFlare) then [{"Decoy+Flare"},{"Weapon+"+_cursorAim}];
 //run MG fired script instead
-if(
-  (_cursorAim isEqualTo "mg") &&
-  (_unit getVariable ["acmi_trackShells",false])
-) exitWith {_this call itc_air_acmi_fnc_firedMG;};
+//if(
+//  (_cursorAim isEqualTo "mg") &&
+//  (_unit getVariable ["acmi_trackShells",false])
+//) exitWith {_this call itc_air_acmi_fnc_firedMG;};
 
 private _displayName = getText (configFile >> "CfgMagazines" >> _magazine >> "displayNameShort");
 
@@ -31,6 +31,8 @@ private _color = switch (side _unit) do {
 };
 
 private _printStr = [_projectile] call itc_air_acmi_fnc_logPositionString;
+private _parentId = (vehicle _gunner) getVariable ["acmi_id",""];
+private _parentString = if(_cursorAim == "flare") then [{""},{format["Parent=%1",_parentId]}];
 private _createStr = format["%1,%2,Type=%6,Name=weapons.%3.%4,Color=%5%7",_id,_printStr,_cursorAim,_displayName,_color,_type,_parentString];
 [_createStr, true] call itc_air_acmi_fnc_log;
 [{

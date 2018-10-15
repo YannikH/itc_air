@@ -1,6 +1,7 @@
 class RscPicture;
 class RscControlsGroupNoScrollbars;
 class RscText;
+class RscMapControl;
 class RscTitles {
   class ITC_AIR_HUD {
     idd = 19997;
@@ -15,8 +16,17 @@ class RscTitles {
     {
         ITC_HUD_UI_GRP,
         ITC_HUD_CCRP_UI_GRP
+        //ITC_HUD_CANVAS
     };
     onLoad = "uiNameSpace setVariable [""ITC_AIR_HUD_UI"", (_this select 0)]";
+    class ITC_HUD_CANVAS : RscMapControl {
+      idc = 13381;
+      x = safeZoneX;
+      y = safeZoneY;
+      w = safeZoneW;
+      h = safeZoneH;
+      fade = 1;
+    };
     class ITC_HUD_UI_GRP : RscControlsGroupNoScrollbars {
       idc = 13380;
       x = safeZoneX;

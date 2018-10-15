@@ -303,6 +303,20 @@ class MFD : RscControlsGroup {
         	sizeEx = SCALE * 0.08;
           style = 2;
         };
+        class RscText_1030: RscText
+        {
+        	idc = 1030;
+        	text = "SYS NOT FOUND"; //--- ToDo: Localize;
+        	x = SCALE * 0.2;
+        	y = SCALE * 0.45;
+        	w = SCALE * 0.35;
+        	h = SCALE * 0.08;
+        	colorText[] = {0,0,0,1};
+        	colorBackground[] = {0,1,0,1};
+        	colorShadow[] = {0,0,0,0};
+        	sizeEx = SCALE * 0.08;
+          style = 2;
+        };
         class RscText_1029: RscText
         {
         	idc = 1029;

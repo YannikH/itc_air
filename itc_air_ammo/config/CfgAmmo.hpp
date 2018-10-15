@@ -10,6 +10,7 @@ class cfgAmmo {
       ITC_noseFuze = "";
       ITC_tailFuze = "pd";
       ITC_guidanceOptions[] = {"autolaser"};
+      warheadName = "TandemHEAT";
     };
     class BombCore;
     class Bo_Mk82 : BombCore {
@@ -21,6 +22,8 @@ class cfgAmmo {
       ace_frag_metal = 140000;
       ace_frag_charge = 15000;
       ace_frag_force = 1;
+      hit = 8000;
+      warheadName = "TandemHEAT";
     };
     class MissileCore;
     class MissileBase : MissileCore {
@@ -37,24 +40,11 @@ class cfgAmmo {
         indirectHit = 800;
         ace_frag_metal = 140000;
     };
-    class Rocket_04_HE_F : MissileBase {
-      dragCoef = -0.07;
-    };
-    class itc_ammo_Hydra_M156 : Rocket_04_HE_F {
-        displayName = "M156 WP";
-        indirectHit = 1;
-        indirectHitRange = 1;
-        explosive = 0.1;
-        ITC_firedEvent = "itc_air_ammo_fnc_fired_wp";
-        explosionEffects = "TB_MK13SmokeEffects";
-    };
-    class ITC_ammo_apkws_m151 : Rocket_04_HE_F {
-        displayName = "APKWS M151";
-        ITC_firedEvent = "itc_air_ammo_fnc_apkws";
-    };
 
     class Missile_AGM_02_F : MissileBase {
       dragCoef = 0.82;
+      hit = 8000;
+      warheadName = "TandemHEAT";
     };
 
     class itc_ammo_agm65e : Missile_AGM_02_F {
@@ -91,4 +81,44 @@ class cfgAmmo {
 	    triggerTime = 0.01;
       ACE_caliber = 1;
     };
+
+    class Rocket_04_HE_F : MissileBase {
+      dragCoef = -0.07;
+    };
+    class itc_ammo_Hydra_M156 : Rocket_04_HE_F {
+        displayName = "M156 WP";
+        indirectHit = 1;
+        indirectHitRange = 1;
+        explosive = 0.1;
+        //ITC_firedEvent = "itc_air_ammo_fnc_fired_wp";
+        explosionEffects = "TB_MK13SmokeEffects";
+    };
+    class ITC_ammo_apkws_m151 : Rocket_04_HE_F {
+        displayName = "APKWS M151";
+        ITC_firedEvent = "itc_air_ammo_fnc_apkws";
+    };
+    class itc_ammo_Hydra_M257 : Rocket_04_HE_F {
+        displayName = "M257 ILLUM";
+        indirectHit = 1;
+        indirectHitRange = 1;
+        explosive = 0.1;
+        ITC_firedEvent = "itc_air_ammo_fnc_fired_m257";
+    };
+  	class FlareCore;
+  	class itc_ammo_m257_helper: FlareCore { //ILLUM
+  		model = "\A3\weapons_f\ammo\shell";
+  		effectFlare = "CounterMeasureFlare";
+  		aimAboveTarget[] = {50, 80, 140, 200, 260, 320, 380};
+  		aimAboveDefault = 4;
+  		triggerSpeedCoef = 1;
+  		triggerTime = 0.001;
+  		lightColor[] = {0.95, 0.95, 1, 0.5};
+  		smokeColor[] = {1, 1, 1, 0.5};
+  		brightness = 50;
+  		//intensity = 180000;
+  		//flareSize = 500;
+  		timeToLive = 90;
+  		ace_rearm_caliber = 155;
+  		//explosionTime = 1;
+  	};
 };

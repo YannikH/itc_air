@@ -1,4 +1,4 @@
-(_this select 0) params ["_projectile", "_lastFrameTime", "_targetCoordinates","_laserCode","_impactAngle","_stage","_releaseTime"];
+(_this select 0) params ["_projectile", "_lastFrameTime", "_targetCoordinates","_laserCode","_impactAngle","_stage","_releaseTime","_lastLeadCheck","_lastLaserPos","_leadVect"];
 //player sideChat _stage;
 
 //start updating the lastFrameTime
@@ -23,8 +23,30 @@ if(_laserCode != -1) then {
   if(!isNil{_spot select 0}) then {
     _targetCoordinates = _spot select 0;
     (_this select 0) set [2, _targetCoordinates];
+
+    //LASER LEAD
+    if(isNil {_lastLaserPos} || (_targetCoordinates distance _lastLaserPos) > 5) then {
+      (_this select 0) set [7,time];
+      (_this select 0) set [8,_targetCoordinates];
+      (_this select 0) set [9,[0,0,0]];
+      _leadVect = [0,0,0];
+    } else {
+      if(time > _lastLeadCheck + 0.1) then {
+        (_this select 0) set [7,time];
+        (_this select 0) set [8,_targetCoordinates];
+        private _speed = (vectorMagnitude (velocity _projectile));
+        private _tof = (_targetCoordinates distance _position) / _speed;
+        private _vect = _lastLaserPos vectorFromTo _targetCoordinates;
+        private _targSpeed = (_targetCoordinates distance _lastLaserPos) * (1 / (time - _lastLeadCheck));
+        private _leadVect = (_vect vectorMultiply (_targSpeed * _tof));
+        (_this select 0) set [9,_leadVect];
+        _targetCoordinates = _targetCoordinates vectorAdd _leadVect;
+      };
+    };
   };
 };
+
+_targetCoordinates = _targetCoordinates vectorAdd _leadVect;
 
 //don't guide if there's no target
 if(isNil{_targetCoordinates}) exitWith {};
@@ -33,16 +55,6 @@ private _targetDistance = _targetCoordinates distance _projectile;
 private _velocity = vectorMagnitude velocity _projectile;
 private _tof = _targetDistance / _velocity;
 private _shiftDistance = _previousTargetCoordinates distance _targetCoordinates;
-//if(_shiftDistance < 10 && _shiftDistance > 0) then {
-//  private _shiftSpeed = (1 / _frameTime) * _shiftDistance;
-//  private _shiftVect = (_previousTargetCoordinates vectorFromTo _targetCoordinates);
-//  private _shiftVelocity = (vectorNormalized _shiftVect) vectorMultiply _shiftSpeed;
-//  private _lead = _shiftVelocity vectorMultiply _tof;
-//  _targetCoordinates = _targetCoordinates vectorAdd _lead;
-//};
-//drop ["\a3\data_f\Cl_basic","","Billboard",1,20,ASLtoAGL _targetCoordinates,[0,0,0],1,1.275,1.0,0.0,[1],[[1,0,0,1]],[0],0.0,2.0,"","",""];
-//drop ["\a3\data_f\Cl_basic","","Billboard",1,20,getPos _projectile,[0,0,0],1,1.275,1.0,0.0,[1],[[0,1,0,1]],[0],0.0,2.0,"","",""];
-//private _targetCoordinates = _targetCoordinates vectorAdd [0,0,1];
 
 private _position = getPosASL _projectile;
 (_projectile call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];

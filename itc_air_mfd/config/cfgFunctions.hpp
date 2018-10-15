@@ -26,6 +26,9 @@ class cfgFunctions {
       class setup {
         file = "itc_air_mfd\functions\setup.sqf";
       };
+      class cycle {
+        file = "itc_air_mfd\functions\cycle.sqf";
+      };
       class rescaleControlsGroup {
         file = "itc_air_mfd\functions\util\rescaleControlsGroup.sqf";
       };

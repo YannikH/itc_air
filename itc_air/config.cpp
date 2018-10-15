@@ -36,7 +36,6 @@ class CfgPatches {
 #include "cfgVehicles.hpp"
 
 #include "Dialog.hpp"
-#include "Dialog_rover.hpp"
 #include "config\tgp.hpp"
 
 class CfgFunctions

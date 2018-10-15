@@ -119,7 +119,7 @@ itc_air_dsms_currentWeapon = "";
           ((_plane getVariable "seat" == "gunner") && (gunner _plane == player))
         )
       ) then {
-      if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir" || ITC_AIR_BROADCASTING) then {
+      if(_plane getVariable "SADL_SPI" || _plane getVariable "laser_ir") then {
         if(time + 0.2 > _lastBroadCast) then {
           [_plane, "tgp_dir", _dir] call itc_air_common_fnc_set_var;
           _lastBroadCast = time;
@@ -141,14 +141,6 @@ itc_air_dsms_currentWeapon = "";
 
     if(cameraView == "GUNNER" && currentVisionMode player != _plane getVariable "tgp_mode") then {
         _plane setVariable ["tgp_mode",currentVisionMode player];
-    };
-
-    //run laser spot search
-    if(_plane getVariable "tgp_lsst_mode" == "LSS") then {
-      [_plane] call itc_air_tgp_fnc_laser_spot_search_track;
-    };
-    if(_plane getVariable "tgp_lsst_mode" == "LST") then {
-      if(!((getPilotCameraTarget _plane) # 2 isKindOf "laserTarget")) then {_plane setVariable ["tgp_lsst_mode", "LSS OFF"];};
     };
 
     {

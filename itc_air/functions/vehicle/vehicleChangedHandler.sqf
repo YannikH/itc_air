@@ -8,6 +8,7 @@ params ["_player", "_newVehicle"];
 ITC_AIR_MFD_CAMS = [];
 
 if (isNull _newVehicle) exitWith {ITC_AIR_INPLANE = false};
-if(isClass (configFile >> "CfgVehicles" >> (typeOf _newVehicle) >> "itc_air")) exitWith {
+private _config = [_newVehicle] call itc_air_common_fnc_getConfig;
+if(!isNil {_config}) exitWith {
   [_newVehicle] call itc_air_vehicle_fnc_setup;
 };

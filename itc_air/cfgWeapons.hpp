@@ -8,29 +8,22 @@ class CfgWeapons {
 
     class RocketPods;
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
-        magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
+        magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F"};
         class Burst;
-        reloadTime = 0.01;
-        magazineReloadTime = 0.01;
     };
     class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
         magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
         class Burst : Burst {
           salvo = 1;
-          reloadTime = 0.1;
-          magazineReloadTime = 0.1;
-        }
-    };
-    class itc_weap_ffarlauncher_smoke : Rocket_04_HE_Plane_CAS_01_F {
-        displayName = "Hydra (M156 WP)";
-        magazines[] = {"itc_mag_M156_7", "itc_mag_M156_19"};
-        class EventHandlers
-        {
-            class ITC_EventHandlers
-            {
-                fired = "_this call itc_air_ammo_fnc_fired_wp;";
-            };
         };
+    };
+    class itc_weap_hydra_m257 : ITC_weap_apkws {
+        displayName = "Hydra (M257 ILLUM)";
+        magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M257"};
+    };
+    class itc_weap_hydra_m156 : ITC_weap_apkws {
+        displayName = "Hydra (M156 WP)";
+        magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
     };
 
     class MissileLauncher;

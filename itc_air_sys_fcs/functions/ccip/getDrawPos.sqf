@@ -1,4 +1,3 @@
-if(!isNil{test_fnc_ccipPerFrame2}) exitWith {_this call test_fnc_ccipPerFrame2};
 params ["_plane"];
 _ammoName         = getText  (configFile >> "CfgMagazines" >> (currentMagazine _plane) >> "ammo");
 _initSpeed        = getNumber(configFile >> "CfgMagazines" >> (currentMagazine _plane) >> "initSpeed");

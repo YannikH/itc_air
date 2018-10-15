@@ -1,7 +1,12 @@
 params ["_plane"];
 private ["_icon"];
+
+if((_plane getVariable ["tgp_lsst_mode", ""]) in ["LSS","LST"]) then {
+  _this call itc_air_tgp_fnc_lssSearch;
+};
+
 private _display = uiNameSpace getVariable "ITC_AIR_TGP_UI";
-if(cameraView != "GUNNER") exitWith {
+if(cameraView != "GUNNER" || dialog) exitWith {
   if(!isNil{_display}) then {
     (_display displayCtrl 13379) ctrlShow false;
   };
