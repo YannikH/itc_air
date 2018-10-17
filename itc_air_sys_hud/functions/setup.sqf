@@ -9,9 +9,9 @@ params ["_vehicle"];
 105 cutRsc ["ITC_AIR_HUD", "PLAIN", -1, true];
 
 ITC_AIR_HUD_LIMS = [
-  getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "itc_air" >> "HUD_TL"),
-  getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "itc_air" >> "HUD_TR"),
-  getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "itc_air" >> "HUD_DL")
+  getText (itc_air_seat_config >> "HUD_TL"),
+  getText (itc_air_seat_config >> "HUD_TR"),
+  getText (itc_air_seat_config >> "HUD_DL")
 ];
 
 ITC_AIR_HUD_LIMS = [

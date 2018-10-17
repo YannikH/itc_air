@@ -29,5 +29,3 @@ _configSources pushBack "itc_air";
     itc_air_seat_config = _config;
   };
 }forEach _configSources;
-
-itc_air_seat_config

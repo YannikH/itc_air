@@ -31,21 +31,21 @@ class cfgVehicles {
       class ACE_SelfActions : ACE_SelfActions {};
     };
     class Helicopter : Air {
+      class ACE_Actions : ACE_Actions {
+        class ACE_MainActions;
+      };
       class ACE_SelfActions : ACE_SelfActions {};
     };
     class Helicopter_Base_F : Helicopter {
       class Components;
-    };
-    class Plane_Base_F: Plane {
-      class Components;
       class ACE_Actions : ACE_Actions {
         class ACE_MainActions : ACE_MainActions {
           class ITC_paveway_code {
-            displayName = Set paveways seeker code;
+            displayName = "Set GBU-12 seeker code";
             #define action_setCode(NUM) \
             class setCode_##NUM { \
               displayName = #NUM; \
-              condition = "(""ITC_weap_gbu12"" in weapons _target)"; \
+              condition = "((""ITC_weap_gbu12"" in weapons _target) || ""ITC_weap_gbu12"" in (_target weaponsTurret [-1]))"; \
               statement = [_target, "paveway_laser_code", NUM] call itc_air_common_fnc_set_var; \
               distance = 2; \
             };
@@ -63,10 +63,39 @@ class cfgVehicles {
             #define action_setApkwsCode(NUM) \
             class setCode_##NUM { \
               displayName = #NUM; \
-              condition = "(""ITC_weap_apkws"" in weapons _target)"; \
+              condition = "((""ITC_weap_apkws"" in weapons _target) || ""ITC_weap_apkws"" in (_target weaponsTurret [-1]))"; \
               statement = [_target, "apkws_laser_code", NUM] call itc_air_common_fnc_set_var; \
               distance = 2; \
             };
+            action_setApkwsCode(1111);
+            action_setApkwsCode(1112);
+            action_setApkwsCode(1113);
+            action_setApkwsCode(1114);
+            action_setApkwsCode(1115);
+            action_setApkwsCode(1116);
+            action_setApkwsCode(1117);
+            action_setApkwsCode(1118);
+          };
+        };
+      };
+    };
+    class Plane_Base_F: Plane {
+      class Components;
+      class ACE_Actions : ACE_Actions {
+        class ACE_MainActions : ACE_MainActions {
+          class ITC_paveway_code {
+            displayName = "Set GBU-12 seeker code";
+            action_setCode(1111);
+            action_setCode(1112);
+            action_setCode(1113);
+            action_setCode(1114);
+            action_setCode(1115);
+            action_setCode(1116);
+            action_setCode(1117);
+            action_setCode(1118);
+          };
+          class ITC_apkws_code {
+            displayName = Set apkws seeker code;
             action_setApkwsCode(1111);
             action_setApkwsCode(1112);
             action_setApkwsCode(1113);

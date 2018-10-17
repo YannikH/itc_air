@@ -1,2 +1,2 @@
-params ["_vehicle"];
-[_vehicle, 0] call itc_air_common_fnc_get_turret_target;
+params ["_vehicle","_turret"];
+[_vehicle, _turret] call itc_air_common_fnc_get_turret_target;

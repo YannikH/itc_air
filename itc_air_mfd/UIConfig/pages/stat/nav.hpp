@@ -46,5 +46,62 @@ class MFDStatusNav : ITC_AIR_PAGE {
     	w = SCALE * 0.25;
     	h = SCALE * 0.04;
     };
+
+
+    class TCN_HDGDIST: ITC_AIR_MfdText
+    {
+    	idc = 211002;
+    	text = "292 / 9.6"; //--- ToDo: Localize;
+    	x = SCALE * 0.125;
+    	y = SCALE * 0.18;
+    	w = SCALE * 0.15;
+    	h = SCALE * 0.04;
+    };
+    class TCN_TOF: ITC_AIR_MfdText
+    {
+    	idc = 211003;
+    	text = "00:00"; //--- ToDo: Localize;
+    	x = SCALE * 0.125;
+    	y = SCALE * 0.22;
+    	w = SCALE * 0.075;
+    	h = SCALE * 0.04;
+    };
+    class TCN_NME: ITC_AIR_MfdText
+    {
+    	idc = 211004;
+    	text = "ATR"; //--- ToDo: Localize;
+    	x = SCALE * 0.2;
+    	y = SCALE * 0.22;
+    	w = SCALE * 0.05;
+    	h = SCALE * 0.04;
+    };
+
+    class WPT_HDGDIST: ITC_AIR_MfdTextRight
+    {
+    	idc = 211005;
+    	text = "292 / 9.6"; //--- ToDo: Localize;
+    	x = SCALE * 0.475;
+    	y = SCALE * 0.18;
+    	w = SCALE * 0.15;
+    	h = SCALE * 0.04;
+    };
+    class WPT_TOF: ITC_AIR_MfdTextRight
+    {
+    	idc = 211006;
+    	text = "00:00"; //--- ToDo: Localize;
+    	x = SCALE * 0.5625;
+    	y = SCALE * 0.22;
+    	w = SCALE * 0.0625;
+    	h = SCALE * 0.04;
+    };
+    class WPT_NME: ITC_AIR_MfdTextRight
+    {
+    	idc = 211007;
+    	text = "WP1"; //--- ToDo: Localize;
+    	x = SCALE * 0.5;
+    	y = SCALE * 0.22;
+    	w = SCALE * 0.05;
+    	h = SCALE * 0.04;
+    };
   };
 };

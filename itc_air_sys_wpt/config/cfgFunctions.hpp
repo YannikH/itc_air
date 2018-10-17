@@ -50,6 +50,9 @@ class cfgFunctions {
       class import {
         file = "itc_air_sys_wpt\functions\import.sqf";
       };
+      class drawTACAN {
+        file = "itc_air_sys_wpt\functions\drawTACAN.sqf";
+      };
     };
   };
 };

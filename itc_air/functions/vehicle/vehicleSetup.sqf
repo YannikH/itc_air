@@ -5,13 +5,13 @@ if(!isNil {_playerTurret}) then {
   _coPilotTurret = ([vehicle player] call ace_common_fnc_getTurretCopilot) select 0;
   player setVariable ["isCoPilot", (_playerTurret == _coPilotTurret)];
 };
-if(player != driver _vehicle && player != gunner _vehicle && !(player getVariable "isCoPilot")) exitWith {
-  _vehicle setVariable ["mfd_l", false];
-  _vehicle setVariable ["mfd_r", false];
-  _vehicle setVariable ["hmd", false];
-  _vehicle setVariable ["tgp", false];
-  _vehicle setVariable ["rover", false];
-};
+//if(player != driver _vehicle && player != gunner _vehicle && !(player getVariable "isCoPilot")) exitWith {
+//  _vehicle setVariable ["mfd_l", false];
+//  _vehicle setVariable ["mfd_r", false];
+//  _vehicle setVariable ["hmd", false];
+//  _vehicle setVariable ["tgp", false];
+//  _vehicle setVariable ["rover", false];
+//};
 /*
 if(isNIl{SADL}) then {
   [missionNameSpace, "SADL", [_vehicle]] call itc_air_common_fnc_set_var;
@@ -24,7 +24,7 @@ if(isNIl{SADL}) then {
 
 
 _vehicle setVariable ["itc_air_options", []];
-private _systems = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "systems") call BIS_fnc_getCfgData;
+private _systems = (itc_air_seat_config >> "systems") call BIS_fnc_getCfgData;
 _vehicle setVariable ["itc_air_systems",_systems];
 {
   [_vehicle, _x] call itc_air_common_fnc_systemStart;
@@ -32,22 +32,22 @@ _vehicle setVariable ["itc_air_systems",_systems];
 private _activeSystems = _vehicle getVariable ["itc_air_systems_active",[]];
 _vehicle setVariable ["itc_air_systems_available",_activeSystems];
 
-_capableHMD = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "hmd");
-_capableTGP = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "tgp");
-_hasWSO = getNumber (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "wso");
-_capableMFD_L = (isClass (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left") || "MFD_L" in _systems);
-_capableMFD_R = (isClass (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right") || "MFD_R" in _systems);
+_capableHMD = getNumber (itc_air_seat_config >> "hmd");
+_capableTGP = getNumber (itc_air_seat_config >> "tgp");
+_hasWSO = getNumber (itc_air_seat_config >> "wso");
+_capableMFD_L = (isClass (itc_air_seat_config >> "mfd_left") || "MFD_L" in _systems);
+_capableMFD_R = (isClass (itc_air_seat_config >> "mfd_right") || "MFD_R" in _systems);
 /*
 if(_capableMFD_L) then {
-  _vehicle setVariable["mfd_l_pages",(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left" >> "pages")  call BIS_fnc_getCfgData];
-  _vehicle setVariable["mfd_l_quick",["SWAP"] + ((configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_left" >> "shortcuts")  call BIS_fnc_getCfgData) + ["LST"]];
+  _vehicle setVariable["mfd_l_pages",(itc_air_seat_config >> "mfd_left" >> "pages")  call BIS_fnc_getCfgData];
+  _vehicle setVariable["mfd_l_quick",["SWAP"] + ((itc_air_seat_config >> "mfd_left" >> "shortcuts")  call BIS_fnc_getCfgData) + ["LST"]];
 };
 if(_capableMFD_R) then {
-  _vehicle setVariable["mfd_r_pages",(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right" >> "pages")  call BIS_fnc_getCfgData];
-  _vehicle setVariable["mfd_r_quick",["SWAP"] + ((configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "mfd_right" >> "shortcuts")  call BIS_fnc_getCfgData) + ["LST"]];
+  _vehicle setVariable["mfd_r_pages",(itc_air_seat_config >> "mfd_right" >> "pages")  call BIS_fnc_getCfgData];
+  _vehicle setVariable["mfd_r_quick",["SWAP"] + ((itc_air_seat_config >> "mfd_right" >> "shortcuts")  call BIS_fnc_getCfgData) + ["LST"]];
 };
 */
-_seat = (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "itc_air" >> "targeting_user")  call BIS_fnc_getCfgData;
+_seat = (itc_air_seat_config >> "targeting_user")  call BIS_fnc_getCfgData;
 
 
 _vehicle setVariable ["hmd", (_capableHMD == 1)];
@@ -97,6 +97,8 @@ itc_air_dsms_currentWeapon = "";
         {
           [(vehicle player), _x] call itc_air_common_fnc_systemStop;
         }forEach _systems;
+        _plane setVariable ["itc_air_options",[]];
+        _plane setVariable ["itc_air_systems",[]];
     };
     //get basic info used for the HMD/TGP
     itc_air_paused = (time == _lastFrame);

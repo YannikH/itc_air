@@ -12,18 +12,29 @@ _northDir = 360 - (getDir _vehicle);
 (_display displayCtrl 211000) ctrlSetText format["HDG %1", round (getDir _vehicle)];
 (_display displayCtrl 211001) ctrlSetText format["%1 KTS", round ((speed _vehicle) * 0.539957)];
 
+
 if(itc_air_wpt_name != "N/A") then {
   _dir = _vehicle getRelDir itc_air_wpt_pos;
   (_display displayCtrl 211202) ctrlSetAngle [_dir, 0.5, 0.5];
 
-  (_display displayCtrl R1) ctrlSetText format["%1km",round ((_vehicle distance itc_air_wpt_pos) / 1000)];
-  (_display displayCtrl R12) ctrlSetText itc_air_wpt_name;
-  (_display displayCtrl R2) ctrlSetText itc_air_wpt_tof;
+  private _dist = round ((_vehicle distance itc_air_wpt_pos) / 1000);
+  private _cts = round (_vehicle getDir itc_air_wpt_pos);
 
-  (_display displayCtrl R23) ctrlSetText "CTS";
-  (_display displayCtrl R3) ctrlSetText str round (_vehicle getDir itc_air_wpt_pos);
+  (_display displayCtrl 211005) ctrlSetText format["%1 / %2km",str _cts, str _dist];
+  (_display displayCtrl 211006) ctrlSetText itc_air_wpt_tof;
+  (_display displayCtrl 211007) ctrlSetText itc_air_wpt_name;
 };
 
+if(itc_air_wpt_tcn_on) then {
+  _this call test_fnc_tcn;
+  [_display] call itc_air_wpt_fnc_drawTACAN;
+} else {
+  (_display displayCtrl 211002) ctrlSetText "";
+  (_display displayCtrl 211003) ctrlSetText "";
+  (_display displayCtrl 211004) ctrlSetText "";
+};
+
+/*
 if (ITC_AP_isEnabled && "AP-MAN" in ((vehicle player) getVariable "itc_air_systems")) then {
   (_display displayCtrl R4) ctrlSetText format["%1m", round ITC_AP_TargetAlt];
   if (ITC_AP_mode isEqualTo 1) then {
@@ -33,6 +44,7 @@ if (ITC_AP_isEnabled && "AP-MAN" in ((vehicle player) getVariable "itc_air_syste
     (_display displayCtrl R45) ctrlSetText "AP ALT";
   };
 };
+*/
 
 (_display displayCtrl L1) ctrlSetText format["%1%2",round ((fuel _vehicle) * 100),"%"];
 (_display displayCtrl L12) ctrlSetText "FUEL";

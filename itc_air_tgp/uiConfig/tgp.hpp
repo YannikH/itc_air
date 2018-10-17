@@ -154,6 +154,24 @@ class RscTitles {
         	colorBackground[] = {0,0,0,1};
           style = 2;
         };
+        class TGPRscPicture_1230: RscPicture
+        {
+          idc = 1230;
+          text = "itc_air_tgp\data\n_txt.paa";
+        	x = 0.659844 * safezoneW;
+        	y = 0.159 * safezoneH;
+        	w = 0.075;
+        	h = 0.1;
+        };
+        class TGPRscPicture_1231: RscPicture
+        {
+          idc = 1231;
+          text = "itc_air_tgp\data\n_arr.paa";
+        	x = 0.659844 * safezoneW;
+        	y = 0.159 * safezoneH;
+        	w = 0.075;
+        	h = 0.1;
+        };
         /*
         class TGP_VIS: TGP_POS
         {

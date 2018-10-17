@@ -25,7 +25,7 @@ ITC_AIR_MFD_CAMS = [];
 }, [62, [false, false, false]]] call CBA_fnc_addKeybind;
 */
 ["ITC Air","itc_air_mfd_open_L", "Open MFD L", {
-    if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} && (vehicle player) getVariable "mfd_l") then {
+    if(isNil{uiNameSpace getVariable "ITC_AIR_MFD_L"} && ("MFD_L" in ((vehicle player) getVariable["itc_air_systems",[]]))) then {
       if(vehicle player getVariable "mfdType" == "touch") then {
         101 cutRsc ["ITC_AIR_MFD_STL_L1", "PLAIN", -1, true];
         //103 cutRsc ["ITC_AIR_MFD_STL_L2", "PLAIN", -1, true];
@@ -41,7 +41,7 @@ ITC_AIR_MFD_CAMS = [];
 }, "", [203, [true, false, false]]] call CBA_fnc_addKeybind;
 
 ["ITC Air","itc_air_mfd_open_R", "Open MFD R", {
-    if((isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"}) && (vehicle player) getVariable "mfd_r") then {
+    if((isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"}) && ("MFD_R" in ((vehicle player) getVariable["itc_air_systems",[]]))) then {
       if(vehicle player getVariable "mfdType" == "touch") then {
         102 cutRsc ["ITC_AIR_MFD_STL_R1", "PLAIN", -1, true];
         //104 cutRsc ["ITC_AIR_MFD_STL_R2", "PLAIN", -1, true];

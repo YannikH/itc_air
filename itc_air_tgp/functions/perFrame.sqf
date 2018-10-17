@@ -41,3 +41,7 @@ _x = (safeZoneW / 2) + (sin(_yawPod) * _range * -1);
 _y = (safeZoneH / 2) + (cos(_yawPod) * _range * -1);
 (_display displayCtrl 11200) ctrlSetPosition [_x, _y];
 (_display displayCtrl 11200) ctrlCommit 0;
+
+
+private _targ = (_plane getVariable "tgp_dir") # 1;
+(_display displayCtrl 1231) ctrlSetAngle [(_plane getDir _targ) * -1, 0.5, 0.5];
