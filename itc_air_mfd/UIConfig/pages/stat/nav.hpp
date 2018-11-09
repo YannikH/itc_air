@@ -28,6 +28,24 @@ class MFDStatusNav : ITC_AIR_PAGE {
     	w = SCALE * 0.495;
     	h = SCALE * 0.66;
     };
+    class Rsc21Picture_1204: RscPicture
+    {
+    	idc = 211204;
+    	text = "itc_air_mfd\data\ui\ehsd_fwd.paa";
+    	x = SCALE * 0.125;
+    	y = SCALE * 0.2;
+    	w = SCALE * 0.495;
+    	h = SCALE * 0.66;
+    };
+    class Rsc21Picture_1205: RscPicture
+    {
+    	idc = 211205;
+    	text = "itc_air_mfd\data\ui\ehsd_hdgbug.paa";
+    	x = SCALE * 0.125;
+    	y = SCALE * 0.2;
+    	w = SCALE * 0.495;
+    	h = SCALE * 0.66;
+    };
     class Rsc21Text_1000: ITC_AIR_MfdTextRight
     {
     	idc = 211000;

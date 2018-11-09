@@ -22,4 +22,18 @@ _vehicle = vehicle player;
     (_display displayCtrl (1115 + _forEachIndex)) ctrlSetText (_colText # _forEachIndex);
   }forEach _btnText;
   (_display displayCtrl 1000) ctrlSetText itc_air_ufc_input;
+
+  switch(ITC_AIR_UFC_CTXT_PAGE) do {
+    case "STATNAV":{
+      ITC_AIR_UFC_CTXT_COLUMNS_TXT set [0,str itc_air_wpt_tacanCSEL];
+      ITC_AIR_UFC_CTXT_COLUMNS_TXT set [4,str itc_air_wpt_tacanCDE];
+      if ("AP-MAN" in ((vehicle player) getVariable "itc_air_systems")) then {
+        ITC_AIR_UFC_CTXT_COLUMNS_TXT set [5,str round ITC_AP_TargetAlt];
+        if (ITC_AP_mode isEqualTo 1) then {
+          ITC_AIR_UFC_CTXT_COLUMNS_TXT set [1,str round ITC_AP_TargetHdg];
+        };
+      };
+    };
+  };
+
 }, 0.1, [_display, _vehicle]] call CBA_fnc_addPerFrameHandler;

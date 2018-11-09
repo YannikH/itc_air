@@ -39,7 +39,9 @@ ITC_AIR_UFC_FXD1_COLUMNS_BTN set [5,"STEER"];
 ITC_AIR_UFC_FXD1_COLUMNS_TXT set [5,"NEXT"];
 ITC_AIR_UFC_FXD1_COLUMNS_FNC set [5,itc_air_wpt_fnc_next];
 
+itc_air_wpt_tacanCSEL = 000;
+itc_air_wpt_tacanCDE = 000;
+
 itc_air_wpt_tcn_on = false;
 itc_air_wpt_tcn_pos = [0,0,0];
-itc_air_wpt_tcn_dir = 0;
 itc_air_wpt_tcn_id = "FRE";

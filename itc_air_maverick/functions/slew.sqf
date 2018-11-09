@@ -22,7 +22,7 @@ private _dirVect = [1, _newDir # 0, _newDir # 1] call CBA_fnc_polar2vect;
 private _ang = acos (_dirVect vectorDotProduct _planeDir);
 
 
-if(_ang < 15) then {
+if(_ang < 30) then {
   if(ITC_AIR_MAVERICK_GSTAB) then {
     private _intersect = [(getPosASL vehicle player), _newDir # 0, _newDir # 1] call itc_air_common_fnc_intersectAtPolar;
     ITC_AIR_MAVERICK_TRACK = ASLtoAGL _intersect;

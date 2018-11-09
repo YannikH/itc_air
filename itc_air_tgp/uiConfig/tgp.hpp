@@ -32,6 +32,24 @@ class RscTitles {
       h = safeZoneH;
       onLoad = "(_this # 0) ctrlShow false";
       class Controls {
+        class IGUITGPBack_2200: IGUIBack
+        {
+          idc = 2200;
+          x = 0.329844 * safezoneW;
+          y = 0.776 * safezoneH;
+          w = 0.075;
+          h = 0.1;
+          colorBackground[] = {0,0,0,1};
+        };
+        class IGUITGPBack_2201: IGUIBack
+        {
+        	idc = 2201;
+        	x = 0;
+        	y = 0;
+        	w = safeZoneW;
+        	h = safeZoneH;
+          colorBackground[] = {0,0,0,1};
+        };
         class RscTGPPicture_1200: RscPicture
         {
         	idc = 1200;
@@ -40,15 +58,6 @@ class RscTitles {
         	y = 0;
         	w = safeZoneW;
         	h = safeZoneH;
-        };
-        class IGUITGPBack_2200: IGUIBack
-        {
-        	idc = 2200;
-        	x = 0.329844 * safezoneW;
-        	y = 0.776 * safezoneH;
-        	w = 0.075;
-        	h = 0.1;
-          colorBackground[] = {0,0,0,1};
         };
         class TGPRscPicture_1201: RscPicture
         {

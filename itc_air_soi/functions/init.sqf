@@ -54,8 +54,8 @@ private _joystickKeys = [
     ] call CBA_fnc_addKeybind;
 }forEach _joystickKeys;
 
-["ITC Air","itc_air_soi_action", "SOI ACTION",
-{call itc_air_mfd_fnc_soi_action;false},
-{call itc_air_soi_fnc_up;false}, [208, [false, true, false]],true] call CBA_fnc_addKeybind;
+//["ITC Air","itc_air_soi_action", "SOI ACTION",
+//{call itc_air_mfd_fnc_soi_action;false},
+//{call itc_air_soi_fnc_up;false}, [208, [false, true, false]],true] call CBA_fnc_addKeybind;
 
 itc_air_soi_down_time = 0;

@@ -31,13 +31,13 @@ ITC_AIR_MAVERICK_CAM = _cam;
 
    private _targetVector = [5000,ITC_AIR_MAVERICK_DIR # 0, ITC_AIR_MAVERICK_DIR # 1] call CBA_fnc_polar2vect;
    private _cameraTarget = _plane modelToWorld _targetVector;
-   if(ITC_AIR_MAVERICK_GSTAB && (_ang < 15)) then {
+   if(ITC_AIR_MAVERICK_GSTAB && (_ang < 30)) then {
      _cameraTarget = ITC_AIR_MAVERICK_TRACK;
    };
-   if((!isNull (ITC_AIR_MAVERICK_LOCK # 0)) && (_ang < 15)) then {
+   if((!isNull (ITC_AIR_MAVERICK_LOCK # 0)) && (_ang < 30)) then {
      _cameraTarget = (ITC_AIR_MAVERICK_LOCK # 0) modelToWorld (ITC_AIR_MAVERICK_LOCK # 1);
    };
-   if(_ang > 15) then {
+   if(_ang > 30) then {
      ITC_AIR_MAVERICK_GSTAB = false;
    };
    ITC_AIR_MAVERICK_CAM camSetTarget _cameraTarget;

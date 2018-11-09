@@ -13,8 +13,8 @@ _map drawIcon ["itc_air_sys_wpt\data\UI\TACAN.paa", [1,1,1,1], _relPos, 20, 20, 
 
 private _tcnDirBase = if(abs _tcnDir > 90) then [{_tcnDir - 180},{_tcnDir}];
 
-private _lineBeg = _relPos getPos [-1*(_radius * 1.5), itc_air_wpt_tcn_dir - (getDir _vehicle)];
-private _lineEnd = _relPos getPos [(_radius * 1.5), itc_air_wpt_tcn_dir - (getDir _vehicle)];
+private _lineBeg = _relPos getPos [-1*(_radius * 1.5), itc_air_wpt_tacanCSEL - (getDir _vehicle)];
+private _lineEnd = _relPos getPos [(_radius * 1.5), itc_air_wpt_tacanCSEL - (getDir _vehicle)];
 _map drawArrow [_lineBeg, _lineEnd,[0,1,0,1]];
 
 private _iconPos = [0,0,0] getPos [_radius * 0.8, _tcnDir];

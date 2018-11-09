@@ -1,5 +1,12 @@
 params ["_plane"];
 private _display = uiNameSpace getVariable "ITC_AIR_TGP_UI";
+if(!itc_air_tgp_enabled) exitWith {
+  (_display displayCtrl 2201) ctrlShow true;
+  _plane setPilotCameraTarget objNull;
+  itc_air_tgp_capable = false;
+};
+
+(_display displayCtrl 2201) ctrlShow false;
 
 if((_plane getVariable "tgp_dir") # 0) then {
   private _targ = (_plane getVariable "tgp_dir") # 1;

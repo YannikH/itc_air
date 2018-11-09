@@ -30,10 +30,10 @@ ITC_AIR_MAVERICK_CAMSIDE = ITC_AIR_MAVERICK_CAMSIDE * -1;
   private _angleX = asin (_vectorModelSpace # 0);
   private _angleY = asin (_vectorModelSpace # 2);
   _turnRate = 4 * _frameTime;
-  if(_angleX < 15) then {
+  if(_angleX < 30) then {
     _projectile setDir (getDir _projectile) + (_turnRate / 5 * _angleX);
   };
-  if(_angleY < 15) then {
+  if(_angleY < 30) then {
     [_projectile, _pitch + (_turnRate / 5 * _angleY), 0] call BIS_fnc_setPitchBank;
   };
 }, 0, [_projectile, time, _lock # 0, _lock # 1]] call CBA_fnc_addPerFrameHandler;

@@ -14,6 +14,9 @@ class cfgFunctions {
       class setup {
           file = "itc_air_autopilot\functions\autopilotSetup.sqf";
       };
+      class ufcInput {
+          file = "itc_air_autopilot\functions\ufcInput.sqf";
+      };
     };
   };
 };

@@ -10,9 +10,20 @@ if(cameraView != "GUNNER" || dialog) exitWith {
   if(!isNil{_display}) then {
     (_display displayCtrl 13379) ctrlShow false;
   };
+  if(itc_air_tgp_prevSOI != "") then {
+    itc_air_soi = itc_air_tgp_prevSOI;
+    itc_air_tgp_prevSOI = "";
+  };
 };
 
 (_display displayCtrl 13379) ctrlShow true;
+if(!itc_air_tgp_enabled) exitWith {};
+
+(_display displayCtrl 2201) ctrlShow false;
+if(itc_air_tgp_prevSOI == "") then {
+  itc_air_tgp_prevSOI = itc_air_soi;
+  itc_air_soi = "tgp";
+};
 
 (_plane call BIS_fnc_getPitchBank) params ["_pitch","_bank"];
 (_display displayCtrl 1202) ctrlSetAngle [(-1 * _bank) + (-1 * _pitch), 0.5, 0.5];

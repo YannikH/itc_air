@@ -26,6 +26,9 @@ ITC_AIR_UFC_FXD2_COLUMNS_BTN = ["","","","","","","",""];
 ITC_AIR_UFC_FXD2_COLUMNS_TXT = ["","","","","","","",""];
 ITC_AIR_UFC_FXD2_COLUMNS_FNC = [{},{},{},{},{},{},{},{}];
 
+ITC_AIR_UFC_CTXT_PAGE = "";
 ITC_AIR_UFC_CTXT_COLUMNS_BTN = ["","","","","","","",""];
 ITC_AIR_UFC_CTXT_COLUMNS_TXT = ["","","","","","","",""];
 ITC_AIR_UFC_CTXT_COLUMNS_FNC = [{},{},{},{},{},{},{},{}];
+
+itc_air_ufc_input = "";

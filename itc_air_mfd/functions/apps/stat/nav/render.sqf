@@ -45,7 +45,22 @@ if (ITC_AP_isEnabled && "AP-MAN" in ((vehicle player) getVariable "itc_air_syste
   };
 };
 */
+if (ITC_AP_isEnabled && "AP-MAN" in ((vehicle player) getVariable "itc_air_systems") && {ITC_AP_mode isEqualTo 1}) then {
+  (_display displayCtrl 211205) ctrlSetAngle [ITC_AP_TargetHdg - (getDir _vehicle), 0.5, 0.5];
+  (_display displayCtrl 211205) ctrlShow true;
+} else {
+  (_display displayCtrl 211205) ctrlShow false;
+};
 
-(_display displayCtrl L1) ctrlSetText format["%1%2",round ((fuel _vehicle) * 100),"%"];
-(_display displayCtrl L12) ctrlSetText "FUEL";
-(_display displayCtrl L2) ctrlSetText format["%1 min",_vehicle getVariable "playtime"];
+
+(_display displayCtrl R4) ctrlSetText format["%1%2",round ((fuel _vehicle) * 100),"%"];
+(_display displayCtrl R5) ctrlSetText format["%1 min",_vehicle getVariable "playtime"];
+
+/*
+if(ITC_AIR_UFC_CTXT_PAGE == "STATNAV") then {
+  ITC_AIR_UFC_CTXT_COLUMNS_TXT set [5,str (round ITC_AP_TargetAlt)];
+  ITC_AIR_UFC_CTXT_COLUMNS_TXT set [1,str (round ITC_AP_TargetHdg)];
+  ITC_AIR_UFC_CTXT_COLUMNS_TXT set [0, str itc_air_wpt_tacanCSEL];
+  ITC_AIR_UFC_CTXT_COLUMNS_TXT set [6, str itc_air_wpt_tacanCDE];
+};
+*/

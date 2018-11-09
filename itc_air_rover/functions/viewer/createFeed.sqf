@@ -1,4 +1,4 @@
-params ["_frequency",["_pip",false],["_feedName",""]];
+params ["_frequency",["_pip",false],["_feedName",""],["_feedBool",true]];
 private _source = [_frequency] call itc_air_rover_fnc_getRoverSource;
 private _turret = _source getVariable ["itc_air_rover_turret",-1];
 itc_air_rover_source = _source;

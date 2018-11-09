@@ -1,6 +1,10 @@
 class cfgFunctions {
   class itc_air_wpt {
     class functions {
+      class preInit {
+        preInit = 1;
+        file = "itc_air_sys_wpt\functions\preInit.sqf";
+      };
       class init {
         postInit = 1;
         file = "itc_air_sys_wpt\functions\init.sqf";
@@ -52,6 +56,12 @@ class cfgFunctions {
       };
       class drawTACAN {
         file = "itc_air_sys_wpt\functions\drawTACAN.sqf";
+      };
+      class tacanSetup {
+        file = "itc_air_sys_wpt\functions\tacanSetup.sqf";
+      };
+      class tacanStart {
+        file = "itc_air_sys_wpt\functions\tacanStart.sqf";
       };
     };
   };

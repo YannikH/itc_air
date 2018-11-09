@@ -51,6 +51,7 @@ ITC_AP_mode = _mode;
 ITC_AP_TargetAlt = getPosASL _plane select 2;
 ITC_AP_TargetHdg = getDir _plane;
 
+
 //hint format ["va %1, bank %2, hdg %3", _targetVelocityAngle, _targetBank, ITC_AP_TargetHdg];
 
 //these variables are global because we can't easily initialize local ones in pfh
