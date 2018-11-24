@@ -108,6 +108,7 @@ class cfgVehicles {
         };
       };
     };
+    class Plane_CAS_01_base_F : Plane_Base_F {};
     class Plane_Fighter_04_Base_F : Plane_Base_F {
         class Components : Components {
             class SensorsManagerComponent;
@@ -269,7 +270,7 @@ class cfgVehicles {
         };
     };
 
-    class Plane_Fighter_03_base_F;
+    class Plane_Fighter_03_base_F: Plane_Base_F {};
     class Plane_Fighter_03_dynamicLoadout_base_F : Plane_Fighter_03_base_F {
         class Components;
     };
@@ -362,4 +363,6 @@ class cfgVehicles {
     class B_Heli_Transport_01_F: Heli_Transport_01_base_F {
       class itc_air : itc_air_default_heli_uh {};
     };
+
+    #include "config_FIR.hpp"
 };
