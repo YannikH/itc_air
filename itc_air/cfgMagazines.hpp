@@ -80,7 +80,6 @@ class cfgMagazines {
     hp_rocket("APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
 
     hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82,227)
-    hp_ser_der_ter("GBU-12","ITC_weap_gbu12",ITC_ammo_gbu12,227)
     hp_ser_der_ter("BL-778","BombCluster_03_F",BombCluster_03_Ammo_F,227)
     hp_ser_der_ter("CBU-100","BombCluster_01_F",BombCluster_01_Ammo_F,227)
 

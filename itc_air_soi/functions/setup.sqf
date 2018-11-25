@@ -1,2 +1,1 @@
-ITC_AIR_SPI = [0,0,0];
-ITC_AIR_SPI_GET = {[0,0,0]};
+itc_air_spi = [0,0,0];

@@ -6,7 +6,7 @@ switch(_btn) do {
     ITC_AIR_MAVERICK_CAM camSetFov 0.001;
   };
   case "R2": {
-    ITC_AIR_MAVERICK_CAM camSetFov 0.1;
+    ITC_AIR_MAVERICK_CAM camSetFov 0.05;
   };
   case "R3": {
     ITC_AIR_MAVERICK_SLEWSPD = if(ITC_AIR_MAVERICK_SLEWSPD < 2) then [{5},{ITC_AIR_MAVERICK_SLEWSPD - 2}];

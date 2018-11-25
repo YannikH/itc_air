@@ -28,9 +28,11 @@ switch (_key) do {
     switch (_dir) do {
       case "UP": {
         ITC_AIR_MAVERICK_CAM camSetFov 0.001;
+        js_jc_fa18_mfd_mav_wfov = false;
       };
       case "DOWN": {
         ITC_AIR_MAVERICK_CAM camSetFov 0.1;
+        js_jc_fa18_mfd_mav_wfov = true;
       };
       case "LEFT": {
         ITC_AIR_MAVERICK_SLEWSPD = if(ITC_AIR_MAVERICK_SLEWSPD < 2) then [{5},{ITC_AIR_MAVERICK_SLEWSPD - 2}];

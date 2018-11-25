@@ -1,6 +1,9 @@
-params ["_plane"];
+params ["_plane", "_frameTime"];
 private _interval = if(itc_air_fcs_releaseKeyDown && itc_air_fcs_ccrpOn) then [{5},{10}];
-if(itc_air_fcs_ccip_frame < _interval) exitWith {itc_air_fcs_ccip_frame = itc_air_fcs_ccip_frame + 1;};
+if(itc_air_fcs_ccip_frame < _interval) exitWith {
+  itc_air_fcs_ccip_impactPos = itc_air_fcs_ccip_impactPos vectorAdd ((velocity _plane) vectorMultiply _frameTime);
+  itc_air_fcs_ccip_frame = itc_air_fcs_ccip_frame + 1;
+};
 itc_air_fcs_ccip_frame = 0;
 
 itc_air_fcs_ccip_enabled = true;

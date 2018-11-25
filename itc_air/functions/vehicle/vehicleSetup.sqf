@@ -3,7 +3,9 @@ player setVariable ["isCoPilot", false];
 _playerTurret = ([player] call ace_common_fnc_getTurretIndex) select 0;
 if(!isNil {_playerTurret}) then {
   _coPilotTurret = ([vehicle player] call ace_common_fnc_getTurretCopilot) select 0;
-  player setVariable ["isCoPilot", (_playerTurret == _coPilotTurret)];
+  if(!(isNil{_coPilotTurret})) then {
+    player setVariable ["isCoPilot", (_playerTurret == _coPilotTurret)];
+  };
 };
 //if(player != driver _vehicle && player != gunner _vehicle && !(player getVariable "isCoPilot")) exitWith {
 //  _vehicle setVariable ["mfd_l", false];
@@ -91,7 +93,7 @@ itc_air_paused = false;
 itc_air_dsms_currentWeapon = "";
 [{
     _this select 0 params ["_plane", "_lastFrame","_lastBroadCast","_systems"];
-    if(!((vehicle player) isKindOf "Air") || !alive _plane) exitWith {
+    if(!((vehicle player) isKindOf "Air") || !alive _plane || !alive (vehicle player) || !alive player) exitWith {
         //[missionNameSpace, "SADL", SADL - [_plane]] call itc_air_common_fnc_set_var;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
         {
@@ -101,9 +103,10 @@ itc_air_dsms_currentWeapon = "";
         _plane setVariable ["itc_air_systems",[]];
     };
     //get basic info used for the HMD/TGP
-    itc_air_paused = (time == _lastFrame);
-    if(time == _lastFrame) exitWith {};
-    _this select 0 set [1, time];
+    itc_air_paused = (cba_missionTime == _lastFrame);
+    if(cba_missionTime == _lastFrame) exitWith {};
+    _this select 0 set [1, cba_missionTime];
+    private _frameTime = cba_missionTime - _lastFrame;
     _inTGP = (cameraView == "GUNNER");
 
     if(currentWeapon (vehicle player) != itc_air_dsms_currentWeapon) then {
@@ -148,7 +151,7 @@ itc_air_dsms_currentWeapon = "";
     {
       private _funcName = format["itc_air_%1_fnc_perFrame",toLower _x];
       private _func = (missionNamespace getVariable _funcName);
-      [_plane] call _func;
+      [_plane, _frameTime] call _func;
     }forEach (_plane getVariable "itc_air_systems_pfh");
 }, 0, [_vehicle, 0,0, _activeSystems]] call CBA_fnc_addPerFrameHandler;
 

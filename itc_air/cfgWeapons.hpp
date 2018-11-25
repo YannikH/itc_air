@@ -10,29 +10,48 @@ class CfgWeapons {
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
         magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F"};
         reloadTime=1;
-        class Burst;
+    		class Burst: RocketPods
+    		{
+    			displayName = "Shrieker";
+    			textureType = "fullAuto";
+    			burst = 1;
+    			autoFire = 0;
+    			soundContinuous = 0;
+    			lockingTargetSound[] = {"A3\Sounds_F\weapons\Rockets\locked_1",0.562341,1};
+    			lockedTargetSound[] = {"A3\Sounds_F\weapons\Rockets\locked_3",0.562341,1.5};
+    			sounds[] = {"StandardSound"};
+    			class StandardSound
+    			{
+    				begin1[] = {"A3\Sounds_F\weapons\Rockets\missile_1",1,1,2000};
+    				soundBegin[] = {"begin1",1};
+    			};
+    			salvo = 2;
+    			reloadTime = 0.2;
+    			dispersion = 0.05;
+    			aiRateOfFire = 1;
+    			aiRateOfFireDistance = 10;
+    			minRange = 0;
+    			minRangeProbab = 0.01;
+    			midRange = 1;
+    			midRangeProbab = 0.01;
+    			maxRange = 2;
+    			maxRangeProbab = 0.01;
+    		};
     };
     class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
         magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
         class Burst : Burst {
           salvo = 1;
-          reloadTime=0.5;
-          dispersion = 0.3;
+          reloadTime=1;
         };
     };
     class itc_weap_hydra_m257 : ITC_weap_apkws {
         displayName = "Hydra (M257 ILLUM)";
         magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M257"};
-        class Burst : Burst {
-          dispersion = 0.3;
-        };
     };
     class itc_weap_hydra_m156 : ITC_weap_apkws {
         displayName = "Hydra (M156 WP)";
         magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
-        class Burst : Burst {
-          dispersion = 0.3;
-        };
     };
 
     class MissileLauncher;
@@ -76,15 +95,6 @@ class CfgWeapons {
       displayName = "AGM-65K";
       magazines[] = {"itc_hp_lau117_itc_ammo_agm65h","itc_hp_bru55_lau117_itc_ammo_agm65h"};
       modes[] = {"Direct"};
-    };
-
-    class ITC_weap_gbu12 : Bomb_04_Plane_CAS_01_F {
-      magazines[] = {
-          "itc_hp_dumb_ITC_ammo_gbu12",
-          "itc_hp_bru33_ITC_ammo_gbu12",
-          "itc_hp_bru42_ITC_ammo_gbu12"
-      };
-      canLock = 0;
     };
 
     class itc_weap_mk82_airburst : Mk82BombLauncher {

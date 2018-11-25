@@ -5,7 +5,6 @@ if(
   ) exitWith {
   _display setVariable ["page","mavoff"];
 };
-
 private _pointCross = (_display displayCtrl 722204);
 private _rangeCaret = (_display displayCtrl 721202);
 (_display displayCtrl 722201) ctrlShow false;
@@ -40,3 +39,5 @@ if(ITC_AIR_MAVERICK_GSTAB) then {
 } else {
   (_display displayCtrl 721000) ctrlSetText "XXX";
 };
+
+drawIcon3d ["itc_air_mfd\data\UI\wagonwheel.paa", [0,1,0,1], _cameraTarget, 0.7, 0.7, 0, "", 1, 0.05, "PuristaMedium", "center"];

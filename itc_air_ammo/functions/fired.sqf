@@ -37,6 +37,17 @@ if(_cursorAim == "bomb" || _cursorAim == "rocket") then {
   };
 };
 
-if(vehicle player getVariable "autolaser" && isNull (laserTarget vehicle player)) then {
-  ["Laserdesignator_pilotCamera","Laserdesignator_pilotCamera"] call itc_air_ammo_fnc_fireAndResetWeapon;
+if(vehicle player getVariable "autolaser") then {
+
+  [itc_air_fcs_ccip_impactTime] spawn {
+    params ["_impactTime"];
+    sleep ((_impactTime - 10) max 0);
+    if(isNull (laserTarget vehicle player)) then {
+      ["Laserdesignator_pilotCamera","Laserdesignator_pilotCamera"] call itc_air_ammo_fnc_fireAndResetWeapon;
+    };
+    sleep ((_impactTime + 10) max 0);
+    if(!(isNull (laserTarget vehicle player))) then {
+      ["Laserdesignator_pilotCamera","Laserdesignator_pilotCamera"] call itc_air_ammo_fnc_fireAndResetWeapon;
+    };
+  };
 };

@@ -28,6 +28,9 @@ class cfgFunctions {
       class laserScan {
         file = "itc_air_maverick\functions\laserScan.sqf";
       };
+      class spi {
+        file = "itc_air_maverick\functions\spi.sqf";
+      };
     };
   };
 };

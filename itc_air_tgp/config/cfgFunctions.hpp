@@ -24,6 +24,10 @@ class cfgFunctions {
       class lssSearch {
         file = "itc_air_tgp\functions\lss\search.sqf";
       };
+
+      class spi {
+        file = "itc_air_tgp\functions\spi.sqf";
+      };
     };
   };
 };

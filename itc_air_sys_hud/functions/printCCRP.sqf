@@ -2,7 +2,7 @@ params ["_plane"];
 private _UI = uiNameSpace getVariable "ITC_AIR_HUD_UI";
 (_plane call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];
 private _dir = vectorNormalized (vectorDir _plane);
-private _vect = (getPosASL _plane) vectorFromTo (itc_air_wpt_pos);
+private _vect = (getPosASL _plane) vectorFromTo (itc_air_spi);
 private _dotProd = abs(_dir vectorDotProduct _vect);
 private _dotProdCam = abs(_dir vectorDotProduct (eyeDirection player));
 
@@ -27,7 +27,7 @@ private _camPitchOffset = (((eyeDirection player) call CBA_fnc_vect2Polar) # 2) 
 private _impDir = [(_plane getRelDir itc_air_fcs_ccip_impactPos)] call CBA_fnc_simplifyAngle180;
 //  private _camOffSet = (((eyeDirection player )call CBA_fnc_vectDir) - (getDir _plane)) call CBA_fnc_simplifyAngle180;
 //  private _impDirScreen = _impDir - _camOffSet;
-private _targDir = [(_plane getRelDir itc_air_wpt_pos)] call CBA_fnc_simplifyAngle180;
+private _targDir = [(_plane getRelDir itc_air_spi)] call CBA_fnc_simplifyAngle180;
 //private _targDirScreen = _targDir - _camOffSet;
 
 private _impDirRad = rad(_impDir) min 0.08 max -0.08;
@@ -42,7 +42,7 @@ _fallLine ctrlSetPosition [
   (0.5) * safeZoneH - (_scaleH/2),
   _scaleW,_scaleH
 ];
-private _yMod = (((itc_air_fcs_ccip_impactPos distance2D itc_air_wpt_pos) / 3000) min 1) * (_scaleH*0.75);
+private _yMod = (((itc_air_fcs_ccip_impactPos distance2D itc_air_spi) / 3000) min 1) * (_scaleH*0.75);
 _pipper ctrlSetPosition [
   ((safeZoneW / 2) - (_scaleW/2)) + (_impDirRad * (safeZoneW / _viewFOV)),
   (0.5) * safeZoneH - (_scaleH*0.75) + _yMod,

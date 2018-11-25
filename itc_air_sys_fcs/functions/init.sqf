@@ -20,3 +20,10 @@ itc_air_fcs_ccip_impactTime = 0;
   };
   false
 },[57, [false, false, false]]] call CBA_fnc_addKeybind;
+
+itc_air_fcs_hasFIR = isClass (configFile >> "cfgPatches" >> "FIR_AirWeaponSystem_US");
+if(itc_air_fcs_hasFIR) then {
+  ["itc_air_fcs_overrideITGT", "CHECKBOX", "Override FIR I-TGT from SPI", "ITC Air", [false]] call CBA_Settings_fnc_init;
+} else {
+  itc_air_fcs_overrideITGT = false;
+};

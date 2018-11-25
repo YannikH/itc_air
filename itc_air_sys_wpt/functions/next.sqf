@@ -1,3 +1,4 @@
+itc_air_wpt_changed = true;
 switch(itc_air_wpt_steer_pt_mode) do {
   case "MISSION": {
     itc_air_wpt_waypoints_sel = (itc_air_wpt_waypoints_sel + 1) max 0 min ((count itc_air_wpt_waypoints - 1));

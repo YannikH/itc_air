@@ -15,10 +15,10 @@ _plane = vehicle player;
 //_impactPoint = [currentMagazine _plane, _plane] call getDrawPos;
 //_impactPoint = _plane call getDrawPos;;
 //drawIcon3D ["a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa", [1,1,1,1], [_impactPoint # 0 # 0, _impactPoint # 0 # 1, 1], 1, 1, 0, "", 0, 0.05, "PuristaMedium"];
-_targ = itc_air_wpt_pos;
+_targ = itc_air_spi;
 _dist = _targ distance2D _impactPoint;
 //player sideChat str _dist;
-if((_plane distance2D _targ < _plane distance2D _impactPoint) && _dist < 50 && !itc_air_ccrp_PickleRelease) then {
+if((_plane distance2D _targ < _plane distance2D _impactPoint) && _dist < 100 && !itc_air_ccrp_PickleRelease) then {
     //player forceWeaponFire [currentWeapon _plane,currentWeapon _plane];
     private _currentWeapon = currentWeapon _plane;
     private _mode = (getArray (configFile >> "cfgweapons" >> _currentWeapon >> "modes")) select 0;

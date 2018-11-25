@@ -1,0 +1,5 @@
+if(ITC_AIR_MAVERICK_GSTAB) exitWith {
+  ITC_AIR_MAVERICK_TRACK
+};
+
+nil

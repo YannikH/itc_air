@@ -31,6 +31,9 @@ class cfgFunctions {
       class expand {
         file = "itc_air_sys_tad\functions\expand.sqf";
       };
+      class spi {
+        file = "itc_air_sys_tad\functions\spi.sqf";
+      };
     };
   };
 };

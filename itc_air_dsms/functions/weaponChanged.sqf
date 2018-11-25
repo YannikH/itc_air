@@ -3,6 +3,7 @@ _weapon = currentWeapon _plane;
 
 _profiles = _plane getVariable "profiles";
 _profileIndex = (_plane getVariable "profiles") findIf {(_x # 0 # 0) == _weapon};
+if(_profileIndex == -1) exitWith {};
 _profile = _profiles # _profileIndex;
 
 _profile params ["_profileSettings","_releaseSettings","_profileVariables"];

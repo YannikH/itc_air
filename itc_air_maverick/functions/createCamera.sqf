@@ -12,8 +12,9 @@ ITC_AIR_MAVERICK_CAM = _cam;
 
 [{
    _this select 0 params ["_plane","_display"];
-   private _mavSelected = ((currentWeapon _plane) isKindOf ["Missile_AGM_02_Plane_CAS_01_F",(configFile >> "CfgWeapons")]);
-   if (_display isEqualTo displayNull || (_display getVariable ["page",""]) != "ccdmav" || !_mavSelected) exitWith {
+   //private _mavSelected = ("itc_air_weapon_maverick_h" in (weapons _plane) || ("itc_air_weapon_maverick_g" in (weapons _plane)));
+   private _hasMavAmmo = (_plane ammo "itc_air_weapon_maverick_h" > 0) || _plane ammo "itc_air_weapon_maverick_g" > 0;
+   if (_display isEqualTo displayNull || (_display getVariable ["page",""]) != "ccdmav" || !_hasMavAmmo) exitWith {
      camDestroy ITC_AIR_MAVERICK_CAM;
      ITC_AIR_MAVERICK_CAM cameraEffect ["terminate", "back", "MAVERICK_FEED"];
      ITC_AIR_MAVERICK_CAM = nil;
@@ -42,5 +43,4 @@ ITC_AIR_MAVERICK_CAM = _cam;
    };
    ITC_AIR_MAVERICK_CAM camSetTarget _cameraTarget;
    ITC_AIR_MAVERICK_CAM camCommit 0;
-   drawIcon3d ["itc_air_mfd\data\UI\wagonwheel.paa", [0,1,0,1], _cameraTarget, 0.7, 0.7, 0, "", 1, 0.05, "PuristaMedium", "center"];
 }, 0, [_plane, _display]] call CBA_fnc_addPerFrameHandler;
