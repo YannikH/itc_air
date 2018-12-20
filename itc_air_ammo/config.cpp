@@ -9,5 +9,6 @@ class CfgPatches {
     };
 };
 #include "config\cfgAmmo.hpp"
+#include "config\cfgMagazines.hpp"
 #include "config\cfgFuzes.hpp"
 #include "config\cfgFunctions.hpp"

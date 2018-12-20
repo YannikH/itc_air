@@ -11,6 +11,16 @@ class cfgMagazines {
     class PylonRack_7Rnd_Rocket_04_HE_F;
     class PylonRack_3Rnd_LG_scalpel;
     class PylonRack_Bomb_SDB_x4;
+    class itc_magazine_bru42;
+    class itc_magazine_bru33_lau68 : PylonRack_7Rnd_Rocket_04_HE_F {
+      count=14;
+      model="\itc_air_ammo\stores\Hydra_Dual_Rail.p3d";
+    };
+    class itc_magazine_bru42_lau68 : PylonRack_7Rnd_Rocket_04_HE_F {
+      count=21;
+      model="\itc_air_ammo\stores\Hydra_Triple_Rack.p3d";
+    };
+
     #define hardPointMagazine(HP,PARENT,NAME,WEAP,AMMO,COUNT,TOTALMASS,DRAG) \
         class HP##_##AMMO : PARENT { \
             ammo = STRINGIFY(AMMO); \
@@ -28,6 +38,12 @@ class cfgMagazines {
 
     #define hp_rocket(NAME,WEAP,AMMO,WT) \
         hardPointMagazine(itc_hp_dumb_rocket,PylonRack_7Rnd_Rocket_04_HE_F,NAME,WEAP,AMMO,7x,__EVAL(WT*7),0.79)
+
+    #define hp_rocket_double(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_dumb_rocket_double,itc_magazine_bru33_lau68,NAME,WEAP,AMMO,14x,__EVAL(WT*14),0.79)
+
+    #define hp_rocket_triple(NAME,WEAP,AMMO,WT) \
+        hardPointMagazine(itc_hp_dumb_rocket_triple,itc_magazine_bru42_lau68,NAME,WEAP,AMMO,14x,__EVAL(WT*21),0.79)
 
     //SINGLE HP SMART
     #define hp_single_smart(NAME,WEAP,AMMO,WT) \
@@ -51,7 +67,7 @@ class cfgMagazines {
 
     //TRIPLE HP DUMB
     #define hp_triple(NAME,WEAP,AMMO,WT) \
-        hardPointMagazine(itc_hp_bru42,PylonRack_3Rnd_LG_scalpel,NAME,WEAP,AMMO,3x,__EVAL(WT*3),0.74)
+        hardPointMagazine(itc_hp_bru42,itc_magazine_bru42,NAME,WEAP,AMMO,3x,__EVAL(WT*3),0.74)
 
     //TRIPLE HP HELLFIRE
     #define hp_triple_hellfire(NAME,WEAP,AMMO,WT) \
@@ -78,6 +94,16 @@ class cfgMagazines {
     hp_rocket("M-156 WP","itc_weap_hydra_m156",itc_ammo_Hydra_M156,6)
     hp_rocket("M-257 ILLUM","itc_weap_hydra_m257",itc_ammo_Hydra_M257,6)
     hp_rocket("APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
+
+    hp_rocket_double("M-151","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F,6)
+    hp_rocket_double("M-156 WP","itc_weap_hydra_m156",itc_ammo_Hydra_M156,6)
+    hp_rocket_double("M-257 ILLUM","itc_weap_hydra_m257",itc_ammo_Hydra_M257,6)
+    hp_rocket_double("APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
+
+    hp_rocket_triple("M-151","Rocket_04_HE_Plane_CAS_01_F",Rocket_04_HE_F,6)
+    hp_rocket_triple("M-156 WP","itc_weap_hydra_m156",itc_ammo_Hydra_M156,6)
+    hp_rocket_triple("M-257 ILLUM","itc_weap_hydra_m257",itc_ammo_Hydra_M257,6)
+    hp_rocket_triple("APKWS","ITC_weap_apkws",ITC_ammo_apkws_m151,6)
 
     hp_ser_der_ter("Mk-82","Mk82BombLauncher",Bo_Mk82,227)
     hp_ser_der_ter("BL-778","BombCluster_03_F",BombCluster_03_Ammo_F,227)

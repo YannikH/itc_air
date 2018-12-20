@@ -108,4 +108,34 @@ class cfgAmmo {
   		ace_rearm_caliber = 155;
   		//explosionTime = 1;
   	};
+
+  	class itc_air_ammo_litening: MissileBase
+  	{
+  		hit=0;
+  		indirectHit=0;
+  		indirectHitRange=0;
+  		thrustTime=0;
+  		thrust=0;
+  		maxspeed=0;
+  		timetolive=0;
+  		maneuvrability=0;
+  		model="\itc_air_ammo\stores\av8b_litening.p3d";
+  		proxyShape="\itc_air_ammo\stores\av8b_litening.p3d";
+  		airlock=0;
+  		laserLock=0;
+  		irLock=0;
+  		initTime=0;
+  		minRange=0;
+  		minRangeProbab=0;
+  		midRange=0;
+  		midRangeProbab=0;
+  		maxRange=0;
+  		maxRangeProbab=0;
+  		sideAirFriction=0;
+  	};
+  	class itc_air_ammo_alq131: itc_air_ammo_litening
+  	{
+      model="\itc_air_ammo\stores\ALQ_131.p3d";
+      proxyShape="\itc_air_ammo\stores\ALQ_131.p3d";
+    };
 };

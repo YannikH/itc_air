@@ -8,14 +8,14 @@ class CfgWeapons {
 
     class RocketPods;
     class Rocket_04_HE_Plane_CAS_01_F : RocketPods {
-        magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F"};
+        magazines[] += {"itc_hp_dumb_rocket_Rocket_04_HE_F","itc_hp_dumb_rocket_double_Rocket_04_HE_F","itc_hp_dumb_rocket_triple_Rocket_04_HE_F"};
         reloadTime=1;
     		class Burst: RocketPods
     		{
     			displayName = "Shrieker";
     			textureType = "fullAuto";
     			burst = 1;
-    			autoFire = 0;
+    			autoFire = 1;
     			soundContinuous = 0;
     			lockingTargetSound[] = {"A3\Sounds_F\weapons\Rockets\locked_1",0.562341,1};
     			lockedTargetSound[] = {"A3\Sounds_F\weapons\Rockets\locked_3",0.562341,1.5};
@@ -39,19 +39,25 @@ class CfgWeapons {
     		};
     };
     class ITC_weap_apkws : Rocket_04_HE_Plane_CAS_01_F {
-        magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151"};
+        magazines[] = {"itc_hp_dumb_rocket_ITC_ammo_apkws_m151","itc_hp_dumb_rocket_double_ITC_ammo_apkws_m151","itc_hp_dumb_rocket_triple_ITC_ammo_apkws_m151"};
+        modes[] = {"Burst"};
         class Burst : Burst {
           salvo = 1;
           reloadTime=1;
         };
+        class Far_AI : Burst { };
+        class Close_AI : Burst { };
+        class Medium_AI : Burst { };
     };
     class itc_weap_hydra_m257 : ITC_weap_apkws {
         displayName = "Hydra (M257 ILLUM)";
-        magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M257"};
+        magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M257","itc_hp_dumb_rocket_double_itc_ammo_Hydra_M257","itc_hp_dumb_rocket_triple_itc_ammo_Hydra_M257"};
+        modes[] = {"Burst"};
     };
     class itc_weap_hydra_m156 : ITC_weap_apkws {
         displayName = "Hydra (M156 WP)";
-        magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M156"};
+        magazines[] = {"itc_hp_dumb_rocket_itc_ammo_Hydra_M156","itc_hp_dumb_rocket_double_itc_ammo_Hydra_M156","itc_hp_dumb_rocket_triple_itc_ammo_Hydra_M156"};
+        modes[] = {"Burst"};
     };
 
     class MissileLauncher;

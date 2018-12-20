@@ -1,7 +1,7 @@
 private _target = AGLtoASL ITC_AIR_MAVERICK_TRACK;
 private _plane = vehicle player;
 private _targetDistance = _plane distance _target;
-private _intersectResults = [_target, 0.2, 10, _plane distance _target] call itc_air_common_fnc_scanSeekerSquare;
+private _intersectResults = [_target, 0.1, 10, _plane distance _target] call itc_air_common_fnc_scanSeekerSquare;
 _intersectResults params ["_intersectResultsArray","_intersectObjects"];
 private _intersectCounts = _intersectObjects call CBA_fnc_getArrayElements;
 if(count _intersectObjects == 0) exitWith {};

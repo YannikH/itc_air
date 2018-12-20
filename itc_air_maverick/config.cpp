@@ -10,3 +10,6 @@ class CfgPatches {
 };
 
 #include "config\cfgFunctions.hpp"
+#include "config\cfgCloudlets.hpp"
+#include "config\effects.hpp"
+#include "config\cfgAmmo.hpp"

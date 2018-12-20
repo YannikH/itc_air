@@ -29,7 +29,7 @@ ITC_AIR_MAVERICK_CAMSIDE = ITC_AIR_MAVERICK_CAMSIDE * -1;
   private _vectorModelSpace = _projectile vectorWorldToModel _vectToTargetDiff;
   private _angleX = asin (_vectorModelSpace # 0);
   private _angleY = asin (_vectorModelSpace # 2);
-  _turnRate = 4 * _frameTime;
+  _turnRate = 7 * _frameTime;
   if(_angleX < 30) then {
     _projectile setDir (getDir _projectile) + (_turnRate / 5 * _angleX);
   };

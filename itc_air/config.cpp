@@ -38,6 +38,34 @@ class CfgPatches {
 #include "Dialog.hpp"
 #include "config\tgp.hpp"
 
+
+class CfgVideoOptions
+{
+	class PiP
+	{
+    class 16000_meters
+    {
+      text = "16000m";
+      value = 16000;
+    };
+    class 20000_meters
+    {
+      text = "20000m";
+      value = 20000;
+    };
+    class 25000_meters
+    {
+      text = "25000m";
+      value = 25000;
+    };
+    class 30000_meters
+    {
+      text = "30000m";
+      value = 30000;
+    };
+  };
+};
+
 class CfgFunctions
 {
     class itc_air_common {

@@ -19,7 +19,7 @@ if(!isNil{_spot select 0}) then {
     private _vectorModelSpace = _projectile vectorWorldToModel _vectToTargetDiff;
     private _angleX = asin (_vectorModelSpace # 0);
     private _angleY = asin (_vectorModelSpace # 2);
-    private _turnRate = 2 * _frameTime;
+    private _turnRate = 0.2 * _frameTime;
 
     private _turn = if(_angleX > 0) then [{_turnRate},{-_turnRate}];
     private _pitchMod = if(_angleY > 0) then [{_turnRate},{-_turnRate}];

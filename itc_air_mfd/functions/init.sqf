@@ -10,7 +10,7 @@ ITC_AIR_MFD_CAMS = [];
     };
   };
   //};
-}, "", [200, [false, false, false]]] call CBA_fnc_addKeybind;
+}, "", [200, [false, true, false]]] call CBA_fnc_addKeybind;
 /*
 ["ITC Air","itc_air_mfd_cursor_hold", "Hold MFD cursor",{
   //(findDisplay 19992) closeDisplay 2;
@@ -38,7 +38,7 @@ ITC_AIR_MFD_CAMS = [];
         //uiNameSpace setVariable ["ITC_AIR_MFD_L2",nil];
         //103 cutText ["", "PLAIN"];
     };
-}, "", [203, [true, false, false]]] call CBA_fnc_addKeybind;
+}, "", [203, [false, true, false]]] call CBA_fnc_addKeybind;
 
 ["ITC Air","itc_air_mfd_open_R", "Open MFD R", {
     if((isNil{uiNameSpace getVariable "ITC_AIR_MFD_R"}) && ("MFD_R" in ((vehicle player) getVariable["itc_air_systems",[]]))) then {
@@ -53,7 +53,7 @@ ITC_AIR_MFD_CAMS = [];
       102 cutText ["", "PLAIN"];
       //uiNameSpace setVariable ["ITC_AIR_MFD_R2",nil];
       //104 cutText ["", "PLAIN"];
-};}, "", [205, [true, false, false]]] call CBA_fnc_addKeybind;
+};}, "", [205, [false, true, false]]] call CBA_fnc_addKeybind;
 
 ["ITC Air","itc_air_mfd_open_TGP", "Open MFD TGP", {
     if(!dialog && (vehicle player) getVariable "wso" && player != (driver (vehicle player))) then {
