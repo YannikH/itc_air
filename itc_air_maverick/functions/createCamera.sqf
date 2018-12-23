@@ -10,6 +10,8 @@ _cam camCommit 0;
 
 ITC_AIR_MAVERICK_CAM = _cam;
 
+ITC_AIR_MAVERICK_CAM attachTo [_plane, [ITC_AIR_MAVERICK_CAMSIDE * 2.7,2,-0.8]];
+
 [{
    _this select 0 params ["_plane","_display"];
    //private _mavSelected = ("itc_air_weapon_maverick_h" in (weapons _plane) || ("itc_air_weapon_maverick_g" in (weapons _plane)));
@@ -22,9 +24,9 @@ ITC_AIR_MAVERICK_CAM = _cam;
    };
    //_cam camSetPos (getPos _plane);
    ITC_AIR_MAVERICK_CAM cameraEffect ["internal", "BACK", "MAVERICK_FEED"];
-   private _forwardModifier = vectorMagnitude (velocity _plane) * 0.5;
-   private _cameraPos = (_plane modelToWorld [ITC_AIR_MAVERICK_CAMSIDE * 2.7,2 + _forwardModifier,-0.8]);
-   ITC_AIR_MAVERICK_CAM camSetPos _cameraPos;
+   //private _forwardModifier = vectorMagnitude (velocity _plane) * 0.5;
+   //private _cameraPos = (_plane modelToWorld [ITC_AIR_MAVERICK_CAMSIDE * 2.7,2 + _forwardModifier,-0.8]);
+   //ITC_AIR_MAVERICK_CAM camSetPos _cameraPos;
 
    private _planeDir = vectorDir _plane;
    private _dirWorld = (getPosASL _plane) vectorFromTo ITC_AIR_MAVERICK_TRACK;
