@@ -26,3 +26,5 @@ _options pushBack [missionNameSpace,"ITC_AP_modeString","ALT","AP MODE",{
   ITC_AP_mode = ["ALT","ALT/HDG","PATH"] find ITC_AP_modeString;
 },"cycle",["ALT","ALT/HDG","PATH"]];
 _vehicle setVariable ["itc_air_options", _options];
+itc_air_autopilot_bankLim = 30;
+itc_air_autopilot_climbSpeed = 4000 * 0.00508;

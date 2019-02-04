@@ -13,6 +13,7 @@ class itc_air_default_jet {
     class rover {
         capable = 1;
         frequency_default = 5784;
+				turret = -1;
     };
     targeting_user = "pilot";
     hmd = 1;

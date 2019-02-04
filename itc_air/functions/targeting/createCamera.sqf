@@ -38,13 +38,10 @@ _handle = [{
         _texture setPiPEffect [3,1,1,0.4,0,[0,0,0,0],[1,1,1,0],[1,1,1,1]];
       };
     };
-    private _newTarget = _plane getVariable "tgp_dir";
-    if(!(_target isEqualTo (_newTarget # 1))) then {
-      _cam camSetTarget (ASLtoAGL (_newTarget select 1));
-      (_this select 0) set [7, _newTarget # 1];
-    };
-    if(!(_target isEqualTo (_newTarget # 1)) || _vis != _newVis || _fov != _newFOV) then {
-      _cam camCommit 0;
-    };
+    private _newTarget = (_plane getVariable "tgp_dir") # 1;
+    private _newTargetVis = _newTarget vectorAdd (((getPosASLVisual _plane) vectorDiff (getPosASL _plane)) vectorMultiply -1);
+    _cam camSetTarget (ASLtoAGL (_newTargetVis));
+    (_this select 0) set [7, _newTarget];
+    _cam camCommit 0;
 }, 0, [_cam, _plane, _texture, _display, _memPointPos, _fov, 0,[0,0,0]]] call CBA_fnc_addPerFrameHandler;
 _cam
