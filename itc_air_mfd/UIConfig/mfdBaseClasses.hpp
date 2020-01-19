@@ -1,5 +1,5 @@
 #define MFDGRN {0,0.9,0,2}
-#define SCALE 0.9
+#define SCALE 0.5
 #define YGAP SCALE * 0.16
 #define XGAP SCALE *  0.1125
 #define WIDTH SCALE * 0.525

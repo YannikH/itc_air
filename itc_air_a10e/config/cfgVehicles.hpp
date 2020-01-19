@@ -30,6 +30,7 @@ class cfgVehicles {
       class itc_air : itc_air_default_jet {
         tgp_overlay = "itc_air_a10e\data\overlay.paa";
         systems[] = {"UFC","SOI","TAXI","DSMS","MAVERICK","MFD","MFD_L","MFD_R","HMD","AUTOPILOT","ROVER","SADL","FCS","ACMI","GCAS","TGP","WPT","TAD","HUD","EW"};
+        turret = -1;
       };
       class pilotCamera : litening { };
       class Components : Components
